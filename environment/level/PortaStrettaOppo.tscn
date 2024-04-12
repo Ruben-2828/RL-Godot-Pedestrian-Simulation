@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://o7gsgvhk8bwt"]
+
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room.tscn" id="1_3jugu"]
+[ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/internal_wall.tscn" id="3_l78wm"]
+[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/final_target.tscn" id="4_oxlqw"]
+[ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/player/player.tscn" id="5_854o2"]
+[ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/target.tscn" id="5_btwtr"]
+
+[node name="PortaStrettaOppo" type="Node3D"]
+
+[node name="Room" parent="." instance=ExtResource("1_3jugu")]
+
+[node name="InternalWall" parent="." instance=ExtResource("3_l78wm")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, -5.54355, 0, 0)
+
+[node name="InternalWall2" parent="." instance=ExtResource("3_l78wm")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 5.55054, 0, 0)
+
+[node name="FinalTarget" parent="." instance=ExtResource("4_oxlqw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.5)
+
+[node name="Target" parent="." instance=ExtResource("5_btwtr")]
+
+[node name="Player" parent="." instance=ExtResource("5_854o2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+
+[node name="Player2" parent="." instance=ExtResource("5_854o2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 7)
+
+[node name="Player3" parent="." instance=ExtResource("5_854o2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 7)

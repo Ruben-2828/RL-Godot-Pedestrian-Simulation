@@ -1,0 +1,7 @@
+res://objects/wall.tscn
+res://objects/target.tscn
+res://environment/level/StartSpawner.tscn
+res://environment/game_scene.tscn
+res://training_scene/training_scene.tscn
+res://environment/level_manager.tscn
+res://environment/level/StartEZ.tscn

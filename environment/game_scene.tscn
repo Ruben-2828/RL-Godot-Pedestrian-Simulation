@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://c741k7edfawjb"]
+
+[ext_resource type="PackedScene" uid="uid://c16xmoq17xywf" path="res://environment/level_manager.tscn" id="1_qgpv6"]
+[ext_resource type="PackedScene" uid="uid://cqswiih3najh4" path="res://environment/level/StartEZ.tscn" id="2_2xpyq"]
+[ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/player/player.tscn" id="2_ass2h"]
+[ext_resource type="PackedScene" uid="uid://eyj5ncyrrhkn" path="res://environment/level/StartSpawner.tscn" id="3_84k0r"]
+[ext_resource type="Script" path="res://environment/camera3D.gd" id="3_s3qh3"]
+
+[node name="GameScene" type="Node3D"]
+
+[node name="LevelManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_qgpv6")]
+player = NodePath("../Node3D/Player")
+levels_path = Array[PackedScene]([ExtResource("2_2xpyq"), ExtResource("3_84k0r")])
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 21, 0)
+projection = 1
+size = 22.0
+script = ExtResource("3_s3qh3")
+
+[node name="Player" parent="Node3D" node_paths=PackedStringArray("level_manager") instance=ExtResource("2_ass2h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+level_manager = NodePath("../../LevelManager")

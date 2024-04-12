@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7r0p4dq3pyek"]
+
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room.tscn" id="1_m5g3e"]
+[ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/internal_wall.tscn" id="2_6g2nh"]
+[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/final_target.tscn" id="3_ofht3"]
+[ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/target.tscn" id="4_hpkxu"]
+[ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/wall.tscn" id="5_7ejo6"]
+[ext_resource type="Script" path="res://objects/player/player.gd" id="6_b10ic"]
+[ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/player/player.tscn" id="7_tneiq"]
+
+[node name="PortaStrettaOppoDoppioStretto" type="Node3D"]
+
+[node name="Room" parent="." instance=ExtResource("1_m5g3e")]
+
+[node name="InternalWall" parent="." instance=ExtResource("2_6g2nh")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 3.5, 0, 0)
+
+[node name="InternalWall2" parent="." instance=ExtResource("2_6g2nh")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -3.5, 0, 0)
+
+[node name="FinalTarget" parent="." instance=ExtResource("3_ofht3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.47795)
+
+[node name="FinalTarget2" parent="." instance=ExtResource("3_ofht3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.70455)
+
+[node name="Target" parent="." instance=ExtResource("4_hpkxu")]
+
+[node name="Wall" parent="." instance=ExtResource("5_7ejo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5, 0, 0)
+
+[node name="Wall2" parent="." instance=ExtResource("5_7ejo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.5, 0, 0)
+
+[node name="Group1" type="Node3D" parent="."]
+
+[node name="Player" parent="Group1" instance=ExtResource("7_tneiq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
+script = ExtResource("6_b10ic")
+
+[node name="Player2" parent="Group1" instance=ExtResource("7_tneiq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -5)
+script = ExtResource("6_b10ic")
+
+[node name="Group2" type="Node3D" parent="."]
+
+[node name="Player" parent="Group2" instance=ExtResource("7_tneiq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 5)
+script = ExtResource("6_b10ic")
+
+[node name="Player2" parent="Group2" instance=ExtResource("7_tneiq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 5)
+script = ExtResource("6_b10ic")

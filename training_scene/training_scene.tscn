@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://buytp40i8mx1h"]
+
+[ext_resource type="PackedScene" uid="uid://c741k7edfawjb" path="res://environment/game_scene.tscn" id="1_pyej1"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="2_weg2d"]
+
+[sub_resource type="Environment" id="Environment_y4e07"]
+
+[node name="TrainingScene" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_y4e07")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 0)
+
+[node name="GameScene" parent="." instance=ExtResource("1_pyej1")]
+
+[node name="GameScene2" parent="." instance=ExtResource("1_pyej1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50)
+visible = false
+
+[node name="GameScene3" parent="." instance=ExtResource("1_pyej1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100)
+visible = false
+
+[node name="GameScene4" parent="." instance=ExtResource("1_pyej1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -150)
+visible = false
+
+[node name="GameScene5" parent="." instance=ExtResource("1_pyej1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -200)
+visible = false
+
+[node name="GameScene6" parent="." instance=ExtResource("1_pyej1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -250)
+visible = false
+
+[node name="GameScene7" parent="." instance=ExtResource("1_pyej1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -300)
+visible = false
+
+[node name="GameScene8" parent="." instance=ExtResource("1_pyej1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -350)
+visible = false
+
+[node name="GameScene9" parent="." instance=ExtResource("1_pyej1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -400)
+visible = false
+
+[node name="GameScene10" parent="." instance=ExtResource("1_pyej1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -450)
+visible = false
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("2_weg2d")
+speed_up = 20.0
