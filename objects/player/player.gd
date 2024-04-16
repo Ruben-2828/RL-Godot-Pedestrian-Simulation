@@ -10,9 +10,7 @@ var max_level_reached: int = 0
 
 @export var speed_min: float = 0.0
 @export var speed_max: float = 1.7
-
 var speed: float
-
 var _action_0: float
 var _action_1: float
 
@@ -21,10 +19,14 @@ var _action_1: float
 @onready var animation_tree = $AnimationTree
 
 var cumulated_reward: float = 0.0
-var count: int = 0
+var count: int = 0						#TODO: rimuoverlo e implementare il passaggio di scena 'globale'
 var final_target_reached: bool = false
+var target_reached: bool = false
+var last_target_reached: Area3D = null
 var wall_near: bool = false
 var finished: bool = false
+
+var reached_targets := []
 
 func _ready():
 	reset()
@@ -38,6 +40,8 @@ func _ready():
 func reset():
 	global_position = level_manager.get_spawn_position(current_level)
 	rotation = level_manager.get_spawn_rotation(current_level)
+	target_reached = false
+	reached_targets = []
 	
 func _physics_process(delta):
 	
@@ -88,18 +92,28 @@ func _compute_rewards() -> void:
 			ai_controller_3d.reset()
 		else:
 			# Reward loss for finishing time steps
-			tot_reward -= 6
-			print("finiti timesteps")
+			tot_reward -= 6.0
+			#print("finiti timesteps")
 			
 		finished = false
 		reset()
+		
+	# Reward for reaching an intermediate target
+	if target_reached:
+		if last_target_reached in reached_targets:
+			tot_reward -= 1.0
+		else:
+			reached_targets.append(last_target_reached)
+			tot_reward += 0.5
+		target_reached = false
+		last_target_reached = null
 
 	# Reward loss when detecting no targets
 	var obs = raycast_sensor.get_observation()
 	obs = obs['hit_objects']
 	var no_target = true
-	for i in range(0, obs.size(), 2):
-		if obs[i+1] == 1:
+	for i in range(0, obs.size(), 4):
+		if obs[i+1] == 0:
 			no_target = false
 			#print("i can see it")
 	if no_target:
@@ -126,12 +140,13 @@ func _on_final_target_entered(body):
 		finished = true
 		final_target_reached = true
 		
-func _on_target_entered(body):
+func _on_target_entered(area, body):
 	
 	if body == self:
 		#print("target intemedio")
-		pass
+		target_reached = true
+		last_target_reached = area
 
 func _on_arco_1_body_entered(body):
-	if body.is_class("StaticBody3D"):
+	if body.get_collision_mask_value(2):
 		wall_near = true

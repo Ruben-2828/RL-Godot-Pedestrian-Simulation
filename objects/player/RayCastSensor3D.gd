@@ -134,19 +134,21 @@ func calculate_raycasts() -> Dictionary:
 		var norm_distance = _get_raycast_distance(ray) / ray_length
 		hit_objects.append(norm_distance)
 
-		var hit_object_type = 0
+		var hit_object_type := [0, 0, 0]
 		if ray.get_collider():
 			if ray.get_collider().get_collision_mask_value(1):
-				hit_object_type = 1
-				print("hittatto final")
+				if ray.get_collider() in character.reached_targets:
+					hit_object_type[2] = 1
+					#print("hittatto target gia visto")
+				else:
+					hit_object_type[1] = 1
+					#print("hittatto target nuovo")
+				
 			if ray.get_collider().get_collision_mask_value(2):
-				hit_object_type = 2
-				print("hittatto target")
-			if ray.get_collider().get_collision_mask_value(3):
-				hit_object_type = 3
-				print("hittatto wall")
+				hit_object_type[0] = 1
+				#print("hittatto wall")
 
-		hit_objects.append(hit_object_type)
+		hit_objects.append_array(hit_object_type)
 	#print(hit_objects)
 	return {
 		"hit_objects": hit_objects

@@ -10,7 +10,7 @@ material = ExtResource("1_3k7li")
 size = Vector3(6.5, 10, 0.5)
 
 [node name="InternalWall" type="StaticBody3D"]
-collision_mask = 4
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_72k1j")

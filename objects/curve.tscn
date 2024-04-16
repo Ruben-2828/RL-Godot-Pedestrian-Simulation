@@ -6,12 +6,16 @@
 
 [node name="Wall2" parent="." instance=ExtResource("1_2n131")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -2, 0, 2)
+collision_mask = 2
 
 [node name="Wall3" parent="." instance=ExtResource("1_2n131")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -2, 0, -6)
+collision_mask = 2
 
 [node name="Wall4" parent="." instance=ExtResource("1_2n131")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 2, 0, -2)
+collision_mask = 2
 
 [node name="Wall5" parent="." instance=ExtResource("1_2n131")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 2, 0, 6)
+collision_mask = 2

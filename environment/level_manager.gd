@@ -9,8 +9,6 @@ class_name LevelManager
 @export var levels_path: Array[PackedScene]
 
 
-#@onready var levels = get_children()
-
 var level_start_area: Array
 var level_goal: Array
 var levels: Array[Node3D]
@@ -35,12 +33,12 @@ func _ready():
 		final_target.body_entered.connect(player._on_final_target_entered)
 		level_goal[level_id] = final_target
 		
-		var targets := levels[level_id].find_children("Target*")
+		var targets := []
+		targets.append_array(levels[level_id].find_children("Target*", "Area3D"))
+		targets.append_array(levels[level_id].find_children("ObliqueTarget*", "Area3D"))
+		print(targets)
 		for t in targets:
-			t.body_entered.connect(player._on_target_entered)
-				
-		
-	
+			t.custom_body_entered.connect(player._on_target_entered)
 
 #func randomize_goal(level_id: int):
 	#var active_goal_id = randi_range(0, level_goal[level_id].size() - 1)
@@ -53,7 +51,6 @@ func _ready():
 			#goal.visible = false
 			#goal.process_mode = Node.PROCESS_MODE_DISABLED
 	#return level_goal[level_id][active_goal_id].global_transform
-
 
 func get_spawn_position(level: int) -> Vector3:
 	var area = level_start_area[level]

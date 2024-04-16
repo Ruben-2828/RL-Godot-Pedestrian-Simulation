@@ -12,9 +12,10 @@ size = Vector3(8, 10, 4)
 
 [node name="Target" parent="." instance=ExtResource("1_4afb6")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 3, -20, 0)
+collision_mask = 1
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
-collision_mask = 4
+collision_mask = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
