@@ -62,6 +62,6 @@ func get_spawn_rotation(level: int) -> Vector3:
 	return area.rotation
 	
 func set_reward_label_text(reward: float, level: int) -> void:
-	var label = levels[level].find_child('Label3D')
+	var label = levels[level].find_child('Reward')
 	var formatted_str = 'reward: %4.4f' % reward
 	label.set_text(formatted_str)

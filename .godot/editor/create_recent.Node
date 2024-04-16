@@ -1,8 +1,10 @@
-Sync
+CollisionShape3D
 Area3D
-Label3D
 Node3D
-Node
 MeshInstance3D
+GPUParticlesAttractorBox3D
+Label3D
+Node
+Sync
 AIController3D
 RayCastSensor3D

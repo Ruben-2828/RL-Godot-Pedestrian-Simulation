@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqswiih3najh4"]
+
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/basic/room.tscn" id="1_xtyxy"]
+[ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/basic/spawn.tscn" id="3_dc1wo"]
+[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/target/final_target.tscn" id="4_0yh6p"]
+[ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/basic/reward.tscn" id="4_xdkto"]
+
+[node name="StartEZ" type="Node3D"]
+
+[node name="Room" parent="." instance=ExtResource("1_xtyxy")]
+
+[node name="FinalTarget" parent="." instance=ExtResource("4_0yh6p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="Spawn" parent="." instance=ExtResource("3_dc1wo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -1.74446)
+
+[node name="Reward" parent="." instance=ExtResource("4_xdkto")]

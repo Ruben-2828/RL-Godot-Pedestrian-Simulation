@@ -83,7 +83,8 @@ func _compute_rewards() -> void:
 			final_target_reached = false
 			
 			# TODO: impostare la transizione di scenario tramite delle condizioni globali
-			if count > 30:
+
+			if count > 20:
 				count = 0
 				next_level = (current_level + 1) % level_manager.levels.size()
 				current_level = next_level	
