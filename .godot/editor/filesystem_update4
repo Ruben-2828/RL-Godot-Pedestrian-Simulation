@@ -35,3 +35,4 @@ res://environment/level/PortaStrettaOppo.tscn
 res://environment/level/Incrocio4.tscn
 res://environment/level/Curva22Ostacoli.tscn
 res://environment/level/Corridoio3vs3.tscn
+res://training_scene/Sync.gd

@@ -23,7 +23,6 @@ var count: int = 0						#TODO: rimuoverlo e implementare il passaggio di scena '
 var final_target_reached: bool = false
 var target_reached: bool = false
 var last_target_reached: Area3D = null
-var wall_near: bool = false
 var finished: bool = false
 
 var reached_targets := []
@@ -57,7 +56,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _set_speed(delta) -> void:
-	speed = clamp(_action_0 * speed_max, speed_min, speed_max)
+	speed = clamp(_action_0 * speed_max / 2, speed_min, speed_max)
 	var move_vec = Vector3(0, 0, 1)
 	move_vec = move_vec.rotated(Vector3(0,1,0), rotation.y)
 	move_vec *= speed
@@ -68,7 +67,7 @@ func _set_speed(delta) -> void:
 	#set_velocity(move_vec)
 	
 func _set_direction(delta) -> void:
-	rotation.y += deg_to_rad(_action_1 * 1.0)
+	rotation.y += deg_to_rad(_action_1 * 1.25)
 	
 func _compute_rewards() -> void:
 	var tot_reward: float = 0
@@ -84,7 +83,7 @@ func _compute_rewards() -> void:
 			final_target_reached = false
 			
 			# TODO: impostare la transizione di scenario tramite delle condizioni globali
-			if count > 50:
+			if count > 30:
 				count = 0
 				next_level = (current_level + 1) % level_manager.levels.size()
 				current_level = next_level	
@@ -109,9 +108,21 @@ func _compute_rewards() -> void:
 		target_reached = false
 		last_target_reached = null
 
+	# Get observation for proxemity rewards
+	var obs = raycast_sensor.get_observation()
+	obs = obs['hit_objects']
+	
+	# Reward loss when wall is too near to player
+	var wall_near = false
+	for i in range(0, obs.size(), 4):
+		if obs[i+1] == 1 and obs[i] < 0.6 / raycast_sensor.ray_length:
+			wall_near = true
+			break
+	if wall_near:
+		tot_reward -= 0.5
+		#print("wall too near")
+	
 	## Reward loss when detecting no targets
-	#var obs = raycast_sensor.get_observation()
-	#obs = obs['hit_objects']
 	##print(obs)
 	#var no_target = true
 	#for i in range(0, obs.size(), 4):
@@ -148,9 +159,3 @@ func _on_target_entered(area, body):
 		#print("target intemedio")
 		target_reached = true
 		last_target_reached = area
-
-func _on_arco_1_body_entered(body):
-	
-	if body.is_in_group("walls"):
-		print("ENTRAAAAA")
-		wall_near = true
