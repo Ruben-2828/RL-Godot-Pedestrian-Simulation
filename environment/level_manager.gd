@@ -36,7 +36,7 @@ func _ready():
 		var targets := []
 		targets.append_array(levels[level_id].find_children("Target*", "Area3D"))
 		targets.append_array(levels[level_id].find_children("ObliqueTarget*", "Area3D"))
-		print(targets)
+		#print(targets)
 		for t in targets:
 			t.custom_body_entered.connect(player._on_target_entered)
 

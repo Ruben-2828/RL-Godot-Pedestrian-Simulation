@@ -1,8 +1,8 @@
+Area3D
 Label3D
 Node3D
 Node
 MeshInstance3D
-Area3D
 Sync
 AIController3D
 RayCastSensor3D

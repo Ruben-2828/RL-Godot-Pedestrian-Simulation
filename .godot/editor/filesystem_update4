@@ -23,3 +23,6 @@ res://objects/final_target.gd
 res://objects/target.gd
 res://environment/level/Curva22Dynamic.tscn
 res://objects/player/AIController3D.gd
+res://objects/player/arco_1_area3D.tscn
+res://objects/player/player.tscn
+res://objects/spawn.tscn

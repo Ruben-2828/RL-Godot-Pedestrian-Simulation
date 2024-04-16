@@ -78,7 +78,7 @@ func _compute_rewards() -> void:
 			
 			tot_reward += 6
 			
-			print("oh yeah!")
+			#print("oh yeah!")
 			count += 1
 			final_target_reached = false
 			
@@ -148,5 +148,7 @@ func _on_target_entered(area, body):
 		last_target_reached = area
 
 func _on_arco_1_body_entered(body):
+	
 	if body.get_collision_mask_value(2):
+		print("ENTRAAAAA")
 		wall_near = true
