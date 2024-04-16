@@ -1,17 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://c741k7edfawjb"]
+[gd_scene load_steps=9 format=3 uid="uid://c741k7edfawjb"]
 
 [ext_resource type="PackedScene" uid="uid://c16xmoq17xywf" path="res://environment/level_manager.tscn" id="1_qgpv6"]
 [ext_resource type="PackedScene" uid="uid://cqswiih3najh4" path="res://environment/level/StartEZ.tscn" id="2_2xpyq"]
 [ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/player/player.tscn" id="2_ass2h"]
 [ext_resource type="PackedScene" uid="uid://eyj5ncyrrhkn" path="res://environment/level/StartSpawner.tscn" id="3_84k0r"]
 [ext_resource type="Script" path="res://environment/camera3D.gd" id="3_s3qh3"]
+[ext_resource type="PackedScene" uid="uid://b8geyovhk1ni8" path="res://environment/level/StartCorridoio.tscn" id="4_plir7"]
 [ext_resource type="PackedScene" uid="uid://sao1y1f2xovn" path="res://environment/level/Curva22Dynamic.tscn" id="4_vyucp"]
+[ext_resource type="PackedScene" uid="uid://21knmqhiskih" path="res://environment/level/Curva22Ostacoli.tscn" id="6_hpauu"]
 
 [node name="GameScene" type="Node3D"]
 
 [node name="LevelManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_qgpv6")]
 player = NodePath("../Node3D/Player")
-levels_path = Array[PackedScene]([ExtResource("2_2xpyq"), ExtResource("3_84k0r"), ExtResource("4_vyucp")])
+levels_path = Array[PackedScene]([ExtResource("2_2xpyq"), ExtResource("3_84k0r"), ExtResource("4_plir7"), ExtResource("4_vyucp"), ExtResource("6_hpauu")])
 
 [node name="Node3D" type="Node3D" parent="."]
 

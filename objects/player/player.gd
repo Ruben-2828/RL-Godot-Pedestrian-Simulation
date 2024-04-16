@@ -38,8 +38,9 @@ func _ready():
 	ai_controller_3d.init(self)
 
 func reset():
-	global_position = level_manager.get_spawn_position(current_level)
 	rotation = level_manager.get_spawn_rotation(current_level)
+	global_position = level_manager.get_spawn_position(current_level)
+	
 	target_reached = false
 	reached_targets = []
 	
@@ -108,16 +109,17 @@ func _compute_rewards() -> void:
 		target_reached = false
 		last_target_reached = null
 
-	# Reward loss when detecting no targets
-	var obs = raycast_sensor.get_observation()
-	obs = obs['hit_objects']
-	var no_target = true
-	for i in range(0, obs.size(), 4):
-		if obs[i+1] == 0:
-			no_target = false
-			#print("i can see it")
-	if no_target:
-		tot_reward -= 0.5
+	## Reward loss when detecting no targets
+	#var obs = raycast_sensor.get_observation()
+	#obs = obs['hit_objects']
+	##print(obs)
+	#var no_target = true
+	#for i in range(0, obs.size(), 4):
+		#if obs[i+2] == 1 or obs[i+3] == 1:
+			#no_target = false
+			##print("i can see it")
+	#if no_target:
+		#tot_reward -= 0.5
 		#print("no target loss")
 	
 	# Reward loss when wall is too near to player
@@ -149,6 +151,6 @@ func _on_target_entered(area, body):
 
 func _on_arco_1_body_entered(body):
 	
-	if body.get_collision_mask_value(2):
+	if body.is_in_group("walls"):
 		print("ENTRAAAAA")
 		wall_near = true

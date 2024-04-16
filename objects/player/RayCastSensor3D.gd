@@ -61,17 +61,10 @@ extends ISensor3D
 var rays := []
 
 func _update():
-	if Engine.is_editor_hint():
 		_spawn_nodes()
-
 
 func _ready() -> void:
-	if Engine.is_editor_hint():
-		if get_child_count() == 0:
-			_spawn_nodes()
-	else:
 		_spawn_nodes()
-
 
 func _spawn_nodes():
 	print("spawning nodes")
@@ -136,7 +129,7 @@ func calculate_raycasts() -> Dictionary:
 
 		var hit_object_type := [0, 0, 0]
 		if ray.get_collider():
-			if ray.get_collider().get_collision_mask_value(1):
+			if ray.get_collider().is_in_group("targets"):
 				if ray.get_collider() in character.reached_targets:
 					hit_object_type[2] = 1
 					#print("hittatto target gia visto")
@@ -144,7 +137,7 @@ func calculate_raycasts() -> Dictionary:
 					hit_object_type[1] = 1
 					#print("hittatto target nuovo")
 				
-			if ray.get_collider().get_collision_mask_value(2):
+			elif ray.get_collider().is_in_group("walls"):
 				hit_object_type[0] = 1
 				#print("hittatto wall")
 

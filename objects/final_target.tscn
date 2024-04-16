@@ -10,7 +10,7 @@ size = Vector3(3, 10, 3)
 margin = 0.0
 size = Vector3(3, 10, 3)
 
-[node name="FinalTarget" type="Area3D"]
+[node name="FinalTarget" type="Area3D" groups=["targets"]]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_juq7a")

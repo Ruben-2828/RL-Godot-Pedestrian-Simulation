@@ -26,3 +26,12 @@ res://objects/player/AIController3D.gd
 res://objects/player/arco_1_area3D.tscn
 res://objects/player/player.tscn
 res://objects/spawn.tscn
+res://environment/level/StartCorridoio.tscn
+res://environment/level/PortaStrettaOppoSingoloStretto.tscn
+res://environment/level/PortaStrettaOppoSingolo.tscn
+res://environment/level/PortaStrettaOppoDoppioStretto.tscn
+res://environment/level/PortaStrettaOppoDoppio.tscn
+res://environment/level/PortaStrettaOppo.tscn
+res://environment/level/Incrocio4.tscn
+res://environment/level/Curva22Ostacoli.tscn
+res://environment/level/Corridoio3vs3.tscn

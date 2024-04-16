@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7r0p4dq3pyek"]
+[gd_scene load_steps=7 format=3 uid="uid://c7r0p4dq3pyek"]
 
 [ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room.tscn" id="1_m5g3e"]
 [ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/internal_wall.tscn" id="2_6g2nh"]
 [ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/final_target.tscn" id="3_ofht3"]
 [ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/target.tscn" id="4_hpkxu"]
 [ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/wall.tscn" id="5_7ejo6"]
-[ext_resource type="Script" path="res://objects/player/player.gd" id="6_b10ic"]
 [ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/player/player.tscn" id="7_tneiq"]
 
 [node name="PortaStrettaOppoDoppioStretto" type="Node3D"]
@@ -36,18 +35,21 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.5, 
 
 [node name="Player" parent="Group1" instance=ExtResource("7_tneiq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
-script = ExtResource("6_b10ic")
 
 [node name="Player2" parent="Group1" instance=ExtResource("7_tneiq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -5)
-script = ExtResource("6_b10ic")
 
 [node name="Group2" type="Node3D" parent="."]
 
 [node name="Player" parent="Group2" instance=ExtResource("7_tneiq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 5)
-script = ExtResource("6_b10ic")
 
 [node name="Player2" parent="Group2" instance=ExtResource("7_tneiq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 5)
-script = ExtResource("6_b10ic")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10, 0, -10.6187)
+text = "Reward
+"
+font_size = 128
+horizontal_alignment = 0
