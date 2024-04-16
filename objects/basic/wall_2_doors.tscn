@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://dgsgr5nd2vd22"]
+
+[ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/target/target.tscn" id="1_6dk12"]
+[ext_resource type="Material" uid="uid://beh1qht5bhqeh" path="res://material/wall_material.tres" id="1_cf8is"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wgh1f"]
+size = Vector3(6.5, 10, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xqj2x"]
+material = ExtResource("1_cf8is")
+size = Vector3(6.5, 10, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_amlvw"]
+size = Vector3(4.6, 10, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_imhrd"]
+material = ExtResource("1_cf8is")
+size = Vector3(4.6, 10, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w8pa4"]
+size = Vector3(6, 10, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_54cga"]
+material = ExtResource("1_cf8is")
+size = Vector3(6, 10, 0.5)
+
+[node name="Wall2Door" type="Node3D"]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_wgh1f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+mesh = SubResource("BoxMesh_xqj2x")
+
+[node name="Area3D2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.95, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+shape = SubResource("BoxShape3D_amlvw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D2"]
+mesh = SubResource("BoxMesh_imhrd")
+
+[node name="Area3D3" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8177, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D3"]
+shape = SubResource("BoxShape3D_w8pa4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D3"]
+mesh = SubResource("BoxMesh_54cga")
+
+[node name="Target" parent="." instance=ExtResource("1_6dk12")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4.03175, 0, 0)
+
+[node name="Target2" parent="." instance=ExtResource("1_6dk12")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 10.047, 0, 0)

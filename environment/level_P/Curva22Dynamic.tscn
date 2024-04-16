@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://sao1y1f2xovn"]
+
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/basic/room.tscn" id="1_1jsoo"]
+[ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/target/target.tscn" id="1_48o23"]
+[ext_resource type="PackedScene" uid="uid://xxxss1722ru3" path="res://objects/obstacle/curve.tscn" id="3_wftqm"]
+[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/target/final_target.tscn" id="5_e1ykt"]
+[ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/basic/spawn.tscn" id="6_1fxf4"]
+[ext_resource type="PackedScene" uid="uid://bu2fbby520l60" path="res://objects/target/oblique_targets.tscn" id="6_3sbnx"]
+[ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/basic/reward.tscn" id="7_royu8"]
+
+[node name="Curva22Dynamic" type="Node3D"]
+
+[node name="Room" parent="." instance=ExtResource("1_1jsoo")]
+
+[node name="Curve" parent="." instance=ExtResource("3_wftqm")]
+
+[node name="Target" type="Node3D" parent="."]
+
+[node name="Target2" parent="Target" instance=ExtResource("1_48o23")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 8)
+
+[node name="Target3" parent="Target" instance=ExtResource("1_48o23")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 4)
+
+[node name="Target4" parent="Target" instance=ExtResource("1_48o23")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Target5" parent="Target" instance=ExtResource("1_48o23")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -4)
+
+[node name="Target6" parent="Target" instance=ExtResource("1_48o23")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 0, -8)
+
+[node name="FinalTarget" parent="Target" instance=ExtResource("5_e1ykt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8)
+
+[node name="ObliqueTargets" parent="Target" instance=ExtResource("6_3sbnx")]
+
+[node name="Spawn" parent="." instance=ExtResource("6_1fxf4")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 0, 8)
+
+[node name="Reward" parent="." instance=ExtResource("7_royu8")]

@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://33felderqsag"]
+
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/basic/room.tscn" id="1_m5g3e"]
+[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/target/final_target.tscn" id="3_ofht3"]
+[ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/target/target.tscn" id="4_hpkxu"]
+[ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/basic/wall.tscn" id="5_7ejo6"]
+[ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/player/player.tscn" id="5_g4lus"]
+
+
+[node name="PortaStrettaOppoDoppio" type="Node3D"]
+
+[node name="Room" parent="." instance=ExtResource("1_m5g3e")]
+
+[node name="Wall" parent="." instance=ExtResource("5_7ejo6")]
+transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 5.6, 0, 0)
+
+[node name="Wall2" parent="." instance=ExtResource("5_7ejo6")]
+transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, -5.6, 0, 0)
+
+[node name="Target" parent="." instance=ExtResource("4_hpkxu")]
+
+[node name="FinalTarget" parent="." instance=ExtResource("3_ofht3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.5)
+
+[node name="FinalTarget2" parent="." instance=ExtResource("3_ofht3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.5)
+
+[node name="Group 1" type="Node3D" parent="."]
+
+[node name="Player" parent="Group 1" instance=ExtResource("5_g4lus")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -5)
+
+[node name="Player2" parent="Group 1" instance=ExtResource("5_g4lus")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -5)
+
+[node name="Player3" parent="Group 1" instance=ExtResource("5_g4lus")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -5)
+
+[node name="Player4" parent="Group 1" instance=ExtResource("5_g4lus")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -5)
+
+[node name="Group 2" type="Node3D" parent="."]
+
+[node name="Player" parent="Group 2" instance=ExtResource("5_g4lus")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 5)
+
+[node name="Player2" parent="Group 2" instance=ExtResource("5_g4lus")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
+
+[node name="Player3" parent="Group 2" instance=ExtResource("5_g4lus")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 5)
+
+[node name="Player4" parent="Group 2" instance=ExtResource("5_g4lus")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 5)
