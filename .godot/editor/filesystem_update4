@@ -1,13 +1,3 @@
-res://environment/level_P/StartSpawner.tscn
-res://environment/level_P/random.gd
-res://environment/level_P/StartEZ.tscn
-res://environment/level_manager.gd
 res://training_scene/training_scene.tscn
+res://training_scene/Sync.gd
 res://objects/player/player.gd
-res://environment/game_scene.tscn
-res://objects/target/final_target.tscn
-res://environment/level_P/random_target.gd
-res://environment/level_P/random_spawn.gd
-res://environment/level_P/StartCorridoio.tscn
-res://environment/level_manager.tscn
-res://objects/basic/spawn.tscn

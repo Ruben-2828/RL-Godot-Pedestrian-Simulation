@@ -134,12 +134,6 @@ func _compute_rewards() -> void:
 		#tot_reward -= 0.5
 		#print("no target loss")
 	
-	# Reward loss when wall is too near to player
-	if wall_near:
-		wall_near = false
-		tot_reward -= 0.5
-		#print("wall near loss")
-	
 	# Reward loss for timestep
 	tot_reward -= 0.0001
 	
