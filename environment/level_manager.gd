@@ -4,7 +4,9 @@ extends Node3D
 class_name LevelManager
 
 @export_category("Curriculum")
-@export_group("scenes")
+
+@export var player: Player
+@export_group("Scenes")
 @export var levels_path: Array[PackedScene]
 
 @onready var player = $"../Player"
@@ -39,6 +41,8 @@ func _ready():
 		#print(targets)
 		for t in targets:
 			t.custom_body_entered.connect(player._on_target_entered)
+		
+		
 
 #func randomize_goal(level_id: int):
 	#var active_goal_id = randi_range(0, level_goal[level_id].size() - 1)
@@ -51,6 +55,19 @@ func _ready():
 			#goal.visible = false
 			#goal.process_mode = Node.PROCESS_MODE_DISABLED
 	#return level_goal[level_id][active_goal_id].global_transform
+	
+#func set_spawn_randomization(level_settings: Array):
+	#for level_setting in level_settings:
+		#var level_id = level_setting[0]
+		#var randomize_position = level_setting[1]
+		#var randomize_rotation = level_setting[2]
+		#var spawn_area = levels[level_id].find_child("RandomSpawn")
+		#
+		#if spawn_area:
+			#spawn_area.set_random_settings(randomize_position, randomize_rotation)
+		#else:
+			#print("No spawn area found in level ", level_id)
+
 
 func get_spawn_position(level: int) -> Vector3:
 	var area = level_start_area[level]
