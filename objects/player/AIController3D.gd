@@ -2,7 +2,9 @@ extends AIController3D
 
 func _ready():
 	add_to_group("AGENT")
-	reset_after = 4000
+	
+func set_reset_after(steps: int):
+	reset_after = steps
 	
 func _physics_process(_delta):
 	n_steps += 1

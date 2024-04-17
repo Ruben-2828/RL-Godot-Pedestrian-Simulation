@@ -1,11 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://buytp40i8mx1h"]
+[gd_scene load_steps=9 format=3 uid="uid://buytp40i8mx1h"]
 
-[ext_resource type="PackedScene" uid="uid://c741k7edfawjb" path="res://environment/game_scene.tscn" id="1_pyej1"]
+[ext_resource type="Script" path="res://training_scene/training_scene.gd" id="1_2y50e"]
 [ext_resource type="Script" path="res://training_scene/Sync.gd" id="2_0ph1m"]
+[ext_resource type="PackedScene" uid="uid://cqswiih3najh4" path="res://environment/level_P/StartEZ.tscn" id="2_saf5q"]
+[ext_resource type="PackedScene" uid="uid://eyj5ncyrrhkn" path="res://environment/level_P/StartSpawner.tscn" id="3_a3obg"]
+[ext_resource type="PackedScene" uid="uid://b8geyovhk1ni8" path="res://environment/level_P/StartCorridoio.tscn" id="4_6q323"]
+[ext_resource type="PackedScene" uid="uid://sao1y1f2xovn" path="res://environment/level_P/Curva22Dynamic.tscn" id="5_hvlif"]
+[ext_resource type="PackedScene" uid="uid://21knmqhiskih" path="res://environment/level_P/Curva22Ostacoli.tscn" id="6_5ud2n"]
 
 [sub_resource type="Environment" id="Environment_y4e07"]
 
 [node name="TrainingScene" type="Node3D"]
+script = ExtResource("1_2y50e")
+levels_path = Array[PackedScene]([ExtResource("2_saf5q"), ExtResource("3_a3obg"), ExtResource("4_6q323"), ExtResource("5_hvlif"), ExtResource("6_5ud2n")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_y4e07")
@@ -13,44 +20,11 @@ environment = SubResource("Environment_y4e07")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 0)
 
-[node name="GameScene" parent="." instance=ExtResource("1_pyej1")]
-
-[node name="GameScene2" parent="." instance=ExtResource("1_pyej1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50)
-visible = false
-
-[node name="GameScene3" parent="." instance=ExtResource("1_pyej1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100)
-visible = false
-
-[node name="GameScene4" parent="." instance=ExtResource("1_pyej1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -150)
-visible = false
-
-[node name="GameScene5" parent="." instance=ExtResource("1_pyej1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -200)
-visible = false
-
-[node name="GameScene6" parent="." instance=ExtResource("1_pyej1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -250)
-visible = false
-
-[node name="GameScene7" parent="." instance=ExtResource("1_pyej1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -300)
-visible = false
-
-[node name="GameScene8" parent="." instance=ExtResource("1_pyej1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -350)
-visible = false
-
-[node name="GameScene9" parent="." instance=ExtResource("1_pyej1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -400)
-visible = false
-
-[node name="GameScene10" parent="." instance=ExtResource("1_pyej1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -450)
-visible = false
-
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("2_0ph1m")
-speed_up = 100.0
+speed_up = 10.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, -0.5)
+projection = 1
+size = 22.0

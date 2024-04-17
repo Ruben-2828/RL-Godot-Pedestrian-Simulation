@@ -1,41 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqswiih3najh4"]
+[gd_scene load_steps=6 format=3 uid="uid://cqswiih3najh4"]
 
+[ext_resource type="Script" path="res://environment/level.gd" id="1_rvhqc"]
 [ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/basic/room.tscn" id="1_xtyxy"]
 [ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/basic/spawn.tscn" id="3_dc1wo"]
 [ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/target/final_target.tscn" id="4_0yh6p"]
-[ext_resource type="Script" path="res://environment/level_P/random_spawn.gd" id="4_n2p5e"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/basic/reward.tscn" id="4_xdkto"]
-[ext_resource type="Script" path="res://environment/level_P/random_target.gd" id="5_nsico"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_cfark"]
-size = Vector3(2, 0, 6)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_3v3of"]
-size = Vector3(5, 0, 5)
 
 [node name="StartEZ" type="Node3D"]
+script = ExtResource("1_rvhqc")
+min_reward = 5.5
+max_steps = 800
 
 [node name="Room" parent="." instance=ExtResource("1_xtyxy")]
 
-[node name="Reward" parent="." instance=ExtResource("4_xdkto")]
+[node name="FinalTarget" parent="." instance=ExtResource("4_0yh6p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
 
-[node name="RandomSpawn" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-collision_layer = 2
-script = ExtResource("4_n2p5e")
-
-[node name="Spawn" parent="RandomSpawn" instance=ExtResource("3_dc1wo")]
+[node name="Spawn" parent="." instance=ExtResource("3_dc1wo")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -1.74446)
 
-[node name="Area" type="CollisionShape3D" parent="RandomSpawn"]
-shape = SubResource("BoxShape3D_cfark")
-
-[node name="RandomTarget" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
-collision_layer = 2
-script = ExtResource("5_nsico")
-
-[node name="Area" type="CollisionShape3D" parent="RandomTarget"]
-shape = SubResource("BoxShape3D_3v3of")
-
-[node name="FinalTarget" parent="RandomTarget" instance=ExtResource("4_0yh6p")]
+[node name="Reward" parent="." instance=ExtResource("4_xdkto")]

@@ -3,82 +3,50 @@
 extends Node3D
 class_name LevelManager
 
-@export_category("Curriculum")
+signal notify_end_episode(passed: bool, reward: float)
 
-@export var player: Player
-@export_group("Scenes")
-@export var levels_path: Array[PackedScene]
+@onready var player = $"Player"
 
-@onready var player = $"../Player"
+var level_start_area: Node3D
+var level_goal: Node3D
+var level: Node3D = null
 
-var level_start_area: Array
-var level_goal: Array
-var levels: Array[Node3D]
-
-func _ready():
-	var pos_count = 0 
-	for l in levels_path:
-		var level = l.instantiate()
-		level.position = Vector3(pos_count * 50, 0, 0)
-		add_child(level)
-		levels.append(level)
-		pos_count += 1
+func get_spawn_position() -> Vector3:
+	return level_start_area.global_position
 	
-	level_start_area.resize(levels.size())
-	level_goal.resize(levels.size())
+func get_spawn_rotation() -> Vector3:
+	return level_start_area.rotation
 
-	for level_id in range(0, levels.size()):
-		var spawn = levels[level_id].find_child("Spawn")
-		level_start_area[level_id] = spawn
-		
-		var final_target = levels[level_id].find_child("FinalTarget")
-		final_target.body_entered.connect(player._on_final_target_entered)
-		level_goal[level_id] = final_target
-		
-		var targets := []
-		targets.append_array(levels[level_id].find_children("Target*", "Area3D"))
-		targets.append_array(levels[level_id].find_children("ObliqueTarget*", "Area3D"))
-		#print(targets)
-		for t in targets:
-			t.custom_body_entered.connect(player._on_target_entered)
-		
-		
-
-#func randomize_goal(level_id: int):
-	#var active_goal_id = randi_range(0, level_goal[level_id].size() - 1)
-	#for goal_id in range(0, level_goal[level_id].size()):
-		#var goal = level_goal[level_id][goal_id]
-		#if goal_id == active_goal_id:
-			#goal.visible = true
-			#goal.process_mode = Node.PROCESS_MODE_INHERIT
-		#else:
-			#goal.visible = false
-			#goal.process_mode = Node.PROCESS_MODE_DISABLED
-	#return level_goal[level_id][active_goal_id].global_transform
-	
-#func set_spawn_randomization(level_settings: Array):
-	#for level_setting in level_settings:
-		#var level_id = level_setting[0]
-		#var randomize_position = level_setting[1]
-		#var randomize_rotation = level_setting[2]
-		#var spawn_area = levels[level_id].find_child("RandomSpawn")
-		#
-		#if spawn_area:
-			#spawn_area.set_random_settings(randomize_position, randomize_rotation)
-		#else:
-			#print("No spawn area found in level ", level_id)
-
-
-func get_spawn_position(level: int) -> Vector3:
-	var area = level_start_area[level]
-	#TODO: randomize the spawn position inside a Area 
-	return area.global_position
-	
-func get_spawn_rotation(level: int) -> Vector3:
-	var area = level_start_area[level]
-	return area.rotation
-	
-func set_reward_label_text(reward: float, level: int) -> void:
-	var label = levels[level].find_child('Reward')
+func set_reward_label_text(reward: float) -> void:
+	var label = level.find_child('Reward')
 	var formatted_str = 'reward: %4.4f' % reward
 	label.set_text(formatted_str)
+	
+func set_current_level(scene: PackedScene) -> void:
+	
+	if level != null:
+		level.queue_free()
+	
+	level = scene.instantiate()
+	level.set_name("CurrentLevel")
+	add_child(level)
+	
+	level_start_area = level.find_child("Spawn")
+	
+	level_goal = level.find_child("FinalTarget")
+	level_goal.body_entered.connect(player._on_final_target_entered)
+	
+	var targets := []
+	targets.append_array(level.find_children("Target*", "Area3D"))
+	targets.append_array(level.find_children("ObliqueTarget*", "Area3D"))
+	#print(targets)
+	for t in targets:
+		t.custom_body_entered.connect(player._on_target_entered)
+		
+	var ai_controller = player.find_child("AIController3D")
+	ai_controller.set_reset_after(level.max_steps)
+		
+	player.reset()
+
+func _notify_end_episode(passed: bool, reward: float) -> void:
+	notify_end_episode.emit(passed, reward)

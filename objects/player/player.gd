@@ -1,7 +1,7 @@
 extends CharacterBody3D
 class_name Player
 
-@onready var level_manager = $"../LevelManager"
+@onready var level_manager = $".."
 
 var current_level: int
 var next_level
@@ -19,7 +19,6 @@ var _action_1: float
 @onready var animation_tree = $AnimationTree
 
 var cumulated_reward: float = 0.0
-var count: int = 0						#TODO: rimuoverlo e implementare il passaggio di scena 'globale'
 var final_target_reached: bool = false
 var target_reached: bool = false
 var last_target_reached: Area3D = null
@@ -28,7 +27,7 @@ var finished: bool = false
 var reached_targets := []
 
 func _ready():
-	reset()
+	#reset()
 	
 	speed = speed_min
 	_action_0 = 0.0
@@ -37,8 +36,8 @@ func _ready():
 	ai_controller_3d.init(self)
 
 func reset():
-	rotation = level_manager.get_spawn_rotation(current_level)
-	global_position = level_manager.get_spawn_position(current_level)
+	rotation = level_manager.get_spawn_rotation()
+	global_position = level_manager.get_spawn_position()
 	
 	cumulated_reward = 0
 	target_reached = false
@@ -54,7 +53,9 @@ func _physics_process(delta):
 	animation_tree.set("parameters/conditions/walk", velocity != Vector3.ZERO)
 	
 	_compute_rewards()
+	level_manager.set_reward_label_text(cumulated_reward)
 	
+	finish()
 	move_and_slide()
 
 func _set_speed(delta) -> void:
@@ -66,7 +67,19 @@ func _set_speed(delta) -> void:
 	
 func _set_direction(delta) -> void:
 	rotation.y += deg_to_rad(_action_1 * 1.25)
-	
+
+func finish() -> void:
+	if finished:
+		if final_target_reached:
+			ai_controller_3d.reset()
+			level_manager._notify_end_episode(true, cumulated_reward)
+		else:
+			level_manager._notify_end_episode(false, cumulated_reward)
+			
+		finished = false
+		final_target_reached = false
+		reset()
+
 func _compute_rewards() -> void:
 	var tot_reward: float = 0
 	
@@ -74,34 +87,15 @@ func _compute_rewards() -> void:
 	tot_reward -= 0.0001
 	
 	if finished:
-		# Reward for reaching final target
 		if final_target_reached:
-			
+			# Reward for reaching final target
 			tot_reward += 6
-			
 			#print("oh yeah!")
-			count += 1
-			final_target_reached = false
-			
-			# TODO: impostare la transizione di scenario tramite delle condizioni globali
-
-			if count > 20:
-				count = 0
-				next_level = (current_level + 1) % level_manager.levels.size()
-				current_level = next_level	
-				cumulated_reward = 0
-			
-			ai_controller_3d.reset()
 		else:
 			# Reward loss for finishing time steps
 			tot_reward -= 6.0
 			#print("finiti timesteps")
-			
-		finished = false
-		reset()
-	
 	else:
-
 		# Reward for reaching an intermediate target
 		if target_reached:
 			if last_target_reached in reached_targets:
@@ -137,10 +131,8 @@ func _compute_rewards() -> void:
 			#tot_reward -= 0.5
 			##print("no target loss")
 			
-		cumulated_reward += tot_reward
-		
+	cumulated_reward += tot_reward
 	ai_controller_3d.reward += tot_reward
-	level_manager.set_reward_label_text(cumulated_reward, current_level)
 
 func _on_final_target_entered(body):
 	
