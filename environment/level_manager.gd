@@ -4,10 +4,10 @@ extends Node3D
 class_name LevelManager
 
 @export_category("Curriculum")
-@export var player: Player
 @export_group("scenes")
 @export var levels_path: Array[PackedScene]
 
+@onready var player = $"../Player"
 
 var level_start_area: Array
 var level_goal: Array

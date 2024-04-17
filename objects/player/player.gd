@@ -1,7 +1,7 @@
 extends CharacterBody3D
 class_name Player
 
-@export var level_manager: LevelManager
+@onready var level_manager = $"../LevelManager"
 
 var current_level: int
 var next_level
@@ -40,7 +40,9 @@ func reset():
 	rotation = level_manager.get_spawn_rotation(current_level)
 	global_position = level_manager.get_spawn_position(current_level)
 	
+	cumulated_reward = 0
 	target_reached = false
+	final_target_reached = false
 	reached_targets = []
 	
 func _physics_process(delta):
@@ -56,21 +58,20 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _set_speed(delta) -> void:
-	speed = clamp(_action_0 * speed_max / 2, speed_min, speed_max)
+	speed = clamp(speed + _action_0 * speed_max / 2, speed_min, speed_max)
 	var move_vec = Vector3(0, 0, 1)
 	move_vec = move_vec.rotated(Vector3(0,1,0), rotation.y)
 	move_vec *= speed
 	set_velocity(move_vec)
-	
-	#var move_vec = Vector3(_action_0, 0, _action_1)
-	#move_vec *= 2.0
-	#set_velocity(move_vec)
 	
 func _set_direction(delta) -> void:
 	rotation.y += deg_to_rad(_action_1 * 1.25)
 	
 func _compute_rewards() -> void:
 	var tot_reward: float = 0
+	
+	# Reward loss for timestep
+	tot_reward -= 0.0001
 	
 	if finished:
 		# Reward for reaching final target
@@ -98,47 +99,47 @@ func _compute_rewards() -> void:
 			
 		finished = false
 		reset()
-		
-	# Reward for reaching an intermediate target
-	if target_reached:
-		if last_target_reached in reached_targets:
-			tot_reward -= 1.0
-		else:
-			reached_targets.append(last_target_reached)
-			tot_reward += 0.5
-		target_reached = false
-		last_target_reached = null
+	
+	else:
 
-	# Get observation for proxemity rewards
-	var obs = raycast_sensor.get_observation()
-	obs = obs['hit_objects']
-	
-	# Reward loss when wall is too near to player
-	var wall_near = false
-	for i in range(0, obs.size(), 4):
-		if obs[i+1] == 1 and obs[i] < 0.6 / raycast_sensor.ray_length:
-			wall_near = true
-			break
-	if wall_near:
-		tot_reward -= 0.5
-		#print("wall too near")
-	
-	## Reward loss when detecting no targets
-	##print(obs)
-	#var no_target = true
-	#for i in range(0, obs.size(), 4):
-		#if obs[i+2] == 1 or obs[i+3] == 1:
-			#no_target = false
-			##print("i can see it")
-	#if no_target:
-		#tot_reward -= 0.5
-		#print("no target loss")
-	
-	# Reward loss for timestep
-	tot_reward -= 0.0001
-	
+		# Reward for reaching an intermediate target
+		if target_reached:
+			if last_target_reached in reached_targets:
+				tot_reward -= 1.0
+			else:
+				reached_targets.append(last_target_reached)
+				tot_reward += 0.5
+			target_reached = false
+			last_target_reached = null
+
+		# Get observation for proxemity rewards
+		var obs = raycast_sensor.get_observation()
+		obs = obs['hit_objects']
+		
+		# Reward loss when wall is too near to player
+		var wall_near = false
+		for i in range(0, obs.size(), 4):
+			if obs[i+1] == 1 and obs[i] < 0.6 / raycast_sensor.ray_length:
+				wall_near = true
+				break
+		if wall_near:
+			tot_reward -= 0.5
+			#print("wall too near")
+		
+		## Reward loss when detecting no targets
+		##print(obs)
+		#var no_target = true
+		#for i in range(0, obs.size(), 4):
+			#if obs[i+2] == 1 or obs[i+3] == 1:
+				#no_target = false
+				##print("i can see it")
+		#if no_target:
+			#tot_reward -= 0.5
+			##print("no target loss")
+			
+		cumulated_reward += tot_reward
+		
 	ai_controller_3d.reward += tot_reward
-	cumulated_reward += tot_reward
 	level_manager.set_reward_label_text(cumulated_reward, current_level)
 
 func _on_final_target_entered(body):
