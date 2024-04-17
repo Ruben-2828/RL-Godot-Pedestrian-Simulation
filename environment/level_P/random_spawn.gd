@@ -4,17 +4,23 @@ extends Area3D
 @onready var area = $Area
 
 var offset = 0.5
+@export_category("Spawn Settings")
+@export var randomize_position = false
+@export var randomize_rotation = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	randomize_position()
+	if randomize_position:
+		randomize_pos()
+	if randomize_rotation:
+		randomize_rot()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
-func randomize_position():
+func randomize_pos():
 	var shape = area.shape as BoxShape3D
 	var extents = shape.extents
 	
@@ -25,9 +31,14 @@ func randomize_position():
 	)
 	spawn.transform.origin = random_pos
 	
+func randomize_rot():
 	var random_rot = randi_range(-4, 4) * 45
 	spawn.rotation_degrees = Vector3(0.0, random_rot, 0)
 
 func _on_final_target_body_entered(body):
 	if body.is_class("CharacterBody3D"):
-		randomize_position()
+		if randomize_position:
+			randomize_pos()
+		if randomize_rotation:
+			randomize_rot()
+		
