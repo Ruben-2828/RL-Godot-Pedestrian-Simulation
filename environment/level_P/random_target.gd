@@ -3,7 +3,7 @@ extends Area3D
 @onready var final_target = $FinalTarget
 @onready var area = $Area
 
-@export_category("Target Position")
+@export_category("Target Settings")
 @export var randomize_position = false
 
 var offset = 1.5

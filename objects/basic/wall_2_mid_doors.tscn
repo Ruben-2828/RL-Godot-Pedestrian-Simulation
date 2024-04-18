@@ -26,31 +26,31 @@ size = Vector3(3, 10, 0.5)
 
 [node name="Wall2MidDoor" type="Node3D"]
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Wall1" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall1"]
 shape = SubResource("BoxShape3D_y18o8")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall1"]
 mesh = SubResource("BoxMesh_qwcqt")
 
-[node name="Area3D2" type="Area3D" parent="."]
+[node name="Wall2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall2"]
 shape = SubResource("BoxShape3D_yipae")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall2"]
 mesh = SubResource("BoxMesh_8sh52")
 
-[node name="Area3D3" type="Area3D" parent="."]
+[node name="Wall3" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9659, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall3"]
 shape = SubResource("BoxShape3D_s7cx0")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D3"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall3"]
 mesh = SubResource("BoxMesh_kxb4c")
 
 [node name="Target" parent="." instance=ExtResource("1_qe2wf")]
