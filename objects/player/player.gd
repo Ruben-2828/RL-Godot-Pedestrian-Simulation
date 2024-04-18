@@ -3,15 +3,15 @@ class_name Player
 
 @onready var level_manager = $".."
 
-var current_level: int
-var next_level
-
-var max_level_reached: int = 0
-
+## Player minimum speed
 @export var speed_min: float = 0.0
+## Player maximum speed 
 @export var speed_max: float = 1.7
 var speed: float
+
+## Action for controlling speed
 var _action_0: float
+## Action for controlling rotation
 var _action_1: float
 
 @onready var raycast_sensor = $RayCastSensor3D
@@ -20,11 +20,12 @@ var _action_1: float
 
 var cumulated_reward: float = 0.0
 var final_target_reached: bool = false
-var target_reached: bool = false
-var last_target_reached: Area3D = null
-var finished: bool = false
 
 var reached_targets := []
+var last_target_reached: Area3D = null
+var target_reached: bool = false
+
+var finished: bool = false
 
 func _ready():
 	#reset()
@@ -35,6 +36,7 @@ func _ready():
 	
 	ai_controller_3d.init(self)
 
+## Reset the player state (position, rotation...)
 func reset():
 	rotation = level_manager.get_spawn_rotation()
 	global_position = level_manager.get_spawn_position()
@@ -44,30 +46,33 @@ func reset():
 	final_target_reached = false
 	reached_targets = []
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	
-	_set_speed(delta)
-	_set_direction(delta)
+	set_speed()
+	set_direction()
 	
 	animation_tree.set("parameters/conditions/idle", velocity == Vector3.ZERO)
 	animation_tree.set("parameters/conditions/walk", velocity != Vector3.ZERO)
 	
-	_compute_rewards()
+	compute_rewards()
 	level_manager.set_reward_label_text(cumulated_reward)
 	
 	finish()
 	move_and_slide()
 
-func _set_speed(delta) -> void:
+## Set player current speed
+func set_speed() -> void:
 	speed = clamp(speed + _action_0 * speed_max / 2, speed_min, speed_max)
 	var move_vec = Vector3(0, 0, 1)
 	move_vec = move_vec.rotated(Vector3(0,1,0), rotation.y)
 	move_vec *= speed
 	set_velocity(move_vec)
-	
-func _set_direction(delta) -> void:
+
+## Set player direction 
+func set_direction() -> void:
 	rotation.y += deg_to_rad(_action_1 * 1.25)
 
+## Function to handle the ending of an episode
 func finish() -> void:
 	if finished:
 		if final_target_reached:
@@ -80,7 +85,8 @@ func finish() -> void:
 		final_target_reached = false
 		reset()
 
-func _compute_rewards() -> void:
+## Calculates total reward per time step
+func compute_rewards() -> void:
 	var tot_reward: float = 0
 	
 	# Reward loss for timestep
@@ -134,13 +140,15 @@ func _compute_rewards() -> void:
 	cumulated_reward += tot_reward
 	ai_controller_3d.reward += tot_reward
 
+## function executed when the player enters the final target
 func _on_final_target_entered(body):
 	
 	if body == self:
 		#print("target finale")
 		finished = true
 		final_target_reached = true
-		
+
+## function executed when the player enters an intermediate target
 func _on_target_entered(area, body):
 	
 	if body == self:

@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/target/final_target.tscn" id="3_ihbio"]
 [ext_resource type="PackedScene" uid="uid://d4fgcwkmt0s5a" path="res://objects/obstacle/hallway.tscn" id="4_0rn2s"]
 [ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/basic/spawn.tscn" id="4_tniy7"]
-[ext_resource type="Script" path="res://environment/level_P/random_spawn.gd" id="5_5r3ro"]
+[ext_resource type="Script" path="res://environment/random_spawn.gd" id="5_5r3ro"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k7ysl"]
 size = Vector3(2, 1, 5)
