@@ -27,3 +27,4 @@ size = 22.0
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("7_4svdm")
+speed_up = 10.0

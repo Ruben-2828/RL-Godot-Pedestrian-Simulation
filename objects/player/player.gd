@@ -114,7 +114,6 @@ func compute_rewards() -> void:
 
 		# Get observation for proxemity rewards
 		var obs = raycast_sensor.get_observation()
-		obs = obs['hit_objects']
 		
 		# Reward loss when wall is too near to player
 		var wall_near = false

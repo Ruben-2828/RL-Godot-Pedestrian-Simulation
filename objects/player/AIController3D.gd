@@ -25,7 +25,7 @@ func get_obs() -> Dictionary:
 	var speed_norm = (_player.speed - _player.speed_min) / (_player.speed_max - _player.speed_min)
 	
 	obs.append(speed_norm)
-	obs.append_array(raycast_obs['hit_objects'])
+	obs.append_array(raycast_obs)
 	
 	#print(obs)
 	return {'obs': obs}
