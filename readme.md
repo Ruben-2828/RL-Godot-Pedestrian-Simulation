@@ -86,13 +86,8 @@ pip install godot-rl
 ```
 pip install stable-baselines
 ```
-5. **Change Directory**: Enter the directory of this project by entering the path. After this you should be ready to run 
-the project!
-```
-cd to/your/path/RL-Godot-Pedestrian-Simulation
-```
 #### Run the project
-1. **Activate RL-Agents**: Enable rl-agents using this command:
+1. **Activate RL-Agents**: Enable rl-agents using this command from Anaconda Prompt:
 ```
 gdrl
 ```

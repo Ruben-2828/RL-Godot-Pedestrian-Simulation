@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://sao1y1f2xovn"]
 
 [ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/basic/room.tscn" id="1_1jsoo"]
-[ext_resource type="Script" path="res://environment/level.gd" id="1_044cr"]
 [ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/target/target.tscn" id="1_48o23"]
+[ext_resource type="Script" path="res://environment/level_P/curva.gd" id="1_516bl"]
 [ext_resource type="PackedScene" uid="uid://xxxss1722ru3" path="res://objects/obstacle/curve.tscn" id="3_wftqm"]
 [ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/target/final_target.tscn" id="5_e1ykt"]
 [ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/basic/spawn.tscn" id="6_1fxf4"]
@@ -10,9 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/basic/reward.tscn" id="7_royu8"]
 
 [node name="Curva22Dynamic" type="Node3D"]
-script = ExtResource("1_044cr")
-min_reward = 12.0
-max_steps = 3500
+script = ExtResource("1_516bl")
 
 [node name="Room" parent="." instance=ExtResource("1_1jsoo")]
 
@@ -33,7 +31,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -4)
 
 [node name="Target6" parent="Target" instance=ExtResource("1_48o23")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 0, -8)
+transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, 0, 0, -8)
 
 [node name="FinalTarget" parent="Target" instance=ExtResource("5_e1ykt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8)
@@ -44,3 +42,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 0, 8)
 
 [node name="Reward" parent="." instance=ExtResource("7_royu8")]
+
+[connection signal="body_entered" from="Target/FinalTarget" to="." method="_on_final_target_body_entered"]

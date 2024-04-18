@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://21knmqhiskih"]
 
-[ext_resource type="Script" path="res://environment/level.gd" id="1_4kcg7"]
+[ext_resource type="Script" path="res://environment/level_P/curva.gd" id="1_cpitc"]
 [ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/basic/room.tscn" id="1_lp5e1"]
 [ext_resource type="PackedScene" uid="uid://ce5a8rrfjdusy" path="res://objects/obstacle/obstacles.tscn" id="3_m1xdn"]
 [ext_resource type="PackedScene" uid="uid://xxxss1722ru3" path="res://objects/obstacle/curve.tscn" id="4_axml7"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/basic/reward.tscn" id="7_d7hnk"]
 
 [node name="Curva22Ostacoli" type="Node3D"]
-script = ExtResource("1_4kcg7")
+script = ExtResource("1_cpitc")
 
 [node name="Room" parent="." instance=ExtResource("1_lp5e1")]
 
@@ -40,3 +40,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.04297, 0, 7.97578)
 
 [node name="Reward" parent="." instance=ExtResource("7_d7hnk")]
+
+[connection signal="body_entered" from="FinalTarget" to="." method="_on_final_target_body_entered"]
