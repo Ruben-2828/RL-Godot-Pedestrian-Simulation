@@ -1,4 +1,5 @@
 extends Node
+class_name LevelNode
 
 ## Reward to reach every episode
 @export var min_reward: float = 0
