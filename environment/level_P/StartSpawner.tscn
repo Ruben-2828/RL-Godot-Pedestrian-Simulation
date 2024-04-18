@@ -8,11 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/basic/reward.tscn" id="4_v1bjl"]
 [ext_resource type="Script" path="res://environment/level_P/random_spawn.gd" id="5_ohtov"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_p3wlc"]
-size = Vector3(15, 0, 6)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_acgbu"]
 size = Vector3(15, 1, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p3wlc"]
+size = Vector3(15, 0, 6)
 
 [node name="StartSpawner" type="Node3D"]
 script = ExtResource("1_wtqlq")
@@ -23,28 +23,31 @@ max_steps = 1000
 
 [node name="Reward" parent="." instance=ExtResource("4_v1bjl")]
 
-[node name="RandomTarget" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
-collision_layer = 2
-script = ExtResource("3_tkpil")
-randomize_position = true
-
-[node name="Area" type="CollisionShape3D" parent="RandomTarget"]
-shape = SubResource("BoxShape3D_p3wlc")
-
-[node name="FinalTarget" parent="RandomTarget" instance=ExtResource("3_0tn1y")]
-
-[node name="RandomSpawn" type="Area3D" parent="."]
+[node name="RandomSpawn" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
-collision_layer = 2
 script = ExtResource("5_ohtov")
 randomize_position = true
 
-[node name="Area" type="CollisionShape3D" parent="RandomSpawn"]
-shape = SubResource("BoxShape3D_acgbu")
-
 [node name="Spawn" parent="RandomSpawn" instance=ExtResource("3_l21b1")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="AreaLeft" type="Area3D" parent="RandomSpawn"]
+
+[node name="CollisionShapeSpawnLeft" type="CollisionShape3D" parent="RandomSpawn/AreaLeft"]
+shape = SubResource("BoxShape3D_acgbu")
+
+[node name="RandomTarget" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+script = ExtResource("3_tkpil")
+randomize_position = true
+
+[node name="FinalTarget" parent="RandomTarget" instance=ExtResource("3_0tn1y")]
+
+[node name="Area" type="Area3D" parent="RandomTarget"]
+collision_layer = 2
+
+[node name="CollisionShapeTarget" type="CollisionShape3D" parent="RandomTarget/Area"]
+shape = SubResource("BoxShape3D_p3wlc")
 
 [connection signal="body_entered" from="RandomTarget/FinalTarget" to="RandomTarget" method="_on_final_target_body_entered"]
 [connection signal="body_entered" from="RandomTarget/FinalTarget" to="RandomSpawn" method="_on_final_target_body_entered"]
