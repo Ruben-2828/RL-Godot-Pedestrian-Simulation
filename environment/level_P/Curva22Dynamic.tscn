@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/basic/room.tscn" id="1_1jsoo"]
 [ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/target/target.tscn" id="1_48o23"]
-[ext_resource type="Script" path="res://environment/level_P/curve.gd" id="1_516bl"]
+[ext_resource type="Script" path="res://environment/level_P/curva.gd" id="1_sd0kq"]
 [ext_resource type="PackedScene" uid="uid://xxxss1722ru3" path="res://objects/obstacle/curve.tscn" id="3_wftqm"]
 [ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/target/final_target.tscn" id="5_e1ykt"]
 [ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/basic/spawn.tscn" id="6_1fxf4"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/basic/reward.tscn" id="7_royu8"]
 
 [node name="Curva22Dynamic" type="Node3D"]
-script = ExtResource("1_516bl")
+script = ExtResource("1_sd0kq")
 
 [node name="Room" parent="." instance=ExtResource("1_1jsoo")]
 
