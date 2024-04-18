@@ -11,6 +11,7 @@ func _ready():
 func _process(delta):
 	pass
 
+# extract a boolean and if it is 1 rotate the env
 func _on_final_target_body_entered(body):
 	if body.is_class("CharacterBody3D"):
 		var rotate = randi_range(0,1) 

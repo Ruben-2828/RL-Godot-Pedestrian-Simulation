@@ -1,14 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://c7r0p4dq3pyek"]
 
-
 [ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/basic/room.tscn" id="1_m5g3e"]
 [ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/basic/internal_wall.tscn" id="2_6g2nh"]
 [ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/target/final_target.tscn" id="3_ofht3"]
 [ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/target/target.tscn" id="4_hpkxu"]
 [ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/basic/wall.tscn" id="5_7ejo6"]
-[ext_resource type="Script" path="res://objects/player/player.gd" id="6_b10ic"]
 [ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/player/player.tscn" id="7_tneiq"]
-
 
 [node name="PortaStrettaOppoDoppioStretto" type="Node3D"]
 

@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/basic/wall.tscn" id="5_7ejo6"]
 [ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/player/player.tscn" id="5_g4lus"]
 
-
 [node name="PortaStrettaOppoDoppio" type="Node3D"]
 
 [node name="Room" parent="." instance=ExtResource("1_m5g3e")]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://21knmqhiskih"]
 
-[ext_resource type="Script" path="res://environment/level_P/curva.gd" id="1_cpitc"]
+[ext_resource type="Script" path="res://environment/level_P/curve.gd" id="1_cpitc"]
 [ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/basic/room.tscn" id="1_lp5e1"]
 [ext_resource type="PackedScene" uid="uid://ce5a8rrfjdusy" path="res://objects/obstacle/obstacles.tscn" id="3_m1xdn"]
 [ext_resource type="PackedScene" uid="uid://xxxss1722ru3" path="res://objects/obstacle/curve.tscn" id="4_axml7"]
