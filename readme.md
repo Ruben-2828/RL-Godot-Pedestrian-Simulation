@@ -58,9 +58,9 @@ Here's the setup for Windows:
 1. **Install Godot**: You can download and install Godot from [here](https://godotengine.org/download/windows/)!
 
 2. **Clone this repository**: Clone this repository 
-```
-https://github.com/Ruben-2828/RL-Godot-Pedestrian-Simulation.git
-```
+    ```
+    https://github.com/Ruben-2828/RL-Godot-Pedestrian-Simulation.git
+    ```
 3. **Launch Godot**: Extract the files and run the Godot exe. The godot engine will open
 
 4. **Import Project**: In the launcher, press Import and find the repository. Then press Import & Edit. 
@@ -72,32 +72,31 @@ Now the project should be open!
 from [here](https://www.anaconda.com/download)!
 
 2. **Create an environment**: Open Anaconda Prompt and create an environment with python 3.8:
-```
-conda create --name myenv python=3.8
-```
+    ```
+    conda create --name myenv python=3.8
+    ```
 3. **Activate the environment**: After creating the environment, you need to activate it using the following command:
-```
-conda activate myenv
-```
+    ```
+    conda activate myenv
+    ```
 4. **Install the dependencies**: You can install the dependencies of this project using this following commands:
-```
-pip install godot-rl
-```
-```
-pip install stable-baselines
-```
+    ```
+    pip install godot-rl
+    ```
+    ```
+    pip install stable-baselines
+    ```
 #### Run the project
-1. **Activate RL-Agents**: Enable rl-agents using this command from Anaconda Prompt:
-```
-gdrl
-```
-2. **Press Run**: From Godot, press F5 or the Run command to run the project!
+1. **Check Plugins**: open godot, enter AssetLib from the vertical bar and click on Plugins just below. 
+GodotRLAgents should appear. Check that Status is Enable
+
+2. **Activate RL-Agents**: Enable rl-agents using this command from Anaconda Prompt:
+    ```
+    gdrl
+    ```
+3. **Press Run**: From Godot, press F5 or the Run command to run the project!
 
 Every time you need to run the project, you will have to run these two commands.
-
-### Linux
-
-_coming soon..._
 
 ## Usage
 
@@ -107,6 +106,8 @@ _coming soon..._
 To have a better understanding of the location of the files within the repository, we recommend reading this section.
 All folders and files that are not included here are not relevant to this project.
 
+* docs: contains short documentation of Godot, Godot RL Agents and more in-depth documentation with all the available 
+features of RL Godot Pedestrian Simulation
 * environment: contains all complete scenes used in the project
   * level: contains all the levels, i.e. all the rooms that can be inserted into the curriculum
 * material: contains materials relating to the elements that furnish the rooms.
