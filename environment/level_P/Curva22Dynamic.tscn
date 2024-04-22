@@ -11,6 +11,8 @@
 
 [node name="Curva22Dynamic" type="Node3D"]
 script = ExtResource("1_sd0kq")
+min_reward = 10.0
+max_steps = 1500
 
 [node name="Room" parent="." instance=ExtResource("1_1jsoo")]
 

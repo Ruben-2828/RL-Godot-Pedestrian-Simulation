@@ -25,9 +25,6 @@ func _ready():
 	
 	set_current_level(current_level_idx)
 
-func _process(delta):
-	pass
-
 ## Checks the levels list in input
 func check_levels() -> bool:
 	for l in levels_path:
