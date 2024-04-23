@@ -48,10 +48,6 @@ var _action_space: Dictionary
 var _action_space_inference: Array[Dictionary] = []
 var _obs_space: Dictionary
 
-var ticks_between_updates: int = 20
-var ticks_counter: int = 0
-var msec: int = 0
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	await get_tree().root.ready
@@ -59,8 +55,7 @@ func _ready():
 	_initialize()
 	await get_tree().create_timer(1.0).timeout
 	get_tree().set_pause(false)
-	
-	msec = Time.get_ticks_msec()
+
 
 func _initialize():
 	_get_agents()
@@ -85,6 +80,17 @@ func _initialize():
 	_set_action_repeat()
 	initialized = true
 
+func reload_agents():
+	all_agents = []
+	agents_training = []
+	agents_inference = []
+	agents_heuristic = []
+	
+	print("reloading agents")
+	
+	_get_agents()
+	_set_heuristic("human", all_agents)
+	
 
 func _initialize_training_agents():
 	if agents_training.size() > 0:
