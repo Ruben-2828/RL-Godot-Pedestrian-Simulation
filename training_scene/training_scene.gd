@@ -58,6 +58,10 @@ func set_current_level(level: int) -> void:
 	
 	for lm in level_managers:
 		lm.set_current_level(levels_path[level])
+		lm.player.speed_max = 1.7
+		
+		if current_level.can_move == false:
+			lm.player.speed_max = 0.0
 
 ## Change current level if success condition is reached
 func check_level_progress(passed: bool, reward: float) -> void:

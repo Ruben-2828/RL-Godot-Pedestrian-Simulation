@@ -17,7 +17,7 @@ size = Vector3(4, 0, 6)
 [node name="StartEZ" type="Node3D"]
 script = ExtResource("1_rvhqc")
 min_reward = 5.5
-max_steps = 100
+max_steps = 800
 
 [node name="Room" parent="." instance=ExtResource("1_xtyxy")]
 
@@ -36,7 +36,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 shape = SubResource("BoxShape3D_rj2xv")
 
 [node name="RandomTarget" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 script = ExtResource("6_btu87")
 
 [node name="FinalTarget" parent="RandomTarget" instance=ExtResource("4_0yh6p")]

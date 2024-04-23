@@ -44,6 +44,15 @@ func set_current_level(scene: PackedScene) -> void:
 	level_goal = level.find_child("FinalTarget")
 	level_goal.body_entered.connect(player._on_final_target_entered)
 	
+	# Setup random target when end episode
+	var random_target = level.find_child("RandomTarget")
+	notify_end_episode.connect(random_target.get_end_episode)
+	
+	# Setup random spawn when end episode
+	var random_spawn = level.find_child("RandomSpawn")
+	notify_end_episode.connect(random_spawn.get_end_episode)
+	
+	
 	# Setup intermediate targets
 	var targets := []
 	targets.append_array(level.find_children("Target*", "Area3D"))

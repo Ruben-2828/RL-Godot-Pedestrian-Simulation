@@ -41,20 +41,17 @@ func randomize_rot():
 
 ## handle the randomization
 func set_random():
+	# randomize which area to place the spawner
+	var selected_area = areas[randi_range(0, areas.size() -1)]
+	spawn.global_position = selected_area.global_position
 	
+	# randomize position inside the selected area
 	if randomize_position:
-		# randomize which area to place the spawner
-		var selected_area = areas[randi_range(0, areas.size() -1)]
-		spawn.global_position = selected_area.global_position
-		# randomize position inside the selected area
 		randomize_pos(selected_area)
 		
 	# randomize rotation
 	if randomize_rotation:
 		randomize_rot()
 		
-## set the spawn to a new position when the agent reach the final target
-func _on_final_target_body_entered(body):
-	if body.is_class("CharacterBody3D"):
-		set_random()
-		
+func get_end_episode(_passed, _reward):
+	set_random()	

@@ -11,33 +11,29 @@
 
 [node name="Curva22Ostacoli" type="Node3D"]
 script = ExtResource("1_tbtx7")
-min_reward = 1.0
-max_steps = 1500
 
 [node name="Room" parent="." instance=ExtResource("1_lp5e1")]
 
 [node name="Curve" parent="." instance=ExtResource("4_axml7")]
 
-[node name="Target" type="Node3D" parent="."]
-
-[node name="Obstacles" parent="Target" instance=ExtResource("3_m1xdn")]
+[node name="Obstacles" parent="." instance=ExtResource("3_m1xdn")]
 transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, -4.224, 0, 4.7)
 
-[node name="Obstacles2" parent="Target" instance=ExtResource("3_m1xdn")]
+[node name="Obstacles2" parent="." instance=ExtResource("3_m1xdn")]
 transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, -4, 0, 0.7)
 
-[node name="Obstacles3" parent="Target" instance=ExtResource("3_m1xdn")]
+[node name="Obstacles3" parent="." instance=ExtResource("3_m1xdn")]
 transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, -4, 0, -3.2)
 
-[node name="Obstacles4" parent="Target" instance=ExtResource("3_m1xdn")]
+[node name="Obstacles4" parent="." instance=ExtResource("3_m1xdn")]
 transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, -4, 0, -7.2)
 
-[node name="Obstacles5" parent="Target" instance=ExtResource("3_m1xdn")]
+[node name="Obstacles5" parent="." instance=ExtResource("3_m1xdn")]
 transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, -4.2, 0, 8.7)
 
-[node name="ObliqueTargets" parent="Target" instance=ExtResource("5_nd7ny")]
+[node name="ObliqueTargets" parent="." instance=ExtResource("5_nd7ny")]
 
-[node name="FinalTarget" parent="Target" instance=ExtResource("6_2c4to")]
+[node name="FinalTarget" parent="." instance=ExtResource("6_2c4to")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8)
 
 [node name="Spawn" parent="." instance=ExtResource("6_mf42p")]
@@ -45,4 +41,4 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.0429
 
 [node name="Reward" parent="." instance=ExtResource("7_d7hnk")]
 
-[connection signal="body_entered" from="Target/FinalTarget" to="." method="_on_final_target_body_entered"]
+[connection signal="body_entered" from="FinalTarget" to="." method="_on_final_target_body_entered"]

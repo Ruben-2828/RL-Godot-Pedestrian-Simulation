@@ -29,7 +29,7 @@ func randomize_pos(area):
 		0.0,
 		randf_range(-extents.z + offset, extents.z - offset),
 	)
-	final_target.position = random_pos
+	final_target.position += random_pos
 	
 ## handle the randomization
 func set_random_pos():
@@ -45,3 +45,6 @@ func set_random_pos():
 func _on_final_target_body_entered(body):
 	if body.is_class("CharacterBody3D"):
 		set_random_pos()
+
+func get_end_episode(_passed, _reward):
+	set_random_pos()
