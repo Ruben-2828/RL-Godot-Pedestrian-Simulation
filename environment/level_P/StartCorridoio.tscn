@@ -20,8 +20,8 @@ size = Vector3(3, 0, 3)
 
 [node name="StartCorridoio" type="Node3D"]
 script = ExtResource("1_ve5yw")
-min_reward = 5.0
-max_steps = 1000
+min_reward = 2.0
+max_steps = 300
 
 [node name="Room" parent="." instance=ExtResource("1_g7vly")]
 

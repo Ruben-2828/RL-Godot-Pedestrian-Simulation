@@ -16,8 +16,8 @@ size = Vector3(15, 0, 6)
 
 [node name="StartSpawner" type="Node3D"]
 script = ExtResource("1_wtqlq")
-min_reward = 5.0
-max_steps = 1000
+min_reward = 2.0
+max_steps = 150
 
 [node name="Room" parent="." instance=ExtResource("1_ahbwp")]
 

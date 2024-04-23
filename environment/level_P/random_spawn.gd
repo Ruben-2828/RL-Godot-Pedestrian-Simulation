@@ -41,12 +41,12 @@ func randomize_rot():
 
 ## handle the randomization
 func set_random():
-	# randomize which area to place the spawner
-	var selected_area = areas[randi_range(0, areas.size() -1)]
-	spawn.global_position = selected_area.global_position
 	
-	# randomize position inside the selected area
 	if randomize_position:
+		# randomize which area to place the spawner
+		var selected_area = areas[randi_range(0, areas.size() -1)]
+		spawn.global_position = selected_area.global_position
+		# randomize position inside the selected area
 		randomize_pos(selected_area)
 		
 	# randomize rotation
