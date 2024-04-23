@@ -17,6 +17,8 @@ const level_manager_scene: PackedScene = preload("res://environment/level_manage
 var level_managers: Array = []
 const level_position_offset: int = 50
 
+@onready var sync = $Sync
+
 func _ready():
 	assert(levels_path.size() > 0, "No scenes set for training")
 	assert(check_levels(), "null levels not allowed for training")
@@ -49,6 +51,7 @@ func spawn_level_managers() -> void:
 ## Set current level for every level manager
 func set_current_level(level: int) -> void:
 	
+	
 	if current_level != null:
 		current_level.queue_free()
 		
@@ -62,6 +65,7 @@ func set_current_level(level: int) -> void:
 		
 		if current_level.can_move == false:
 			lm.player.speed_max = 0.0
+
 
 ## Change current level if success condition is reached
 func check_level_progress(passed: bool, reward: float) -> void:

@@ -40,6 +40,9 @@ func _ready():
 func reset():
 	rotation = level_manager.get_spawn_rotation()
 	global_position = level_manager.get_spawn_position()
+	velocity = Vector3.ZERO
+	
+	level_manager._notify_end_episode(final_target_reached, cumulated_reward)
 	
 	cumulated_reward = 0
 	target_reached = false
