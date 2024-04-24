@@ -6,7 +6,7 @@ class_name LevelManager
 ## Signal emmitted on episode end
 signal notify_end_episode(reward: float)
 
-@onready var player = $"Player"
+@onready var pedestrian = $"Pedestrian"
 
 var level_start_area: Node3D
 var level_goal: Node3D
@@ -27,13 +27,13 @@ func set_reward_label_text(reward: float) -> void:
 	label.set_text(formatted_str)
 
 ## Removes old level, and add the new one
-func set_current_level(scene: PackedScene) -> void:
+func set_current_level(level_scene: PackedScene) -> void:
 	
 	if level != null:
 		level.queue_free()
 	
 	# Instantiating level scene
-	level = scene.instantiate()
+	level = level_scene.instantiate()
 	level.set_name("CurrentLevel")
 	add_child(level)
 	
@@ -42,15 +42,15 @@ func set_current_level(scene: PackedScene) -> void:
 	
 	# Setup final target
 	level_goal = level.find_child("FinalTarget")
-	level_goal.body_entered.connect(player._on_final_target_entered)
+	level_goal.body_entered.connect(pedestrian._on_final_target_entered)
 	
 	# Setup random target when end episode
 	var random_target = level.find_child("RandomTarget")
-	notify_end_episode.connect(random_target.get_end_episode)
+	if random_target != null: notify_end_episode.connect(random_target.get_end_episode)
 
 	# Setup random spawn when end episode
 	var random_spawn = level.find_child("RandomSpawn")
-	notify_end_episode.connect(random_spawn.get_end_episode)
+	if random_spawn != null: notify_end_episode.connect(random_spawn.get_end_episode)
 	
 	# Setup intermediate targets
 	var targets := []
@@ -58,13 +58,13 @@ func set_current_level(scene: PackedScene) -> void:
 	targets.append_array(level.find_children("ObliqueTarget*", "Area3D"))
 	#print(targets)
 	for t in targets:
-		t.custom_body_entered.connect(player._on_target_entered)
+		t.custom_body_entered.connect(pedestrian._on_target_entered)
 	
 	# Setup ai controller
-	var ai_controller = player.find_child("AIController3D")
+	var ai_controller = pedestrian.find_child("AIController3D")
 	ai_controller.set_reset_after(level.max_steps)
 		
-	player.reset()
+	pedestrian.reset()
 
 ## Function called to emit signal for episode ending
 func _notify_end_episode(reward: float) -> void:

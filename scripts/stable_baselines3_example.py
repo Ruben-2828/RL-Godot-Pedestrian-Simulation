@@ -114,6 +114,7 @@ def handle_onnx_export():
     # and extension used for both
     if args.onnx_export_path is not None:
         path_onnx = pathlib.Path(args.onnx_export_path).with_suffix(".onnx")
+        os.makedirs(path_onnx.parent, exist_ok=True)  # Create directory if it does not exist
         print("Exporting onnx to: " + os.path.abspath(path_onnx))
         export_ppo_model_as_onnx(model, str(path_onnx))
 
@@ -121,6 +122,7 @@ def handle_onnx_export():
 def handle_model_save():
     if args.save_model_path is not None:
         zip_save_path = pathlib.Path(args.save_model_path).with_suffix(".zip")
+        os.makedirs(zip_save_path.parent, exist_ok=True)  # Create directory if it does not exist
         print("Saving model to: " + os.path.abspath(zip_save_path))
         model.save(zip_save_path)
 

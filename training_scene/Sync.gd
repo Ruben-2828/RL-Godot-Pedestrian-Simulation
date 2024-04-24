@@ -217,7 +217,7 @@ func _training_process():
 			var reply = {"type": "step", "obs": obs, "reward": reward, "done": done}
 			_send_dict_as_json_message(reply)
 
-		var handled = handle_message()
+		var _handled = handle_message()
 
 
 func _inference_process():
@@ -396,7 +396,7 @@ func connect_to_server():
 	# "localhost" was not working on windows VM, had to use the IP
 	var ip = "127.0.0.1"
 	var port = _get_port()
-	var connect = stream.connect_to_host(ip, port)
+	var _connect = stream.connect_to_host(ip, port)
 	stream.set_no_delay(true)  # TODO check if this improves performance or not
 	stream.poll()
 	# Fetch the status until it is either connected (2) or failed to connect (3)
@@ -539,10 +539,10 @@ func _set_agent_actions(actions, agents: Array = all_agents):
 		agents[i].set_action(actions[i])
 
 
-func clamp_array(arr: Array, min: float, max: float):
+func clamp_array(arr: Array, min_val: float, max_val: float):
 	var output: Array = []
 	for a in arr:
-		output.append(clamp(a, min, max))
+		output.append(clamp(a, min_val, max_val))
 	return output
 
 
@@ -554,11 +554,12 @@ func _notification(what):
 	if what == NOTIFICATION_PREDELETE:
 		var json_string = JSON.stringify(demo_trajectories, "", false)
 		var file = FileAccess.open(expert_demo_save_path, FileAccess.WRITE)
-
+		
+		var error: Error
 		if not file:
-			var error: Error = FileAccess.get_open_error()
+			error = FileAccess.get_open_error()
 			assert(not error, "There was an error opening the file: %d" % error)
 
 		file.store_line(json_string)
-		var error = file.get_error()
+		error = file.get_error()
 		assert(not error, "There was an error after trying to write to the file: %d" % error)
