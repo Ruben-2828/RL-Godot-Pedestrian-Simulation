@@ -16,7 +16,7 @@ size = Vector3(4, 0, 6)
 
 [node name="StartEZ" type="Node3D"]
 script = ExtResource("1_rvhqc")
-min_reward = 5.5
+min_reward = 5.8
 max_steps = 100
 
 [node name="Room" parent="." instance=ExtResource("1_xtyxy")]

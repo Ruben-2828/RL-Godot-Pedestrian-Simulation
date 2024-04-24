@@ -4,7 +4,7 @@ extends Node3D
 class_name LevelManager
 
 ## Signal emmitted on episode end
-signal notify_end_episode(passed: bool, reward: float)
+signal notify_end_episode(reward: float)
 
 @onready var player = $"Player"
 
@@ -44,6 +44,14 @@ func set_current_level(scene: PackedScene) -> void:
 	level_goal = level.find_child("FinalTarget")
 	level_goal.body_entered.connect(player._on_final_target_entered)
 	
+	# Setup random target when end episode
+	var random_target = level.find_child("RandomTarget")
+	notify_end_episode.connect(random_target.get_end_episode)
+
+	# Setup random spawn when end episode
+	var random_spawn = level.find_child("RandomSpawn")
+	notify_end_episode.connect(random_spawn.get_end_episode)
+	
 	# Setup intermediate targets
 	var targets := []
 	targets.append_array(level.find_children("Target*", "Area3D"))
@@ -59,5 +67,5 @@ func set_current_level(scene: PackedScene) -> void:
 	player.reset()
 
 ## Function called to emit signal for episode ending
-func _notify_end_episode(passed: bool, reward: float) -> void:
-	notify_end_episode.emit(passed, reward)
+func _notify_end_episode(reward: float) -> void:
+	notify_end_episode.emit(reward)

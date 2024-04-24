@@ -16,9 +16,6 @@ func _ready():
 	areas = find_children("CollisionShapeTarget*")
 	set_random_pos()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 ## perform randomization of target position
 func randomize_pos(area):
@@ -29,7 +26,7 @@ func randomize_pos(area):
 		0.0,
 		randf_range(-extents.z + offset, extents.z - offset),
 	)
-	final_target.position = random_pos
+	final_target.position += random_pos
 	
 ## handle the randomization
 func set_random_pos():
@@ -41,7 +38,6 @@ func set_random_pos():
 	if randomize_position:
 		randomize_pos(selected_area)
 
-## set the target to a new position when the agent reach the final target
-func _on_final_target_body_entered(body):
-	if body.is_class("CharacterBody3D"):
-		set_random_pos()
+## Called on episode ending to reset target position
+func get_end_episode(_reward):
+	set_random_pos()

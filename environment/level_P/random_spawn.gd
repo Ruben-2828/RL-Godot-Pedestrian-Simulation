@@ -19,9 +19,6 @@ func _ready():
 	areas = find_children("CollisionShapeSpawn*")
 	set_random()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 ## perform randomization of spawn position
 func randomize_pos(area):
@@ -53,8 +50,6 @@ func set_random():
 	if randomize_rotation:
 		randomize_rot()
 		
-## set the spawn to a new position when the agent reach the final target
-func _on_final_target_body_entered(body):
-	if body.is_class("CharacterBody3D"):
-		set_random()
-		
+## Called on episode ending to reset spawn position
+func get_end_episode(_reward):
+	set_random()		

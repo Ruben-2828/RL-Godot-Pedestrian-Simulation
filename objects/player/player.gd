@@ -28,11 +28,13 @@ func _ready():
 
 ## Reset the player state (position, rotation...) and notify end of episode
 func reset():
+	
+	# Notify the end of the episode to reset the env before resetting player
+	level_manager._notify_end_episode(cumulated_reward)
+	
 	rotation = level_manager.get_spawn_rotation()
 	global_position = level_manager.get_spawn_position()
 	velocity = Vector3.ZERO
-	
-	level_manager._notify_end_episode(final_target_reached, cumulated_reward)
 	
 	cumulated_reward = 0
 	finished = false

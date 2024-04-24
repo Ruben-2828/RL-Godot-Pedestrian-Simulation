@@ -9,3 +9,6 @@ class_name LevelNode
 
 ## Number of times to succeed before stepping to next level
 @export var success: int = 30
+
+## Set if the agent can move
+@export var can_move: bool = true
