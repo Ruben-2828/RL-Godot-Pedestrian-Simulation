@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://2odjpglm6uly"]
+
+[ext_resource type="Script" path="res://training_scene/curriculum.gd" id="1_hisb1"]
+
+[node name="Curriculum" type="Node3D"]
+script = ExtResource("1_hisb1")

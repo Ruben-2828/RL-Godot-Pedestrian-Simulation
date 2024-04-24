@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://environment/level.gd" id="1_r36qn"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/basic/reward.tscn" id="2_wfb10"]
 [ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/basic/spawn.tscn" id="3_5vh16"]
-[ext_resource type="PackedScene" path="res://objects/basic/pillar.tscn" id="4_8gosj"]
+[ext_resource type="PackedScene" uid="uid://uh0p4etdr17o" path="res://objects/basic/pillar.tscn" id="4_8gosj"]
 [ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/target/final_target.tscn" id="5_dclvl"]
 [ext_resource type="Script" path="res://environment/level_P/random_target.gd" id="5_q7u1m"]
 [ext_resource type="Script" path="res://environment/level_P/random_spawn.gd" id="7_ygrai"]

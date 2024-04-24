@@ -48,9 +48,11 @@ var _action_space: Dictionary
 var _action_space_inference: Array[Dictionary] = []
 var _obs_space: Dictionary
 
+@onready var parent = $".."
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	await get_tree().root.ready
+	await parent.ready
 	get_tree().set_pause(true)
 	_initialize()
 	await get_tree().create_timer(1.0).timeout
@@ -446,7 +448,8 @@ func handle_message() -> bool:
 	var message = _get_dict_json_message()
 	if message["type"] == "close":
 		print("received close message, closing game")
-		get_tree().quit()
+		get_tree().quit()		# Da commentare se voglio runnare con curriculum come main scene
+		parent.finish()
 		get_tree().set_pause(false)
 		return true
 

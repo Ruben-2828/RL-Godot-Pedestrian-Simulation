@@ -9,7 +9,7 @@ extends Node3D
 ## List of levels used in curriculum
 @export var levels_path: Array[PackedScene]
 
-var current_level: LevelNode = null
+var current_level: LevelNode = null 
 var current_level_idx: int = 0
 var level_progress: int = 0
 
@@ -19,13 +19,18 @@ const level_position_offset: int = 50
 
 @onready var sync = $Sync
 
+## Signal to notify the end of the training phase
+signal end_training
+
 func _ready():
-	assert(levels_path.size() > 0, "No scenes set for training")
-	assert(check_levels(), "null levels not allowed for training")
+	assert(levels_path.size() > 0, "No scenes set")
+	assert(check_levels(), "null levels not allowed")
 	
 	spawn_level_managers()
 	
 	set_current_level(current_level_idx)
+	
+	print(level_managers.size())
 
 ## Checks the levels list in input
 func check_levels() -> bool:
@@ -74,6 +79,15 @@ func check_level_progress(reward: float) -> void:
 		
 	if level_progress >= current_level.success:
 		current_level_idx += 1
-		current_level_idx %= levels_path.size()
-		level_progress = 0
-		set_current_level(current_level_idx)
+		if current_level_idx < levels_path.size():
+			level_progress = 0
+			set_current_level(current_level_idx)
+
+## Handle the ending of the current phase
+func finish() -> void:
+	
+	# Remove all level managers to avoid conflicts with the next phase
+	for lm in level_managers:
+		lm.free()
+		
+	end_training.emit()
