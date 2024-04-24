@@ -2,8 +2,8 @@
 
 ## Curriculum–Based Reinforcement Learning for Pedestrian Simulation
 
-### Tenderini Ruben - 879290
-### Falbo andrea - 887525
+#### Tenderini Ruben 
+#### Falbo andrea 
 
 ## Table of Contents
 
@@ -107,15 +107,18 @@ _coming soon..._
 To have a better understanding of the location of the files within the repository, we recommend reading this section.
 All folders and files that are not included here are not relevant to this project.
 
-* environment: contains all complete scenes used in the project
-  * level: contains all the levels, i.e. all the rooms that can be inserted into the curriculum
-* material: contains materials relating to the elements that furnish the rooms.
-* objects: contains individual objects placed within a scene
-  * basic: contains the basic objects to compose a room
-  * obstacle: contains all obstacles present in the rooms
-  * player: contains all information relating to the agent
-  * target: contains all the targets present in the rooms
-* training_scene: contains files relating to the training phase 
+* docs: This folder includes concise summaries about Godot and Godot-RL-Agents, as well as a comprehensive documentation on Godot-RL-Pedestrian-Simulation. It provides detailed descriptions of all the system features.
+* environment: This folder contains all files related to the environments, such as levels, their corresponding code, and the level manager.
+  * levels: This folder contains all the levels, i.e. all the rooms that can be inserted into the curriculum
+  * levels_scripts: This folder contains all the corresponding code to the level 
+* material: This folder contains materials relating to the elements that furnish the rooms.
+* models: This folder holds all the training files that are saved for later use during the testing phase. It serves as a dedicated storage area to ensure seamless access and organization of training data required for model evaluation.
+* objects: This folder contains individual objects placed within a scene
+  * basic: This folder contains the basic objects to compose a room, i.e. targets, walls, floor ecc...
+  * composed: This folder contains all composed objects, like room hallway, intersection
+  * pedestrian: This folder contains all information relating to the pedestrian
+* scripts: This folder contains all the python scripts related to the project
+* training_scene: This folder contains files relating to the training phase 
 
 ## Collaborate
 
