@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhlh8cexysl5c"]
+
+[ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/basic/solid/internal_wall.tscn" id="1_xq5gc"]
+
+
+
+[node name="Intersection" type="Node3D"]
+
+[node name="InternalWall" parent="." instance=ExtResource("1_xq5gc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -3)
+
+[node name="InternalWall2" parent="." instance=ExtResource("1_xq5gc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 0, -6)
+
+[node name="InternalWall3" parent="." instance=ExtResource("1_xq5gc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 3)
+
+[node name="InternalWall4" parent="." instance=ExtResource("1_xq5gc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 0, 6)
+
+[node name="InternalWall5" parent="." instance=ExtResource("1_xq5gc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -3)
+
+[node name="InternalWall6" parent="." instance=ExtResource("1_xq5gc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 0, -6)
+
+[node name="InternalWall7" parent="." instance=ExtResource("1_xq5gc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 3)
+
+[node name="InternalWall8" parent="." instance=ExtResource("1_xq5gc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 0, 6)
