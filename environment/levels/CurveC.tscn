@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://55sow7lawgi0"]
+
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/composed/room.tscn" id="1_7dvx3"]
+[ext_resource type="Script" path="res://environment/levels_scripts/turn_level.gd" id="1_12my6"]
+[ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/basic/solid/wall.tscn" id="2_oo03s"]
+[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/basic/targets/final_target.tscn" id="3_8mtbn"]
+[ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/basic/other/reward.tscn" id="4_1qnrb"]
+[ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/basic/other/spawn.tscn" id="5_towva"]
+[ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/basic/targets/target.tscn" id="6_r7607"]
+
+[node name="CurveC" type="Node3D"]
+script = ExtResource("1_12my6")
+min_reward = -100.0
+success = 100
+
+[node name="Room" parent="." instance=ExtResource("1_7dvx3")]
+
+[node name="Curve" type="Node3D" parent="."]
+
+[node name="Wall" parent="Curve" instance=ExtResource("2_oo03s")]
+transform = Transform3D(-0.8, 0, 0, 0, -0.8, 0, 0, 0, 1, 2, 0, 6)
+
+[node name="Wall2" parent="Curve" instance=ExtResource("2_oo03s")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 1, 2, 0, -6)
+
+[node name="Wall3" parent="Curve" instance=ExtResource("2_oo03s")]
+transform = Transform3D(-2.62268e-08, 0, -1, 0, 0.8, 0, 0.6, 0, -4.37114e-08, -5.94121, 0, 0)
+
+[node name="Target" type="Node3D" parent="."]
+
+[node name="Target2" parent="Target" instance=ExtResource("6_r7607")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, 8)
+
+[node name="Target3" parent="Target" instance=ExtResource("6_r7607")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -6)
+
+[node name="Target4" parent="Target" instance=ExtResource("6_r7607")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0, -8)
+
+[node name="Target5" parent="Target" instance=ExtResource("6_r7607")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 6)
+
+[node name="FinalTarget" parent="Target" instance=ExtResource("3_8mtbn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -8)
+
+[node name="Target6" parent="Target" instance=ExtResource("6_r7607")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+
+[node name="Target7" parent="Target" instance=ExtResource("6_r7607")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -8)
+
+[node name="Target8" parent="Target" instance=ExtResource("6_r7607")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 8)
+
+[node name="Spawn" parent="." instance=ExtResource("5_towva")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 0, 8)
+
+[node name="Reward" parent="." instance=ExtResource("4_1qnrb")]
+
+[connection signal="body_entered" from="Target/FinalTarget" to="." method="_on_final_target_body_entered"]

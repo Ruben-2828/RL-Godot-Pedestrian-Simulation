@@ -58,9 +58,9 @@ Here's the setup for Windows:
 1. **Install Godot**: You can download and install Godot from [here](https://godotengine.org/download/windows/)!
 
 2. **Clone this repository**: Clone this repository 
-```
-https://github.com/Ruben-2828/RL-Godot-Pedestrian-Simulation.git
-```
+    ```
+    https://github.com/Ruben-2828/RL-Godot-Pedestrian-Simulation.git
+    ```
 3. **Launch Godot**: Extract the files and run the Godot exe. The godot engine will open
 
 4. **Import Project**: In the launcher, press Import and find the repository. Then press Import & Edit. 
@@ -72,25 +72,25 @@ Now the project should be open!
 from [here](https://www.anaconda.com/download)!
 
 2. **Create an environment**: Open Anaconda Prompt and create an environment with python 3.8:
-```
-conda create --name myenv python=3.8
-```
+    ```
+    conda create --name myenv python=3.8
+    ```
 3. **Activate the environment**: After creating the environment, you need to activate it using the following command:
-```
-conda activate myenv
-```
+    ```
+    conda activate myenv
+    ```
 4. **Install the dependencies**: You can install the dependencies of this project using this following commands:
-```
-pip install godot-rl
-```
-```
-pip install stable-baselines
-```
+    ```
+    pip install godot-rl
+    ```
+    ```
+    pip install stable-baselines
+    ```
 #### Run the project
 1. **Activate RL-Agents**: Enable rl-agents using this command from Anaconda Prompt:
-```
-gdrl
-```
+    ```
+    gdrl
+    ```
 2. **Press Run**: From Godot, press F5 or the Run command to run the project!
 
 Every time you need to run the project, you will have to run these two commands.
@@ -101,24 +101,26 @@ _coming soon..._
 
 ## Usage
 
-_coming soon..._
+For a detailed understanding of how this project was developed and to explore all its features and uses, please refer 
+to the `documentation` file in the doc folder.
 
 ## Codebase
 To have a better understanding of the location of the files within the repository, we recommend reading this section.
 All folders and files that are not included here are not relevant to this project.
 
 * docs: This folder includes concise summaries about Godot and Godot-RL-Agents, as well as a comprehensive documentation on Godot-RL-Pedestrian-Simulation. It provides detailed descriptions of all the system features.
-* environment: This folder contains all files related to the environments, such as levels, their corresponding code, and the level manager.
+* environments: This folder contains all files related to the environments, such as levels, their corresponding code, and the level manager.
   * levels: This folder contains all the levels, i.e. all the rooms that can be inserted into the curriculum
   * levels_scripts: This folder contains all the corresponding code to the level 
-* material: This folder contains materials relating to the elements that furnish the rooms.
+* materials: This folder contains materials relating to the elements that furnish the rooms.
 * models: This folder holds all the training files that are saved for later use during the testing phase. It serves as a dedicated storage area to ensure seamless access and organization of training data required for model evaluation.
 * objects: This folder contains individual objects placed within a scene
   * basic: This folder contains the basic objects to compose a room, i.e. targets, walls, floor ecc...
   * composed: This folder contains all composed objects, like room hallway, intersection
   * pedestrian: This folder contains all information relating to the pedestrian
 * scripts: This folder contains all the python scripts related to the project
-* training_scene: This folder contains files relating to the training phase 
+* testing_scene: This folder contains files relating to the testing phase
+* training_scene: This folder contains files relating to the training phase
 
 ## Collaborate
 
