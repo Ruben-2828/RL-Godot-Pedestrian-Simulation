@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbodk7jdc4sl"]
+
+[ext_resource type="Script" path="res://training_scene/retraining_scene.gd" id="1_o4v4c"]
+[ext_resource type="Script" path="res://training_scene/Sync.gd" id="2_hiqds"]
+
+[sub_resource type="Environment" id="Environment_b6llf"]
+
+[node name="RetrainingScene" type="Node3D"]
+script = ExtResource("1_o4v4c")
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("2_hiqds")
+speed_up = 10.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_b6llf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 14.2879)
+projection = 1
+size = 69.468

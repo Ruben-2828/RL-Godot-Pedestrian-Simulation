@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://2odjpglm6uly"]
+[gd_scene load_steps=8 format=3 uid="uid://2odjpglm6uly"]
 
 [ext_resource type="Script" path="res://training_scene/curriculum.gd" id="1_hisb1"]
+[ext_resource type="PackedScene" uid="uid://cqswiih3najh4" path="res://environment/levels/StartEZ.tscn" id="2_h8qjs"]
+[ext_resource type="PackedScene" uid="uid://2h58qvivqje8" path="res://environment/levels/StartSpawner.tscn" id="3_wgjx5"]
+[ext_resource type="PackedScene" uid="uid://q3e7hyhywbdo" path="res://environment/levels/Observe.tscn" id="4_3w1me"]
+[ext_resource type="PackedScene" uid="uid://b8geyovhk1ni8" path="res://environment/levels/StartCorridoio.tscn" id="5_e8dbp"]
+[ext_resource type="PackedScene" uid="uid://sao1y1f2xovn" path="res://environment/levels/Turn22Dynamic.tscn" id="6_dclxe"]
+[ext_resource type="PackedScene" uid="uid://21knmqhiskih" path="res://environment/levels/Turn22Obstacles.tscn" id="7_icok2"]
 
 [node name="Curriculum" type="Node3D"]
 script = ExtResource("1_hisb1")
+levels_path = Array[PackedScene]([ExtResource("2_h8qjs"), ExtResource("3_wgjx5"), ExtResource("4_3w1me"), ExtResource("5_e8dbp"), ExtResource("6_dclxe"), ExtResource("7_icok2")])

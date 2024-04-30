@@ -6,7 +6,7 @@ class_name LevelManager
 ## Signal emmitted on episode end
 signal notify_end_episode(reward: float)
 
-@onready var pedestrian = $"Pedestrian"
+@onready var pedestrian = $Pedestrian
 
 var level_start_area: Node3D
 var level_goal: Node3D

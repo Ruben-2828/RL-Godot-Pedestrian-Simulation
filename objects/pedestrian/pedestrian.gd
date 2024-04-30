@@ -12,6 +12,7 @@ var speed: float
 @onready var raycast_sensor = $RayCastSensor3D
 @onready var ai_controller_3d = $AIController3D
 @onready var animation_tree = $AnimationTree
+@onready var proxemic_arc_near = $ProxemicArcNear
 
 var cumulated_reward: float = 0.0
 var final_target_reached: bool = false

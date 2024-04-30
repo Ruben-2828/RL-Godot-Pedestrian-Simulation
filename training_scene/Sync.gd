@@ -5,7 +5,7 @@ extends Node
 enum ControlModes { HUMAN, TRAINING, ONNX_INFERENCE }
 @export var control_mode: ControlModes = ControlModes.TRAINING
 ## Ticks between each communication with python
-@export_range(1, 10, 1, "or_greater") var action_repeat := 8
+@export_range(1, 10, 1, "or_greater") var action_repeat := 20
 @export_range(0, 10, 0.1, "or_greater") var speed_up := 1.0
 @export var onnx_model_path := ""
 
@@ -210,7 +210,7 @@ func _training_process():
 			need_to_send_obs = false
 			var reward = _get_reward_from_agents()
 			var done = _get_done_from_agents()
-			#_reset_agents_if_done() # this ensures the new observation is from the next env instance : NEEDS REFACTOR
+			_reset_agents_if_done() # this ensures the new observation is from the next env instance : NEEDS REFACTOR
 
 			var obs = _get_obs_from_agents(agents_training)
 
@@ -448,7 +448,7 @@ func handle_message() -> bool:
 	var message = _get_dict_json_message()
 	if message["type"] == "close":
 		print("received close message, closing game")
-		get_tree().quit()		# Da commentare se voglio runnare con curriculum come main scene
+		#get_tree().quit()		# Da commentare se voglio runnare con curriculum come main scene
 		parent.finish()
 		get_tree().set_pause(false)
 		return true

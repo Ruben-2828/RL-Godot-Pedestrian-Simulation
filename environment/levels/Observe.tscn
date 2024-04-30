@@ -38,8 +38,8 @@ size = Vector3(0, 0, 0)
 
 [node name="Osserva" type="Node3D"]
 script = ExtResource("1_r36qn")
-min_reward = -24.0
-max_steps = 100
+min_reward = -40.0
+max_steps = 30
 can_move = false
 
 [node name="Room" parent="." instance=ExtResource("1_ov2rc")]

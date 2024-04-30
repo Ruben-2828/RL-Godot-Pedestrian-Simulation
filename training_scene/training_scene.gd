@@ -1,41 +1,11 @@
 @tool
 
-extends Node3D
+extends CurriculumPhase
 
 ## Number of levels executed in parallel
 @export_range(1, 16) var batch_size: int = 10
-@export_group("Levels")
-## List of levels used in curriculum
-@export var levels_path: Array[PackedScene]
 
-var current_level: LevelNode = null 
-var current_level_idx: int = 0
-var level_progress: int = 0
-
-const level_manager_scene: PackedScene = preload("res://environment/level_manager.tscn")
-var level_managers: Array = []
-const level_position_offset: int = 50
-
-@onready var sync = $Sync
-
-## Signal to notify the end of the training phase
-signal end_training
-
-func _ready():
-	assert(levels_path.size() > 0, "No scenes set")
-	assert(check_levels(), "Null levels found in levels array")
 	
-	spawn_level_managers()
-	
-	set_current_level(current_level_idx)
-
-## Checks the levels list in input
-func check_levels() -> bool:
-	for l in levels_path:
-		if l == null:
-			return false
-	return true
-
 ## Spawns the level managers according to batch size
 func spawn_level_managers() -> void:
 	
@@ -50,15 +20,15 @@ func spawn_level_managers() -> void:
 		add_child(level_manager_instance)
 
 ## Set current level for every level manager
-func set_current_level(level: int) -> void:
+func set_current_level() -> void:
 	
 	if current_level != null:
 		current_level.queue_free()
 		
-	current_level = levels_path[level].instantiate()
+	current_level = levels_path[current_level_idx].instantiate()
 	
 	for lm in level_managers:
-		lm.set_current_level(levels_path[level])
+		lm.set_current_level(levels_path[current_level_idx])
 		
 		lm.pedestrian.speed_max = 1.7 if current_level.can_move else 0.0
 
@@ -74,13 +44,6 @@ func check_level_progress(reward: float) -> void:
 		current_level_idx += 1
 		if current_level_idx < levels_path.size():
 			level_progress = 0
-			set_current_level(current_level_idx)
+			set_current_level()
 
-## Handle the ending of the current phase
-func finish() -> void:
-	
-	# Remove all level managers to avoid conflicts with the next phase
-	for lm in level_managers:
-		lm.free()
-		
-	end_training.emit()
+
