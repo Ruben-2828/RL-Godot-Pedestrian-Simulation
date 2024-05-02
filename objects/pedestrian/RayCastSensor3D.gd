@@ -1,14 +1,6 @@
 @tool
 extends ISensor3D
 
-## Raycast collision mask
-@export_flags_3d_physics var collision_mask = 1:
-	get:
-		return collision_mask
-	set(value):
-		collision_mask = value
-		_update()
-
 ## Max distance at which a raycast can hit
 @export var ray_length := Constants.RAY_LENGTH:
 	get:
@@ -59,42 +51,52 @@ extends ISensor3D
 		
 @onready var pedestrian = $".."
 
-var rays := []
+var rays_walls_targets := []
+var rays_agents_walls := []
 
 func _update() -> void:
-		_spawn_nodes()
+	_spawn_nodes()
 
 func _ready() -> void:
-		_spawn_nodes()
+	_spawn_nodes()
 
 ## Spawns all raycast nodes
 func _spawn_nodes():
 	#print("spawning nodes")
 	for ray in get_children():
 		ray.queue_free()
-	rays = []
+	rays_walls_targets = []
+	rays_agents_walls = []
 
+	# Spawn two types of raycasts: one for walls and targets and one for agents and walls
 	var angle = initial_ray_pos
 	var i = 0
 	while angle < max_vision_degrees:
-		_create_ray(angle, i)
+		_create_ray(angle, i, 1)
+		_create_ray(angle, i, 2)
 		if angle != 0:
-			_create_ray(-angle, -i)
+			_create_ray(-angle, -i, 1)
+			_create_ray(-angle, -i, 2)
 		
 		i += 1
 		angle = angle + rays_angle_delta * i
 		
 	# Need to create rays at max_vision_degrees angle too
-	_create_ray(max_vision_degrees, i)
-	_create_ray(-max_vision_degrees, -i)
+	_create_ray(max_vision_degrees, i, 1)
+	_create_ray(-max_vision_degrees, -i, 1)
+	_create_ray(max_vision_degrees, i, 2)
+	_create_ray(-max_vision_degrees, -i, 2)
 
 ## Create raycast node
-func _create_ray(angle: float, idx: int):
+func _create_ray(angle: float, idx: int, collision_mask: int):
 	var ray = RayCast3D.new()
 	var cast_to = to_spherical_coords(ray_length, angle, 0)
 	ray.set_target_position(cast_to)
 	
-	ray.set_name("ray " + str(idx))
+	if collision_mask == 1:
+		ray.set_name("wall_target ray " + str(idx))
+	else:
+		ray.set_name("agent_wall ray " + str(idx))
 	ray.enabled = true
 	ray.collide_with_bodies = collide_with_bodies
 	ray.collide_with_areas = collide_with_areas
@@ -104,8 +106,11 @@ func _create_ray(angle: float, idx: int):
 	ray.hit_from_inside = false
 	
 	add_child(ray)
-	ray.set_owner(get_tree().edited_scene_root)
-	rays.append(ray)
+	if collision_mask == 1:
+		rays_walls_targets.append(ray)
+	if collision_mask == 2:
+		rays_agents_walls.append(ray)
+	
 
 func to_spherical_coords(r, inc, azimuth) -> Vector3:
 	return Vector3(
@@ -120,8 +125,13 @@ func get_observation() -> Array:
 
 ## Returns a list of all hit objects and their distance
 func calculate_raycasts() -> Array:
+	return [calculate_walls_targets(), calculate_agents_walls()]
+	
+func calculate_walls_targets() -> Array:
 	var hit_objects := []
-	for ray in rays:
+	
+	# Walls and targets observations
+	for ray in rays_walls_targets:
 		var norm_distance = _get_raycast_distance(ray) / ray_length
 		hit_objects.append(norm_distance)
 		
@@ -140,6 +150,30 @@ func calculate_raycasts() -> Array:
 
 		hit_objects.append_array(hit_object_type)
 		
+	return hit_objects
+	
+func calculate_agents_walls() -> Array:
+	var hit_objects := []
+	
+	# Agents and walls observations
+	for ray in rays_walls_targets:
+		var norm_distance = _get_raycast_distance(ray) / ray_length
+		var type: int = 0
+		var direction: float = 0.0
+		var speed: float = 0.0
+		
+		var collider = ray.get_collider()
+		if collider:
+			if collider.is_in_group(Constants.PEDESTRIAN_GROUP):
+				type = 1
+				direction = collider.rotation.y
+				speed = collider.get_speed_norm()
+		
+		hit_objects.append(norm_distance)	
+		hit_objects.append(type)
+		hit_objects.append(direction)
+		hit_objects.append(speed)
+	
 	return hit_objects
 
 ## Return distance between the start of the ray and the hit object

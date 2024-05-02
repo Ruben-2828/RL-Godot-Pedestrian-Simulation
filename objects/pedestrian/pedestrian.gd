@@ -61,7 +61,7 @@ func set_speed(action_0) -> void:
 
 ## Set pedestrian direction 
 func set_direction(action_1) -> void:
-	rotation.y += deg_to_rad(action_1 * Constants.rotation_sens)
+	rotation.y += deg_to_rad(action_1 * Constants.ROTATION_SENS)
 
 ## Calculates total reward per time step
 func compute_rewards() -> void:
@@ -90,20 +90,47 @@ func compute_rewards() -> void:
 
 		# Get observation for proxemity rewards
 		var obs = raycast_sensor.get_observation()
+		var walls_and_targets = obs[0]
+		var agents_and_walls = obs[1]
 		
 		# Reward loss when wall is too near
 		var wall_near = false
-		for i in range(0, obs.size(), 4):
-			if obs[i+1] == 1 and obs[i] < Constants.WALL_COLLISION_DISTANCE / raycast_sensor.ray_length:
+		for i in range(0, Constants.WALL_COLLISION_RAYS * 4, 4):
+			if walls_and_targets[i+1] == 1 and walls_and_targets[i] < Constants.WALL_COLLISION_DISTANCE / raycast_sensor.ray_length:
 				wall_near = true
 				break
 		if wall_near:
 			tot_reward += Constants.WALL_COLLISION_REW
+			
+		# Reward loss when agent is too near
+		var agent_near = false
+		for i in range(0, Constants.AGENT_COLLISION_SMALL_RAYS * 4, 4):
+			if agents_and_walls[i+1] == 1 and agents_and_walls[i] < Constants.AGENT_COLLISION_SMALL_DISTANCE / raycast_sensor.ray_length:
+				agent_near = true
+				break
+		if agent_near:
+			tot_reward += Constants.AGENT_COLLISION_SMALL_REW
+			
+		if not agent_near:
+			for i in range(0, Constants.AGENT_COLLISION_MEDIUM_RAYS * 4, 4):
+				if agents_and_walls[i+1] == 1 and agents_and_walls[i] < Constants.AGENT_COLLISION_MEDIUM_DISTANCE / raycast_sensor.ray_length:
+					agent_near = true
+					break
+			if agent_near:
+				tot_reward += Constants.AGENT_COLLISION_MEDIUM_REW
+				
+		if not agent_near:
+			for i in range(0, Constants.AGENT_COLLISION_LARGE_RAYS * 4, 4):
+				if agents_and_walls[i+1] == 1 and agents_and_walls[i] < Constants.AGENT_COLLISION_LARGE_DISTANCE / raycast_sensor.ray_length:
+					agent_near = true
+					break
+			if agent_near:
+				tot_reward += Constants.AGENT_COLLISION_LARGE_REW
 		
 		# Reward loss when detecting no targets
 		var no_target = true
-		for i in range(0, obs.size(), 4):
-			if obs[i+2] == 1 or obs[i+3] == 1:
+		for i in range(0, walls_and_targets.size(), 4):
+			if walls_and_targets[i+2] == 1 or walls_and_targets[i+3] == 1:
 				no_target = false
 		if no_target:
 			tot_reward += Constants.NO_TARGET_VISIBLE_REW
@@ -125,3 +152,9 @@ func _on_target_entered(area, body):
 	if body == self:
 		target_reached = true
 		last_target_reached = area
+
+func get_speed_norm() -> float:
+	if speed_max == 0.0:
+		return 0.0
+		
+	return (speed - speed_min) / (speed_max - speed_min)

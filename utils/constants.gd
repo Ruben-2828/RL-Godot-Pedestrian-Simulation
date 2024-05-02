@@ -8,6 +8,10 @@ const WALL_COLLISION_DISTANCE: float = 0.6
 const AGENT_COLLISION_SMALL_DISTANCE: float = 0.6
 const AGENT_COLLISION_MEDIUM_DISTANCE: float = 1.0
 const AGENT_COLLISION_LARGE_DISTANCE: float = 1.4
+const WALL_COLLISION_RAYS: int = 17
+const AGENT_COLLISION_SMALL_RAYS: int = 17
+const AGENT_COLLISION_MEDIUM_RAYS: int = 11
+const AGENT_COLLISION_LARGE_RAYS: int = 9
 
 # Rewards
 const FINAL_TARGET_REW: float = 6.0
@@ -25,7 +29,7 @@ const END_OF_TIMESTEPS_REW: float = -6.0
 const TICKS_PER_STEP: int = 20
 
 # RayCast Sensor
-const RAY_LENGTH: float = 10.0
+const RAY_LENGTH: float = 30.0
 const MAX_VISION_DEGREES: float = 90.0
 const RAYS_ANGLE_DELTA: float = 1.5
 const INITIAL_RAY_POS: float = 0.0

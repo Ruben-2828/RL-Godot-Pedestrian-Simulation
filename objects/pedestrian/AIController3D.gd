@@ -37,9 +37,10 @@ func get_obs() -> Dictionary:
 	var speed_norm = (_player.speed - _player.speed_min) / (_player.speed_max - _player.speed_min) if _player.speed_max != 0 else 0
 	
 	obs.append(speed_norm)
-	obs.append_array(raycast_obs)
+	obs.append_array(raycast_obs[0])
+	obs.append_array(raycast_obs[1])
 	
-	#print(obs)
+	#print(obs.size())
 	return {'obs': obs}
 
 ## Returns current reward
