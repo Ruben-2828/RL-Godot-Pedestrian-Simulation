@@ -135,3 +135,5 @@ func _on_objective_entered(area, body):
 		var collision = area.find_child("CollisionShape3D")
 		collision.disabled = true
 		print("Obiettivo raggiunto, area attiva: ", area.active)
+		
+
