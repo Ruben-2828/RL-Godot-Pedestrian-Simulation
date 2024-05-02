@@ -10,7 +10,7 @@ extends ISensor3D
 		_update()
 
 ## Max distance at which a raycast can hit
-@export var ray_length := 10.0:
+@export var ray_length := Constants.RAY_LENGTH:
 	get:
 		return ray_length
 	set(value):
@@ -18,27 +18,27 @@ extends ISensor3D
 		_update()
 
 ## Max angle of vision (in deg)
-@export var max_vision := 90:
+@export var max_vision_degrees := Constants.MAX_VISION_DEGREES:
 	get:
-		return max_vision
+		return max_vision_degrees
 	set(value):
-		max_vision = value
+		max_vision_degrees = value
 		_update()
 
 ## Interval between rays	
-@export var delta := 1.5:
+@export var rays_angle_delta := Constants.RAYS_ANGLE_DELTA:
 	get:
-		return delta
+		return rays_angle_delta
 	set(value):
-		delta = value
+		rays_angle_delta = value
 		_update()
 
 ## Position of initial ray
-@export var alfa_init := 0:
+@export var initial_ray_pos := Constants.INITIAL_RAY_POS:
 	get:
-		return alfa_init
+		return initial_ray_pos
 	set(value):
-		alfa_init = value
+		initial_ray_pos = value
 		_update()
 
 ## If true rays will collide with Area3D, if false it wont
@@ -74,19 +74,19 @@ func _spawn_nodes():
 		ray.queue_free()
 	rays = []
 
-	var angle = 0
+	var angle = initial_ray_pos
 	var i = 0
-	while angle < max_vision:
+	while angle < max_vision_degrees:
 		_create_ray(angle, i)
 		if angle != 0:
 			_create_ray(-angle, -i)
 		
 		i += 1
-		angle = angle + delta * i
+		angle = angle + rays_angle_delta * i
 		
-	# Need to create rays at max_vision angle too
-	_create_ray(max_vision, i)
-	_create_ray(-max_vision, -i)
+	# Need to create rays at max_vision_degrees angle too
+	_create_ray(max_vision_degrees, i)
+	_create_ray(-max_vision_degrees, -i)
 
 ## Create raycast node
 func _create_ray(angle: float, idx: int):
@@ -99,7 +99,7 @@ func _create_ray(angle: float, idx: int):
 	ray.collide_with_bodies = collide_with_bodies
 	ray.collide_with_areas = collide_with_areas
 	ray.collision_mask = collision_mask
-	ray.debug_shape_custom_color = "#787c82"
+	ray.debug_shape_custom_color = Constants.RAYS_GRAY_COLOR
 	ray.exclude_parent = true
 	ray.hit_from_inside = false
 	
@@ -129,13 +129,13 @@ func calculate_raycasts() -> Array:
 		# 1,0,0: wall; 0,1,0: new target; 0,0,1: already visited target
 		var hit_object_type := [0, 0, 0]
 		if ray.get_collider():
-			if ray.get_collider().is_in_group("targets"):
+			if ray.get_collider().is_in_group(Constants.TARGETS_GROUP):
 				if ray.get_collider() in pedestrian.reached_targets:
 					hit_object_type[2] = 1
 				else:
 					hit_object_type[1] = 1
 				
-			elif ray.get_collider().is_in_group("walls"):
+			elif ray.get_collider().is_in_group(Constants.WALLS_GROUP):
 				hit_object_type[0] = 1
 
 		hit_objects.append_array(hit_object_type)

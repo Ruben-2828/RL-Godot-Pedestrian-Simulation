@@ -1,21 +1,18 @@
 extends AIController3D
 
 ## Ticks for each step
-@export var step_ticks: int = 20
+@export var ticks_per_step: int = Constants.TICKS_PER_STEP
 var tick_counter: int = 0
 
 func _ready():
-	add_to_group("AGENT")
+	add_to_group(Constants.AGENT_GROUP)
 	
 func _physics_process(_delta):
 	
 	tick_counter += 1
 	tick_counter %= Engine.physics_ticks_per_second
 	
-	if done:
-		print(needs_reset, _player.final_target_reached)
-	
-	if tick_counter % step_ticks == 0:
+	if tick_counter % ticks_per_step == 0:
 	
 		n_steps += 1
 		if n_steps >= reset_after:

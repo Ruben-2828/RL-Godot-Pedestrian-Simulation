@@ -6,7 +6,7 @@ extends Node3D
 var areas: Array = []
 
 # offset to position the spawner within the area
-var offset = 0.5
+var offset = Constants.SPAWN_OFFSET
 
 @export_category("Spawn Settings")
 ## randomize the position of the spawn inside the area
@@ -33,7 +33,7 @@ func randomize_pos(area):
 
 ## perform randomization of spawn rotation
 func randomize_rot():
-	var random_rot = randi_range(-4, 4) * 45
+	var random_rot = randi_range(0, Constants.ROTATION_STEPS - 1) * (360 / Constants.ROTATION_STEPS)
 	spawn.rotation_degrees = Vector3(0.0, random_rot, 0)
 
 ## handle the randomization

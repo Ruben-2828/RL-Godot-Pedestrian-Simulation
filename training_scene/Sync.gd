@@ -5,7 +5,7 @@ extends Node
 enum ControlModes { HUMAN, TRAINING, ONNX_INFERENCE }
 @export var control_mode: ControlModes = ControlModes.TRAINING
 ## Ticks between each communication with python
-@export_range(1, 10, 1, "or_greater") var action_repeat := 20
+@export_range(1, 10, 1, "or_greater") var action_repeat := Constants.TICKS_PER_STEP
 @export_range(0, 10, 0.1, "or_greater") var speed_up := 1.0
 @export var onnx_model_path := ""
 
@@ -62,8 +62,8 @@ func _ready():
 func _initialize():
 	_get_agents()
 	args = _get_args()
-	Engine.physics_ticks_per_second = _get_speedup() * 60  # Replace with function body.
-	Engine.time_scale = _get_speedup() * 1.0
+	Engine.physics_ticks_per_second = _get_speedup() * Constants.PHYSICS_TICKS_PER_SECONDS
+	Engine.time_scale = _get_speedup() * Constants.TIME_SCALE
 	prints(
 		"physics ticks",
 		Engine.physics_ticks_per_second,
@@ -314,7 +314,7 @@ func _set_agent_mode(agent: Node):
 
 
 func _get_agents():
-	all_agents = get_tree().get_nodes_in_group("AGENT")
+	all_agents = get_tree().get_nodes_in_group(Constants.AGENT_GROUP)
 	for agent in all_agents:
 		_set_agent_mode(agent)
 

@@ -9,7 +9,7 @@ size = Vector3(1, 10, 1)
 material = ExtResource("1_0qdar")
 size = Vector3(1, 10, 1)
 
-[node name="Pillar" type="StaticBody3D" groups=["walls"]]
+[node name="Pillar" type="StaticBody3D" groups=["WALL"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_gacmq")

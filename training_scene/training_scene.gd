@@ -3,7 +3,7 @@
 extends CurriculumPhase
 
 ## Number of levels executed in parallel
-@export_range(1, 16) var batch_size: int = 10
+@export_range(1, 16) var batch_size: int = Constants.TRAINING_BATCH_SIZE
 
 	
 ## Spawns the level managers according to batch size
@@ -30,7 +30,7 @@ func set_current_level() -> void:
 	for lm in level_managers:
 		lm.set_current_level(levels_path[current_level_idx])
 		
-		lm.pedestrian.speed_max = 1.7 if current_level.can_move else 0.0
+		lm.pedestrian.speed_max = Constants.MAX_SPEED if current_level.can_move else 0.0
 
 ## Change current level if success condition is reached
 func check_level_progress(reward: float) -> void:

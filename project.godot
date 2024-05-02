@@ -15,6 +15,10 @@ run/main_scene="res://training_scene/curriculum.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Constants="*res://utils/constants.gd"
+
 [dotnet]
 
 project/assembly_name="RL-Godot-Pedestrian-Simulation"
