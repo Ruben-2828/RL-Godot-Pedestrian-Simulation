@@ -1,16 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhfypoxj8yyek"]
+[gd_scene load_steps=4 format=3 uid="uid://bhfypoxj8yyek"]
 
 [ext_resource type="Script" path="res://training_scene/training_scene.gd" id="1_buxsb"]
 [ext_resource type="Script" path="res://training_scene/Sync.gd" id="1_ojck1"]
-[ext_resource type="PackedScene" uid="uid://55sow7lawgi0" path="res://environment/levels/CurveC.tscn" id="2_80m1t"]
-[ext_resource type="PackedScene" uid="uid://6qoewixf66h3" path="res://environment/levels/Omega.tscn" id="3_th2ge"]
-[ext_resource type="PackedScene" uid="uid://dxyb7sq0yuht7" path="res://environment/levels/DoorChoice.tscn" id="4_p35lx"]
 
 [sub_resource type="Environment" id="Environment_55kxu"]
 
 [node name="TestingScene" type="Node3D"]
 script = ExtResource("1_buxsb")
-levels_path = Array[PackedScene]([ExtResource("2_80m1t"), ExtResource("3_th2ge"), ExtResource("4_p35lx")])
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("1_ojck1")

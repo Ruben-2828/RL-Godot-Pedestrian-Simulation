@@ -40,6 +40,12 @@ func set_current_level(level_scene: PackedScene) -> void:
 	# Setup spawn
 	level_start_area = level.find_child("Spawn")
 	
+	# Setup objective
+	var objective = level.find_child("Objective")
+	if objective != null: 
+		print(objective.visible)
+		objective.custom_body_entered.connect(pedestrian._on_objective_entered)
+	
 	# Setup final target
 	level_goal = level.find_child("FinalTarget")
 	level_goal.body_entered.connect(pedestrian._on_final_target_entered)
@@ -51,6 +57,10 @@ func set_current_level(level_scene: PackedScene) -> void:
 	# Setup random spawn when end episode
 	var random_spawn = level.find_child("RandomSpawn")
 	if random_spawn != null: notify_end_episode.connect(random_spawn.get_end_episode)
+	
+	# Setup random objective when end episode
+	var random_objective = level.find_child("RandomObjective")
+	if random_objective != null: notify_end_episode.connect(random_objective.get_end_episode)
 	
 	# Setup intermediate targets
 	var targets := []

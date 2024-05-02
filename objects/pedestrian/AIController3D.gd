@@ -12,9 +12,6 @@ func _physics_process(_delta):
 	tick_counter += 1
 	tick_counter %= Engine.physics_ticks_per_second
 	
-	if done:
-		print(needs_reset, _player.final_target_reached)
-	
 	if tick_counter % step_ticks == 0:
 	
 		n_steps += 1

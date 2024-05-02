@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://c0bea2cduk5dt"]
+
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/composed/room.tscn" id="1_xskj0"]
+[ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/basic/other/reward.tscn" id="2_el0xy"]
+[ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/basic/solid/internal_wall.tscn" id="3_41t40"]
+[ext_resource type="PackedScene" uid="uid://o6t0iemlmcj5" path="res://objects/basic/targets/oblique_target.tscn" id="4_de0md"]
+[ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/basic/targets/target.tscn" id="5_ia818"]
+[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/basic/targets/final_target.tscn" id="6_wvshh"]
+[ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/basic/other/spawn.tscn" id="7_xsewa"]
+[ext_resource type="PackedScene" uid="uid://cjdi121yppx7d" path="res://objects/basic/targets/objective.tscn" id="8_uipbu"]
+
+[node name="Rows" type="Node3D"]
+
+[node name="Room" parent="." instance=ExtResource("1_xskj0")]
+
+[node name="Reward" parent="." instance=ExtResource("2_el0xy")]
+
+[node name="Spawn" parent="." instance=ExtResource("7_xsewa")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.1, 8)
+
+[node name="Wall" type="Node3D" parent="."]
+
+[node name="InternalWall" parent="Wall" instance=ExtResource("3_41t40")]
+transform = Transform3D(-6.55671e-08, 0, 1, 0, 1, 0, -1.5, 0, -4.37114e-08, 5, 0, 0)
+
+[node name="InternalWall2" parent="Wall" instance=ExtResource("3_41t40")]
+transform = Transform3D(-6.99382e-08, 0, 1, 0, 1, 0, -1.6, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="InternalWall3" parent="Wall" instance=ExtResource("3_41t40")]
+transform = Transform3D(-6.99382e-08, 0, 1, 0, 1, 0, -1.6, 0, -4.37114e-08, -5, 0, 0)
+
+[node name="Objective" type="Node3D" parent="."]
+
+[node name="Objective5" parent="Objective" instance=ExtResource("8_uipbu")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -7.5, 0, 0)
+
+[node name="Objective2" parent="Objective" instance=ExtResource("8_uipbu")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.5, 0, 0)
+
+[node name="Objective3" parent="Objective" instance=ExtResource("8_uipbu")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.5, 0, 0)
+
+[node name="Objective4" parent="Objective" instance=ExtResource("8_uipbu")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 7.5, 0, 0)
+
+[node name="Target" type="Node3D" parent="."]
+
+[node name="ObliqueTarget" parent="Target" instance=ExtResource("4_de0md")]
+transform = Transform3D(1.13137, 0, -1.13137, 0, 1.6, 0, 1.13137, 0, 1.13137, -7.5, 0, -7.5)
+
+[node name="ObliqueTarget2" parent="Target" instance=ExtResource("4_de0md")]
+transform = Transform3D(1.13137, 0, 1.13137, 0, 1.6, 0, -1.13137, 0, 1.13137, 7.5, 0, -7.5)
+
+[node name="ObliqueTarget3" parent="Target" instance=ExtResource("4_de0md")]
+transform = Transform3D(1.13137, 0, 1.13137, 0, 1.6, 0, -1.13137, 0, 1.13137, -7.5, 0, 7.5)
+
+[node name="ObliqueTarget4" parent="Target" instance=ExtResource("4_de0md")]
+transform = Transform3D(1.13137, 0, -1.13137, 0, 1.6, 0, 1.13137, 0, 1.13137, 7.5, 0, 7.5)
+
+[node name="Target" parent="Target" instance=ExtResource("5_ia818")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, -2.5, 0, -5)
+
+[node name="Target2" parent="Target" instance=ExtResource("5_ia818")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 2.5, 0, -5)
+
+[node name="Target3" parent="Target" instance=ExtResource("5_ia818")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 2.5, 0, 5)
+
+[node name="Target4" parent="Target" instance=ExtResource("5_ia818")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, -2.5, 0, 5)
+
+[node name="FinalTarget" parent="Target" instance=ExtResource("6_wvshh")]
+transform = Transform3D(1.7, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, -9)

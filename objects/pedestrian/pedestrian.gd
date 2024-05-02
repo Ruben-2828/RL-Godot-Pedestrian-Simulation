@@ -123,3 +123,15 @@ func _on_target_entered(area, body):
 	if body == self:
 		target_reached = true
 		last_target_reached = area
+		
+## disable the objective when the pedestrian enters it
+func _on_objective_entered(area, body):
+	
+	if body == self and area.active:
+		area.active = false
+		area.monitoring = false
+		area.monitorable = false
+		area.visible = false
+		var collision = area.find_child("CollisionShape3D")
+		collision.disabled = true
+		print("Obiettivo raggiunto, area attiva: ", area.active)
