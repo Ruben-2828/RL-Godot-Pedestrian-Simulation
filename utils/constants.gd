@@ -29,7 +29,7 @@ const END_OF_TIMESTEPS_REW: float = -6.0
 const TICKS_PER_STEP: int = 20
 
 # RayCast Sensor
-const RAY_LENGTH: float = 30.0
+const RAY_LENGTH: float = 10.0
 const MAX_VISION_DEGREES: float = 90.0
 const RAYS_ANGLE_DELTA: float = 1.5
 const INITIAL_RAY_POS: float = 0.0

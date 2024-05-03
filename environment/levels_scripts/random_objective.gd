@@ -46,7 +46,6 @@ func set_objective():
 	objective.monitorable = true
 	var collision = objective.find_child("CollisionShape3D")
 	collision.disabled = false
-	print("Obiettivo resetatto, area attiva: ", objective.active)
 
 ## Called on episode ending to reset objective position
 func get_end_episode(_reward):

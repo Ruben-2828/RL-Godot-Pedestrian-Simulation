@@ -232,7 +232,7 @@ To change the termination parameters of a specific environment, follow the steps
 
 To run, make sure you've activated the environment with 
   ```
-    conda activate environment_name
+	conda activate environment_name
   ```
 Then, type the command `gdrl`. Once you get a response from the command, execute the run by clicking the "run" 
 button in the top right corner of the Godot Engine or by pressing F5.
@@ -297,9 +297,9 @@ command that is shown, for example:
   ``` 
   The command could not be loaded, possibly because:
   * You intended to execute a .NET application:
-      The application 'add' does not exist.
+	  The application 'add' does not exist.
   * You intended to execute a .NET SDK command:
-      No .NET SDKs were found.
+	  No .NET SDKs were found.
   ``` 
   Go [here](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) and download .NET
 

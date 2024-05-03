@@ -7,11 +7,10 @@
 
 [node name="TrainingScene" type="Node3D"]
 script = ExtResource("1_2y50e")
-batch_size = 1
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("9_ebl31")
-speed_up = 5.5
+speed_up = 10.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_u2qca")

@@ -1,11 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://2odjpglm6uly"]
+[gd_scene load_steps=8 format=3 uid="uid://2odjpglm6uly"]
 
 [ext_resource type="Script" path="res://training_scene/curriculum.gd" id="1_hisb1"]
-[ext_resource type="PackedScene" uid="uid://nrs18pri04qm" path="res://environment/levels/fabbris/CorridorObjective.tscn" id="3_c71no"]
-[ext_resource type="PackedScene" uid="uid://dt3iugehhi0e0" path="res://environment/levels/fabbris/StartObjectiveRandom.tscn" id="4_csj3b"]
-[ext_resource type="PackedScene" uid="uid://jj2fwxadh4ys" path="res://environment/levels/fabbris/StartPassage.tscn" id="5_gygbb"]
-[ext_resource type="PackedScene" uid="uid://dpm8k21ug2gw" path="res://environment/levels/fabbris/Path.tscn" id="6_u5ljq"]
+[ext_resource type="PackedScene" uid="uid://cqswiih3najh4" path="res://environment/levels/training/StartEZ.tscn" id="2_rbve0"]
+[ext_resource type="PackedScene" uid="uid://2h58qvivqje8" path="res://environment/levels/training/StartSpawner.tscn" id="3_463ad"]
+[ext_resource type="PackedScene" uid="uid://q3e7hyhywbdo" path="res://environment/levels/training/Observe.tscn" id="4_avta1"]
+[ext_resource type="PackedScene" uid="uid://b8geyovhk1ni8" path="res://environment/levels/training/StartCorridoio.tscn" id="5_dl4s3"]
+[ext_resource type="PackedScene" uid="uid://sao1y1f2xovn" path="res://environment/levels/training/Turn22Dynamic.tscn" id="6_u60am"]
+[ext_resource type="PackedScene" uid="uid://21knmqhiskih" path="res://environment/levels/training/Turn22Obstacles.tscn" id="7_r6xhd"]
 
 [node name="Curriculum" type="Node3D"]
 script = ExtResource("1_hisb1")
-levels_path = Array[PackedScene]([ExtResource("3_c71no"), ExtResource("4_csj3b"), ExtResource("5_gygbb"), ExtResource("6_u5ljq")])
+levels_path = Array[PackedScene]([ExtResource("2_rbve0"), ExtResource("3_463ad"), ExtResource("4_avta1"), ExtResource("5_dl4s3"), ExtResource("6_u60am"), ExtResource("7_r6xhd")])

@@ -2,7 +2,7 @@
 extends ISensor3D
 
 ## Max distance at which a raycast can hit
-@export var ray_length := Constants.RAY_LENGTH:
+var ray_length := Constants.RAY_LENGTH:
 	get:
 		return ray_length
 	set(value):
@@ -10,7 +10,7 @@ extends ISensor3D
 		_update()
 
 ## Max angle of vision (in deg)
-@export var max_vision_degrees := Constants.MAX_VISION_DEGREES:
+var max_vision_degrees := Constants.MAX_VISION_DEGREES:
 	get:
 		return max_vision_degrees
 	set(value):
@@ -18,7 +18,7 @@ extends ISensor3D
 		_update()
 
 ## Interval between rays	
-@export var rays_angle_delta := Constants.RAYS_ANGLE_DELTA:
+var rays_angle_delta := Constants.RAYS_ANGLE_DELTA:
 	get:
 		return rays_angle_delta
 	set(value):
@@ -26,7 +26,7 @@ extends ISensor3D
 		_update()
 
 ## Position of initial ray
-@export var initial_ray_pos := Constants.INITIAL_RAY_POS:
+var initial_ray_pos := Constants.INITIAL_RAY_POS:
 	get:
 		return initial_ray_pos
 	set(value):
@@ -34,7 +34,7 @@ extends ISensor3D
 		_update()
 
 ## If true rays will collide with Area3D, if false it wont
-@export var collide_with_areas := true:
+var collide_with_areas := true:
 	get:
 		return collide_with_areas
 	set(value):
@@ -42,7 +42,7 @@ extends ISensor3D
 		_update()
 
 ## If true rays will collide with bodies, if false it wont
-@export var collide_with_bodies := true:
+var collide_with_bodies := true:
 	get:
 		return collide_with_bodies
 	set(value):
@@ -95,8 +95,10 @@ func _create_ray(angle: float, idx: int, collision_mask: int):
 	
 	if collision_mask == 1:
 		ray.set_name("wall_target ray " + str(idx))
+		ray.show() 
 	else:
 		ray.set_name("agent_wall ray " + str(idx))
+		ray.hide()
 	ray.enabled = true
 	ray.collide_with_bodies = collide_with_bodies
 	ray.collide_with_areas = collide_with_areas
