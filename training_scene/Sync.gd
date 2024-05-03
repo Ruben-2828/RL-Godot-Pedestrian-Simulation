@@ -2,11 +2,10 @@ extends Node
 
 # --fixed-fps 2000 --disable-render-loop
 
-@export var tps: int = 3
-
 enum ControlModes { HUMAN, TRAINING, ONNX_INFERENCE }
 @export var control_mode: ControlModes = ControlModes.TRAINING
-@export_range(1, 10, 1, "or_greater") var action_repeat := 8
+## Ticks between each communication with python
+@export_range(1, 10, 1, "or_greater") var action_repeat := Constants.TICKS_PER_STEP
 @export_range(0, 10, 0.1, "or_greater") var speed_up := 1.0
 @export var onnx_model_path := ""
 
@@ -49,10 +48,11 @@ var _action_space: Dictionary
 var _action_space_inference: Array[Dictionary] = []
 var _obs_space: Dictionary
 
+@onready var parent = $".."
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	await get_tree().root.ready
+	await parent.ready
 	get_tree().set_pause(true)
 	_initialize()
 	await get_tree().create_timer(1.0).timeout
@@ -62,8 +62,8 @@ func _ready():
 func _initialize():
 	_get_agents()
 	args = _get_args()
-	Engine.physics_ticks_per_second = _get_speedup() * 60  # Replace with function body.
-	Engine.time_scale = _get_speedup() * 1.0
+	Engine.physics_ticks_per_second = _get_speedup() * Constants.PHYSICS_TICKS_PER_SECONDS
+	Engine.time_scale = _get_speedup() * Constants.TIME_SCALE
 	prints(
 		"physics ticks",
 		Engine.physics_ticks_per_second,
@@ -82,6 +82,17 @@ func _initialize():
 	_set_action_repeat()
 	initialized = true
 
+func reload_agents():
+	all_agents = []
+	agents_training = []
+	agents_inference = []
+	agents_heuristic = []
+	
+	print("reloading agents")
+	
+	_get_agents()
+	_set_heuristic("human", all_agents)
+	
 
 func _initialize_training_agents():
 	if agents_training.size() > 0:
@@ -166,7 +177,7 @@ func _initialize_demo_recording():
 func _physics_process(_delta):
 	# two modes, human control, agent control
 	# pause tree, send obs, get actions, set actions, unpause tree
-
+		
 	_demo_record_process()
 
 	if n_action_steps % action_repeat != 0:
@@ -181,6 +192,7 @@ func _physics_process(_delta):
 
 
 func _training_process():
+	
 	if connected:
 		get_tree().set_pause(true)
 
@@ -198,14 +210,14 @@ func _training_process():
 			need_to_send_obs = false
 			var reward = _get_reward_from_agents()
 			var done = _get_done_from_agents()
-			#_reset_agents_if_done() # this ensures the new observation is from the next env instance : NEEDS REFACTOR
+			_reset_agents_if_done() # this ensures the new observation is from the next env instance : NEEDS REFACTOR
 
 			var obs = _get_obs_from_agents(agents_training)
 
 			var reply = {"type": "step", "obs": obs, "reward": reward, "done": done}
 			_send_dict_as_json_message(reply)
 
-		var handled = handle_message()
+		var _handled = handle_message()
 
 
 func _inference_process():
@@ -302,7 +314,7 @@ func _set_agent_mode(agent: Node):
 
 
 func _get_agents():
-	all_agents = get_tree().get_nodes_in_group("AGENT")
+	all_agents = get_tree().get_nodes_in_group(Constants.AGENT_GROUP)
 	for agent in all_agents:
 		_set_agent_mode(agent)
 
@@ -384,7 +396,7 @@ func connect_to_server():
 	# "localhost" was not working on windows VM, had to use the IP
 	var ip = "127.0.0.1"
 	var port = _get_port()
-	var connect = stream.connect_to_host(ip, port)
+	var _connect = stream.connect_to_host(ip, port)
 	stream.set_no_delay(true)  # TODO check if this improves performance or not
 	stream.poll()
 	# Fetch the status until it is either connected (2) or failed to connect (3)
@@ -436,7 +448,8 @@ func handle_message() -> bool:
 	var message = _get_dict_json_message()
 	if message["type"] == "close":
 		print("received close message, closing game")
-		get_tree().quit()
+		#get_tree().quit()		# Da commentare se voglio runnare con curriculum come main scene
+		parent.finish()
 		get_tree().set_pause(false)
 		return true
 
@@ -521,14 +534,15 @@ func _get_done_from_agents(agents: Array = agents_training):
 
 
 func _set_agent_actions(actions, agents: Array = all_agents):
+	
 	for i in range(len(actions)):
 		agents[i].set_action(actions[i])
 
 
-func clamp_array(arr: Array, min: float, max: float):
+func clamp_array(arr: Array, min_val: float, max_val: float):
 	var output: Array = []
 	for a in arr:
-		output.append(clamp(a, min, max))
+		output.append(clamp(a, min_val, max_val))
 	return output
 
 
@@ -540,11 +554,12 @@ func _notification(what):
 	if what == NOTIFICATION_PREDELETE:
 		var json_string = JSON.stringify(demo_trajectories, "", false)
 		var file = FileAccess.open(expert_demo_save_path, FileAccess.WRITE)
-
+		
+		var error: Error
 		if not file:
-			var error: Error = FileAccess.get_open_error()
+			error = FileAccess.get_open_error()
 			assert(not error, "There was an error opening the file: %d" % error)
 
 		file.store_line(json_string)
-		var error = file.get_error()
+		error = file.get_error()
 		assert(not error, "There was an error after trying to write to the file: %d" % error)

@@ -3,65 +3,79 @@
 extends Node3D
 class_name LevelManager
 
-@export_category("Curriculum")
-@export var player: Player
-@export_group("scenes")
-@export var levels_path: Array[PackedScene]
+## Signal emmitted on episode end
+signal notify_end_episode(reward: float)
 
+@onready var pedestrian = $Pedestrian
 
-var level_start_area: Array
-var level_goal: Array
-var levels: Array[Node3D]
+var level_start_area: Node3D
+var level_goal: Node3D
+var level: Node3D = null
 
-func _ready():
-	var pos_count = 0 
-	for l in levels_path:
-		var level = l.instantiate()
-		level.position = Vector3(pos_count * 50, 0, 0)
-		add_child(level)
-		levels.append(level)
-		pos_count += 1
-	
-	level_start_area.resize(levels.size())
-	level_goal.resize(levels.size())
+## Returns spawn current position
+func get_spawn_position() -> Vector3:
+	return level_start_area.global_position
 
-	for level_id in range(0, levels.size()):
-		var spawn = levels[level_id].find_child("Spawn")
-		level_start_area[level_id] = spawn
-		
-		var final_target = levels[level_id].find_child("FinalTarget")
-		final_target.body_entered.connect(player._on_final_target_entered)
-		level_goal[level_id] = final_target
-		
-		var targets := []
-		targets.append_array(levels[level_id].find_children("Target*", "Area3D"))
-		targets.append_array(levels[level_id].find_children("ObliqueTarget*", "Area3D"))
-		#print(targets)
-		for t in targets:
-			t.custom_body_entered.connect(player._on_target_entered)
+## Returns spawn current rotation
+func get_spawn_rotation() -> Vector3:
+	return level_start_area.rotation
 
-#func randomize_goal(level_id: int):
-	#var active_goal_id = randi_range(0, level_goal[level_id].size() - 1)
-	#for goal_id in range(0, level_goal[level_id].size()):
-		#var goal = level_goal[level_id][goal_id]
-		#if goal_id == active_goal_id:
-			#goal.visible = true
-			#goal.process_mode = Node.PROCESS_MODE_INHERIT
-		#else:
-			#goal.visible = false
-			#goal.process_mode = Node.PROCESS_MODE_DISABLED
-	#return level_goal[level_id][active_goal_id].global_transform
-
-func get_spawn_position(level: int) -> Vector3:
-	var area = level_start_area[level]
-	#TODO: randomize the spawn position inside a Area 
-	return area.global_position
-	
-func get_spawn_rotation(level: int) -> Vector3:
-	var area = level_start_area[level]
-	return area.rotation
-	
-func set_reward_label_text(reward: float, level: int) -> void:
-	var label = levels[level].find_child('Reward')
+## Set current reward in reward label
+func set_reward_label_text(reward: float) -> void:
+	var label = level.find_child('Reward')
 	var formatted_str = 'reward: %4.4f' % reward
 	label.set_text(formatted_str)
+
+## Removes old level, and add the new one
+func set_current_level(level_scene: PackedScene) -> void:
+	
+	if level != null:
+		level.queue_free()
+	
+	# Instantiating level scene
+	level = level_scene.instantiate()
+	level.set_name("CurrentLevel")
+	add_child(level)
+	
+	# Setup spawn
+	level_start_area = level.find_child("Spawn")
+	
+	# Setup objective
+	var objective = level.find_child("Objective")
+	if objective != null: 
+		print(objective.visible)
+		objective.custom_body_entered.connect(pedestrian._on_objective_entered)
+	
+	# Setup final target
+	level_goal = level.find_child("FinalTarget")
+	level_goal.body_entered.connect(pedestrian._on_final_target_entered)
+	
+	# Setup random target when end episode
+	var random_target = level.find_child("RandomTarget")
+	if random_target != null: notify_end_episode.connect(random_target.get_end_episode)
+
+	# Setup random spawn when end episode
+	var random_spawn = level.find_child("RandomSpawn")
+	if random_spawn != null: notify_end_episode.connect(random_spawn.get_end_episode)
+	
+	# Setup random objective when end episode
+	var random_objective = level.find_child("RandomObjective")
+	if random_objective != null: notify_end_episode.connect(random_objective.get_end_episode)
+	
+	# Setup intermediate targets
+	var targets := []
+	targets.append_array(level.find_children("Target*", "Area3D"))
+	targets.append_array(level.find_children("ObliqueTarget*", "Area3D"))
+	#print(targets)
+	for t in targets:
+		t.custom_body_entered.connect(pedestrian._on_target_entered)
+	
+	# Setup ai controller
+	var ai_controller = pedestrian.find_child("AIController3D")
+	ai_controller.set_reset_after(level.max_steps)
+		
+	pedestrian.reset()
+
+## Function called to emit signal for episode ending
+func _notify_end_episode(reward: float) -> void:
+	notify_end_episode.emit(reward)

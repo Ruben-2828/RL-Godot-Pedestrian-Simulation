@@ -1,0 +1,76 @@
+[gd_scene load_steps=13 format=3 uid="uid://dt3iugehhi0e0"]
+
+[ext_resource type="Script" path="res://environment/levels_scripts/level.gd" id="1_hlo0w"]
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/composed/room.tscn" id="1_wij65"]
+[ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/basic/other/reward.tscn" id="2_hg2o6"]
+[ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/basic/other/spawn.tscn" id="3_qfw6y"]
+[ext_resource type="PackedScene" uid="uid://cjdi121yppx7d" path="res://objects/basic/targets/objective.tscn" id="4_p8pvq"]
+[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/basic/targets/final_target.tscn" id="5_4r8sb"]
+[ext_resource type="Script" path="res://environment/levels_scripts/random_objective.gd" id="5_p0d4n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_560ct"]
+size = Vector3(16, 1, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lp354"]
+size = Vector3(16, 1, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r06xl"]
+size = Vector3(16, 1, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ul05f"]
+size = Vector3(5, 1, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0spuf"]
+size = Vector3(5, 1, 4)
+
+[node name="StartObjectiveRandom" type="Node3D"]
+script = ExtResource("1_hlo0w")
+min_reward = 4.7
+max_steps = 200
+
+[node name="Room" parent="." instance=ExtResource("1_wij65")]
+
+[node name="Reward" parent="." instance=ExtResource("2_hg2o6")]
+
+[node name="RandomSpawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+
+[node name="Area" type="Area3D" parent="RandomSpawn"]
+
+[node name="CollisionShapeSpawn" type="CollisionShape3D" parent="RandomSpawn/Area"]
+shape = SubResource("BoxShape3D_560ct")
+
+[node name="Spawn" parent="RandomSpawn" instance=ExtResource("3_qfw6y")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.1, 0)
+
+[node name="RandomObjective" type="Node3D" parent="."]
+script = ExtResource("5_p0d4n")
+randomize_position = true
+
+[node name="AreaTop" type="Area3D" parent="RandomObjective"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+
+[node name="CollisionShapeObjectiveTop" type="CollisionShape3D" parent="RandomObjective/AreaTop"]
+shape = SubResource("BoxShape3D_lp354")
+
+[node name="AreaBottom" type="Area3D" parent="RandomObjective"]
+
+[node name="CollisionShapeObjectiveBottom" type="CollisionShape3D" parent="RandomObjective/AreaBottom"]
+shape = SubResource("BoxShape3D_r06xl")
+
+[node name="AreaLeft" type="Area3D" parent="RandomObjective"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, -3.5)
+
+[node name="CollisionShapeObjectiveLeft" type="CollisionShape3D" parent="RandomObjective/AreaLeft"]
+shape = SubResource("BoxShape3D_ul05f")
+
+[node name="AreaRight" type="Area3D" parent="RandomObjective"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, -3.5)
+
+[node name="CollisionShapeObjectiveRight" type="CollisionShape3D" parent="RandomObjective/AreaRight"]
+shape = SubResource("BoxShape3D_0spuf")
+
+[node name="Objective" parent="RandomObjective" instance=ExtResource("4_p8pvq")]
+
+[node name="FinalTarget" parent="." instance=ExtResource("5_4r8sb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.5)

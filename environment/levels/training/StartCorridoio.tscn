@@ -1,0 +1,64 @@
+[gd_scene load_steps=12 format=3 uid="uid://b8geyovhk1ni8"]
+
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/composed/room.tscn" id="1_g7vly"]
+[ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/basic/other/reward.tscn" id="1_qwv06"]
+[ext_resource type="Script" path="res://environment/levels_scripts/level.gd" id="1_ve5yw"]
+[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/basic/targets/final_target.tscn" id="3_ihbio"]
+[ext_resource type="PackedScene" uid="uid://d4fgcwkmt0s5a" path="res://objects/composed/hallway.tscn" id="4_0rn2s"]
+[ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/basic/other/spawn.tscn" id="4_tniy7"]
+[ext_resource type="Script" path="res://environment/levels_scripts/random_spawn.gd" id="5_5r3ro"]
+[ext_resource type="Script" path="res://environment/levels_scripts/random_target.gd" id="7_uxgn2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k7ysl"]
+size = Vector3(2, 0, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ynucy"]
+size = Vector3(3, 0, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mpudw"]
+size = Vector3(3, 0, 3)
+
+[node name="StartCorridor" type="Node3D"]
+script = ExtResource("1_ve5yw")
+min_reward = 1.0
+max_steps = 300
+
+[node name="Room" parent="." instance=ExtResource("1_g7vly")]
+
+[node name="Corridor" parent="." instance=ExtResource("4_0rn2s")]
+
+[node name="Reward" parent="." instance=ExtResource("1_qwv06")]
+
+[node name="RandomSpawn" type="Node3D" parent="."]
+script = ExtResource("5_5r3ro")
+randomize_position = true
+randomize_rotation = true
+
+[node name="Spawn" parent="RandomSpawn" instance=ExtResource("4_tniy7")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
+
+[node name="Area" type="Area3D" parent="RandomSpawn"]
+
+[node name="CollisionShapeSpawn" type="CollisionShape3D" parent="RandomSpawn/Area"]
+shape = SubResource("BoxShape3D_k7ysl")
+
+[node name="RandomTarget" type="Node3D" parent="."]
+script = ExtResource("7_uxgn2")
+
+[node name="FinalTarget" parent="RandomTarget" instance=ExtResource("3_ihbio")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="AreaUp" type="Area3D" parent="RandomTarget"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="CollisionShapeTargetUp" type="CollisionShape3D" parent="RandomTarget/AreaUp"]
+shape = SubResource("BoxShape3D_ynucy")
+
+[node name="AreaDown" type="Area3D" parent="RandomTarget"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="CollisionShapeTargetDown" type="CollisionShape3D" parent="RandomTarget/AreaDown"]
+shape = SubResource("BoxShape3D_mpudw")
+
+[connection signal="body_entered" from="RandomTarget/FinalTarget" to="RandomSpawn" method="_on_final_target_body_entered"]
+[connection signal="body_entered" from="RandomTarget/FinalTarget" to="RandomTarget" method="_on_final_target_body_entered"]
