@@ -10,7 +10,7 @@ size = Vector3(3.2, 10, 0.3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_2ntv2"]
 size = Vector3(3.2, 10, 0.3)
 
-[node name="Target" type="Area3D" groups=["targets"]]
+[node name="Target" type="Area3D" groups=["TARGET"]]
 script = ExtResource("1_8kxuc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

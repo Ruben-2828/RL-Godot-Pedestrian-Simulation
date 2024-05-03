@@ -1,7 +1,7 @@
 extends CurriculumPhase
 
 ## Number of instances used for each level
-@export var instances_per_level: int = 3
+@export var instances_per_level: int = Constants.RETRAINING_INSTANCES_PER_LEVEL
 
 ## Spawns all the level managers
 func spawn_level_managers() -> void:

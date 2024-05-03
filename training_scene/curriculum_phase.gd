@@ -10,7 +10,7 @@ var level_progress: int = 0
 
 const level_manager_scene: PackedScene = preload("res://environment/level_manager.tscn")
 var level_managers: Array = []
-const level_position_offset: int = 50
+const level_position_offset: int = Constants.LEVELS_OFFSET
 
 @onready var sync = $Sync
 

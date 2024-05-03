@@ -4,9 +4,9 @@ class_name Pedestrian
 @onready var level_manager = $".."
 
 ## Pedestrian minimum speed
-@export var speed_min: float = 0.0
+@export var speed_min: float = Constants.MIN_SPEED
 ## Pedestrian maximum speed 
-@export var speed_max: float = 1.7
+@export var speed_max: float = Constants.MAX_SPEED
 var speed: float
 
 @onready var raycast_sensor = $RayCastSensor3D
@@ -25,6 +25,8 @@ var finished: bool = false
 func _ready():
 	speed = speed_min
 	ai_controller_3d.init(self)
+	
+	add_to_group(Constants.PEDESTRIAN_GROUP)
 
 ## Reset the pedestrian state (position, rotation...) and notify end of episode
 func reset():
@@ -59,52 +61,79 @@ func set_speed(action_0) -> void:
 
 ## Set pedestrian direction 
 func set_direction(action_1) -> void:
-	rotation.y += deg_to_rad(action_1 * 25)
+	rotation.y += deg_to_rad(action_1 * Constants.ROTATION_SENS)
 
 ## Calculates total reward per time step
 func compute_rewards() -> void:
 	var tot_reward: float = 0
 	
 	# Reward loss for timestep
-	tot_reward -= 0.0001
+	tot_reward += Constants.TIMESTEP_REW
 	
 	if finished:
 		if final_target_reached:
 			# Reward for reaching final target
-			tot_reward += 6
+			tot_reward += Constants.FINAL_TARGET_REW
 		else:
 			# Reward loss for finishing time steps
-			tot_reward -= 6.0
+			tot_reward += Constants.END_OF_TIMESTEPS_REW
 	else:
 		# Reward for reaching an intermediate target
 		if target_reached:
 			if last_target_reached in reached_targets:
-				tot_reward -= 1.0
+				tot_reward += Constants.INTERMEDIATE_TARGET_ALREADY_REACHED_REW
 			else:
 				reached_targets.append(last_target_reached)
-				tot_reward += 0.5
+				tot_reward += Constants.INTERMEDIATE_TARGET_FIRST_TIME_REW
 			target_reached = false
 			last_target_reached = null
 
 		# Get observation for proxemity rewards
 		var obs = raycast_sensor.get_observation()
+		var walls_and_targets = obs[0]
+		var agents_and_walls = obs[1]
 		
 		# Reward loss when wall is too near
 		var wall_near = false
-		for i in range(0, obs.size(), 4):
-			if obs[i+1] == 1 and obs[i] < 0.6 / raycast_sensor.ray_length:
+		for i in range(0, Constants.WALL_COLLISION_RAYS * 4, 4):
+			if walls_and_targets[i+1] == 1 and walls_and_targets[i] < Constants.WALL_COLLISION_DISTANCE / raycast_sensor.ray_length:
 				wall_near = true
 				break
 		if wall_near:
-			tot_reward -= 0.5
+			tot_reward += Constants.WALL_COLLISION_REW
+			
+		# Reward loss when agent is too near
+		var agent_near = false
+		for i in range(0, Constants.AGENT_COLLISION_SMALL_RAYS * 4, 4):
+			if agents_and_walls[i+1] == 1 and agents_and_walls[i] < Constants.AGENT_COLLISION_SMALL_DISTANCE / raycast_sensor.ray_length:
+				agent_near = true
+				break
+		if agent_near:
+			tot_reward += Constants.AGENT_COLLISION_SMALL_REW
+			
+		if not agent_near:
+			for i in range(0, Constants.AGENT_COLLISION_MEDIUM_RAYS * 4, 4):
+				if agents_and_walls[i+1] == 1 and agents_and_walls[i] < Constants.AGENT_COLLISION_MEDIUM_DISTANCE / raycast_sensor.ray_length:
+					agent_near = true
+					break
+			if agent_near:
+				tot_reward += Constants.AGENT_COLLISION_MEDIUM_REW
+				
+		if not agent_near:
+			for i in range(0, Constants.AGENT_COLLISION_LARGE_RAYS * 4, 4):
+				if agents_and_walls[i+1] == 1 and agents_and_walls[i] < Constants.AGENT_COLLISION_LARGE_DISTANCE / raycast_sensor.ray_length:
+					agent_near = true
+					break
+			if agent_near:
+				tot_reward += Constants.AGENT_COLLISION_LARGE_REW
 		
 		# Reward loss when detecting no targets
 		var no_target = true
-		for i in range(0, obs.size(), 4):
-			if obs[i+2] == 1 or obs[i+3] == 1:
+		for i in range(0, walls_and_targets.size(), 4):
+			if walls_and_targets[i+2] == 1 or walls_and_targets[i+3] == 1:
 				no_target = false
 		if no_target:
-			tot_reward -= 0.5
+			tot_reward += Constants.NO_TARGET_VISIBLE_REW
 			
 	cumulated_reward += tot_reward
 	ai_controller_3d.reward += tot_reward
@@ -137,3 +166,9 @@ func _on_objective_entered(area, body):
 		print("Obiettivo raggiunto, area attiva: ", area.active)
 		
 
+
+func get_speed_norm() -> float:
+	if speed_max == 0.0:
+		return 0.0
+		
+	return (speed - speed_min) / (speed_max - speed_min)

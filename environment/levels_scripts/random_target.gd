@@ -6,7 +6,7 @@ extends Node3D
 var areas: Array = []
 
 # offset to place the target within the area
-var offset = 1.5
+var offset = Constants.TARGET_OFFSET
 
 @export_category("Target Settings")
 @export var randomize_position = false

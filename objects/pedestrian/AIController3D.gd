@@ -1,18 +1,18 @@
 extends AIController3D
 
 ## Ticks for each step
-@export var step_ticks: int = 20
+@export var ticks_per_step: int = Constants.TICKS_PER_STEP
 var tick_counter: int = 0
 
 func _ready():
-	add_to_group("AGENT")
+	add_to_group(Constants.AGENT_GROUP)
 	
 func _physics_process(_delta):
 	
 	tick_counter += 1
 	tick_counter %= Engine.physics_ticks_per_second
 	
-	if tick_counter % step_ticks == 0:
+	if tick_counter % ticks_per_step == 0:
 	
 		n_steps += 1
 		if n_steps >= reset_after:
@@ -37,9 +37,10 @@ func get_obs() -> Dictionary:
 	var speed_norm = (_player.speed - _player.speed_min) / (_player.speed_max - _player.speed_min) if _player.speed_max != 0 else 0
 	
 	obs.append(speed_norm)
-	obs.append_array(raycast_obs)
+	obs.append_array(raycast_obs[0])
+	obs.append_array(raycast_obs[1])
 	
-	#print(obs)
+	#print(obs.size())
 	return {'obs': obs}
 
 ## Returns current reward
