@@ -37,6 +37,9 @@ func set_current_level(level_scene: PackedScene) -> void:
 	level.set_name("CurrentLevel")
 	add_child(level)
 	
+	# Setup pedestrian
+	pedestrian.speed_max = Constants.MAX_SPEED if level.can_move else 0.0
+	
 	# Setup spawn
 	level_start_area = level.find_child("Spawn")
 	

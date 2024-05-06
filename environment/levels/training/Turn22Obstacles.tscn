@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/basic/other/spawn.tscn" id="7_t548a"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/basic/other/reward.tscn" id="8_uddr0"]
 
-
 [node name="Turn22Obstacles" type="Node3D"]
 script = ExtResource("1_2o06v")
 min_reward = 1.0

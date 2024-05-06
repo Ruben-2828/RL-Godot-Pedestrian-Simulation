@@ -30,7 +30,6 @@ func set_current_level() -> void:
 	for lm in level_managers:
 		lm.set_current_level(levels_path[current_level_idx])
 		
-		lm.pedestrian.speed_max = Constants.MAX_SPEED if current_level.can_move else 0.0
 
 ## Change current level if success condition is reached
 func check_level_progress(reward: float) -> void:

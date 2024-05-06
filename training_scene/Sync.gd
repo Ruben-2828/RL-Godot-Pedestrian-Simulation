@@ -448,7 +448,7 @@ func handle_message() -> bool:
 	var message = _get_dict_json_message()
 	if message["type"] == "close":
 		print("received close message, closing game")
-		#get_tree().quit()		# Da commentare se voglio runnare con curriculum come main scene
+		get_tree().quit()
 		parent.finish()
 		get_tree().set_pause(false)
 		return true

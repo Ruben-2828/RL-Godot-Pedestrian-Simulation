@@ -12,7 +12,6 @@ var speed: float
 @onready var raycast_sensor = $RayCastSensor3D
 @onready var ai_controller_3d = $AIController3D
 @onready var animation_tree = $AnimationTree
-@onready var proxemic_arc_near = $ProxemicArcNear
 
 var cumulated_reward: float = 0.0
 var final_target_reached: bool = false
@@ -164,8 +163,6 @@ func _on_objective_entered(area, body):
 		var collision = area.find_child("CollisionShape3D")
 		collision.disabled = true
 		print("Obiettivo raggiunto, area attiva: ", area.active)
-		
-
 
 func get_speed_norm() -> float:
 	if speed_max == 0.0:

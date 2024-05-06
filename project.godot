@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="RL-Godot-Pedestrian-Simulation"
-run/main_scene="res://training_scene/curriculum.tscn"
+run/main_scene="res://training_scene/level_batchs/StartSpawnerBatch.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
