@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cqswiih3najh4"]
 
 [ext_resource type="Script" path="res://environment/levels_scripts/level.gd" id="1_rvhqc"]
-[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/composed/room.tscn" id="1_xtyxy"]
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room/room.tscn" id="1_xtyxy"]
 [ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/basic/other/spawn.tscn" id="3_dc1wo"]
 [ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/basic/targets/final_target.tscn" id="4_0yh6p"]
 [ext_resource type="Script" path="res://environment/levels_scripts/random_spawn.gd" id="4_a7nvs"]
@@ -21,14 +21,12 @@ max_steps = 100
 
 [node name="Room" parent="." instance=ExtResource("1_xtyxy")]
 
-[node name="Reward" parent="." instance=ExtResource("4_xdkto")]
-
 [node name="RandomSpawn" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 script = ExtResource("4_a7nvs")
 
 [node name="Spawn" parent="RandomSpawn" instance=ExtResource("3_dc1wo")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -1.74446)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -2.2)
 
 [node name="Area" type="Area3D" parent="RandomSpawn"]
 
@@ -40,7 +38,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 script = ExtResource("6_btu87")
 
 [node name="FinalTarget" parent="RandomTarget" instance=ExtResource("4_0yh6p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.5)
 
 [node name="Area" type="Area3D" parent="RandomTarget"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
@@ -48,6 +46,8 @@ collision_layer = 2
 
 [node name="CollisionShapeTarget" type="CollisionShape3D" parent="RandomTarget/Area"]
 shape = SubResource("BoxShape3D_r06sj")
+
+[node name="Reward" parent="." instance=ExtResource("4_xdkto")]
 
 [connection signal="body_entered" from="RandomTarget/FinalTarget" to="RandomSpawn" method="_on_final_target_body_entered"]
 [connection signal="body_entered" from="RandomTarget/FinalTarget" to="RandomTarget" method="_on_final_target_body_entered"]

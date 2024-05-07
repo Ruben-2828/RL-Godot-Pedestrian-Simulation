@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://cdb484d6vy8fg"]
+
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room/room.tscn" id="1_atlnn"]
+[ext_resource type="Script" path="res://environment/levels_scripts/level.gd" id="1_byy28"]
+[ext_resource type="Script" path="res://environment/levels_scripts/random_spawn.gd" id="2_xxwah"]
+[ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/basic/other/spawn.tscn" id="3_eq6bo"]
+[ext_resource type="Script" path="res://environment/levels_scripts/random_passage.gd" id="4_3l7uv"]
+[ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/basic/targets/target.tscn" id="5_8rerf"]
+[ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/basic/solid/internal_wall.tscn" id="6_xkj45"]
+[ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/basic/other/reward.tscn" id="7_grym3"]
+[ext_resource type="PackedScene" uid="uid://cxphmcstta3bi" path="res://objects/basic/targets/large_final_target.tscn" id="8_7yfgd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qxyba"]
+size = Vector3(18, 0, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_odv1f"]
+size = Vector3(16, 1, 4)
+
+[node name="NarrowDoorDouble" type="Node3D"]
+script = ExtResource("1_byy28")
+
+[node name="Room" parent="." instance=ExtResource("1_atlnn")]
+
+[node name="RandomSpawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+script = ExtResource("2_xxwah")
+
+[node name="Spawn" parent="RandomSpawn" instance=ExtResource("3_eq6bo")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+
+[node name="Area" type="Area3D" parent="RandomSpawn"]
+collision_layer = 2
+
+[node name="CollisionShapeSpawn" type="CollisionShape3D" parent="RandomSpawn/Area"]
+shape = SubResource("BoxShape3D_qxyba")
+
+[node name="RandomPassage" type="Node3D" parent="."]
+script = ExtResource("4_3l7uv")
+randomize_position = true
+
+[node name="Area" type="Area3D" parent="RandomPassage"]
+
+[node name="CollisionShapePassage" type="CollisionShape3D" parent="RandomPassage/Area"]
+shape = SubResource("BoxShape3D_odv1f")
+
+[node name="Passage" type="Node3D" parent="RandomPassage"]
+
+[node name="Target" parent="RandomPassage/Passage" instance=ExtResource("5_8rerf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="InternalWall" parent="RandomPassage/Passage" instance=ExtResource("6_xkj45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 0)
+
+[node name="InternalWall2" parent="RandomPassage/Passage" instance=ExtResource("6_xkj45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 0)
+
+[node name="Reward" parent="." instance=ExtResource("7_grym3")]
+
+[node name="FinalTarget" parent="." instance=ExtResource("8_7yfgd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+
+[node name="RandomSpawn2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+script = ExtResource("2_xxwah")
+
+[node name="Spawn" parent="RandomSpawn2" instance=ExtResource("3_eq6bo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Area" type="Area3D" parent="RandomSpawn2"]
+collision_layer = 2
+
+[node name="CollisionShapeSpawn" type="CollisionShape3D" parent="RandomSpawn2/Area"]
+shape = SubResource("BoxShape3D_qxyba")
+
+[node name="FinalTarget2" parent="." instance=ExtResource("8_7yfgd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)

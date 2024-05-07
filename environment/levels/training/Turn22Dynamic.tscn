@@ -1,48 +1,98 @@
 [gd_scene load_steps=9 format=3 uid="uid://sao1y1f2xovn"]
 
 [ext_resource type="Script" path="res://environment/levels_scripts/turn_level.gd" id="1_6hd3p"]
-[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/composed/room.tscn" id="2_4vy5g"]
-[ext_resource type="PackedScene" uid="uid://xxxss1722ru3" path="res://objects/composed/curve.tscn" id="3_yt6s3"]
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room/room.tscn" id="2_4vy5g"]
 [ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/basic/targets/target.tscn" id="4_yp7j6"]
+[ext_resource type="PackedScene" uid="uid://o6t0iemlmcj5" path="res://objects/basic/targets/oblique_target.tscn" id="5_ch5gh"]
 [ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/basic/targets/final_target.tscn" id="5_fbjab"]
-[ext_resource type="PackedScene" uid="uid://bu2fbby520l60" path="res://objects/composed/oblique_targets.tscn" id="6_bf144"]
 [ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/basic/other/spawn.tscn" id="7_p3jbp"]
+[ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/basic/solid/internal_wall.tscn" id="8_l3s06"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/basic/other/reward.tscn" id="8_xrnbg"]
 
 [node name="Turn22Dynamic" type="Node3D"]
 script = ExtResource("1_6hd3p")
 min_reward = 10.0
-max_steps = 1500
+max_steps = 300
 
 [node name="Room" parent="." instance=ExtResource("2_4vy5g")]
 
-[node name="Curve" parent="." instance=ExtResource("3_yt6s3")]
-
 [node name="Target" type="Node3D" parent="."]
 
-[node name="Target2" parent="Target" instance=ExtResource("4_yp7j6")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 8)
+[node name="Mid" type="Node3D" parent="Target"]
 
-[node name="Target3" parent="Target" instance=ExtResource("4_yp7j6")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 4)
+[node name="Target2" parent="Target/Mid" instance=ExtResource("4_yp7j6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 8.43055)
 
-[node name="Target4" parent="Target" instance=ExtResource("4_yp7j6")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+[node name="Target3" parent="Target/Mid" instance=ExtResource("4_yp7j6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 4.90642)
 
-[node name="Target5" parent="Target" instance=ExtResource("4_yp7j6")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -4)
+[node name="Target4" parent="Target/Mid" instance=ExtResource("4_yp7j6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 1.74485)
 
-[node name="Target6" parent="Target" instance=ExtResource("4_yp7j6")]
-transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, 0, 0, -8)
+[node name="Target5" parent="Target/Mid" instance=ExtResource("4_yp7j6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -1.71129)
+
+[node name="Target6" parent="Target/Mid" instance=ExtResource("4_yp7j6")]
+transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, 0, 0, -4.80488)
+
+[node name="Target7" parent="Target/Mid" instance=ExtResource("4_yp7j6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -8.5)
+
+[node name="Oblique" type="Node3D" parent="Target"]
+
+[node name="ObliqueTarget1" parent="Target/Oblique" instance=ExtResource("5_ch5gh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -8.5, 0, -8.5)
+
+[node name="ObliqueTarget2" parent="Target/Oblique" instance=ExtResource("5_ch5gh")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -8.5, 0, -5.4)
+
+[node name="ObliqueTarget3" parent="Target/Oblique" instance=ExtResource("5_ch5gh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -8.5, 0, -1.4946)
+
+[node name="ObliqueTarget4" parent="Target/Oblique" instance=ExtResource("5_ch5gh")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -8.5, 0, 1.6054)
+
+[node name="ObliqueTarget5" parent="Target/Oblique" instance=ExtResource("5_ch5gh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -8.5, 0, 5.33879)
+
+[node name="ObliqueTarget6" parent="Target/Oblique" instance=ExtResource("5_ch5gh")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -8.5, 0, 8.43879)
+
+[node name="ObliqueTarget7" parent="Target/Oblique" instance=ExtResource("5_ch5gh")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 8.5, 0, -4.896)
+
+[node name="ObliqueTarget8" parent="Target/Oblique" instance=ExtResource("5_ch5gh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 8.5, 0, -1.796)
+
+[node name="ObliqueTarget9" parent="Target/Oblique" instance=ExtResource("5_ch5gh")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 8.5, 0, 1.8354)
+
+[node name="ObliqueTarget10" parent="Target/Oblique" instance=ExtResource("5_ch5gh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 8.5, 0, 4.9354)
 
 [node name="FinalTarget" parent="Target" instance=ExtResource("5_fbjab")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8)
-
-[node name="ObliqueTargets" parent="Target" instance=ExtResource("6_bf144")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, -8.5)
 
 [node name="Spawn" parent="." instance=ExtResource("7_p3jbp")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 0, 8)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 0, 8.4)
 
 [node name="Reward" parent="." instance=ExtResource("8_xrnbg")]
+
+[node name="Curve" type="Node3D" parent="."]
+
+[node name="InternalWall" parent="Curve" instance=ExtResource("8_l3s06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6.7)
+
+[node name="InternalWall2" parent="Curve" instance=ExtResource("8_l3s06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3.4)
+
+[node name="InternalWall3" parent="Curve" instance=ExtResource("8_l3s06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0.1)
+
+[node name="InternalWall4" parent="Curve" instance=ExtResource("8_l3s06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3.4)
+
+[node name="InternalWall5" parent="Curve" instance=ExtResource("8_l3s06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6.7)
 
 [connection signal="body_entered" from="Target/FinalTarget" to="." method="_on_final_target_body_entered"]

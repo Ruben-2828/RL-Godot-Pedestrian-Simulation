@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dxyb7sq0yuht7"]
 
 [ext_resource type="Script" path="res://environment/levels_scripts/level.gd" id="1_8c7ch"]
-[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/composed/room.tscn" id="1_l50t2"]
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room/room.tscn" id="1_l50t2"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/basic/other/reward.tscn" id="2_raind"]
 [ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/basic/other/spawn.tscn" id="3_d3vwl"]
 [ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/basic/targets/final_target.tscn" id="4_wp108"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/basic/targets/target.tscn" id="6_0jlao"]
 [ext_resource type="Script" path="res://environment/levels_scripts/random_spawn.gd" id="6_hc5ep"]
 [ext_resource type="Script" path="res://environment/levels_scripts/random_target.gd" id="7_db86f"]
+
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7vc4k"]
 size = Vector3(16, 1, 4)

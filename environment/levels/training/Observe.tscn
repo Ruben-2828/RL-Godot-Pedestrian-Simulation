@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://q3e7hyhywbdo"]
 
-[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/composed/room.tscn" id="1_ov2rc"]
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room/room.tscn" id="1_ov2rc"]
 [ext_resource type="Script" path="res://environment/levels_scripts/level.gd" id="1_r36qn"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/basic/other/reward.tscn" id="2_wfb10"]
 [ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/basic/other/spawn.tscn" id="3_5vh16"]
@@ -44,8 +44,6 @@ can_move = false
 
 [node name="Room" parent="." instance=ExtResource("1_ov2rc")]
 
-[node name="Reward" parent="." instance=ExtResource("2_wfb10")]
-
 [node name="Pillars" type="Node3D" parent="."]
 
 [node name="Pillar2" parent="Pillars" instance=ExtResource("4_8gosj")]
@@ -86,7 +84,7 @@ script = ExtResource("5_q7u1m")
 randomize_position = true
 
 [node name="FinalTarget" parent="RandomTarget" instance=ExtResource("5_dclvl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.01315, 0, 5.04835)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -3, 0, 5)
 
 [node name="Area1" type="Area3D" parent="RandomTarget"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -7)
@@ -146,5 +144,7 @@ randomize_rotation = true
 
 [node name="CollisionShapeSpawn" type="CollisionShape3D" parent="RandomSpawn/Area"]
 shape = SubResource("BoxShape3D_wffeo")
+
+[node name="Reward" parent="." instance=ExtResource("2_wfb10")]
 
 [connection signal="body_entered" from="RandomTarget/FinalTarget" to="RandomTarget" method="_on_final_target_body_entered"]

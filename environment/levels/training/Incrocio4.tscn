@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://dukr625tbkfpv"]
+
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room/room.tscn" id="1_bbj20"]
+[ext_resource type="Script" path="res://environment/levels_scripts/level.gd" id="1_e7k3o"]
+[ext_resource type="PackedScene" uid="uid://nqwb7at8dpui" path="res://objects/basic/solid/small_internal_wall.tscn" id="2_pgtc0"]
+[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/basic/targets/final_target.tscn" id="3_r7g73"]
+[ext_resource type="Script" path="res://environment/levels_scripts/random_spawn.gd" id="4_rvex2"]
+[ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/basic/other/spawn.tscn" id="5_vb58w"]
+[ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/basic/other/reward.tscn" id="7_x3s66"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l34cc"]
+size = Vector3(4, 0, 4)
+
+[node name="Incrocio4" type="Node3D"]
+script = ExtResource("1_e7k3o")
+
+[node name="Room" parent="." instance=ExtResource("1_bbj20")]
+
+[node name="Intersection" type="Node3D" parent="."]
+
+[node name="SmallInternalWall" parent="Intersection" instance=ExtResource("2_pgtc0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 2.5)
+
+[node name="SmallInternalWall2" parent="Intersection" instance=ExtResource("2_pgtc0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.5, 0, 6.5)
+
+[node name="SmallInternalWall3" parent="Intersection" instance=ExtResource("2_pgtc0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, -2.5)
+
+[node name="SmallInternalWall4" parent="Intersection" instance=ExtResource("2_pgtc0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.5, 0, -6.5)
+
+[node name="SmallInternalWall5" parent="Intersection" instance=ExtResource("2_pgtc0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 2.5)
+
+[node name="SmallInternalWall6" parent="Intersection" instance=ExtResource("2_pgtc0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5, 0, 6.5)
+
+[node name="SmallInternalWall7" parent="Intersection" instance=ExtResource("2_pgtc0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, -2.5)
+
+[node name="SmallInternalWall8" parent="Intersection" instance=ExtResource("2_pgtc0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5, 0, -6.5)
+
+[node name="FinalTarget" parent="." instance=ExtResource("3_r7g73")]
+transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, 0, -1.75037, -8.96951)
+
+[node name="FinalTarget2" parent="." instance=ExtResource("3_r7g73")]
+transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, 8.97, -1.75, 0)
+
+[node name="RandomSpawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+script = ExtResource("4_rvex2")
+randomize_position = true
+randomize_rotation = true
+
+[node name="Spawn" parent="RandomSpawn" instance=ExtResource("5_vb58w")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Area" type="Area3D" parent="RandomSpawn"]
+
+[node name="CollisionShapeSpawn" type="CollisionShape3D" parent="RandomSpawn/Area"]
+shape = SubResource("BoxShape3D_l34cc")
+
+[node name="RandomSpawn2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+script = ExtResource("4_rvex2")
+randomize_position = true
+randomize_rotation = true
+
+[node name="Spawn" parent="RandomSpawn2" instance=ExtResource("5_vb58w")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
+
+[node name="Area" type="Area3D" parent="RandomSpawn2"]
+
+[node name="CollisionShapeSpawn" type="CollisionShape3D" parent="RandomSpawn2/Area"]
+shape = SubResource("BoxShape3D_l34cc")
+
+[node name="Reward" parent="." instance=ExtResource("7_x3s66")]

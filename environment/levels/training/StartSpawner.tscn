@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://2h58qvivqje8"]
 
-[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/composed/room.tscn" id="1_ahbwp"]
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room/room.tscn" id="1_ahbwp"]
 [ext_resource type="Script" path="res://environment/levels_scripts/level.gd" id="1_wtqlq"]
 [ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/basic/targets/final_target.tscn" id="3_0tn1y"]
 [ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/basic/other/spawn.tscn" id="3_l21b1"]
@@ -20,8 +20,6 @@ min_reward = 2.0
 max_steps = 150
 
 [node name="Room" parent="." instance=ExtResource("1_ahbwp")]
-
-[node name="Reward" parent="." instance=ExtResource("4_v1bjl")]
 
 [node name="RandomSpawn" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
@@ -48,6 +46,8 @@ collision_layer = 2
 
 [node name="CollisionShapeTarget" type="CollisionShape3D" parent="RandomTarget/Area"]
 shape = SubResource("BoxShape3D_p3wlc")
+
+[node name="Reward" parent="." instance=ExtResource("4_v1bjl")]
 
 [connection signal="body_entered" from="RandomTarget/FinalTarget" to="RandomSpawn" method="_on_final_target_body_entered"]
 [connection signal="body_entered" from="RandomTarget/FinalTarget" to="RandomTarget" method="_on_final_target_body_entered"]

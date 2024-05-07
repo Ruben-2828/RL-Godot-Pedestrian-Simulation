@@ -23,7 +23,7 @@ func get_spawn_rotation() -> Vector3:
 ## Set current reward in reward label
 func set_reward_label_text(reward: float) -> void:
 	var label = level.find_child('Reward')
-	var formatted_str = 'reward: %4.4f' % reward
+	var formatted_str = 'Score: %4.4f' % reward
 	label.set_text(formatted_str)
 
 ## Removes old level, and add the new one

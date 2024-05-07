@@ -1,13 +1,14 @@
 [gd_scene load_steps=9 format=3 uid="uid://dpm8k21ug2gw"]
 
 [ext_resource type="Script" path="res://environment/levels_scripts/level.gd" id="1_aketi"]
-[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/composed/room.tscn" id="1_loxx0"]
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room/room.tscn" id="1_loxx0"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/basic/other/reward.tscn" id="2_ll73c"]
 [ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/basic/solid/internal_wall.tscn" id="3_6xysi"]
 [ext_resource type="PackedScene" uid="uid://cjdi121yppx7d" path="res://objects/basic/targets/objective.tscn" id="4_etjpo"]
 [ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/basic/targets/target.tscn" id="5_0pakb"]
 [ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/basic/targets/final_target.tscn" id="6_xllgs"]
 [ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/basic/other/spawn.tscn" id="7_o4wem"]
+
 
 [node name="Path" type="Node3D"]
 script = ExtResource("1_aketi")

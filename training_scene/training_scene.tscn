@@ -1,12 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://buytp40i8mx1h"]
+[gd_scene load_steps=6 format=3 uid="uid://buytp40i8mx1h"]
 
 [ext_resource type="Script" path="res://training_scene/training_scene.gd" id="1_2y50e"]
 [ext_resource type="Script" path="res://training_scene/Sync.gd" id="9_ebl31"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uefqa"]
+ground_bottom_color = Color(0.378467, 0.327557, 0.268518, 1)
+
+[sub_resource type="Sky" id="Sky_1ys38"]
+sky_material = SubResource("ProceduralSkyMaterial_uefqa")
+
 [sub_resource type="Environment" id="Environment_u2qca"]
+background_mode = 1
+background_color = Color(0.403448, 0.365258, 0.30378, 1)
+sky = SubResource("Sky_1ys38")
 
 [node name="TrainingScene" type="Node3D"]
 script = ExtResource("1_2y50e")
+batch_size = 16
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("9_ebl31")
@@ -19,6 +29,6 @@ environment = SubResource("Environment_u2qca")
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, -0.5)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
 projection = 1
 size = 22.0
