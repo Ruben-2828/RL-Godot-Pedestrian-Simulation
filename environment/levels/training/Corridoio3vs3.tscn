@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://environment/levels_scripts/level.gd" id="1_kw5q6"]
 [ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room/room.tscn" id="1_yh8ia"]
-[ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/basic/solid/wall.tscn" id="2_aiq1b"]
-[ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/basic/other/reward.tscn" id="3_2oilk"]
-[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/basic/targets/final_target.tscn" id="3_sue36"]
+[ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/solid/wall.tscn" id="2_aiq1b"]
+[ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="3_2oilk"]
+[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target.tscn" id="3_sue36"]
 [ext_resource type="Script" path="res://environment/levels_scripts/random_spawn.gd" id="6_ku3rj"]
-[ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/basic/other/spawn.tscn" id="7_cm7pt"]
+[ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/other/spawn.tscn" id="7_cm7pt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q177w"]
 size = Vector3(2, 0, 5)

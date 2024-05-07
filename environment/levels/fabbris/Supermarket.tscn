@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=3 uid="uid://dwnpk0otsy4cd"]
 
-[ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/basic/other/reward.tscn" id="2_y8bax"]
+[ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="2_y8bax"]
 [ext_resource type="PackedScene" uid="uid://cq8ikm115hcli" path="res://objects/room/room30.tscn" id="3_cycc1"]
-[ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/basic/solid/internal_wall.tscn" id="3_hemfg"]
-[ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/basic/solid/wall.tscn" id="4_d3bo0"]
-[ext_resource type="PackedScene" uid="uid://cjdi121yppx7d" path="res://objects/basic/targets/objective.tscn" id="5_bqm7r"]
-[ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/basic/targets/target.tscn" id="6_8qm22"]
-[ext_resource type="PackedScene" uid="uid://o6t0iemlmcj5" path="res://objects/basic/targets/oblique_target.tscn" id="7_ud16e"]
-[ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/basic/other/spawn.tscn" id="8_453f2"]
-[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/basic/targets/final_target.tscn" id="8_r7hww"]
+[ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/solid/internal_wall.tscn" id="3_hemfg"]
+[ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/solid/wall.tscn" id="4_d3bo0"]
+[ext_resource type="PackedScene" uid="uid://cjdi121yppx7d" path="res://objects/targets/objective.tscn" id="5_bqm7r"]
+[ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/targets/target.tscn" id="6_8qm22"]
+[ext_resource type="PackedScene" uid="uid://o6t0iemlmcj5" path="res://objects/targets/oblique_target.tscn" id="7_ud16e"]
+[ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/other/spawn.tscn" id="8_453f2"]
+[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target.tscn" id="8_r7hww"]
 
 
 [node name="Supermarket" type="Node3D"]

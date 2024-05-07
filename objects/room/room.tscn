@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dpy68brsjfakd"]
 
-[ext_resource type="PackedScene" uid="uid://bft1ftd208fq5" path="res://objects/basic/solid/floor.tscn" id="1_1w7ud"]
-[ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/basic/solid/wall.tscn" id="2_bbpmi"]
+[ext_resource type="PackedScene" uid="uid://bft1ftd208fq5" path="res://objects/solid/floor.tscn" id="1_1w7ud"]
+[ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/solid/wall.tscn" id="2_bbpmi"]
 
 [node name="Room" type="Node3D"]
 

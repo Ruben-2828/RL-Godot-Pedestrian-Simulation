@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room/room.tscn" id="1_ov2rc"]
 [ext_resource type="Script" path="res://environment/levels_scripts/level.gd" id="1_r36qn"]
-[ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/basic/other/reward.tscn" id="2_wfb10"]
-[ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/basic/other/spawn.tscn" id="3_5vh16"]
-[ext_resource type="PackedScene" uid="uid://uh0p4etdr17o" path="res://objects/basic/solid/pillar.tscn" id="4_8gosj"]
-[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/basic/targets/final_target.tscn" id="5_dclvl"]
+[ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="2_wfb10"]
+[ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/other/spawn.tscn" id="3_5vh16"]
+[ext_resource type="PackedScene" uid="uid://uh0p4etdr17o" path="res://objects/solid/pillar.tscn" id="4_8gosj"]
+[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target.tscn" id="5_dclvl"]
 [ext_resource type="Script" path="res://environment/levels_scripts/random_target.gd" id="5_q7u1m"]
 [ext_resource type="Script" path="res://environment/levels_scripts/random_spawn.gd" id="7_ygrai"]
 
