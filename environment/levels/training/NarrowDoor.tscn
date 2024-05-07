@@ -46,7 +46,7 @@ shape = SubResource("BoxShape3D_ugjbo")
 [node name="Passage" type="Node3D" parent="RandomPassage"]
 
 [node name="Target" parent="RandomPassage/Passage" instance=ExtResource("4_bd0yt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0252056, 0)
 
 [node name="InternalWall" parent="RandomPassage/Passage" instance=ExtResource("3_ll2sj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 0)
