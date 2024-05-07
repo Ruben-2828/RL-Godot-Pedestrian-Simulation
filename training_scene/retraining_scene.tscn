@@ -1,12 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbodk7jdc4sl"]
+[gd_scene load_steps=7 format=3 uid="uid://dbodk7jdc4sl"]
 
 [ext_resource type="Script" path="res://training_scene/retraining_scene.gd" id="1_o4v4c"]
 [ext_resource type="Script" path="res://training_scene/Sync.gd" id="2_hiqds"]
+[ext_resource type="PackedScene" uid="uid://2h58qvivqje8" path="res://environment/levels/training/StartSpawner.tscn" id="3_y82wj"]
+[ext_resource type="PackedScene" uid="uid://q3e7hyhywbdo" path="res://environment/levels/training/Observe.tscn" id="4_fh87c"]
+[ext_resource type="PackedScene" uid="uid://21knmqhiskih" path="res://environment/levels/training/Turn22Obstacles.tscn" id="7_gsj7m"]
 
 [sub_resource type="Environment" id="Environment_b6llf"]
 
 [node name="RetrainingScene" type="Node3D"]
 script = ExtResource("1_o4v4c")
+instances_per_level = 5
+levels_path = Array[PackedScene]([ExtResource("3_y82wj"), ExtResource("4_fh87c"), ExtResource("7_gsj7m")])
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("2_hiqds")
@@ -19,6 +24,6 @@ environment = SubResource("Environment_b6llf")
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 14.2879)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 24.295, 20, 12.5)
 projection = 1
-size = 69.468
+size = 47.0

@@ -1,19 +1,16 @@
 [gd_scene load_steps=9 format=3 uid="uid://6qoewixf66h3"]
 
-[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room/room.tscn" id="1_4ukmo"]
-[ext_resource type="Script" path="res://environment/levels_scripts/turn_level.gd" id="1_uu6xp"]
-[ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="2_hd517"]
-[ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/other/spawn.tscn" id="3_1o2ys"]
-[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target.tscn" id="4_qmnee"]
-[ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/solid/wall.tscn" id="5_jtubb"]
-[ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/targets/target.tscn" id="6_exn3j"]
-[ext_resource type="PackedScene" uid="uid://o6t0iemlmcj5" path="res://objects/targets/oblique_target.tscn" id="7_henja"]
-
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/composed/room.tscn" id="1_4ukmo"]
+[ext_resource type="Script" path="res://environment/levels_scripts/Omega.gd" id="1_6qwgj"]
+[ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/basic/other/reward.tscn" id="2_hd517"]
+[ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/basic/other/spawn.tscn" id="3_1o2ys"]
+[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/basic/targets/final_target.tscn" id="4_qmnee"]
+[ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/basic/solid/wall.tscn" id="5_jtubb"]
+[ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/basic/targets/target.tscn" id="6_exn3j"]
+[ext_resource type="PackedScene" uid="uid://o6t0iemlmcj5" path="res://objects/basic/targets/oblique_target.tscn" id="7_henja"]
 
 [node name="Omega" type="Node3D"]
-script = ExtResource("1_uu6xp")
-min_reward = -100.0
-success = 100
+script = ExtResource("1_6qwgj")
 
 [node name="Room" parent="." instance=ExtResource("1_4ukmo")]
 

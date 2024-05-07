@@ -1,5 +1,8 @@
+import os
+from pathlib import Path
 from typing import Collection, Optional
 
+from godot_rl.wrappers.onnx.stable_baselines_export import export_ppo_model_as_onnx
 from godot_rl.wrappers.stable_baselines_wrapper import StableBaselinesGodotEnv
 from stable_baselines3 import PPO
 from stable_baselines3.common.callbacks import CallbackList
@@ -21,26 +24,33 @@ class Runner:
 
         levels = self.load_levels()
 
+        # Training phase
         for level in levels:
 
-            self.run_level(level)
+            self.train_level(level)
+
+        # Retraining phase
+        self.retraining()
+
+        # Exporting onnx model
+        self.handle_onnx_export()
 
     def load_levels(self) -> Collection[Level]:
         config_parser = ConfigParser(self.config_path)
         assert config_parser.validate_curriculum(), "Invalid configuration file"
         return config_parser.get_levels()
 
-    def run_level(self, level: Level) -> None:
+    def train_level(self, level: Level) -> None:
 
         print(f"Running level: {level.name}")
 
         # Setting up environment
-        monitor_logs_path = Constants.OUTPUT_PATH + f"tmp_{level.get_name()}/"
+        monitor_logs_path = Constants.OUTPUT_PATH + f"tmp_{level.name}/"
         env = StableBaselinesGodotEnv(
             env_path=level.level_file,
-            show_window=True,
+            show_window=Constants.SHOW_WINDOW,
         )
-        vec_env = VecMonitor(env, filename=monitor_logs_path + level.get_name())
+        vec_env = VecMonitor(env, filename=monitor_logs_path + level.name)
 
         # Setting up model
         if self.model is None:
@@ -90,3 +100,34 @@ class Runner:
             tensorboard_log=Constants.OUTPUT_PATH + "logs/sb3",
             device='cuda',
         )
+
+    def retraining(self) -> None:
+        print("Retraining phase")
+
+        # Setting up environment
+        monitor_logs_path = Constants.OUTPUT_PATH + f"tmp_retraining/"
+        env = StableBaselinesGodotEnv(
+            env_path="RetrainingScene.exe",
+            show_window=Constants.SHOW_WINDOW,
+        )
+        vec_env = VecMonitor(env, filename=monitor_logs_path + "retraining")
+
+        # Setting up model
+        self.load_model(vec_env)
+
+        # Learn and save the model
+        self.model.learn(total_timesteps=50_000)
+        self.model.save(Constants.BASE_PATH + "model_tmp.zip")
+
+        # Closing environment
+        try:
+            print("closing env")
+            vec_env.close()
+        except Exception as e:
+            print("Exception while closing env: ", e)
+
+    def handle_onnx_export(self) -> None:
+
+        os.makedirs(Path(Constants.DEFAULT_ONNX_EXPORT_PATH).parent, exist_ok=True)
+        print("Exporting onnx to: " + os.path.abspath(Constants.DEFAULT_ONNX_EXPORT_PATH))
+        export_ppo_model_as_onnx(self.model, Constants.DEFAULT_ONNX_EXPORT_PATH)

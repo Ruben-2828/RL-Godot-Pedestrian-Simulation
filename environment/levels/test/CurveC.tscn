@@ -11,8 +11,7 @@
 
 [node name="CurveC" type="Node3D"]
 script = ExtResource("1_12my6")
-min_reward = -100.0
-success = 100
+min_reward = 9.0
 
 [node name="Room" parent="." instance=ExtResource("1_7dvx3")]
 

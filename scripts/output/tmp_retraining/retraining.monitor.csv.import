@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c7opr4k2eshw0"
+
+[deps]
+
+files=["res://scripts/output/tmp_retraining/retraining.monitor. env.translation"]
+
+source_file="res://scripts/output/tmp_retraining/retraining.monitor.csv"
+dest_files=["res://scripts/output/tmp_retraining/retraining.monitor. env.translation"]
+
+[params]
+
+compress=true
+delimiter=0

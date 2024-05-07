@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dpw16kq5dqfpt"
+
+[deps]
+
+files=["res://scripts/output/tmp_StartSpawner/StartSpawner.monitor. env.translation"]
+
+source_file="res://scripts/output/tmp_StartSpawner/StartSpawner.monitor.csv"
+dest_files=["res://scripts/output/tmp_StartSpawner/StartSpawner.monitor. env.translation"]
+
+[params]
+
+compress=true
+delimiter=0
