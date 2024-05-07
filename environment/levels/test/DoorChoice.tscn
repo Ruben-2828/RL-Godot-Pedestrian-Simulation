@@ -18,8 +18,8 @@ size = Vector3(16, 1, 4)
 
 [node name="DoorChoice" type="Node3D"]
 script = ExtResource("1_8c7ch")
-min_reward = 10.0
-success = 10
+min_reward = 3.5
+max_steps = 100
 
 [node name="Room" parent="." instance=ExtResource("1_l50t2")]
 

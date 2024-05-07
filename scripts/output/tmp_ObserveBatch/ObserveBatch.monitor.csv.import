@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b0wvhfs1ym0gv"
+
+[deps]
+
+files=["res://scripts/output/tmp_ObserveBatch/ObserveBatch.monitor. env.translation"]
+
+source_file="res://scripts/output/tmp_ObserveBatch/ObserveBatch.monitor.csv"
+dest_files=["res://scripts/output/tmp_ObserveBatch/ObserveBatch.monitor. env.translation"]
+
+[params]
+
+compress=true
+delimiter=0

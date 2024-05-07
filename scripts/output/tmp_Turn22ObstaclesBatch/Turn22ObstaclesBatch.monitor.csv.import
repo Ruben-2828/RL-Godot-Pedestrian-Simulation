@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dwoixlieypq7p"
+
+[deps]
+
+files=["res://scripts/output/tmp_Turn22ObstaclesBatch/Turn22ObstaclesBatch.monitor. env.translation"]
+
+source_file="res://scripts/output/tmp_Turn22ObstaclesBatch/Turn22ObstaclesBatch.monitor.csv"
+dest_files=["res://scripts/output/tmp_Turn22ObstaclesBatch/Turn22ObstaclesBatch.monitor. env.translation"]
+
+[params]
+
+compress=true
+delimiter=0

@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://cwsoifpbtnjtl"
+
+[deps]
+
+files=["res://scripts/output/tmp_StartEzBatch/StartEzBatch.monitor. env.translation"]
+
+source_file="res://scripts/output/tmp_StartEzBatch/StartEzBatch.monitor.csv"
+dest_files=["res://scripts/output/tmp_StartEzBatch/StartEzBatch.monitor. env.translation"]
+
+[params]
+
+compress=true
+delimiter=0

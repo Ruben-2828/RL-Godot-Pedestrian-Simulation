@@ -10,6 +10,3 @@ class Level:
         self.level_file = level_file
         self.episodes_for_mean = episodes_for_mean
         self.cycles = cycles
-
-    def get_name(self) -> str:
-        return splitext(self.level_file)[0]
