@@ -32,6 +32,12 @@ randomize_position = true
 [node name="CollisionShapeSpawn" type="CollisionShape3D" parent="RandomSpawn/Area"]
 shape = SubResource("BoxShape3D_acgbu")
 
+[node name="PedestrianController" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 5)
+script = ExtResource("7_1mnqm")
+
+[node name="Pedestrian" parent="PedestrianController" instance=ExtResource("7_8bin2")]
+
 [node name="RandomTarget" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
 script = ExtResource("3_tkpil")

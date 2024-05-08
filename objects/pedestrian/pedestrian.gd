@@ -153,7 +153,6 @@ func _on_final_target_entered(body):
 	if body == self:
 		finished = true
 		final_target_reached = true
-
 		
 ## function executed when the pedestrian enters an intermediate target
 func _on_target_entered(area, body):
