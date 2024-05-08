@@ -6,4 +6,4 @@ func _on_final_target_body_entered(body):
 		var rotate = randi_range(0,1) 
 		find_child("Curve").rotation.x = deg_to_rad(180 * rotate)
 		find_child("Target").rotation.x = deg_to_rad(180 * rotate)
-		find_child("Spawn").position.z = 8.4 if rotate == 0 else -8.4
+		find_child("PedestrianController").position.z = 8.5 if rotate == 0 else -8.5

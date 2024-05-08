@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://21knmqhiskih"]
+[gd_scene load_steps=10 format=3 uid="uid://21knmqhiskih"]
 
 [ext_resource type="Script" path="res://environment/levels_scripts/turn_level.gd" id="1_2o06v"]
 [ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room/room.tscn" id="2_wl4p2"]
 [ext_resource type="PackedScene" uid="uid://o6t0iemlmcj5" path="res://objects/targets/oblique_target.tscn" id="5_cjwtp"]
 [ext_resource type="PackedScene" uid="uid://bv7gefew8eumw" path="res://objects/solid/obstacle.tscn" id="5_lacfu"]
 [ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target.tscn" id="6_lxwxn"]
-[ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/other/spawn.tscn" id="7_t548a"]
+[ext_resource type="Script" path="res://environment/levels_scripts/pedestrian_controller.gd" id="8_ligss"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="8_uddr0"]
 [ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/solid/internal_wall.tscn" id="9_2rwol"]
+[ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="9_iuqhb"]
 
 [node name="Turn22Obstacles" type="Node3D"]
 script = ExtResource("1_2o06v")
@@ -109,9 +110,6 @@ transform = Transform3D(0.707066, 0, 0.842649, 0, 1.1, 0, -0.842649, 0, 0.707066
 [node name="FinalTarget" parent="Target" instance=ExtResource("6_lxwxn")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -8.5, -1, -8.2)
 
-[node name="Spawn" parent="." instance=ExtResource("7_t548a")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 0.1, 8.4)
-
 [node name="Reward" parent="." instance=ExtResource("8_uddr0")]
 
 [node name="Curve" type="Node3D" parent="."]
@@ -127,5 +125,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
 
 [node name="InternalWall4" parent="Curve" instance=ExtResource("9_2rwol")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6)
+
+[node name="PedestrianController" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.5, 0, 8.5)
+script = ExtResource("8_ligss")
+
+[node name="Pedestrian" parent="PedestrianController" instance=ExtResource("9_iuqhb")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [connection signal="body_entered" from="Target/FinalTarget" to="." method="_on_final_target_body_entered"]

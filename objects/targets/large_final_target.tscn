@@ -9,7 +9,7 @@ size = Vector3(20, 10, 2)
 material = ExtResource("1_xqjtt")
 size = Vector3(20, 10, 2)
 
-[node name="FinalTarget" type="Area3D"]
+[node name="FinalTarget" type="Area3D" groups=["TARGET"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_ujf8h")

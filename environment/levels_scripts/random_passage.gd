@@ -6,7 +6,7 @@ extends Node3D
 var areas: Array = []
 
 @export_category("Passage Settings")
-@export var randomize_position = false
+@export var randomize_position = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

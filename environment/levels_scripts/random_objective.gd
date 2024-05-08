@@ -9,7 +9,7 @@ var areas: Array = []
 var offset = 1.5
 
 @export_category("Objective Settings")
-@export var randomize_position = false
+@export var randomize_position = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -3,13 +3,12 @@
 [ext_resource type="Script" path="res://objects/targets/target.gd" id="1_8kxuc"]
 [ext_resource type="Material" uid="uid://ddc5mqmn53adg" path="res://material/target_material.tres" id="1_kd2om"]
 
-
 [sub_resource type="BoxMesh" id="BoxMesh_ii45t"]
 material = ExtResource("1_kd2om")
-size = Vector3(3.2, 10, 0.3)
+size = Vector3(3.5, 10, 0.3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2ntv2"]
-size = Vector3(3.2, 10, 0.3)
+size = Vector3(3.5, 10, 0.3)
 
 [node name="Target" type="Area3D" groups=["TARGET"]]
 script = ExtResource("1_8kxuc")

@@ -145,7 +145,8 @@ func _on_final_target_entered(body):
 		finished = true
 		final_target_reached = true
 		disable_pedestrian(self)
-	
+		pedestrian_controller.set_end_episode(self)
+		pedestrian_controller.check_end_episode()
 		
 		
 ## function executed when the pedestrian enters an intermediate target

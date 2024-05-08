@@ -1,13 +1,14 @@
-[gd_scene load_steps=18 format=3 uid="uid://q3e7hyhywbdo"]
+[gd_scene load_steps=19 format=3 uid="uid://q3e7hyhywbdo"]
 
 [ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room/room.tscn" id="1_ov2rc"]
 [ext_resource type="Script" path="res://environment/levels_scripts/level.gd" id="1_r36qn"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="2_wfb10"]
-[ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/other/spawn.tscn" id="3_5vh16"]
 [ext_resource type="PackedScene" uid="uid://uh0p4etdr17o" path="res://objects/solid/pillar.tscn" id="4_8gosj"]
 [ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target.tscn" id="5_dclvl"]
 [ext_resource type="Script" path="res://environment/levels_scripts/random_target.gd" id="5_q7u1m"]
 [ext_resource type="Script" path="res://environment/levels_scripts/random_spawn.gd" id="7_ygrai"]
+[ext_resource type="Script" path="res://environment/levels_scripts/pedestrian_controller.gd" id="8_3anii"]
+[ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="9_c24s0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jcpvo"]
 size = Vector3(4, 0, 4)
@@ -138,13 +139,17 @@ shape = SubResource("BoxShape3D_c4g3a")
 script = ExtResource("7_ygrai")
 randomize_rotation = true
 
-[node name="Spawn" parent="RandomSpawn" instance=ExtResource("3_5vh16")]
-
 [node name="Area" type="Area3D" parent="RandomSpawn"]
 
 [node name="CollisionShapeSpawn" type="CollisionShape3D" parent="RandomSpawn/Area"]
 shape = SubResource("BoxShape3D_wffeo")
 
 [node name="Reward" parent="." instance=ExtResource("2_wfb10")]
+
+[node name="PedestrianController" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+script = ExtResource("8_3anii")
+
+[node name="Pedestrian" parent="PedestrianController" instance=ExtResource("9_c24s0")]
 
 [connection signal="body_entered" from="RandomTarget/FinalTarget" to="RandomTarget" method="_on_final_target_body_entered"]
