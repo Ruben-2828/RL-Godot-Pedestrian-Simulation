@@ -11,6 +11,8 @@ size = Vector3(3.5, 10, 0.3)
 size = Vector3(3.5, 10, 0.3)
 
 [node name="Target" type="Area3D" groups=["TARGET"]]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_8kxuc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

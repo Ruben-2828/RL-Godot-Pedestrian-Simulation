@@ -10,6 +10,8 @@ material = ExtResource("1_xqjtt")
 size = Vector3(20, 10, 2)
 
 [node name="FinalTarget" type="Area3D" groups=["TARGET"]]
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_ujf8h")

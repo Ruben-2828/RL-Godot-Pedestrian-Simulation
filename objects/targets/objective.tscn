@@ -3,7 +3,6 @@
 [ext_resource type="Material" uid="uid://dta66x2ffalur" path="res://material/objective.tres" id="1_emw74"]
 [ext_resource type="Script" path="res://objects/targets/objective.gd" id="1_fuar5"]
 
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_6i34d"]
 size = Vector3(3, 10, 3)
 
@@ -12,6 +11,8 @@ material = ExtResource("1_emw74")
 size = Vector3(3, 10, 3)
 
 [node name="Objective" type="Area3D" groups=["targets"]]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_fuar5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

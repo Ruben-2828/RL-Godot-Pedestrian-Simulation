@@ -17,7 +17,6 @@ size = Vector3(15, 0, 6)
 
 [node name="StartSpawner" type="Node3D"]
 script = ExtResource("1_wtqlq")
-min_reward = 2.0
 max_steps = 150
 
 [node name="Room" parent="." instance=ExtResource("1_ahbwp")]
@@ -37,6 +36,8 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 script = ExtResource("7_1mnqm")
 
 [node name="Pedestrian" parent="PedestrianController" instance=ExtResource("7_8bin2")]
+collision_layer = 6
+collision_mask = 7
 
 [node name="RandomTarget" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
@@ -44,6 +45,8 @@ script = ExtResource("3_tkpil")
 randomize_position = true
 
 [node name="FinalTarget" parent="RandomTarget" instance=ExtResource("3_0tn1y")]
+collision_layer = 4
+collision_mask = 4
 
 [node name="Area" type="Area3D" parent="RandomTarget"]
 collision_layer = 2
@@ -52,12 +55,6 @@ collision_layer = 2
 shape = SubResource("BoxShape3D_p3wlc")
 
 [node name="Reward" parent="." instance=ExtResource("4_v1bjl")]
-
-[node name="PedestrianController" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 5)
-script = ExtResource("7_1mnqm")
-
-[node name="Pedestrian" parent="PedestrianController" instance=ExtResource("7_8bin2")]
 
 [connection signal="body_entered" from="RandomTarget/FinalTarget" to="RandomSpawn" method="_on_final_target_body_entered"]
 [connection signal="body_entered" from="RandomTarget/FinalTarget" to="RandomTarget" method="_on_final_target_body_entered"]

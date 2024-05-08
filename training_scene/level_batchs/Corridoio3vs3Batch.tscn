@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bc4au0b4yf1ae"]
+
+[ext_resource type="Script" path="res://training_scene/level_batchs/level_batch.gd" id="1_53uly"]
+[ext_resource type="PackedScene" uid="uid://quswshhny1ow" path="res://environment/levels/training/Corridoio3vs3.tscn" id="2_78ull"]
+[ext_resource type="Script" path="res://training_scene/Sync.gd" id="3_hexqo"]
+
+[sub_resource type="Environment" id="Environment_t7hli"]
+
+[node name="Corridoio3vs3Batch" type="Node3D"]
+script = ExtResource("1_53uly")
+level = ExtResource("2_78ull")
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("3_hexqo")
+speed_up = 5.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_t7hli")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, -0.5)
+projection = 1
+size = 22.0

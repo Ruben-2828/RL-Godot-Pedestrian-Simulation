@@ -32,6 +32,8 @@ shape = SubResource("BoxShape3D_ugjbo")
 
 [node name="Target" parent="RandomPassage/Passage" instance=ExtResource("4_bd0yt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0252056, 0)
+collision_layer = 4
+collision_mask = 4
 
 [node name="InternalWall" parent="RandomPassage/Passage" instance=ExtResource("3_ll2sj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 0)
@@ -41,17 +43,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 0)
 
 [node name="Reward" parent="." instance=ExtResource("10_8u685")]
 
-[node name="FinalTarget" parent="." groups=["TARGET"] instance=ExtResource("6_alo7g")]
+[node name="FinalTarget" parent="." instance=ExtResource("6_alo7g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+collision_layer = 4
+collision_mask = 4
 
 [node name="PedestrianController" type="Node3D" parent="."]
 script = ExtResource("8_sojt5")
 
 [node name="Pedestrian" parent="PedestrianController" instance=ExtResource("8_32bky")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 5)
+collision_layer = 6
+collision_mask = 7
 
 [node name="Pedestrian2" parent="PedestrianController" instance=ExtResource("8_32bky")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3, 0, 8)
+collision_layer = 6
+collision_mask = 7
 
 [node name="Pedestrian3" parent="PedestrianController" instance=ExtResource("8_32bky")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3, 0, 8)
+collision_layer = 6
+collision_mask = 7

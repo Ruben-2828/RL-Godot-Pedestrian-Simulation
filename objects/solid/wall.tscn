@@ -11,6 +11,7 @@ margin = 0.0
 size = Vector3(22, 10, 1)
 
 [node name="Wall" type="StaticBody3D" groups=["WALL"]]
+collision_mask = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_nrwsj")

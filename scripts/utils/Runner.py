@@ -49,6 +49,7 @@ class Runner:
         env = StableBaselinesGodotEnv(
             env_path=level.level_file,
             show_window=Constants.SHOW_WINDOW,
+            n_parallel=3,
         )
         vec_env = VecMonitor(env, filename=monitor_logs_path + level.name)
 

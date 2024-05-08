@@ -41,9 +41,13 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5, 0
 
 [node name="FinalTarget" parent="." instance=ExtResource("3_r7g73")]
 transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, 0, -1.75037, -8.96951)
+collision_layer = 4
+collision_mask = 4
 
 [node name="FinalTarget2" parent="." instance=ExtResource("3_r7g73")]
 transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, 8.97, -1.75, 0)
+collision_layer = 8
+collision_mask = 8
 
 [node name="Reward" parent="." instance=ExtResource("7_x3s66")]
 
@@ -51,25 +55,41 @@ transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, 8.97, -1.75, 0)
 script = ExtResource("6_vmjy8")
 
 [node name="Pedestrian" parent="PedestrianController" instance=ExtResource("7_djnoe")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, 5)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, 6)
+collision_layer = 6
+collision_mask = 7
 
 [node name="Pedestrian2" parent="PedestrianController" instance=ExtResource("7_djnoe")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, 8)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, 9)
+collision_layer = 6
+collision_mask = 7
 
 [node name="Pedestrian3" parent="PedestrianController" instance=ExtResource("7_djnoe")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0, 8)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0, 9)
+collision_layer = 6
+collision_mask = 7
 
 [node name="Pedestrian4" parent="PedestrianController" instance=ExtResource("7_djnoe")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0, 5)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0, 6)
+collision_layer = 6
+collision_mask = 7
 
 [node name="Pedestrian5" parent="PedestrianController" instance=ExtResource("7_djnoe")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0, -1)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0, -1)
+collision_layer = 10
+collision_mask = 11
 
 [node name="Pedestrian6" parent="PedestrianController" instance=ExtResource("7_djnoe")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0, 1)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0, 1)
+collision_layer = 10
+collision_mask = 11
 
 [node name="Pedestrian7" parent="PedestrianController" instance=ExtResource("7_djnoe")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 0, 1)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9, 0, 1)
+collision_layer = 10
+collision_mask = 11
 
 [node name="Pedestrian8" parent="PedestrianController" instance=ExtResource("7_djnoe")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 0, -1)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9, 0, -1)
+collision_layer = 10
+collision_mask = 11

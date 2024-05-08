@@ -9,7 +9,6 @@
 
 [node name="StartEZ" type="Node3D"]
 script = ExtResource("1_rvhqc")
-min_reward = 5.8
 max_steps = 100
 
 [node name="Room" parent="." instance=ExtResource("1_xtyxy")]
@@ -19,8 +18,12 @@ script = ExtResource("8_us75h")
 
 [node name="Pedestrian" parent="PedestrianController" instance=ExtResource("9_l85fg")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+collision_layer = 6
+collision_mask = 7
 
 [node name="FinalTarget" parent="." instance=ExtResource("4_0yh6p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.5)
+collision_layer = 4
+collision_mask = 4
 
 [node name="Reward" parent="." instance=ExtResource("4_xdkto")]

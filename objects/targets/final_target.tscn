@@ -11,6 +11,8 @@ margin = 0.0
 size = Vector3(3, 10, 3)
 
 [node name="FinalTarget" type="Area3D" groups=["TARGET"]]
+collision_layer = 0
+collision_mask = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_juq7a")

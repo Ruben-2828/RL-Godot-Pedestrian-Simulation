@@ -21,16 +21,30 @@ func set_level(level_scene: PackedScene) -> void:
 		pedestrian.speed_max = Constants.MAX_SPEED if level.can_move else 0.0
 	
 	# Setup objective
-	var objective = level.find_child("Objective")
-	if objective != null:
-		for pedestrian in pedestrians:
-			objective.custom_body_entered.connect(pedestrian._on_objective_entered)
+	var objectives = level.find_children("Objective*")
+	if objectives != []:
+		for objective in objectives:
+			for pedestrian in pedestrians:
+				if pedestrian.collision_mask & objective.collision_mask != 0:
+					objective.custom_body_entered.connect(pedestrian._on_objective_entered)
 	
 	# Setup final target
-	var level_goal = level.find_child("FinalTarget")
+	var level_goals = level.find_children("FinalTarget*")
 	for pedestrian in pedestrians:
-		level_goal.body_entered.connect(pedestrian._on_final_target_entered)
+		for level_goal in level_goals:
+			if pedestrian.collision_mask & level_goal.collision_mask != 0:
+				level_goal.body_entered.connect(pedestrian._on_final_target_entered)
 	
+	# Setup intermediate targets
+	var targets := []
+	targets.append_array(level.find_children("Target*", "Area3D"))
+	targets.append_array(level.find_children("ObliqueTarget*", "Area3D"))
+	#print(targets)
+	for t in targets:
+		for pedestrian in pedestrians:
+			if pedestrian.collision_mask & t.collision_mask != 0:
+				t.custom_body_entered.connect(pedestrian._on_target_entered)
+				
 	# Setup random target when end episode
 	var random_target = level.find_child("RandomTarget")
 	if random_target != null: notify_end_episode.connect(random_target.get_end_episode)
@@ -46,15 +60,6 @@ func set_level(level_scene: PackedScene) -> void:
 	# Setup random passage when end episode
 	var random_passage = level.find_child("RandomPassage")
 	if random_passage != null: notify_end_episode.connect(random_passage.get_end_episode)
-	
-	# Setup intermediate targets
-	var targets := []
-	targets.append_array(level.find_children("Target*", "Area3D"))
-	targets.append_array(level.find_children("ObliqueTarget*", "Area3D"))
-	#print(targets)
-	for t in targets:
-		for pedestrian in pedestrians:
-			t.custom_body_entered.connect(pedestrian._on_target_entered)
 	
 	# Setup ai controller
 	for pedestrian in pedestrians:

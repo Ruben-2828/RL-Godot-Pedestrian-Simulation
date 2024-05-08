@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bv7gefew8eumw"]
+[gd_scene load_steps=4 format=3 uid="uid://bv7gefew8eumw"]
 
 [ext_resource type="Material" uid="uid://beh1qht5bhqeh" path="res://material/wall_material.tres" id="1_uq41w"]
-[ext_resource type="Material" uid="uid://ddc5mqmn53adg" path="res://material/target_material.tres" id="2_2xnsq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ief1"]
 size = Vector3(1, 10, 2)
@@ -10,31 +9,12 @@ size = Vector3(1, 10, 2)
 material = ExtResource("1_uq41w")
 size = Vector3(1, 10, 2)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_5mhhh"]
-size = Vector3(2, 10, 0.3)
-
-[sub_resource type="BoxMesh" id="BoxMesh_j42td"]
-material = ExtResource("2_2xnsq")
-size = Vector3(2, 10, 0.3)
-
-[node name="Obstacle" type="Node3D"]
-
-[node name="Wall" type="StaticBody3D" parent="." groups=["WALL"]]
+[node name="Obstacle" type="StaticBody3D" groups=["WALL"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_3ief1")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_mfjfu")
-
-[node name="Target" type="Area3D" parent="." groups=["TARGET"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Target"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-shape = SubResource("BoxShape3D_5mhhh")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Target"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("BoxMesh_j42td")
