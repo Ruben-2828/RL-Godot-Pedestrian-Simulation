@@ -16,7 +16,7 @@ Curriculum:
     cycles: 5
   StartCorridor:
     file_name: "StartCorridoioBatch.exe"
-    mean_reward: 1.0
+    mean_reward: 3.0
     episode_mean: 36
     cycles: 5
   Turn22Dynamic:

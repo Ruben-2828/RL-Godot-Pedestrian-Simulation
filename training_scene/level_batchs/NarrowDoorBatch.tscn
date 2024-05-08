@@ -12,7 +12,7 @@ level = ExtResource("2_sjkup")
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("1_nsifw")
-speed_up = 10.0
+speed_up = 5.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_t7hli")

@@ -19,7 +19,7 @@ var reached_targets := []
 var last_target_reached: Area3D = null
 var target_reached: bool = false
 var disable: bool = false
-var rotation_sens: int = 0 
+var rotation_sens: int = Constants.ROTATION_SENS
 
 var finished: bool = false
 
@@ -60,7 +60,7 @@ func set_speed(action_0) -> void:
 
 ## Set pedestrian direction 
 func set_direction(action_1) -> void:
-	rotation.y += deg_to_rad(action_1 * Constants.ROTATION_SENS)
+	rotation.y += deg_to_rad(action_1 * rotation_sens)
 
 ## Calculates total reward per time step
 func compute_rewards() -> void:
@@ -73,17 +73,21 @@ func compute_rewards() -> void:
 		if final_target_reached:
 			# Reward for reaching final target
 			tot_reward += Constants.FINAL_TARGET_REW
+			#print("FINAL_TARGET_REW")
 		else:
 			# Reward loss for finishing time steps
 			tot_reward += Constants.END_OF_TIMESTEPS_REW
+			#print("END_OF_TIMESTEPS_REW")
 	else:
 		# Reward for reaching an intermediate target
 		if target_reached:
 			if last_target_reached in reached_targets:
 				tot_reward += Constants.INTERMEDIATE_TARGET_ALREADY_REACHED_REW
+				#print("INTERMEDIATE_TARGET_ALREADY_REACHED_REW")
 			else:
 				reached_targets.append(last_target_reached)
 				tot_reward += Constants.INTERMEDIATE_TARGET_FIRST_TIME_REW
+				#print("INTERMEDIATE_TARGET_FIRST_TIME_REW")
 			target_reached = false
 			last_target_reached = null
 
@@ -100,6 +104,7 @@ func compute_rewards() -> void:
 				break
 		if wall_near:
 			tot_reward += Constants.WALL_COLLISION_REW
+			#print("WALL_COLLISION_REW")
 			
 		# Reward loss when agent is too near
 		var agent_near = false
@@ -109,6 +114,7 @@ func compute_rewards() -> void:
 				break
 		if agent_near:
 			tot_reward += Constants.AGENT_COLLISION_SMALL_REW
+			#print("AGENT_COLLISION_SMALL_REW")
 			
 		if not agent_near:
 			for i in range(0, Constants.AGENT_COLLISION_MEDIUM_RAYS * 4, 4):
@@ -117,6 +123,7 @@ func compute_rewards() -> void:
 					break
 			if agent_near:
 				tot_reward += Constants.AGENT_COLLISION_MEDIUM_REW
+				#print("AGENT_COLLISION_MEDIUM_REW")
 				
 		if not agent_near:
 			for i in range(0, Constants.AGENT_COLLISION_LARGE_RAYS * 4, 4):
@@ -125,6 +132,7 @@ func compute_rewards() -> void:
 					break
 			if agent_near:
 				tot_reward += Constants.AGENT_COLLISION_LARGE_REW
+				#print("AGENT_COLLISION_LARGE_REW")
 		
 		# Reward loss when detecting no targets
 		var no_target = true
@@ -133,10 +141,11 @@ func compute_rewards() -> void:
 				no_target = false
 		if no_target:
 			tot_reward += Constants.NO_TARGET_VISIBLE_REW
+			#print("NO_TARGET_VISIBLE_REW")
 			
 	cumulated_reward += tot_reward
 	ai_controller_3d.reward += tot_reward
-	pedestrian_controller.set_reward_label_text(cumulated_reward)
+	pedestrian_controller.set_reward_label_text(tot_reward)
 
 ## function executed when the pedestrian enters the final target
 func _on_final_target_entered(body):
@@ -144,9 +153,7 @@ func _on_final_target_entered(body):
 	if body == self:
 		finished = true
 		final_target_reached = true
-		disable_pedestrian(self)
-	
-		
+
 		
 ## function executed when the pedestrian enters an intermediate target
 func _on_target_entered(area, body):
@@ -173,16 +180,16 @@ func get_speed_norm() -> float:
 	return (speed - speed_min) / (speed_max - speed_min)
 
 ## disable pedestrian when enter final target
-func disable_pedestrian(pedestrian):
+func disable_pedestrian():
 	disable = true
-	pedestrian.visible = false
-	pedestrian.speed_max = 0.0
+	visible = false
+	speed_max = 0.0
 	rotation_sens = 0
 
 ## enable pedestrian when end episode
-func enable_pedestrian(pedestrian):
+func enable_pedestrian():
 	disable = false
-	pedestrian.visible = true
-	pedestrian.speed_max = Constants.MAX_SPEED
+	visible = true
+	speed_max = Constants.MAX_SPEED
 	rotation_sens = Constants.ROTATION_SENS
 	

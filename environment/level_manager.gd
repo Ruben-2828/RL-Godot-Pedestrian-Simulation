@@ -6,20 +6,13 @@ class_name LevelManager
 ## Signal emmitted on episode end
 signal notify_end_episode(reward: float)
 
-var level_goal: Node3D
-var level: Node3D = null
 
-
-	
-## Removes old level, and add the new one
-func set_current_level(level_scene: PackedScene) -> void:
-	
-	if level != null:
-		level.queue_free()
+## Set all the level elements (pedestrians, targets, ai controllers...)
+func set_level(level_scene: PackedScene) -> void:
 	
 	# Instantiating level scene
-	level = level_scene.instantiate()
-	level.set_name("CurrentLevel")
+	var level = level_scene.instantiate()
+	level.set_name("Level")
 	add_child(level)
 	
 	# Setup pedestrian
@@ -34,7 +27,7 @@ func set_current_level(level_scene: PackedScene) -> void:
 			objective.custom_body_entered.connect(pedestrian._on_objective_entered)
 	
 	# Setup final target
-	level_goal = level.find_child("FinalTarget")
+	var level_goal = level.find_child("FinalTarget")
 	for pedestrian in pedestrians:
 		level_goal.body_entered.connect(pedestrian._on_final_target_entered)
 	
@@ -50,6 +43,10 @@ func set_current_level(level_scene: PackedScene) -> void:
 	var random_objective = level.find_child("RandomObjective")
 	if random_objective != null: notify_end_episode.connect(random_objective.get_end_episode)
 	
+	# Setup random passage when end episode
+	var random_passage = level.find_child("RandomPassage")
+	if random_passage != null: notify_end_episode.connect(random_passage.get_end_episode)
+	
 	# Setup intermediate targets
 	var targets := []
 	targets.append_array(level.find_children("Target*", "Area3D"))
@@ -64,7 +61,11 @@ func set_current_level(level_scene: PackedScene) -> void:
 		var ai_controller = pedestrian.find_child("AIController3D")
 		ai_controller.set_reset_after(level.max_steps)
 		
+	# Setup pedestrians controller
+	var pedestrian_controller = level.find_child("PedestrianController")
+	pedestrian_controller.init(self)
+	
 
 ## Function called to emit signal for episode ending
-func _notify_end_episode(reward: float) -> void:
-	notify_end_episode.emit(reward)
+func _notify_end_episode() -> void:
+	notify_end_episode.emit()

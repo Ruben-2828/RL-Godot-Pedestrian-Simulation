@@ -36,5 +36,5 @@ func set_random_pos():
 		randomize_pos(selected_area)
 
 ## Called on episode ending to reset passage position
-func get_end_episode(_reward):
+func get_end_episode():
 	set_random_pos()

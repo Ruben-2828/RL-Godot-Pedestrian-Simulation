@@ -504,8 +504,7 @@ func _reset_agents_if_done(agents = all_agents):
 
 func _reset_agents(agents = all_agents):
 	for agent in agents:
-		agent.needs_reset = true
-		#agent.reset()
+		agent.reset()
 
 
 func _get_obs_from_agents(agents: Array = all_agents):

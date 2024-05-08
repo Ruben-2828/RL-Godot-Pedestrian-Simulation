@@ -48,6 +48,6 @@ func set_objective():
 	collision.disabled = false
 
 ## Called on episode ending to reset objective position
-func get_end_episode(_reward):
+func get_end_episode():
 	set_random_pos()
 	set_objective()

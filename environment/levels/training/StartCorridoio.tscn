@@ -1,13 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://b8geyovhk1ni8"]
+[gd_scene load_steps=13 format=3 uid="uid://b8geyovhk1ni8"]
 
 [ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room/room.tscn" id="1_g7vly"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="1_qwv06"]
 [ext_resource type="Script" path="res://environment/levels_scripts/level.gd" id="1_ve5yw"]
 [ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target.tscn" id="3_ihbio"]
-[ext_resource type="PackedScene" uid="uid://gwxyfx265pk4" path="res://objects/other/spawn.tscn" id="4_tniy7"]
 [ext_resource type="Script" path="res://environment/levels_scripts/random_spawn.gd" id="5_5r3ro"]
 [ext_resource type="Script" path="res://environment/levels_scripts/random_target.gd" id="7_uxgn2"]
 [ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/solid/wall.tscn" id="8_1k4fn"]
+[ext_resource type="Script" path="res://environment/levels_scripts/pedestrian_controller.gd" id="8_6nd80"]
+[ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="9_76pp3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k7ysl"]
 size = Vector3(2, 0, 5)
@@ -29,9 +30,6 @@ max_steps = 300
 script = ExtResource("5_5r3ro")
 randomize_position = true
 randomize_rotation = true
-
-[node name="Spawn" parent="RandomSpawn" instance=ExtResource("4_tniy7")]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
 
 [node name="Area" type="Area3D" parent="RandomSpawn"]
 
@@ -65,6 +63,12 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0, 
 
 [node name="Wall2" parent="Corridor" instance=ExtResource("8_1k4fn")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, 0)
+
+[node name="PedestrianController" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+script = ExtResource("8_6nd80")
+
+[node name="Pedestrian" parent="PedestrianController" instance=ExtResource("9_76pp3")]
 
 [connection signal="body_entered" from="RandomTarget/FinalTarget" to="RandomSpawn" method="_on_final_target_body_entered"]
 [connection signal="body_entered" from="RandomTarget/FinalTarget" to="RandomTarget" method="_on_final_target_body_entered"]

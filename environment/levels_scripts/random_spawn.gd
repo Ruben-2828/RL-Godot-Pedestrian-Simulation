@@ -51,5 +51,5 @@ func set_random():
 		randomize_rot()
 		
 ## Called on episode ending to reset spawn position
-func get_end_episode(_reward):
+func get_end_episode():
 	set_random()		
