@@ -16,22 +16,23 @@ func _physics_process(_delta):
 	
 		n_steps += 1
 		if n_steps >= reset_after:
-			needs_reset = true
 			_player.finished = true
 		
 		_player.compute_rewards()
-		
-		if needs_reset or _player.final_target_reached:
-			done = true
-			_player.reset()
-			reset()
+			
 
+			
 ## reset_after parameter setter
 func set_reset_after(steps: int):
 	reset_after = steps
 
 ## Returns dictionary containing the observations made
 func get_obs() -> Dictionary:
+	if _player.disable == true:
+		var null_raycast: Array[int] = []
+		for i in range(185):
+			null_raycast.append(0)
+		return {'obs': null_raycast}	
 	var obs := []
 	var raycast_obs = _player.raycast_sensor.get_observation()
 	var speed_norm = (_player.speed - _player.speed_min) / (_player.speed_max - _player.speed_min) if _player.speed_max != 0 else 0

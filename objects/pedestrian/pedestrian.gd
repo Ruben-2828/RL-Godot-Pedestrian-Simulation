@@ -1,8 +1,6 @@
 extends CharacterBody3D
 class_name Pedestrian
 
-@onready var level_manager = $".."
-
 ## Pedestrian minimum speed
 @export var speed_min: float = Constants.MIN_SPEED
 ## Pedestrian maximum speed 
@@ -12,12 +10,16 @@ var speed: float
 @onready var raycast_sensor = $RayCastSensor3D
 @onready var ai_controller_3d = $AIController3D
 @onready var animation_tree = $AnimationTree
+@onready var pedestrian_controller = $".."
+
 
 var cumulated_reward: float = 0.0
 var final_target_reached: bool = false
 var reached_targets := []
 var last_target_reached: Area3D = null
 var target_reached: bool = false
+var disable: bool = false
+var rotation_sens: int = 0 
 
 var finished: bool = false
 
@@ -26,15 +28,12 @@ func _ready():
 	ai_controller_3d.init(self)
 	
 	add_to_group(Constants.PEDESTRIAN_GROUP)
+	
 
-## Reset the pedestrian state (position, rotation...) and notify end of episode
+## Reset the pedestrian state
 func reset():
-	
-	# Notify the end of the episode to reset the env before resetting pedestrian
-	level_manager._notify_end_episode(cumulated_reward)
-	
-	rotation = level_manager.get_spawn_rotation()
-	global_position = level_manager.get_spawn_position()
+	rotation = pedestrian_controller.get_spawn_rotation(self)
+	global_position = pedestrian_controller.get_spawn_position(self)
 	velocity = Vector3.ZERO
 	
 	cumulated_reward = 0
@@ -42,6 +41,7 @@ func reset():
 	target_reached = false
 	final_target_reached = false
 	reached_targets = []
+	
 	
 func _physics_process(_delta):
 	
@@ -136,7 +136,7 @@ func compute_rewards() -> void:
 			
 	cumulated_reward += tot_reward
 	ai_controller_3d.reward += tot_reward
-	level_manager.set_reward_label_text(cumulated_reward)
+	pedestrian_controller.set_reward_label_text(cumulated_reward)
 
 ## function executed when the pedestrian enters the final target
 func _on_final_target_entered(body):
@@ -144,7 +144,10 @@ func _on_final_target_entered(body):
 	if body == self:
 		finished = true
 		final_target_reached = true
-
+		disable_pedestrian(self)
+	
+		
+		
 ## function executed when the pedestrian enters an intermediate target
 func _on_target_entered(area, body):
 	
@@ -162,10 +165,24 @@ func _on_objective_entered(area, body):
 		area.visible = false
 		var collision = area.find_child("CollisionShape3D")
 		collision.disabled = true
-		print("Obiettivo raggiunto, area attiva: ", area.active)
 
 func get_speed_norm() -> float:
 	if speed_max == 0.0:
 		return 0.0
 		
 	return (speed - speed_min) / (speed_max - speed_min)
+
+## disable pedestrian when enter final target
+func disable_pedestrian(pedestrian):
+	disable = true
+	pedestrian.visible = false
+	pedestrian.speed_max = 0.0
+	rotation_sens = 0
+
+## enable pedestrian when end episode
+func enable_pedestrian(pedestrian):
+	disable = false
+	pedestrian.visible = true
+	pedestrian.speed_max = Constants.MAX_SPEED
+	rotation_sens = Constants.ROTATION_SENS
+	

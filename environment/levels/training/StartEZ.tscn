@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqswiih3najh4"]
+[gd_scene load_steps=12 format=3 uid="uid://cqswiih3najh4"]
 
 [ext_resource type="Script" path="res://environment/levels_scripts/level.gd" id="1_rvhqc"]
 [ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room/room.tscn" id="1_xtyxy"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://environment/levels_scripts/random_spawn.gd" id="4_a7nvs"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="4_xdkto"]
 [ext_resource type="Script" path="res://environment/levels_scripts/random_target.gd" id="6_btu87"]
+[ext_resource type="Script" path="res://environment/levels_scripts/pedestrian_controller.gd" id="8_us75h"]
+[ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="9_l85fg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rj2xv"]
 size = Vector3(2, 0, 6)
@@ -48,6 +50,12 @@ collision_layer = 2
 shape = SubResource("BoxShape3D_r06sj")
 
 [node name="Reward" parent="." instance=ExtResource("4_xdkto")]
+
+[node name="PedestrianController" type="Node3D" parent="."]
+script = ExtResource("8_us75h")
+
+[node name="Pedestrian" parent="PedestrianController" instance=ExtResource("9_l85fg")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -1)
 
 [connection signal="body_entered" from="RandomTarget/FinalTarget" to="RandomSpawn" method="_on_final_target_body_entered"]
 [connection signal="body_entered" from="RandomTarget/FinalTarget" to="RandomTarget" method="_on_final_target_body_entered"]
