@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bxa6hl02an5lq"]
+[gd_scene load_steps=17 format=3 uid="uid://bxa6hl02an5lq"]
 
 [ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room/room.tscn" id="1_ov2rc"]
 [ext_resource type="Script" path="res://environment/levels_scripts/level.gd" id="1_r36qn"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://uh0p4etdr17o" path="res://objects/solid/pillar.tscn" id="4_8gosj"]
 [ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target.tscn" id="5_dclvl"]
 [ext_resource type="Script" path="res://environment/levels_scripts/random_target.gd" id="5_q7u1m"]
-[ext_resource type="Script" path="res://environment/levels_scripts/random_spawn.gd" id="7_ygrai"]
 [ext_resource type="Script" path="res://environment/levels_scripts/pedestrian_controller.gd" id="8_3anii"]
 [ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="9_c24s0"]
 
@@ -34,13 +33,11 @@ size = Vector3(4, 0, 4)
 [sub_resource type="BoxShape3D" id="BoxShape3D_c4g3a"]
 size = Vector3(4, 0, 4)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_wffeo"]
-size = Vector3(0, 0, 0)
-
 [node name="Observe" type="Node3D"]
 script = ExtResource("1_r36qn")
 max_steps = 30
 can_move = false
+random_rot = true
 
 [node name="Room" parent="." instance=ExtResource("1_ov2rc")]
 
@@ -81,7 +78,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.42277, 0, -2.48453)
 
 [node name="RandomTarget" type="Node3D" parent="."]
 script = ExtResource("5_q7u1m")
-randomize_position = true
 
 [node name="FinalTarget" parent="RandomTarget" instance=ExtResource("5_dclvl")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -3, 0, 5)
@@ -136,19 +132,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -4)
 [node name="CollisionShapeTarget8" type="CollisionShape3D" parent="RandomTarget/Area8"]
 shape = SubResource("BoxShape3D_c4g3a")
 
-[node name="RandomSpawn" type="Node3D" parent="."]
-script = ExtResource("7_ygrai")
-randomize_rotation = true
-
-[node name="Area" type="Area3D" parent="RandomSpawn"]
-
-[node name="CollisionShapeSpawn" type="CollisionShape3D" parent="RandomSpawn/Area"]
-shape = SubResource("BoxShape3D_wffeo")
-
 [node name="Reward" parent="." instance=ExtResource("2_wfb10")]
 
 [node name="PedestrianController" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 script = ExtResource("8_3anii")
 
 [node name="Pedestrian" parent="PedestrianController" instance=ExtResource("9_c24s0")]

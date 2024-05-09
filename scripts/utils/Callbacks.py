@@ -13,6 +13,7 @@ class EndTrainingOnMeanRewardReachedCallback(BaseCallback):
         self.cycle = 1
 
     def _on_step(self) -> bool:
+        print("Cycle: ", self.cycle)
         episodes = load_results(self.log_dir)
         if len(episodes) >= (self.episodes_for_mean * self.cycle):
 

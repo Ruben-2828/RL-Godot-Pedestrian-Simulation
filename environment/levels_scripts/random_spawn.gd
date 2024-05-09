@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var pedestrian_controller = $PedestrianController
+@onready var pedestrian = $"../PedestrianController/Pedestrian"
 
 
 # list of areas to place the spawn
@@ -30,12 +30,12 @@ func randomize_pos(area):
 		0.0,
 		randf_range(-extents.z + offset, extents.z - offset),
 	)
-	pedestrian_controller.position += random_pos
+	pedestrian.position += random_pos
 
 ## perform randomization of pedestrian rotation
 func randomize_rot():
 	var random_rot = randi_range(0, Constants.ROTATION_STEPS - 1) * (360 / Constants.ROTATION_STEPS)
-	pedestrian_controller.rotation_degrees = Vector3(0.0, random_rot, 0)
+	pedestrian.rotation_degrees = Vector3(0.0, random_rot, 0)
 
 ## handle the randomization
 func set_random():
@@ -43,7 +43,7 @@ func set_random():
 	if randomize_position:
 		# randomize which area to place the pedestrian
 		var selected_area = areas[randi_range(0, areas.size() -1)]
-		pedestrian_controller.global_position = selected_area.global_position
+		pedestrian.global_position = selected_area.global_position
 		# randomize position inside the selected area
 		randomize_pos(selected_area)
 		
@@ -53,4 +53,4 @@ func set_random():
 		
 ## Called on episode ending to reset pedestrian position
 func get_end_episode(_reward):
-	set_random()		
+	set_random()

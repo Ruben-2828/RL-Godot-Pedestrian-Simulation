@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://d3wgc1op6k0k"
+
+[deps]
+
+files=["res://scripts/output/tmp_Corridor3vs3/Corridor3vs3.monitor. env.translation"]
+
+source_file="res://scripts/output/tmp_Corridor3vs3/Corridor3vs3.monitor.csv"
+dest_files=["res://scripts/output/tmp_Corridor3vs3/Corridor3vs3.monitor. env.translation"]
+
+[params]
+
+compress=true
+delimiter=0

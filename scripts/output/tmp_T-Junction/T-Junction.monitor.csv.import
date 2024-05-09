@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b1bn6yrqne1hr"
+
+[deps]
+
+files=["res://scripts/output/tmp_T-Junction/T-Junction.monitor. env.translation"]
+
+source_file="res://scripts/output/tmp_T-Junction/T-Junction.monitor.csv"
+dest_files=["res://scripts/output/tmp_T-Junction/T-Junction.monitor. env.translation"]
+
+[params]
+
+compress=true
+delimiter=0

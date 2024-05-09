@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b5daapnmh73v4"
+
+[deps]
+
+files=["res://scripts/output/tmp_TurnObstacles/TurnObstacles.monitor. env.translation"]
+
+source_file="res://scripts/output/tmp_TurnObstacles/TurnObstacles.monitor.csv"
+dest_files=["res://scripts/output/tmp_TurnObstacles/TurnObstacles.monitor. env.translation"]
+
+[params]
+
+compress=true
+delimiter=0

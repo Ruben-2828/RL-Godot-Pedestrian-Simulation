@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c382m5jy4oci8"
+
+[deps]
+
+files=["res://scripts/output/tmp_Turns/Turns.monitor. env.translation"]
+
+source_file="res://scripts/output/tmp_Turns/Turns.monitor.csv"
+dest_files=["res://scripts/output/tmp_Turns/Turns.monitor. env.translation"]
+
+[params]
+
+compress=true
+delimiter=0

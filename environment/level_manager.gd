@@ -9,7 +9,6 @@ signal notify_end_episode(reward: float)
 
 ## Set all the level elements (pedestrians, targets, ai controllers...)
 func set_level(level_scene: PackedScene) -> void:
-	
 	# Instantiating level scene
 	var level = level_scene.instantiate()
 	level.set_name("Level")
@@ -18,6 +17,7 @@ func set_level(level_scene: PackedScene) -> void:
 	# Setup pedestrian
 	var pedestrians = level.find_children("Pedestrian*", "Pedestrian")
 	for pedestrian in pedestrians:
+		pedestrian.can_move = level.can_move
 		pedestrian.speed_max = Constants.MAX_SPEED if level.can_move else 0.0
 	
 	# Setup objective
@@ -50,8 +50,7 @@ func set_level(level_scene: PackedScene) -> void:
 	if random_target != null: notify_end_episode.connect(random_target.get_end_episode)
 
 	# Setup random spawn when end episode
-	var random_spawn = level.find_child("RandomSpawn")
-	if random_spawn != null: notify_end_episode.connect(random_spawn.get_end_episode)
+	var random_spawn = level.find_child("RandomArea")
 	
 	# Setup random objective when end episode
 	var random_objective = level.find_child("RandomObjective")
@@ -68,7 +67,10 @@ func set_level(level_scene: PackedScene) -> void:
 		
 	# Setup pedestrians controller
 	var pedestrian_controller = level.find_child("PedestrianController")
+	pedestrian_controller.random_area = random_spawn
+	pedestrian_controller.random_rot = level.agent_rotate
 	pedestrian_controller.init(self)
+	pedestrian_controller.set_pedestrians_initial_state()
 	
 
 ## Function called to emit signal for episode ending

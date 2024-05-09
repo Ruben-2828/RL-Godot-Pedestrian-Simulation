@@ -20,7 +20,6 @@ script = ExtResource("1_byy28")
 
 [node name="RandomPassage" type="Node3D" parent="."]
 script = ExtResource("4_3l7uv")
-randomize_position = true
 
 [node name="Area" type="Area3D" parent="RandomPassage"]
 

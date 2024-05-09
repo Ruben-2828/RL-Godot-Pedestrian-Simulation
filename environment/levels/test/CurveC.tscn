@@ -12,7 +12,6 @@
 
 [node name="CurveC" type="Node3D"]
 script = ExtResource("1_12my6")
-min_reward = 9.0
 
 [node name="Room" parent="." instance=ExtResource("1_7dvx3")]
 
@@ -45,15 +44,14 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.34361, 0, 6)
 
 [node name="FinalTarget" parent="Target" instance=ExtResource("3_8mtbn")]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 9.11011, 0, -8.23788)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 9.11011, -1, -8.23788)
 
 [node name="Reward" parent="." instance=ExtResource("4_1qnrb")]
 
 [node name="PedestrianController" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.5, 0, 8.5)
 script = ExtResource("8_3qxak")
 
 [node name="Pedestrian" parent="PedestrianController" instance=ExtResource("9_laufr")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.5, 0, 8.5)
 
 [connection signal="body_entered" from="Target/FinalTarget" to="." method="_on_final_target_body_entered"]

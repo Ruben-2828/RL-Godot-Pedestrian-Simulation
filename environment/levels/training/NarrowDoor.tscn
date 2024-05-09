@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cr75p04cbnp4a"]
+[gd_scene load_steps=12 format=3 uid="uid://cr75p04cbnp4a"]
 
 [ext_resource type="Script" path="res://environment/levels_scripts/level.gd" id="1_ek6oj"]
 [ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room/room.tscn" id="2_wlgid"]
@@ -13,15 +13,17 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_ugjbo"]
 size = Vector3(16, 1, 4)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5sm4l"]
+size = Vector3(15, 1, 6)
+
 [node name="NarrowDoor" type="Node3D"]
 script = ExtResource("1_ek6oj")
-max_steps = 1000
+max_steps = 500
 
 [node name="Room" parent="." instance=ExtResource("2_wlgid")]
 
 [node name="RandomPassage" type="Node3D" parent="."]
 script = ExtResource("7_ny8y3")
-randomize_position = true
 
 [node name="Area" type="Area3D" parent="RandomPassage"]
 
@@ -44,24 +46,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 0)
 [node name="Reward" parent="." instance=ExtResource("10_8u685")]
 
 [node name="FinalTarget" parent="." instance=ExtResource("6_alo7g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.96925)
 collision_layer = 4
 collision_mask = 4
 
 [node name="PedestrianController" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 script = ExtResource("8_sojt5")
 
 [node name="Pedestrian" parent="PedestrianController" instance=ExtResource("8_32bky")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 5)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 collision_layer = 6
 collision_mask = 7
 
 [node name="Pedestrian2" parent="PedestrianController" instance=ExtResource("8_32bky")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3, 0, 8)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3, 0, 2)
 collision_layer = 6
 collision_mask = 7
 
 [node name="Pedestrian3" parent="PedestrianController" instance=ExtResource("8_32bky")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3, 0, 8)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3, 0, 2)
 collision_layer = 6
 collision_mask = 7
+
+[node name="RandomArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="CollisionShapeSpawn" type="CollisionShape3D" parent="RandomArea"]
+shape = SubResource("BoxShape3D_5sm4l")

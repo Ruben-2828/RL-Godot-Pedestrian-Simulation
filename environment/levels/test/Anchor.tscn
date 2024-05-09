@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="3_jphyj"]
 [ext_resource type="PackedScene" uid="uid://nqwb7at8dpui" path="res://objects/solid/small_internal_wall.tscn" id="4_yv8sl"]
 [ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/solid/wall.tscn" id="5_5hj5b"]
-[ext_resource type="PackedScene" uid="uid://kvitrjcthg7r" path="res://objects/solid/tiny_internal_wall.tscn" id="6_wceiy"]
+[ext_resource type="PackedScene" uid="uid://boj0pvmutwu86" path="res://objects/solid/tiny_internal_wall.tscn" id="6_wceiy"]
 [ext_resource type="Script" path="res://environment/levels_scripts/pedestrian_controller.gd" id="7_mnonv"]
 [ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="8_vmlo5"]
 [ext_resource type="PackedScene" uid="uid://o6t0iemlmcj5" path="res://objects/targets/oblique_target.tscn" id="9_5sjd1"]
@@ -72,29 +72,28 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.563
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.56382, 0, -8.98659)
 
 [node name="PedestrianController" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.5649)
 script = ExtResource("7_mnonv")
 
 [node name="Pedestrian" parent="PedestrianController" instance=ExtResource("8_vmlo5")]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -8, 0, -20)
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -8, 0, -7.5)
 
 [node name="Pedestrian2" parent="PedestrianController" instance=ExtResource("8_vmlo5")]
-transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 8, 0, -20)
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 8, 0, -7.5)
 
 [node name="Pedestrian3" parent="PedestrianController" instance=ExtResource("8_vmlo5")]
-transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 6, 0, -16)
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 6, 0, -3)
 
 [node name="Pedestrian4" parent="PedestrianController" instance=ExtResource("8_vmlo5")]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -6, 0, -16)
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -6, 0, -3)
 
 [node name="ObliqueTarget" parent="." instance=ExtResource("9_5sjd1")]
-transform = Transform3D(0.848528, 0, -0.848528, 0, 1.2, 0, 0.848528, 0, 0.848528, 4, 0, -0.5)
+transform = Transform3D(0.848528, 0, -0.848528, 0, 1.2, 0, 0.848528, 0, 0.848528, 4, -1.1437, -0.5)
 
 [node name="ObliqueTarget2" parent="." instance=ExtResource("9_5sjd1")]
-transform = Transform3D(0.848528, 0, 0.848528, 0, 1.2, 0, -0.848528, 0, 0.848528, -4, 0, -0.5)
+transform = Transform3D(0.848528, 0, 0.848528, 0, 1.2, 0, -0.848528, 0, 0.848528, -4, -0.960358, -0.5)
 
 [node name="Target" parent="." instance=ExtResource("10_6sunq")]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, -2.64217)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.391001, -0.973243, -2.60892)
 
 [node name="FinalTarget" parent="." instance=ExtResource("11_wlfyq")]
-transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, -8.87518)
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, -2.02628, -8.87518)

@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://co8jf7j3vjihg"
+
+[deps]
+
+files=["res://scripts/output/tmp_NarrowDoorDouble/NarrowDoorDouble.monitor. env.translation"]
+
+source_file="res://scripts/output/tmp_NarrowDoorDouble/NarrowDoorDouble.monitor.csv"
+dest_files=["res://scripts/output/tmp_NarrowDoorDouble/NarrowDoorDouble.monitor. env.translation"]
+
+[params]
+
+compress=true
+delimiter=0

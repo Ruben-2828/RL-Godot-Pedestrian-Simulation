@@ -12,6 +12,14 @@ const WALL_COLLISION_RAYS: int = 17
 const AGENT_COLLISION_SMALL_RAYS: int = 17
 const AGENT_COLLISION_MEDIUM_RAYS: int = 11
 const AGENT_COLLISION_LARGE_RAYS: int = 9
+const COLLISION_HEIGHT_DISABLED: float = 0.0
+const COLLISION_RADIUS_DISABLED: float = 0.0
+const COLLISION_POSITION_DISABLED: Vector3 = Vector3(-50, -50, -50)
+const COLLISION_HEIGHT_ENABLED: float = 1.8
+const COLLISION_RADIUS_ENABLED: float = 0.25
+const COLLISION_POSITION_ENABLED: Vector3 = Vector3(0, 0.9, 0)
+
+
 
 # Rewards
 const FINAL_TARGET_REW: float = 6.0
@@ -19,9 +27,9 @@ const INTERMEDIATE_TARGET_FIRST_TIME_REW: float = 0.5
 const INTERMEDIATE_TARGET_ALREADY_REACHED_REW: float = -1.0
 const NO_TARGET_VISIBLE_REW: float = -0.5
 const WALL_COLLISION_REW: float = -0.5
-const AGENT_COLLISION_SMALL_REW: float = -0.5
-const AGENT_COLLISION_MEDIUM_REW: float = -0.005
-const AGENT_COLLISION_LARGE_REW: float = -0.001
+const AGENT_COLLISION_SMALL_REW: float = -1.0 # changed from 0.5
+const AGENT_COLLISION_MEDIUM_REW: float = -0.01 # changed from 0.005
+const AGENT_COLLISION_LARGE_REW: float = -0.005 # changed from 0.001
 const TIMESTEP_REW: float = -0.0001
 const END_OF_TIMESTEPS_REW: float = -6.0
 
@@ -52,7 +60,7 @@ const ROTATION_STEPS: int = 8
 # Training phase
 const LEVELS_OFFSET: float = 50.0
 const RETRAINING_INSTANCES_PER_LEVEL: int = 3
-const TRAINING_BATCH_SIZE: int = 1
+const TRAINING_BATCH_SIZE: int = 10
 
 # Engine
 const PHYSICS_TICKS_PER_SECONDS: int = 60

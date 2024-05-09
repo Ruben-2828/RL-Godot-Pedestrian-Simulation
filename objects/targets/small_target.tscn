@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cq6t852770172"]
+[gd_scene load_steps=5 format=3 uid="uid://cq6t852770172"]
 
 [ext_resource type="Material" uid="uid://ddc5mqmn53adg" path="res://material/target_material.tres" id="1_ktwpt"]
+[ext_resource type="Script" path="res://objects/targets/target.gd" id="1_qm0na"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sf7ru"]
 size = Vector3(2, 10, 0.3)
@@ -12,6 +13,7 @@ size = Vector3(2, 10, 0.3)
 [node name="Target" type="Area3D" groups=["TARGET"]]
 collision_layer = 0
 collision_mask = 0
+script = ExtResource("1_qm0na")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)

@@ -12,7 +12,7 @@ var speed: float
 @onready var animation_tree = $AnimationTree
 @onready var pedestrian_controller = $".."
 
-
+var can_move: bool = true
 var cumulated_reward: float = 0.0
 var final_target_reached: bool = false
 var reached_targets := []
@@ -22,6 +22,8 @@ var disable: bool = false
 var rotation_sens: int = Constants.ROTATION_SENS
 
 var finished: bool = false
+
+
 
 func _ready():
 	speed = speed_min
@@ -184,11 +186,20 @@ func disable_pedestrian():
 	visible = false
 	speed_max = 0.0
 	rotation_sens = 0
+	handle_collision_shape(Constants.COLLISION_RADIUS_DISABLED, Constants.COLLISION_HEIGHT_DISABLED, Constants.COLLISION_POSITION_DISABLED)
 
+	
 ## enable pedestrian when end episode
 func enable_pedestrian():
 	disable = false
 	visible = true
-	speed_max = Constants.MAX_SPEED
+	if can_move: 
+		speed_max = Constants.MAX_SPEED
 	rotation_sens = Constants.ROTATION_SENS
-	
+	handle_collision_shape(Constants.COLLISION_RADIUS_ENABLED, Constants.COLLISION_HEIGHT_ENABLED, Constants.COLLISION_POSITION_ENABLED)
+
+func handle_collision_shape(radius: int, height: int, pos: Vector3):
+	var collision_shape = find_child("CollisionShape3D")
+	collision_shape.shape.radius = radius
+	collision_shape.shape.height = height
+	collision_shape.position = pos

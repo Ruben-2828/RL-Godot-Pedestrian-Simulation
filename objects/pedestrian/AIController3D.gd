@@ -48,7 +48,6 @@ func get_obs() -> Dictionary:
 		obs.append_array(raycast_obs[0])
 		obs.append_array(raycast_obs[1])
 	
-	print(obs)
 	return {'obs': obs}
 
 ## Returns current reward

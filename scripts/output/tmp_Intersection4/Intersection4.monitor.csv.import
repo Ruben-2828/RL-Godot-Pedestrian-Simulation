@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://caca3wq30fbwx"
+
+[deps]
+
+files=["res://scripts/output/tmp_Intersection4/Intersection4.monitor. env.translation"]
+
+source_file="res://scripts/output/tmp_Intersection4/Intersection4.monitor.csv"
+dest_files=["res://scripts/output/tmp_Intersection4/Intersection4.monitor. env.translation"]
+
+[params]
+
+compress=true
+delimiter=0
