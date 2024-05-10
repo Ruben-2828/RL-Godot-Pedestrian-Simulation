@@ -21,7 +21,6 @@ level = ExtResource("2_271ui")
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("3_fg4nd")
-speed_up = 10.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_sxnw0")

@@ -71,16 +71,7 @@ func compute_rewards() -> void:
 	# Reward loss for timestep
 	tot_reward += Constants.TIMESTEP_REW
 	
-	if finished:
-		if final_target_reached:
-			# Reward for reaching final target
-			tot_reward += Constants.FINAL_TARGET_REW
-			#print("FINAL_TARGET_REW")
-		else:
-			# Reward loss for finishing time steps
-			tot_reward += Constants.END_OF_TIMESTEPS_REW
-			#print("END_OF_TIMESTEPS_REW")
-	else:
+	if not finished:
 		# Reward for reaching an intermediate target
 		if target_reached:
 			if last_target_reached in reached_targets:
@@ -114,6 +105,7 @@ func compute_rewards() -> void:
 			if agents_and_walls[i+1] == 1 and agents_and_walls[i] < Constants.AGENT_COLLISION_SMALL_DISTANCE / Constants.RAY_LENGTH_OBS:
 				agent_near = true
 				break
+		#print(agent_near)
 		if agent_near:
 			tot_reward += Constants.AGENT_COLLISION_SMALL_REW
 			#print("AGENT_COLLISION_SMALL_REW")
@@ -183,23 +175,16 @@ func get_speed_norm() -> float:
 ## disable pedestrian when enter final target
 func disable_pedestrian():
 	disable = true
-	visible = false
+	#visible = false
 	speed_max = 0.0
 	rotation_sens = 0
-	handle_collision_shape(Constants.COLLISION_RADIUS_DISABLED, Constants.COLLISION_HEIGHT_DISABLED, Constants.COLLISION_POSITION_DISABLED)
+	global_position = Constants.POSITION_DISABLED
 
 	
 ## enable pedestrian when end episode
 func enable_pedestrian():
 	disable = false
-	visible = true
+	#visible = true
 	if can_move: 
 		speed_max = Constants.MAX_SPEED
 	rotation_sens = Constants.ROTATION_SENS
-	handle_collision_shape(Constants.COLLISION_RADIUS_ENABLED, Constants.COLLISION_HEIGHT_ENABLED, Constants.COLLISION_POSITION_ENABLED)
-
-func handle_collision_shape(radius: int, height: int, pos: Vector3):
-	var collision_shape = find_child("CollisionShape3D")
-	collision_shape.shape.radius = radius
-	collision_shape.shape.height = height
-	collision_shape.position = pos

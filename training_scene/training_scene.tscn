@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://buytp40i8mx1h"]
+[gd_scene load_steps=14 format=3 uid="uid://buytp40i8mx1h"]
 
 [ext_resource type="Script" path="res://training_scene/training_scene.gd" id="1_2y50e"]
 [ext_resource type="PackedScene" uid="uid://b5i18lyv0wpap" path="res://training_scene/level_batchs/StartEzBatch.tscn" id="2_lmwn7"]
@@ -12,7 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://3sts7kaayjvt" path="res://training_scene/level_batchs/T-JunctionBatch.tscn" id="10_1hbsg"]
 [ext_resource type="PackedScene" uid="uid://bv382p2xxoi1u" path="res://training_scene/level_batchs/Intersection4Batch.tscn" id="11_axvwi"]
 [ext_resource type="PackedScene" uid="uid://w4rdhfsfb7x1" path="res://training_scene/level_batchs/NarrowDoorDoubleBatch.tscn" id="12_yai6y"]
+[ext_resource type="PackedScene" uid="uid://dbodk7jdc4sl" path="res://training_scene/retraining_scene.tscn" id="13_xdp2i"]
 
 [node name="TrainingScene" type="Node3D"]
 script = ExtResource("1_2y50e")
-levels_path = Array[PackedScene]([ExtResource("2_lmwn7"), ExtResource("3_rox21"), ExtResource("4_bfwbb"), ExtResource("5_gecgv"), ExtResource("6_16lx6"), ExtResource("7_xsm37"), ExtResource("8_sc2it"), ExtResource("9_os6rk"), ExtResource("10_1hbsg"), ExtResource("11_axvwi"), ExtResource("12_yai6y")])
+levels_path = Array[PackedScene]([ExtResource("2_lmwn7"), ExtResource("3_rox21"), ExtResource("4_bfwbb"), ExtResource("5_gecgv"), ExtResource("6_16lx6"), ExtResource("7_xsm37"), ExtResource("8_sc2it"), ExtResource("9_os6rk"), ExtResource("10_1hbsg"), ExtResource("11_axvwi"), ExtResource("12_yai6y"), ExtResource("13_xdp2i")])

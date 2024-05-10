@@ -79,6 +79,13 @@ func check_end_episode():
 		if not i:
 			return
 	
+	var final_target_reached = true
+	for i in pedestrians:
+		if not i.final_target_reached:
+			final_target_reached = false
+
+	pedestrians[0].ai_controller_3d.reward += Constants.FINAL_TARGET_REW if final_target_reached else Constants.END_OF_TIMESTEPS_REW
+	
 	for pedestrian in pedestrians:
 		pedestrian.ai_controller_3d.reset()
 		pedestrian.reset()

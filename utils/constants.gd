@@ -12,12 +12,7 @@ const WALL_COLLISION_RAYS: int = 17
 const AGENT_COLLISION_SMALL_RAYS: int = 17
 const AGENT_COLLISION_MEDIUM_RAYS: int = 11
 const AGENT_COLLISION_LARGE_RAYS: int = 9
-const COLLISION_HEIGHT_DISABLED: float = 0.0
-const COLLISION_RADIUS_DISABLED: float = 0.0
-const COLLISION_POSITION_DISABLED: Vector3 = Vector3(-50, -50, -50)
-const COLLISION_HEIGHT_ENABLED: float = 1.8
-const COLLISION_RADIUS_ENABLED: float = 0.25
-const COLLISION_POSITION_ENABLED: Vector3 = Vector3(0, 0.9, 0)
+const POSITION_DISABLED: Vector3 = Vector3(-1000, -1000, -1000)
 
 
 
@@ -64,6 +59,7 @@ const LEVELS_OFFSET: float = 40.0
 const RETRAINING_INSTANCES_PER_LEVEL: int = 3
 const TRAINING_BATCH_SIZE: int = 10
 
-# Engine
+# Engine/Sync
 const PHYSICS_TICKS_PER_SECONDS: int = 60
 const TIME_SCALE: float = 1.0
+const SPEED_UP: float = 10.0

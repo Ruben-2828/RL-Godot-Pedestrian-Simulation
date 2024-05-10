@@ -1,4 +1,3 @@
-@tool
 
 extends Node3D
 
@@ -29,3 +28,6 @@ func spawn_level_managers() -> void:
 			level_managers.append(level_manager_instance)
 			add_child(level_manager_instance)
 			level_manager_instance.set_level(levels_path[i])
+
+func finish():
+	get_parent().set_current_level()

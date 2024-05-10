@@ -1,4 +1,3 @@
-@tool
 
 extends Node3D
 
@@ -17,9 +16,11 @@ func set_current_level() -> void:
 	if current_level != null:
 		current_level.queue_free()
 	
-	
-	current_level = levels_path[current_level_idx].instantiate()
-	current_level.set_name("CurrentLevel")
-	add_child(current_level)
-	current_level_idx += 1
+	if current_level_idx < levels_path.size():
+		current_level = levels_path[current_level_idx].instantiate()
+		current_level.set_name("CurrentLevel")
+		add_child(current_level)
+		current_level_idx += 1
+	else:
+		get_tree().quit()
 	

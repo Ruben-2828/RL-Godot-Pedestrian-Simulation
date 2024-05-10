@@ -26,8 +26,8 @@ script = ExtResource("7_uxgn2")
 
 [node name="FinalTarget" parent="RandomTarget" instance=ExtResource("3_ihbio")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.5)
-collision_layer = 4
-collision_mask = 4
+collision_layer = 16
+collision_mask = 20
 
 [node name="AreaUp" type="Area3D" parent="RandomTarget"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.5)
@@ -57,6 +57,6 @@ script = ExtResource("8_6nd80")
 [node name="Pedestrian" parent="PedestrianController" instance=ExtResource("9_76pp3")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 collision_layer = 6
-collision_mask = 7
+collision_mask = 19
 
 [connection signal="body_entered" from="RandomTarget/FinalTarget" to="RandomTarget" method="_on_final_target_body_entered"]

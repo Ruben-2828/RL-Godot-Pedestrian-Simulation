@@ -28,7 +28,6 @@ levels_path = Array[PackedScene]([ExtResource("3_y82wj"), ExtResource("4_fh87c")
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("2_hiqds")
-speed_up = 10.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 0)

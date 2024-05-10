@@ -26,43 +26,43 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0,
 
 [node name="FinalTarget" parent="." instance=ExtResource("3_sue36")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.5)
-collision_layer = 4
-collision_mask = 4
+collision_layer = 16
+collision_mask = 20
 
 [node name="FinalTarget2" parent="." instance=ExtResource("3_sue36")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.5)
-collision_layer = 8
-collision_mask = 8
+collision_layer = 32
+collision_mask = 40
 
 [node name="PedestrianController" type="Node3D" parent="."]
 script = ExtResource("6_1nnw0")
 
 [node name="Pedestrian" parent="PedestrianController" instance=ExtResource("7_078n7")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 9)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 9.5)
 collision_layer = 10
-collision_mask = 11
+collision_mask = 35
 
 [node name="Pedestrian2" parent="PedestrianController" instance=ExtResource("7_078n7")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 7)
 collision_layer = 10
-collision_mask = 11
+collision_mask = 35
 
 [node name="Pedestrian3" parent="PedestrianController" instance=ExtResource("7_078n7")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 5)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 4.5)
 collision_layer = 10
-collision_mask = 11
+collision_mask = 35
 
 [node name="Pedestrian4" parent="PedestrianController" instance=ExtResource("7_078n7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.5)
 collision_layer = 6
-collision_mask = 7
+collision_mask = 19
 
 [node name="Pedestrian5" parent="PedestrianController" instance=ExtResource("7_078n7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 collision_layer = 6
-collision_mask = 7
+collision_mask = 19
 
 [node name="Pedestrian6" parent="PedestrianController" instance=ExtResource("7_078n7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.5)
 collision_layer = 6
-collision_mask = 7
+collision_mask = 19

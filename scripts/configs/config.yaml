@@ -12,7 +12,7 @@ Curriculum:
     episode_mean: 36
     cycles: 5
   StartCorridor:
-    mean_reward: 4.0
+    mean_reward: 3.0
     episode_mean: 36
     cycles: 15
   Turns:
@@ -24,7 +24,7 @@ Curriculum:
     episode_mean: 36
     cycles: 10
   NarrowDoor:
-    mean_reward: 5.0
+    mean_reward: 3.0 #5.0
     episode_mean: 36
     cycles: 15
   Corridor3vs3:

@@ -19,11 +19,11 @@ script = ExtResource("8_us75h")
 [node name="Pedestrian" parent="PedestrianController" instance=ExtResource("9_l85fg")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 collision_layer = 6
-collision_mask = 7
+collision_mask = 19
 
 [node name="FinalTarget" parent="." instance=ExtResource("4_0yh6p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
-collision_layer = 4
-collision_mask = 4
+collision_layer = 16
+collision_mask = 20
 
 [node name="Reward" parent="." instance=ExtResource("4_xdkto")]

@@ -6,7 +6,7 @@ enum ControlModes { HUMAN, TRAINING, ONNX_INFERENCE }
 @export var control_mode: ControlModes = ControlModes.TRAINING
 ## Ticks between each communication with python
 @export_range(1, 10, 1, "or_greater") var action_repeat := Constants.TICKS_PER_STEP
-@export_range(0, 10, 0.1, "or_greater") var speed_up := 1.0
+var speed_up := Constants.SPEED_UP
 @export var onnx_model_path := ""
 
 # Onnx model stored for each requested path
@@ -62,13 +62,12 @@ func _ready():
 func _initialize():
 	_get_agents()
 	args = _get_args()
-	Engine.physics_ticks_per_second = _get_speedup() * Constants.PHYSICS_TICKS_PER_SECONDS
-	Engine.time_scale = _get_speedup() * Constants.TIME_SCALE
+	Engine.physics_ticks_per_second = speed_up * Constants.PHYSICS_TICKS_PER_SECONDS
+	Engine.time_scale = speed_up * Constants.TIME_SCALE
 	prints(
 		"physics ticks",
 		Engine.physics_ticks_per_second,
 		Engine.time_scale,
-		_get_speedup(),
 		speed_up
 	)
 
@@ -417,13 +416,8 @@ func _get_args():
 			# Options without an argument will be present in the dictionary,
 			# with the value set to an empty string.
 			arguments[argument.lstrip("--")] = ""
-
+	
 	return arguments
-
-
-func _get_speedup():
-	print(args)
-	return args.get("speedup", str(speed_up)).to_float()
 
 
 func _get_port():

@@ -22,7 +22,6 @@ class Runner:
 
     def run(self) -> None:
 
-
         levels = self.load_levels()
 
         # Training phase

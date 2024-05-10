@@ -1,4 +1,8 @@
+from math import floor
+from typing import Collection, List
+
 import numpy as np
+from pandas import Series
 from stable_baselines3.common.callbacks import BaseCallback
 from stable_baselines3.common.monitor import load_results
 
@@ -17,7 +21,7 @@ class EndTrainingOnMeanRewardReachedCallback(BaseCallback):
         episodes = load_results(self.log_dir)
         if len(episodes) >= (self.episodes_for_mean * self.cycle):
 
-            mean_reward = np.mean(
+            mean_reward = trimmed_mean(
                 episodes['r'].iloc[self.episodes_for_mean * (self.cycle - 1):self.episodes_for_mean * self.cycle]
             )
             self.cycle += 1
@@ -41,7 +45,7 @@ class EndTrainingOnEarlyFailCallback(BaseCallback):
     def _on_step(self) -> bool:
         episodes = load_results(self.log_dir)
         if len(episodes) >= (self.episodes_for_mean * self.cycle):
-            mean_reward = np.mean(
+            mean_reward = trimmed_mean(
                 episodes['r'].iloc[self.episodes_for_mean * (self.cycle - 1):self.episodes_for_mean * self.cycle]
             )
             self.cycle += 1
@@ -52,3 +56,16 @@ class EndTrainingOnEarlyFailCallback(BaseCallback):
                     exit()
 
         return True
+
+
+def trimmed_mean(values: Series) -> float:
+    trim_range: int = floor(len(values) / 10)
+
+    values = values.sort_values()
+    trimmed_values = values[trim_range:-trim_range]
+    #print(values)
+    #print(trimmed_values)
+
+    return np.mean(trimmed_values)
+
+
