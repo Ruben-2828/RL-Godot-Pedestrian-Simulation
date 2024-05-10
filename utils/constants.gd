@@ -55,7 +55,8 @@ const TARGET_OFFSET: float = 1.5
 const ROTATION_STEPS: int = 8
 
 # Training phase
-const LEVELS_OFFSET: float = 40.0
+const LEVELS_BATCH_OFFSET: float = 100.0
+const LEVELS_RETRAINING_OFFSET: float = 30.0
 const RETRAINING_INSTANCES_PER_LEVEL: int = 3
 const TRAINING_BATCH_SIZE: int = 10
 
