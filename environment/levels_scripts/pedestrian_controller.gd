@@ -81,10 +81,11 @@ func check_end_episode():
 	
 	for pedestrian in pedestrians:
 		pedestrian.ai_controller_3d.reset()
-		pedestrian.ai_controller_3d.done = true
 		pedestrian.reset()
 		pedestrian_done[pedestrian] = false
 		pedestrian.enable_pedestrian()
+	# ai controller done for only the first pedestrian to end the episode only one time
+	pedestrians[0].ai_controller_3d.done = true
 	
 	tot_reward = 0
 	level_manager._notify_end_episode()

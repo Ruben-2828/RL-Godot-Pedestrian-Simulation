@@ -9,7 +9,7 @@ extends Node3D
 
 const level_manager_scene: PackedScene = preload("res://environment/level_manager.tscn")
 var level_managers: Array = []
-const level_position_offset: int = Constants.LEVELS_OFFSET
+const level_position_offset: float = Constants.LEVELS_OFFSET
 
 @onready var sync = $Sync
 
@@ -28,4 +28,4 @@ func spawn_level_managers() -> void:
 			level_manager_instance.position.z = j * level_position_offset
 			level_managers.append(level_manager_instance)
 			add_child(level_manager_instance)
-			level_manager_instance.set_current_level(levels_path[i])
+			level_manager_instance.set_level(levels_path[i])

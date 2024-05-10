@@ -24,7 +24,7 @@ sky = SubResource("Sky_6geuy")
 
 [node name="RetrainingScene" type="Node3D"]
 script = ExtResource("1_o4v4c")
-levels_path = Array[PackedScene]([ExtResource("3_y82wj"), ExtResource("4_fh87c"), ExtResource("7_gsj7m"), ExtResource("5_ng5ms"), ExtResource("6_40r0j"), ExtResource("7_o0ard"), ExtResource("8_7kib3"), ExtResource("9_nraea")])
+levels_path = Array[PackedScene]([ExtResource("3_y82wj"), ExtResource("4_fh87c"), ExtResource("7_gsj7m"), ExtResource("6_40r0j"), ExtResource("8_7kib3"), ExtResource("9_nraea"), ExtResource("7_o0ard"), ExtResource("5_ng5ms")])
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("2_hiqds")
@@ -34,9 +34,9 @@ speed_up = 10.0
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 46.594, 20, 21.0523)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 140, 20, 50)
 projection = 1
-size = 120.0
+size = 175.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_adgot")

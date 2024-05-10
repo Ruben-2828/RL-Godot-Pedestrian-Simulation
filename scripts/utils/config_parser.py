@@ -33,13 +33,7 @@ class ConfigParser:
         return True
 
     def validate_level(self, level_name: str, details: dict) -> bool:
-        """Validates file_name, mean_reward, episode_mean and cycles for a given level."""
-        # Validate file_name
-        file_name = details.get('file_name')
-        if not os.path.exists(file_name):
-            print(f"Warning: {file_name} for {level_name} does not exist.")
-            return False
-
+        """Validates mean_reward, episode_mean and cycles for a given level."""
         # Validate mean_reward
         mean_reward = details.get('mean_reward')
         if not isinstance(mean_reward, float):
@@ -58,7 +52,7 @@ class ConfigParser:
             print(f"Warning: cycles for {level_name} is not valid")
             return False
 
-        self.levels.append(Level(level_name, file_name, mean_reward, episode_mean, cycles))
+        self.levels.append(Level(level_name, mean_reward, episode_mean, cycles))
         return True
 
     def get_levels(self) -> Collection[Level]:

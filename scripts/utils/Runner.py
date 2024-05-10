@@ -43,14 +43,14 @@ class Runner:
 
     def train_level(self, level: Level) -> None:
 
-        print(f"Running level: {level.name}")
 
         # Setting up environment
         monitor_logs_path = Constants.OUTPUT_PATH + f"tmp_{level.name}/"
         env = StableBaselinesGodotEnv(
-            env_path=level.level_file,
+            #env_path=level.level_file,
             show_window=Constants.SHOW_WINDOW,
         )
+        print(f"Running level: {level.name}")
         vec_env = VecMonitor(env, filename=monitor_logs_path + level.name)
 
         # Setting up model
@@ -108,7 +108,7 @@ class Runner:
         # Setting up environment
         monitor_logs_path = Constants.OUTPUT_PATH + f"tmp_retraining/"
         env = StableBaselinesGodotEnv(
-            env_path="RetrainingScene.exe",
+            #env_path="RetrainingScene.exe",
             show_window=Constants.SHOW_WINDOW,
         )
         vec_env = VecMonitor(env, filename=monitor_logs_path + "retraining")

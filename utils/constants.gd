@@ -37,11 +37,13 @@ const END_OF_TIMESTEPS_REW: float = -6.0
 const TICKS_PER_STEP: int = 20
 
 # RayCast Sensor
-const RAY_LENGTH: float = 10.0
+const RAY_LENGTH: float = 35.0
+const RAY_LENGTH_OBS: float = 10.0 
 const MAX_VISION_DEGREES: float = 90.0
 const RAYS_ANGLE_DELTA: float = 1.5
 const INITIAL_RAY_POS: float = 0.0
 const RAYS_GRAY_COLOR: String = "#787c82"
+
 
 # Groups
 const TARGETS_GROUP: String = "TARGET"
@@ -58,7 +60,7 @@ const TARGET_OFFSET: float = 1.5
 const ROTATION_STEPS: int = 8
 
 # Training phase
-const LEVELS_OFFSET: float = 50.0
+const LEVELS_OFFSET: float = 40.0
 const RETRAINING_INSTANCES_PER_LEVEL: int = 3
 const TRAINING_BATCH_SIZE: int = 10
 

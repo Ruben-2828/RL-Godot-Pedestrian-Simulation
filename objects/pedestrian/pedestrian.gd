@@ -101,7 +101,7 @@ func compute_rewards() -> void:
 		# Reward loss when wall is too near
 		var wall_near = false
 		for i in range(0, Constants.WALL_COLLISION_RAYS * 4, 4):
-			if walls_and_targets[i+1] == 1 and walls_and_targets[i] < Constants.WALL_COLLISION_DISTANCE / raycast_sensor.ray_length:
+			if walls_and_targets[i+1] == 1 and walls_and_targets[i] < Constants.WALL_COLLISION_DISTANCE / Constants.RAY_LENGTH_OBS:
 				wall_near = true
 				break
 		if wall_near:
@@ -111,7 +111,7 @@ func compute_rewards() -> void:
 		# Reward loss when agent is too near
 		var agent_near = false
 		for i in range(0, Constants.AGENT_COLLISION_SMALL_RAYS * 4, 4):
-			if agents_and_walls[i+1] == 1 and agents_and_walls[i] < Constants.AGENT_COLLISION_SMALL_DISTANCE / raycast_sensor.ray_length:
+			if agents_and_walls[i+1] == 1 and agents_and_walls[i] < Constants.AGENT_COLLISION_SMALL_DISTANCE / Constants.RAY_LENGTH_OBS:
 				agent_near = true
 				break
 		if agent_near:
@@ -120,7 +120,7 @@ func compute_rewards() -> void:
 			
 		if not agent_near:
 			for i in range(0, Constants.AGENT_COLLISION_MEDIUM_RAYS * 4, 4):
-				if agents_and_walls[i+1] == 1 and agents_and_walls[i] < Constants.AGENT_COLLISION_MEDIUM_DISTANCE / raycast_sensor.ray_length:
+				if agents_and_walls[i+1] == 1 and agents_and_walls[i] < Constants.AGENT_COLLISION_MEDIUM_DISTANCE / Constants.RAY_LENGTH_OBS:
 					agent_near = true
 					break
 			if agent_near:
@@ -129,7 +129,7 @@ func compute_rewards() -> void:
 				
 		if not agent_near:
 			for i in range(0, Constants.AGENT_COLLISION_LARGE_RAYS * 4, 4):
-				if agents_and_walls[i+1] == 1 and agents_and_walls[i] < Constants.AGENT_COLLISION_LARGE_DISTANCE / raycast_sensor.ray_length:
+				if agents_and_walls[i+1] == 1 and agents_and_walls[i] < Constants.AGENT_COLLISION_LARGE_DISTANCE / Constants.RAY_LENGTH_OBS:
 					agent_near = true
 					break
 			if agent_near:

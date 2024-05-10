@@ -1,34 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://buytp40i8mx1h"]
+[gd_scene load_steps=13 format=3 uid="uid://buytp40i8mx1h"]
 
 [ext_resource type="Script" path="res://training_scene/training_scene.gd" id="1_2y50e"]
-[ext_resource type="Script" path="res://training_scene/Sync.gd" id="9_ebl31"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uefqa"]
-ground_bottom_color = Color(0.378467, 0.327557, 0.268518, 1)
-
-[sub_resource type="Sky" id="Sky_1ys38"]
-sky_material = SubResource("ProceduralSkyMaterial_uefqa")
-
-[sub_resource type="Environment" id="Environment_u2qca"]
-background_mode = 1
-background_color = Color(0.403448, 0.365258, 0.30378, 1)
-sky = SubResource("Sky_1ys38")
+[ext_resource type="PackedScene" uid="uid://b5i18lyv0wpap" path="res://training_scene/level_batchs/StartEzBatch.tscn" id="2_lmwn7"]
+[ext_resource type="PackedScene" uid="uid://b1r8uag8rqaea" path="res://training_scene/level_batchs/StartBatch.tscn" id="3_rox21"]
+[ext_resource type="PackedScene" uid="uid://c3bmsctq8jt0i" path="res://training_scene/level_batchs/ObserveBatch.tscn" id="4_bfwbb"]
+[ext_resource type="PackedScene" uid="uid://bqix8f1yfntnn" path="res://training_scene/level_batchs/StartCorridorBatch.tscn" id="5_gecgv"]
+[ext_resource type="PackedScene" uid="uid://degmj8pdveieh" path="res://training_scene/level_batchs/TurnsBatch.tscn" id="6_16lx6"]
+[ext_resource type="PackedScene" uid="uid://c63gqblvqprnx" path="res://training_scene/level_batchs/TurnsObstaclesBatch.tscn" id="7_xsm37"]
+[ext_resource type="PackedScene" uid="uid://da3pu3dw0hppl" path="res://training_scene/level_batchs/NarrowDoorBatch.tscn" id="8_sc2it"]
+[ext_resource type="PackedScene" uid="uid://bc4au0b4yf1ae" path="res://training_scene/level_batchs/Corridor3vs3Batch.tscn" id="9_os6rk"]
+[ext_resource type="PackedScene" uid="uid://3sts7kaayjvt" path="res://training_scene/level_batchs/T-JunctionBatch.tscn" id="10_1hbsg"]
+[ext_resource type="PackedScene" uid="uid://bv382p2xxoi1u" path="res://training_scene/level_batchs/Intersection4Batch.tscn" id="11_axvwi"]
+[ext_resource type="PackedScene" uid="uid://w4rdhfsfb7x1" path="res://training_scene/level_batchs/NarrowDoorDoubleBatch.tscn" id="12_yai6y"]
 
 [node name="TrainingScene" type="Node3D"]
 script = ExtResource("1_2y50e")
-batch_size = 16
-
-[node name="Sync" type="Node" parent="."]
-script = ExtResource("9_ebl31")
-speed_up = 10.0
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_u2qca")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 0)
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
-projection = 1
-size = 22.0
+levels_path = Array[PackedScene]([ExtResource("2_lmwn7"), ExtResource("3_rox21"), ExtResource("4_bfwbb"), ExtResource("5_gecgv"), ExtResource("6_16lx6"), ExtResource("7_xsm37"), ExtResource("8_sc2it"), ExtResource("9_os6rk"), ExtResource("10_1hbsg"), ExtResource("11_axvwi"), ExtResource("12_yai6y")])

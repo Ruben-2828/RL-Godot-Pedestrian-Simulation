@@ -141,7 +141,7 @@ func calculate_walls_targets() -> Array:
 	
 	# Walls and targets observations
 	for ray in rays_walls_targets:
-		var norm_distance = _get_raycast_distance(ray) / ray_length
+		var norm_distance = _get_raycast_distance(ray)
 		hit_objects.append(norm_distance)
 		
 		# hit object type is a one hot encoding
@@ -166,7 +166,7 @@ func calculate_agents_walls() -> Array:
 	
 	# Agents and walls observations
 	for ray in rays_agents_walls:
-		var norm_distance = _get_raycast_distance(ray) / ray_length
+		var norm_distance = _get_raycast_distance(ray)
 		var type: int = 0
 		var direction: float = 0.0
 		var speed: float = 0.0
@@ -192,4 +192,7 @@ func _get_raycast_distance(ray: RayCast3D) -> float:
 
 	var origin = ray.global_transform.origin
 	var collision_point = ray.get_collision_point()
-	return origin.distance_to(collision_point)
+	var distance = origin.distance_to(collision_point)
+	if distance > Constants.RAY_LENGTH_OBS:
+		return 1
+	return  distance / Constants.RAY_LENGTH_OBS

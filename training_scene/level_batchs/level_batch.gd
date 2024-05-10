@@ -24,3 +24,8 @@ func spawn_level_managers() -> void:
 		level_managers.append(level_manager_instance)
 		add_child(level_manager_instance)
 		level_manager_instance.set_level(level)
+
+func finish():
+	for lm in level_managers:
+		lm.free()	
+	get_parent().set_current_level()
