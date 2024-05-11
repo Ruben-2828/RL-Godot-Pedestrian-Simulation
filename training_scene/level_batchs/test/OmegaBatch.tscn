@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://dxg6k34fg01y7"]
 
-[ext_resource type="Script" path="res://training_scene/level_batchs/level_batch.gd" id="1_2cfyg"]
-[ext_resource type="Script" path="res://training_scene/Sync.gd" id="1_whon4"]
-[ext_resource type="PackedScene" uid="uid://6qoewixf66h3" path="res://environment/levels/test/Omega.tscn" id="2_6h37d"]
+[ext_resource type="Script" path="res://training_scene/level_batchs/level_batch.gd" id="1_h6nyx"]
+[ext_resource type="PackedScene" uid="uid://6qoewixf66h3" path="res://environment/levels/test/Omega.tscn" id="2_iju3o"]
+[ext_resource type="Script" path="res://training_scene/Sync.gd" id="3_s5l4w"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wrjxf"]
 ground_bottom_color = Color(0.277634, 0.237635, 0.191207, 1)
@@ -16,12 +16,13 @@ background_color = Color(0.270171, 0.229928, 0.188594, 1)
 sky = SubResource("Sky_6geuy")
 
 [node name="OmegaBatch" type="Node3D"]
-script = ExtResource("1_2cfyg")
-level = ExtResource("2_6h37d")
+script = ExtResource("1_h6nyx")
+level = ExtResource("2_iju3o")
 
 [node name="Sync" type="Node" parent="."]
-script = ExtResource("1_whon4")
-speed_up = 10.0
+script = ExtResource("3_s5l4w")
+control_mode = 2
+onnx_model_path = "res://scripts/output/onnx/model.onnx"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_awwuh")

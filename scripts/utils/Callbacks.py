@@ -61,8 +61,8 @@ class EndTrainingOnEarlyFailCallback(BaseCallback):
 def trimmed_mean(values: Series) -> float:
     trim_range: int = floor(len(values) / 10)
 
-    values = values.sort_values()
-    trimmed_values = values[trim_range:-trim_range]
+    trimmed_values = values.sort_values().iloc[trim_range:-trim_range]
+    #trimmed_values = values[trim_range:-trim_range]
     #print(values)
     #print(trimmed_values)
 

@@ -67,47 +67,75 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.981
 
 [node name="Target8" parent="Target" instance=ExtResource("6_exn3j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.23313, 0, 4)
+collision_layer = 16
+collision_mask = 20
 
 [node name="Target2" parent="Target" instance=ExtResource("6_exn3j")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, 2)
+collision_layer = 16
+collision_mask = 20
 
 [node name="Target3" parent="Target" instance=ExtResource("6_exn3j")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, 2)
+collision_layer = 16
+collision_mask = 20
 
 [node name="ObliqueTarget6" parent="Target" instance=ExtResource("7_henja")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 4, 0, 2)
+collision_layer = 16
+collision_mask = 20
 
 [node name="ObliqueTarget" parent="Target" instance=ExtResource("7_henja")]
 transform = Transform3D(0.848528, 0, 0.848528, 0, 1.2, 0, -0.848528, 0, 0.848528, 4.63435, 0, 8.18502)
+collision_layer = 16
+collision_mask = 20
 
 [node name="ObliqueTarget2" parent="Target" instance=ExtResource("7_henja")]
 transform = Transform3D(0.848528, 0, -0.848528, 0, 1.2, 0, 0.848528, 0, 0.848528, 8.29074, 0, 8.26431)
+collision_layer = 16
+collision_mask = 20
 
 [node name="Target5" parent="Target" instance=ExtResource("6_exn3j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.58148, 0, 0)
+collision_layer = 16
+collision_mask = 20
 
 [node name="ObliqueTarget3" parent="Target" instance=ExtResource("7_henja")]
 transform = Transform3D(0.848528, 0, 0.848528, 0, 1.2, 0, -0.848528, 0, 0.848528, 8.34361, 0, -8.10572)
+collision_layer = 16
+collision_mask = 20
 
 [node name="ObliqueTarget4" parent="Target" instance=ExtResource("7_henja")]
 transform = Transform3D(0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, 0.5, 3.81498, 0, -7.26431)
+collision_layer = 16
+collision_mask = 20
 
 [node name="ObliqueTarget5" parent="Target" instance=ExtResource("7_henja")]
 transform = Transform3D(0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, 0.5, 0, 0, -5)
+collision_layer = 16
+collision_mask = 20
 
 [node name="Target6" parent="Target" instance=ExtResource("6_exn3j")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, -2.21145)
+collision_layer = 16
+collision_mask = 20
 
 [node name="Target7" parent="Target" instance=ExtResource("6_exn3j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.21581, 0, -4.03083)
-
-[node name="FinalTarget" parent="Target" instance=ExtResource("4_qmnee")]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -8.2266, 0, -8.24927)
+collision_layer = 16
+collision_mask = 20
 
 [node name="PedestrianController" type="Node3D" parent="."]
 script = ExtResource("10_xexhx")
 
 [node name="Pedestrian" parent="PedestrianController" instance=ExtResource("11_md13o")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.5, 0, 8.5)
+collision_layer = 6
+collision_mask = 19
 
-[connection signal="body_entered" from="Target/FinalTarget" to="." method="_on_final_target_body_entered"]
+[node name="FinalTarget" parent="." instance=ExtResource("4_qmnee")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -8.2266, 0, -8.24927)
+collision_layer = 16
+collision_mask = 20
+
+[connection signal="body_entered" from="FinalTarget" to="." method="_on_final_target_body_entered"]

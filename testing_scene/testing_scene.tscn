@@ -1,30 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhfypoxj8yyek"]
+[gd_scene load_steps=2 format=3 uid="uid://bhfypoxj8yyek"]
 
 [ext_resource type="Script" path="res://training_scene/training_scene.gd" id="1_buxsb"]
-[ext_resource type="Script" path="res://training_scene/Sync.gd" id="1_ojck1"]
-[ext_resource type="PackedScene" uid="uid://55sow7lawgi0" path="res://environment/levels/test/CurveC.tscn" id="2_5ssmu"]
-[ext_resource type="PackedScene" uid="uid://dxyb7sq0yuht7" path="res://environment/levels/test/DoorChoice.tscn" id="3_jm34s"]
-[ext_resource type="PackedScene" uid="uid://6qoewixf66h3" path="res://environment/levels/test/Omega.tscn" id="4_ps2co"]
-
-[sub_resource type="Environment" id="Environment_55kxu"]
 
 [node name="TestingScene" type="Node3D"]
 script = ExtResource("1_buxsb")
-levels_path = Array[PackedScene]([ExtResource("2_5ssmu"), ExtResource("3_jm34s"), ExtResource("4_ps2co")])
-
-[node name="Sync" type="Node" parent="."]
-script = ExtResource("1_ojck1")
-control_mode = 2
-speed_up = 10.0
-onnx_model_path = "scripts\\output\\onnx\\model.onnx"
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_55kxu")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 0)
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, -0.5)
-projection = 1
-size = 22.0

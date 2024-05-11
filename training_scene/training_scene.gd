@@ -1,4 +1,3 @@
-
 extends Node3D
 
 ## List of levels used in curriculum

@@ -24,11 +24,11 @@ Curriculum:
     episode_mean: 36
     cycles: 10
   NarrowDoor:
-    mean_reward: 3.0 #5.0
+    mean_reward: 5.0
     episode_mean: 36
     cycles: 15
   Corridor3vs3:
-    mean_reward: 2.0 #4.0
+    mean_reward: 4.0
     episode_mean: 36
     cycles: 15
   T-Junction:
@@ -36,7 +36,7 @@ Curriculum:
     episode_mean: 36
     cycles: 5
   Intersection4:
-    mean_reward: 2.5 #5.0
+    mean_reward: 5.0
     episode_mean: 36
     cycles: 15
   NarrowDoorDouble:

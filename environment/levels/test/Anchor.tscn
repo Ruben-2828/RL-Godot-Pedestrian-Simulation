@@ -14,6 +14,7 @@
 
 [node name="Anchor" type="Node3D"]
 script = ExtResource("1_u7y8s")
+max_steps = 500
 
 [node name="Room" parent="." instance=ExtResource("2_tcrn4")]
 
@@ -76,24 +77,40 @@ script = ExtResource("7_mnonv")
 
 [node name="Pedestrian" parent="PedestrianController" instance=ExtResource("8_vmlo5")]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -8, 0, -7.5)
-
-[node name="Pedestrian2" parent="PedestrianController" instance=ExtResource("8_vmlo5")]
-transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 8, 0, -7.5)
-
-[node name="Pedestrian3" parent="PedestrianController" instance=ExtResource("8_vmlo5")]
-transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 6, 0, -3)
+collision_layer = 6
+collision_mask = 19
 
 [node name="Pedestrian4" parent="PedestrianController" instance=ExtResource("8_vmlo5")]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -6, 0, -3)
+collision_layer = 6
+collision_mask = 35
+
+[node name="Pedestrian2" parent="PedestrianController" instance=ExtResource("8_vmlo5")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 8, 0, -7.5)
+collision_layer = 10
+collision_mask = 35
+
+[node name="Pedestrian3" parent="PedestrianController" instance=ExtResource("8_vmlo5")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 6, 0, -3)
+collision_layer = 10
+collision_mask = 35
 
 [node name="ObliqueTarget" parent="." instance=ExtResource("9_5sjd1")]
 transform = Transform3D(0.848528, 0, -0.848528, 0, 1.2, 0, 0.848528, 0, 0.848528, 4, -1.1437, -0.5)
+collision_layer = 32
+collision_mask = 40
 
 [node name="ObliqueTarget2" parent="." instance=ExtResource("9_5sjd1")]
 transform = Transform3D(0.848528, 0, 0.848528, 0, 1.2, 0, -0.848528, 0, 0.848528, -4, -0.960358, -0.5)
+collision_layer = 16
+collision_mask = 20
 
 [node name="Target" parent="." instance=ExtResource("10_6sunq")]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.391001, -0.973243, -2.60892)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, -2.609)
+collision_layer = 48
+collision_mask = 60
 
 [node name="FinalTarget" parent="." instance=ExtResource("11_wlfyq")]
 transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, -2.02628, -8.87518)
+collision_layer = 48
+collision_mask = 60

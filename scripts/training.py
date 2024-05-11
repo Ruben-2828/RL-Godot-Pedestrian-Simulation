@@ -9,7 +9,7 @@ from stable_baselines3.common.vec_env.vec_monitor import VecMonitor
 
 from scripts.utils import Constants
 from scripts.utils.Callbacks import EndTrainingOnMeanRewardReachedCallback, EndTrainingOnEarlyFailCallback
-from scripts.utils.config_parser import ConfigParser
+from scripts.utils.ConfigParser import ConfigParser
 
 
 def close_env(environment):

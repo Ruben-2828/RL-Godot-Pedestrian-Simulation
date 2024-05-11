@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cb27x6fe2m85d"]
 
-[ext_resource type="Script" path="res://training_scene/level_batchs/level_batch.gd" id="1_36tcv"]
-[ext_resource type="Script" path="res://training_scene/Sync.gd" id="1_o073k"]
+[ext_resource type="Script" path="res://training_scene/level_batchs/level_batch.gd" id="1_fygtl"]
+[ext_resource type="Script" path="res://training_scene/Sync.gd" id="2_bh1jm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_op7cm"]
 ground_bottom_color = Color(0.277634, 0.237635, 0.191207, 1)
@@ -15,11 +15,12 @@ background_color = Color(0.270171, 0.229928, 0.188594, 1)
 sky = SubResource("Sky_805bq")
 
 [node name="DoorChoiceBatch" type="Node3D"]
-script = ExtResource("1_36tcv")
+script = ExtResource("1_fygtl")
 
 [node name="Sync" type="Node" parent="."]
-script = ExtResource("1_o073k")
-speed_up = 10.0
+script = ExtResource("2_bh1jm")
+control_mode = 2
+onnx_model_path = "res://scripts/output/onnx/model.onnx"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_221f4")

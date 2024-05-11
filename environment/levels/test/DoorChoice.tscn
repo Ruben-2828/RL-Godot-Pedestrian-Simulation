@@ -24,13 +24,19 @@ max_steps = 100
 [node name="Target" type="Node3D" parent="."]
 
 [node name="Target" parent="Target" instance=ExtResource("6_0jlao")]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -4.08826, 0, 3)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -3.97496, 0, 3)
+collision_layer = 16
+collision_mask = 20
 
 [node name="Target2" parent="Target" instance=ExtResource("6_0jlao")]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 3.94319, 0, 3)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 3.98851, 0, 3)
+collision_layer = 16
+collision_mask = 20
 
 [node name="Target3" parent="Target" instance=ExtResource("6_0jlao")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, -3)
+collision_layer = 16
+collision_mask = 20
 
 [node name="Wall" type="Node3D" parent="."]
 
@@ -54,9 +60,13 @@ script = ExtResource("9_tvxse")
 
 [node name="Pedestrian" parent="PedestrianController" instance=ExtResource("10_6hwxf")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 7)
+collision_layer = 6
+collision_mask = 19
 
 [node name="FinalTarget" parent="." instance=ExtResource("9_2y11s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.04155)
+collision_layer = 16
+collision_mask = 20
 
 [node name="RandomArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)

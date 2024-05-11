@@ -33,18 +33,28 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.5, 
 
 [node name="Target2" parent="Target" instance=ExtResource("6_r7607")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, 8.21145)
+collision_layer = 16
+collision_mask = 20
 
 [node name="Target3" parent="Target" instance=ExtResource("6_r7607")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.26431, 0, -6)
+collision_layer = 16
+collision_mask = 20
 
 [node name="Target4" parent="Target" instance=ExtResource("6_r7607")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0, -8.23788)
+collision_layer = 16
+collision_mask = 20
 
 [node name="Target5" parent="Target" instance=ExtResource("6_r7607")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.34361, 0, 6)
+collision_layer = 16
+collision_mask = 20
 
 [node name="FinalTarget" parent="Target" instance=ExtResource("3_8mtbn")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 9.11011, -1, -8.23788)
+collision_layer = 16
+collision_mask = 20
 
 [node name="Reward" parent="." instance=ExtResource("4_1qnrb")]
 
@@ -53,5 +63,7 @@ script = ExtResource("8_3qxak")
 
 [node name="Pedestrian" parent="PedestrianController" instance=ExtResource("9_laufr")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.5, 0, 8.5)
+collision_layer = 6
+collision_mask = 19
 
 [connection signal="body_entered" from="Target/FinalTarget" to="." method="_on_final_target_body_entered"]
