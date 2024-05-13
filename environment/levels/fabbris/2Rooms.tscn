@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target.tscn" id="6_8b64i"]
 [ext_resource type="PackedScene" uid="uid://cjdi121yppx7d" path="res://objects/targets/objective.tscn" id="7_2twg6"]
 
-
 [node name="2Rooms" type="Node3D"]
 
 [node name="Room" parent="." instance=ExtResource("1_ewxrh")]

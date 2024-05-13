@@ -3,7 +3,7 @@ extends Node3D
 class_name LevelManager
 
 ## Signal emmitted on episode end
-signal notify_end_episode(reward: float)
+signal notify_end_episode()
 
 
 ## Set all the level elements (pedestrians, targets, ai controllers...)

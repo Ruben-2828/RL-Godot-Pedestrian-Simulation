@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://55sow7lawgi0"]
 
 [ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room/room.tscn" id="1_7dvx3"]
-[ext_resource type="Script" path="res://environment/levels_scripts/turn_level.gd" id="1_12my6"]
+[ext_resource type="Script" path="res://environment/levels_scripts/level.gd" id="1_d5ked"]
 [ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target.tscn" id="3_8mtbn"]
 [ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/solid/internal_wall.tscn" id="3_lai6e"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="4_1qnrb"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="9_laufr"]
 
 [node name="CurveC" type="Node3D"]
-script = ExtResource("1_12my6")
+script = ExtResource("1_d5ked")
 
 [node name="Room" parent="." instance=ExtResource("1_7dvx3")]
 

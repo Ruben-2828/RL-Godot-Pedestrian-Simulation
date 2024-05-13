@@ -1,22 +1,22 @@
 [gd_scene load_steps=7 format=3 uid="uid://b3rrg3fpqd1dd"]
 
-[ext_resource type="Script" path="res://training_scene/level_batchs/level_batch.gd" id="1_onu4u"]
+[ext_resource type="Script" path="res://training_scene/level_batchs/level_test_batch.gd" id="1_d0dgd"]
 [ext_resource type="PackedScene" uid="uid://craqbwsoct6xh" path="res://environment/levels/test/Anchor.tscn" id="2_fof3e"]
 [ext_resource type="Script" path="res://training_scene/Sync.gd" id="3_noou1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yj8b3"]
 ground_bottom_color = Color(0.277634, 0.237635, 0.191207, 1)
 
-[sub_resource type="Sky" id="Sky_nx40s"]
+[sub_resource type="Sky" id="Sky_7jj7m"]
 sky_material = SubResource("ProceduralSkyMaterial_yj8b3")
 
 [sub_resource type="Environment" id="Environment_rvh8i"]
 background_mode = 1
 background_color = Color(0.270171, 0.229928, 0.188594, 1)
-sky = SubResource("Sky_nx40s")
+sky = SubResource("Sky_7jj7m")
 
 [node name="AnchorBatch" type="Node3D"]
-script = ExtResource("1_onu4u")
+script = ExtResource("1_d0dgd")
 level = ExtResource("2_fof3e")
 
 [node name="Sync" type="Node" parent="."]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dxg6k34fg01y7"]
 
-[ext_resource type="Script" path="res://training_scene/level_batchs/level_batch.gd" id="1_h6nyx"]
+[ext_resource type="Script" path="res://training_scene/level_batchs/level_test_batch.gd" id="1_sms55"]
 [ext_resource type="PackedScene" uid="uid://6qoewixf66h3" path="res://environment/levels/test/Omega.tscn" id="2_iju3o"]
 [ext_resource type="Script" path="res://training_scene/Sync.gd" id="3_s5l4w"]
 
@@ -16,7 +16,7 @@ background_color = Color(0.270171, 0.229928, 0.188594, 1)
 sky = SubResource("Sky_6geuy")
 
 [node name="OmegaBatch" type="Node3D"]
-script = ExtResource("1_h6nyx")
+script = ExtResource("1_sms55")
 level = ExtResource("2_iju3o")
 
 [node name="Sync" type="Node" parent="."]

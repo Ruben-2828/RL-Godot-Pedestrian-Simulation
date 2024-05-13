@@ -61,7 +61,7 @@ const RETRAINING_INSTANCES_PER_LEVEL: int = 3
 const TRAINING_BATCH_SIZE: int = 10
 
 # Test scene
-const LEVEL_TIMESTEP: int = 100
+const DEFAULT_NUMBER_OF_EPISODE: int = 100
 
 # Engine/Sync
 const PHYSICS_TICKS_PER_SECONDS: int = 60

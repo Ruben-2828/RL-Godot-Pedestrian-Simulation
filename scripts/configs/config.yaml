@@ -43,22 +43,4 @@ Curriculum:
     mean_reward: 4.0
     episode_mean: 36
     cycles: 15
-Test:
-  Anchor:
-    mean_reward: 0.0
-    episode_mean: 36
-    cycles: 5
-  CurveC:
-    mean_reward: 0.0
-    episode_mean: 36
-    cycles: 5
-  Omega:
-    mean_reward: 0.0
-    episode_mean: 36
-    cycles: 5
-  DoubleChoice:
-    mean_reward: 0.0
-    episode_mean: 36
-    cycles: 5
-
 

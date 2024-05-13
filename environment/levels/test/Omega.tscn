@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://6qoewixf66h3"]
 
 [ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room/room.tscn" id="1_4ukmo"]
-[ext_resource type="Script" path="res://environment/levels_scripts/level.gd" id="1_hkkfn"]
+[ext_resource type="Script" path="res://environment/levels_scripts/level.gd" id="1_mflkc"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="2_hd517"]
 [ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target.tscn" id="4_qmnee"]
 [ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/solid/internal_wall.tscn" id="5_3npd3"]
@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="11_md13o"]
 
 [node name="Omega" type="Node3D"]
-script = ExtResource("1_hkkfn")
+script = ExtResource("1_mflkc")
 
 [node name="Room" parent="." instance=ExtResource("1_4ukmo")]
 
@@ -96,7 +96,7 @@ collision_layer = 16
 collision_mask = 20
 
 [node name="Target5" parent="Target" instance=ExtResource("6_exn3j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.58148, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.58148, 0, 1.54147)
 collision_layer = 16
 collision_mask = 20
 

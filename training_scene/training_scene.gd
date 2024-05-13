@@ -1,4 +1,5 @@
 extends Node3D
+class_name TrainingScene
 
 ## List of levels used in curriculum
 @export var levels_path: Array[PackedScene]
@@ -13,6 +14,7 @@ func _ready():
 func set_current_level() -> void:
 	
 	if current_level != null:
+		current_level.find_child("Sync").set_physics_process(false)
 		current_level.queue_free()
 	
 	if current_level_idx < levels_path.size():

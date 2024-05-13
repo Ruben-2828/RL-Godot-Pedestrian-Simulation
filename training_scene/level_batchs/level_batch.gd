@@ -1,4 +1,5 @@
 extends Node
+class_name LevelBatch
 
 @export var level: PackedScene
 var batch_size: int = Constants.TRAINING_BATCH_SIZE
@@ -26,6 +27,7 @@ func spawn_level_managers() -> void:
 		level_manager_instance.set_level(level)
 
 func finish():
-	for lm in level_managers:
-		lm.free()	
+	var all_agents = get_tree().get_nodes_in_group(Constants.AGENT_GROUP)
+	for agent in all_agents:
+		agent.remove_from_group(Constants.AGENT_GROUP)
 	get_parent().set_current_level()

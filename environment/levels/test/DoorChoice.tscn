@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dxyb7sq0yuht7"]
 
-[ext_resource type="Script" path="res://environment/levels_scripts/level.gd" id="1_8c7ch"]
+[ext_resource type="Script" path="res://environment/levels_scripts/level.gd" id="1_idjqp"]
 [ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room/room.tscn" id="1_l50t2"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="2_raind"]
 [ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/targets/target.tscn" id="6_0jlao"]
@@ -14,8 +14,7 @@
 size = Vector3(16, 1, 4)
 
 [node name="DoorChoice" type="Node3D"]
-script = ExtResource("1_8c7ch")
-max_steps = 100
+script = ExtResource("1_idjqp")
 
 [node name="Room" parent="." instance=ExtResource("1_l50t2")]
 

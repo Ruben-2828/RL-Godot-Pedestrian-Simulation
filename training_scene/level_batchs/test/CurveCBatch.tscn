@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://djfufvg6fcsd3"]
 
-[ext_resource type="Script" path="res://training_scene/level_batchs/level_batch.gd" id="1_rf017"]
+[ext_resource type="Script" path="res://training_scene/level_batchs/level_test_batch.gd" id="1_i7sn5"]
 [ext_resource type="PackedScene" uid="uid://55sow7lawgi0" path="res://environment/levels/test/CurveC.tscn" id="2_yh7ij"]
 [ext_resource type="Script" path="res://training_scene/Sync.gd" id="3_gsxsu"]
 
@@ -16,7 +16,7 @@ background_color = Color(0.270171, 0.229928, 0.188594, 1)
 sky = SubResource("Sky_xxx8y")
 
 [node name="CurveCBatch" type="Node3D"]
-script = ExtResource("1_rf017")
+script = ExtResource("1_i7sn5")
 level = ExtResource("2_yh7ij")
 
 [node name="Sync" type="Node" parent="."]
