@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://degmj8pdveieh"]
 
 [ext_resource type="Script" path="res://training_scene/level_batchs/level_batch.gd" id="1_7d27v"]
-[ext_resource type="PackedScene" uid="uid://sao1y1f2xovn" path="res://environment/levels/training/Turns.tscn" id="2_wt2ex"]
+[ext_resource type="PackedScene" uid="uid://bjb1wqvx5nrla" path="res://environment/levels/training/Turns.tscn" id="2_wt2ex"]
 [ext_resource type="Script" path="res://training_scene/Sync.gd" id="3_6bd71"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s5svq"]

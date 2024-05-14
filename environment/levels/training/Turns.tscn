@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://sao1y1f2xovn"]
+[gd_scene load_steps=10 format=3 uid="uid://bjb1wqvx5nrla"]
 
 [ext_resource type="Script" path="res://environment/levels_scripts/level.gd" id="1_a7tno"]
 [ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room/room.tscn" id="2_4vy5g"]
@@ -53,52 +53,52 @@ collision_mask = 20
 [node name="Oblique" type="Node3D" parent="Target"]
 
 [node name="ObliqueTarget1" parent="Target/Oblique" instance=ExtResource("5_ch5gh")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -8.5, 0, -8.5)
+transform = Transform3D(0.848528, 0, -0.848528, 0, 1.2, 0, 0.848528, 0, 0.848528, -8.19745, 0, -8.5)
 collision_layer = 16
 collision_mask = 20
 
 [node name="ObliqueTarget2" parent="Target/Oblique" instance=ExtResource("5_ch5gh")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -8.5, 0, -5.4)
+transform = Transform3D(0.848528, 0, 0.848528, 0, 1.2, 0, -0.848528, 0, 0.848528, -8.19745, 0, -4.9894)
 collision_layer = 16
 collision_mask = 20
 
 [node name="ObliqueTarget3" parent="Target/Oblique" instance=ExtResource("5_ch5gh")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -8.5, 0, -1.4946)
+transform = Transform3D(0.848528, 0, -0.848528, 0, 1.2, 0, 0.848528, 0, 0.848528, -8.02457, 0, -1.4946)
 collision_layer = 16
 collision_mask = 20
 
 [node name="ObliqueTarget4" parent="Target/Oblique" instance=ExtResource("5_ch5gh")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -8.5, 0, 1.6054)
+transform = Transform3D(0.848528, 0, 0.848528, 0, 1.2, 0, -0.848528, 0, 0.848528, -8.0894, 0, 1.75667)
 collision_layer = 16
 collision_mask = 20
 
 [node name="ObliqueTarget5" parent="Target/Oblique" instance=ExtResource("5_ch5gh")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -8.5, 0, 5.33879)
+transform = Transform3D(0.848528, 0, -0.848528, 0, 1.2, 0, 0.848528, 0, 0.848528, -8.13262, 0, 5.07946)
 collision_layer = 16
 collision_mask = 20
 
 [node name="ObliqueTarget6" parent="Target/Oblique" instance=ExtResource("5_ch5gh")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -8.5, 0, 8.43879)
+transform = Transform3D(0.848528, 0, 0.848528, 0, 1.2, 0, -0.848528, 0, 0.848528, -8.24067, 0, 8.63329)
 collision_layer = 16
 collision_mask = 20
 
 [node name="ObliqueTarget7" parent="Target/Oblique" instance=ExtResource("5_ch5gh")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 8.5, 0, -4.896)
+transform = Transform3D(0.848528, 0, 0.848528, 0, 1.2, 0, -0.848528, 0, 0.848528, 8.13262, 0, -5.04727)
 collision_layer = 16
 collision_mask = 20
 
 [node name="ObliqueTarget8" parent="Target/Oblique" instance=ExtResource("5_ch5gh")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 8.5, 0, -1.796)
+transform = Transform3D(0.848528, 0, -0.848528, 0, 1.2, 0, 0.848528, 0, 0.848528, 8.21906, 0, -1.68795)
 collision_layer = 16
 collision_mask = 20
 
 [node name="ObliqueTarget9" parent="Target/Oblique" instance=ExtResource("5_ch5gh")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 8.5, 0, 1.8354)
+transform = Transform3D(0.848528, 0, 0.848528, 0, 1.2, 0, -0.848528, 0, 0.848528, 8.00296, 0, 1.8354)
 collision_layer = 16
 collision_mask = 20
 
 [node name="ObliqueTarget10" parent="Target/Oblique" instance=ExtResource("5_ch5gh")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 8.5, 0, 4.9354)
+transform = Transform3D(0.848528, 0, -0.848528, 0, 1.2, 0, 0.848528, 0, 0.848528, 8.13262, 0, 5.04345)
 collision_layer = 16
 collision_mask = 20
 

@@ -116,7 +116,7 @@ class Runner:
         self.load_model(vec_env)
 
         # Learn and save the model
-        self.model.learn(total_timesteps=50_000)
+        self.model.learn(total_timesteps=200_000)
         self.model.save(Constants.BASE_PATH + "model_tmp.zip")
 
         # Closing environment

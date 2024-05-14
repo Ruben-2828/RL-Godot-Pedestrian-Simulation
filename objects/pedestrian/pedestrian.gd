@@ -172,16 +172,16 @@ func get_speed_norm() -> float:
 		
 	return (speed - speed_min) / (speed_max - speed_min)
 
-## disable pedestrian when enter final target
+##disable pedestrian when enter final target
 func disable_pedestrian():
 	disable = true
 	#visible = false
 	speed_max = 0.0
 	rotation_sens = 0
-	global_position = Constants.POSITION_DISABLED
+	global_position.y = 1000
 
-	
-## enable pedestrian when end episode
+
+##enable pedestrian when end episode
 func enable_pedestrian():
 	disable = false
 	#visible = true
