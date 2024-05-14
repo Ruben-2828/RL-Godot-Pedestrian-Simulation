@@ -12,7 +12,7 @@
 
 [node name="T-Junction" type="Node3D"]
 script = ExtResource("1_w0tn2")
-max_steps = 500
+max_steps = 80
 
 [node name="Room" parent="." instance=ExtResource("2_skmxp")]
 

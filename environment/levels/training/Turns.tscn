@@ -12,7 +12,7 @@
 
 [node name="Turns" type="Node3D"]
 script = ExtResource("1_a7tno")
-max_steps = 500
+max_steps = 250
 
 [node name="Room" parent="." instance=ExtResource("2_4vy5g")]
 

@@ -15,7 +15,7 @@ size = Vector3(16, 1, 4)
 
 [node name="NarrowDoor" type="Node3D"]
 script = ExtResource("1_ek6oj")
-max_steps = 500
+max_steps = 80
 
 [node name="Room" parent="." instance=ExtResource("2_wlgid")]
 

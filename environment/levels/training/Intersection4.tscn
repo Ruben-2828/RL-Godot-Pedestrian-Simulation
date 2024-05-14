@@ -11,7 +11,7 @@
 
 [node name="Intersection4" type="Node3D"]
 script = ExtResource("1_e7k3o")
-max_steps = 500
+max_steps = 160
 
 [node name="Room" parent="." instance=ExtResource("1_bbj20")]
 

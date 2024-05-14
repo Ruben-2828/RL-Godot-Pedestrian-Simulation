@@ -16,7 +16,7 @@ size = Vector3(15, 1, 6)
 
 [node name="Start" type="Node3D"]
 script = ExtResource("1_wtqlq")
-max_steps = 150
+max_steps = 80
 
 [node name="Room" parent="." instance=ExtResource("1_ahbwp")]
 

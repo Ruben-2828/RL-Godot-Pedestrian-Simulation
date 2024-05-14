@@ -47,7 +47,7 @@ const AGENT_GROUP: String = "AGENT"
 const PEDESTRIAN_GROUP: String = "PEDESTRIAN"
 
 # Levels
-const DEFAULT_MAX_TIMESTEPS: int = 1000
+const DEFAULT_MAX_TIMESTEPS: int = 500
 
 # Random area (spawn, target, objective)
 const SPAWN_OFFSET: float = 0.5
@@ -56,7 +56,7 @@ const ROTATION_STEPS: int = 8
 
 # Training phase
 const LEVELS_BATCH_OFFSET: float = 100.0
-const LEVELS_RETRAINING_OFFSET: float = 30.0
+const LEVELS_RETRAINING_OFFSET: float = 40.0
 const RETRAINING_INSTANCES_PER_LEVEL: int = 3
 const TRAINING_BATCH_SIZE: int = 10
 

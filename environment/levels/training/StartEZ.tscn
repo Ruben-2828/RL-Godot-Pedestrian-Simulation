@@ -9,7 +9,7 @@
 
 [node name="StartEZ" type="Node3D"]
 script = ExtResource("1_rvhqc")
-max_steps = 100
+max_steps = 30
 
 [node name="Room" parent="." instance=ExtResource("1_xtyxy")]
 

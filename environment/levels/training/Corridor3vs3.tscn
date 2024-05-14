@@ -10,7 +10,7 @@
 
 [node name="Corridor3vs3" type="Node3D"]
 script = ExtResource("1_kw5q6")
-max_steps = 500
+max_steps = 80
 
 [node name="Room" parent="." instance=ExtResource("1_yh8ia")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0264312)
