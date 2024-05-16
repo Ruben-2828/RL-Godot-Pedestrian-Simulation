@@ -14,7 +14,8 @@ const AGENT_COLLISION_MEDIUM_RAYS: int = 11
 const AGENT_COLLISION_LARGE_RAYS: int = 9
 const POSITION_DISABLED: Vector3 = Vector3(-1000, -1000, -1000)
 
-
+# Pedestrian controller
+const TICKS_BETWEEN_LOG: int = 2
 
 # Rewards
 const FINAL_TARGET_REW: float = 6.0

@@ -18,6 +18,7 @@ script = ExtResource("1_mflkc")
 [node name="Room" parent="." instance=ExtResource("1_4ukmo")]
 
 [node name="Reward" parent="." instance=ExtResource("2_hd517")]
+visible = false
 
 [node name="Curve" type="Node3D" parent="."]
 

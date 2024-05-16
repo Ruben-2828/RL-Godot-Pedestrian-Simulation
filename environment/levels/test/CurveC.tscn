@@ -57,6 +57,7 @@ collision_layer = 16
 collision_mask = 20
 
 [node name="Reward" parent="." instance=ExtResource("4_1qnrb")]
+visible = false
 
 [node name="PedestrianController" type="Node3D" parent="."]
 script = ExtResource("8_3qxak")

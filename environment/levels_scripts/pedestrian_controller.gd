@@ -1,10 +1,10 @@
 
-#TODO: check valori usati
+#TODO: check valori usati - DONE: impostati tick per campionamento
 #TODO: usare constants
 #TODO: gestire i gruppi, o lato godot o lato pedpy
-#TODO: gestire la presenza di più livelli in più file, avere riferimento a nome del livello
-#TODO: gestire i batch
-#TODO: gestire correttamente respawn (provato con non campionare quando 
+#TODO: gestire la presenza di più livelli in più file, avere riferimento a nome del livello - DONE
+#TODO: gestire i batch - DONE: file creato da level_test_batch e passato ai pedestrian controllers
+#TODO: gestire correttamente respawn (provato con non campionare quando - DONE: gestito con un intero in piu nell'id per tenere conto del ciclo
 #p.disabled ma non funziona, prob bisogna smettere di campionare quando finisce un episode perchè lui sembra unire gli episode)
 
 extends Node3D
@@ -18,6 +18,7 @@ var pedestrians: Array = []
 var pedestrian_done: Dictionary = {}
 var initial_pos: Dictionary = {}
 var initial_rot: Dictionary = {}
+var ped_cycle_counter: Dictionary = {}
 
 var random_area: Area3D
 var random_rot: bool
@@ -25,20 +26,17 @@ var random_rot: bool
 var tot_reward: float = 0.0
 
 var sample_interval: float = 1.0  
-var time_elapsed: float = 0.0  
-var file: FileAccess
-var current_level: String = "livello"
-var sample_frame_count: int = 0  
-var number_level: int = 1
+var log_file: FileAccess
+var sample_frame_count: int = 0
+
+var ticks_between_log: int = Constants.TICKS_BETWEEN_LOG
+var tick_counter: int = 0
 
 func init(lm: LevelManager):
 	level_manager = lm
 
 func _ready():
 	get_pedestrians()
-	current_level= get_parent().name
-	file = FileAccess.open("res://outputs_" + current_level + "_" + str(number_level) + ".txt", FileAccess.WRITE)
-	init_sample_file()
 
 ## Get all pedestrians
 func get_pedestrians():
@@ -51,11 +49,7 @@ func set_pedestrians_initial_state():
 	for p in pedestrians:
 		initial_pos[p] = p.global_position
 		initial_rot[p] = p.rotation if not random_rot else randomize_rot
-
-#Initialize the sample file	
-func init_sample_file():
-	file.store_line("# framerate: 25 fps")
-	file.store_line("# id frame x/m y/m z/m")
+		ped_cycle_counter[p] = 0
 		
 
 ## perform randomization of pedestrian position
@@ -114,6 +108,7 @@ func check_end_episode():
 		pedestrian.reset()
 		pedestrian_done[pedestrian] = false
 		pedestrian.enable_pedestrian()
+		ped_cycle_counter[pedestrian] += 1
 	# ai controller done for only the first pedestrian to end the episode only one time
 	pedestrians[0].ai_controller_3d.done = true
 	
@@ -127,28 +122,23 @@ func set_end_episode(pedestrian):
 	
 	
 ## Process function to handle timestep counting and data sampling
-func _process(delta):
-	time_elapsed += delta
-	if time_elapsed >= sample_interval:
-		time_elapsed -= sample_interval  
+func _process(_delta):
+	tick_counter += 1
+	tick_counter %= Engine.physics_ticks_per_second
+	
+	if tick_counter % ticks_between_log == 0:
 		sample_data()
 
 ## Sample data from all pedestrians
 func sample_data():
 	for p in pedestrians:
-		var id = p.get_instance_id()
-		var position = p.global_position
-		var x = position.x
-		var y = position.y
-		var z = position.z
-		var data_line = str(id) + " " + str(sample_frame_count) + " " + str(x) + " " + str(z) + " " + str(y)
+		var id = str(p.get_instance_id()) + str(ped_cycle_counter[p])
+		var x = p.global_position.x - level_manager.global_position.x
+		var y = p.global_position.y - level_manager.global_position.y
+		var z = p.global_position.z - level_manager.global_position.z
+		var group = p.collision_layer - 2
+		var data_line = str(id) + " " + str(sample_frame_count) + " " + str(x) + " " + str(-z) + " " + str(y) + " " + str(group)
 		# TODO: sto salvando le z sulle y perchè pedpy plotta sulle y, capire come cambiare gli assi di pedpy e sistemare
-		file.store_line(data_line)
-		print("Sampling data for pedestrian:", id, " at frame:", sample_frame_count)
+		log_file.store_line(data_line)
+		#print("Sampling data for pedestrian:", id, " at frame:", sample_frame_count)
 	sample_frame_count += 1 
-
-
-## Close file when the node is removed from the scene
-func _exit_tree():
-	if file:
-		file.close()

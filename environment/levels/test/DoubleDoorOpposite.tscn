@@ -17,6 +17,7 @@ max_steps = 150
 [node name="Room" parent="." instance=ExtResource("1_pnb5x")]
 
 [node name="Reward" parent="." instance=ExtResource("2_h24jd")]
+visible = false
 
 [node name="FinalTarget" parent="." instance=ExtResource("3_wx720")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
