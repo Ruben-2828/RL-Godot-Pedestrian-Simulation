@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://cr75p04cbnp4a"]
 
 [ext_resource type="Script" path="res://environment/levels_scripts/level.gd" id="1_ek6oj"]
-[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room/room.tscn" id="2_wlgid"]
-[ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/solid/internal_wall.tscn" id="3_ll2sj"]
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/other/room.tscn" id="2_wlgid"]
+[ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/walls/internal_wall.tscn" id="3_ll2sj"]
+[ext_resource type="Script" path="res://environment/levels_scripts/randomizer/passage.gd" id="3_w20c2"]
 [ext_resource type="PackedScene" uid="uid://wnqy4tem8s1m" path="res://objects/targets/large_target.tscn" id="5_kcnvs"]
 [ext_resource type="PackedScene" uid="uid://cxphmcstta3bi" path="res://objects/targets/large_final_target.tscn" id="6_alo7g"]
-[ext_resource type="Script" path="res://environment/levels_scripts/random_passage.gd" id="7_ny8y3"]
 [ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="8_32bky"]
 [ext_resource type="Script" path="res://environment/levels_scripts/pedestrian_controller.gd" id="8_sojt5"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="10_8u685"]
@@ -20,7 +20,7 @@ max_steps = 80
 [node name="Room" parent="." instance=ExtResource("2_wlgid")]
 
 [node name="RandomPassage" type="Node3D" parent="."]
-script = ExtResource("7_ny8y3")
+script = ExtResource("3_w20c2")
 
 [node name="Area" type="Area3D" parent="RandomPassage"]
 

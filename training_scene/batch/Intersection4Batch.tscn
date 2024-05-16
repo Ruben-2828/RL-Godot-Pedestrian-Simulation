@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://bv382p2xxoi1u"]
+
+[ext_resource type="Script" path="res://training_scene/batch/level_training_batch.gd" id="1_tr44c"]
+[ext_resource type="PackedScene" uid="uid://dukr625tbkfpv" path="res://environment/levels/training/Intersection4.tscn" id="2_271ui"]
+[ext_resource type="Script" path="res://utils/Sync.gd" id="3_fg4nd"]
+
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hb8vd"]
+ground_bottom_color = Color(0.277634, 0.237635, 0.191207, 1)
+
+[sub_resource type="Sky" id="Sky_56tuq"]
+sky_material = SubResource("ProceduralSkyMaterial_hb8vd")
+
+[sub_resource type="Environment" id="Environment_sxnw0"]
+background_mode = 1
+background_color = Color(0.270171, 0.229928, 0.188594, 1)
+sky = SubResource("Sky_56tuq")
+
+[node name="Intersection4Batch" type="Node3D"]
+script = ExtResource("1_tr44c")
+level = ExtResource("2_271ui")
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("3_fg4nd")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_sxnw0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
+projection = 1
+size = 22.0

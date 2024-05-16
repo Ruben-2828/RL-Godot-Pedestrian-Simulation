@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://dukr625tbkfpv"]
 
-[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room/room.tscn" id="1_bbj20"]
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/other/room.tscn" id="1_bbj20"]
 [ext_resource type="Script" path="res://environment/levels_scripts/level.gd" id="1_e7k3o"]
-[ext_resource type="PackedScene" uid="uid://boj0pvmutwu86" path="res://objects/solid/tiny_internal_wall.tscn" id="3_7eypa"]
+[ext_resource type="PackedScene" uid="uid://boj0pvmutwu86" path="res://objects/walls/tiny_internal_wall.tscn" id="3_7eypa"]
 [ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target.tscn" id="3_r7g73"]
-[ext_resource type="PackedScene" uid="uid://uh0p4etdr17o" path="res://objects/solid/pillar.tscn" id="4_4ssob"]
+[ext_resource type="PackedScene" uid="uid://uh0p4etdr17o" path="res://objects/walls/pillar.tscn" id="4_4ssob"]
 [ext_resource type="Script" path="res://environment/levels_scripts/pedestrian_controller.gd" id="6_vmjy8"]
 [ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="7_djnoe"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="7_x3s66"]

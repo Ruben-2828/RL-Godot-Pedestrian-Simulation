@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="RL-Godot-Pedestrian-Simulation"
-run/main_scene="res://testing_scene/testing_scene.tscn"
+run/main_scene="res://test_scene/test_scene.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 

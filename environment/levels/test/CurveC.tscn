@@ -1,14 +1,15 @@
 [gd_scene load_steps=10 format=3 uid="uid://55sow7lawgi0"]
 
-[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room/room.tscn" id="1_7dvx3"]
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/other/room.tscn" id="1_7dvx3"]
 [ext_resource type="Script" path="res://environment/levels_scripts/level.gd" id="1_d5ked"]
 [ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target.tscn" id="3_8mtbn"]
-[ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/solid/internal_wall.tscn" id="3_lai6e"]
+[ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/walls/internal_wall.tscn" id="3_lai6e"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="4_1qnrb"]
-[ext_resource type="PackedScene" uid="uid://nqwb7at8dpui" path="res://objects/solid/small_internal_wall.tscn" id="4_5ir6d"]
+[ext_resource type="PackedScene" uid="uid://nqwb7at8dpui" path="res://objects/walls/small_internal_wall.tscn" id="4_5ir6d"]
 [ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/targets/target.tscn" id="6_r7607"]
 [ext_resource type="Script" path="res://environment/levels_scripts/pedestrian_controller.gd" id="8_3qxak"]
 [ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="9_laufr"]
+
 
 [node name="CurveC" type="Node3D"]
 script = ExtResource("1_d5ked")

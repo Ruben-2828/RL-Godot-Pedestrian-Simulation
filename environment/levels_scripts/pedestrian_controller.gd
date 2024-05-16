@@ -1,12 +1,3 @@
-
-#TODO: check valori usati - DONE: impostati tick per campionamento
-#TODO: usare constants
-#TODO: gestire i gruppi, o lato godot o lato pedpy
-#TODO: gestire la presenza di più livelli in più file, avere riferimento a nome del livello - DONE
-#TODO: gestire i batch - DONE: file creato da level_test_batch e passato ai pedestrian controllers
-#TODO: gestire correttamente respawn (provato con non campionare quando - DONE: gestito con un intero in piu nell'id per tenere conto del ciclo
-#p.disabled ma non funziona, prob bisogna smettere di campionare quando finisce un episode perchè lui sembra unire gli episode)
-
 extends Node3D
 class_name PedestrianController
 
@@ -25,16 +16,16 @@ var random_rot: bool
 
 var tot_reward: float = 0.0
 
-var sample_interval: float = 1.0  
 var log_file: FileAccess
 var sample_frame_count: int = 0
-
 var ticks_between_log: int = Constants.TICKS_BETWEEN_LOG
 var tick_counter: int = 0
 
+## Initialize the pedestrian controller with a level manager
 func init(lm: LevelManager):
 	level_manager = lm
 
+## Called when the node is added to the scene
 func _ready():
 	get_pedestrians()
 
@@ -90,44 +81,54 @@ func set_reward_label_text(reward: float) -> void:
 	
 ## Check if all pedestrians have finished
 func check_end_episode():
+	if not all_pedestrians_done():
+		return
 	
-	for i in pedestrian_done.values():
-		if not i:
-			return
-	
-	
-	var final_target_reached = true
-	for i in pedestrians:
-		if not i.final_target_reached:
-			final_target_reached = false
-
+	var final_target_reached = all_pedestrians_reached_target()
 	pedestrians[0].ai_controller_3d.reward += Constants.FINAL_TARGET_REW if final_target_reached else Constants.END_OF_TIMESTEPS_REW
 	
-	for pedestrian in pedestrians:
-		pedestrian.ai_controller_3d.reset()
-		pedestrian.reset()
-		pedestrian_done[pedestrian] = false
-		pedestrian.enable_pedestrian()
-		ped_cycle_counter[pedestrian] += 1
-	# ai controller done for only the first pedestrian to end the episode only one time
-	pedestrians[0].ai_controller_3d.done = true
-	
+	reset_pedestrians()
 	tot_reward = 0
 	level_manager._notify_end_episode()
+	
+## Check if all pedestrians are done
+func all_pedestrians_done() -> bool:
+	for done in pedestrian_done.values():
+		if not done:
+			return false
+	return true
+	
+## Check if all pedestrians have reached their final target
+func all_pedestrians_reached_target() -> bool:
+	for p in pedestrians:
+		if not p.final_target_reached:
+			return false
+	return true
+
+## Reset all pedestrians for the next episode
+func reset_pedestrians():
+	for p in pedestrians:
+		p.ai_controller_3d.reset()
+		p.reset()
+		pedestrian_done[p] = false
+		p.enable_pedestrian()
+		ped_cycle_counter[p] += 1
+	# ai controller done for only the first pedestrian to end the episode only one time
+	pedestrians[0].ai_controller_3d.done = true
 			
-## set a single pedestrian as finished
+## Set a single pedestrian as finished
 func set_end_episode(pedestrian):
 	pedestrian_done[pedestrian] = true
 	check_end_episode()
 	
-	
 ## Process function to handle timestep counting and data sampling
 func _process(_delta):
-	tick_counter += 1
-	tick_counter %= Engine.physics_ticks_per_second
-	
-	if tick_counter % ticks_between_log == 0:
-		sample_data()
+	if log_file != null:
+		tick_counter += 1
+		tick_counter %= Engine.physics_ticks_per_second
+		
+		if tick_counter % ticks_between_log == 0:
+			sample_data()
 
 ## Sample data from all pedestrians
 func sample_data():
@@ -138,7 +139,5 @@ func sample_data():
 		var z = p.global_position.z - level_manager.global_position.z
 		var group = p.collision_layer - 2
 		var data_line = str(id) + " " + str(sample_frame_count) + " " + str(x) + " " + str(-z) + " " + str(y) + " " + str(group)
-		# TODO: sto salvando le z sulle y perchè pedpy plotta sulle y, capire come cambiare gli assi di pedpy e sistemare
 		log_file.store_line(data_line)
-		#print("Sampling data for pedestrian:", id, " at frame:", sample_frame_count)
 	sample_frame_count += 1 

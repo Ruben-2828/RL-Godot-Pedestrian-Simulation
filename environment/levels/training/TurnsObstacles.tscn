@@ -1,14 +1,14 @@
 [gd_scene load_steps=11 format=3 uid="uid://drlnrntevxckf"]
 
 [ext_resource type="Script" path="res://environment/levels_scripts/turn_level.gd" id="1_pbp1f"]
-[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room/room.tscn" id="2_wl4p2"]
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/other/room.tscn" id="2_wl4p2"]
 [ext_resource type="PackedScene" uid="uid://cq6t852770172" path="res://objects/targets/small_target.tscn" id="5_7kg38"]
 [ext_resource type="PackedScene" uid="uid://o6t0iemlmcj5" path="res://objects/targets/oblique_target.tscn" id="5_cjwtp"]
-[ext_resource type="PackedScene" uid="uid://bv7gefew8eumw" path="res://objects/solid/obstacle.tscn" id="5_lacfu"]
+[ext_resource type="PackedScene" uid="uid://bv7gefew8eumw" path="res://objects/walls/obstacle.tscn" id="5_lacfu"]
 [ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target.tscn" id="6_lxwxn"]
 [ext_resource type="Script" path="res://environment/levels_scripts/pedestrian_controller.gd" id="8_ligss"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="8_uddr0"]
-[ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/solid/internal_wall.tscn" id="9_2rwol"]
+[ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/walls/internal_wall.tscn" id="9_2rwol"]
 [ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="9_iuqhb"]
 
 [node name="TurnsObstacles" type="Node3D"]

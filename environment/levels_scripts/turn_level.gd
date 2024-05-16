@@ -1,7 +1,6 @@
 extends LevelNode
 
-
-# extract a boolean and if it is 1 rotate the env
+## Extract a boolean and if it is 1 rotate the level
 func _on_final_target_body_entered(body):
 	if body.is_class("CharacterBody3D"):
 		var rotate = randi_range(0,1) 

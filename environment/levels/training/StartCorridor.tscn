@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://b8geyovhk1ni8"]
 
-[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room/room.tscn" id="1_g7vly"]
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/other/room.tscn" id="1_g7vly"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="1_qwv06"]
 [ext_resource type="Script" path="res://environment/levels_scripts/level.gd" id="1_ve5yw"]
+[ext_resource type="Script" path="res://environment/levels_scripts/randomizer/final_target.gd" id="3_hcajg"]
 [ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target.tscn" id="3_ihbio"]
-[ext_resource type="Script" path="res://environment/levels_scripts/random_target.gd" id="7_uxgn2"]
-[ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/solid/wall.tscn" id="8_1k4fn"]
+[ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/walls/wall.tscn" id="8_1k4fn"]
 [ext_resource type="Script" path="res://environment/levels_scripts/pedestrian_controller.gd" id="8_6nd80"]
 [ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="9_76pp3"]
 
@@ -22,7 +22,7 @@ max_steps = 80
 [node name="Room" parent="." instance=ExtResource("1_g7vly")]
 
 [node name="RandomTarget" type="Node3D" parent="."]
-script = ExtResource("7_uxgn2")
+script = ExtResource("3_hcajg")
 
 [node name="FinalTarget" parent="RandomTarget" instance=ExtResource("3_ihbio")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.5)

@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://quswshhny1ow"]
 
 [ext_resource type="Script" path="res://environment/levels_scripts/level.gd" id="1_kw5q6"]
-[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/room/room.tscn" id="1_yh8ia"]
-[ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/solid/wall.tscn" id="2_aiq1b"]
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/other/room.tscn" id="1_yh8ia"]
+[ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/walls/wall.tscn" id="2_aiq1b"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="3_2oilk"]
 [ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target.tscn" id="3_sue36"]
 [ext_resource type="Script" path="res://environment/levels_scripts/pedestrian_controller.gd" id="6_1nnw0"]
