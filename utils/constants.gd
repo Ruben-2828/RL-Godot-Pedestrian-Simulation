@@ -58,10 +58,10 @@ const ROTATION_STEPS: int = 8
 const LEVELS_BATCH_OFFSET: float = 100.0
 const LEVELS_RETRAINING_OFFSET: float = 40.0
 const RETRAINING_INSTANCES_PER_LEVEL: int = 3
-const TRAINING_BATCH_SIZE: int = 10
+const TRAINING_BATCH_SIZE: int = 10 # TODO: rimettere a 10 
 
 # Test scene
-const DEFAULT_NUMBER_OF_EPISODE: int = 100
+const DEFAULT_NUMBER_OF_EPISODE: int = 20 # TODO: rimettere a 100
 
 # Engine/Sync
 const PHYSICS_TICKS_PER_SECONDS: int = 60

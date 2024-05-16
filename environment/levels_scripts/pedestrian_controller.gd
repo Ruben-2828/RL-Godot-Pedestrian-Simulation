@@ -1,4 +1,11 @@
-@tool
+
+#TODO: check valori usati
+#TODO: usare constants
+#TODO: gestire i gruppi, o lato godot o lato pedpy
+#TODO: gestire la presenza di più livelli in più file, avere riferimento a nome del livello
+#TODO: gestire i batch
+#TODO: gestire correttamente respawn (provato con non campionare quando 
+#p.disabled ma non funziona, prob bisogna smettere di campionare quando finisce un episode perchè lui sembra unire gli episode)
 
 extends Node3D
 class_name PedestrianController
@@ -17,11 +24,21 @@ var random_rot: bool
 
 var tot_reward: float = 0.0
 
+var sample_interval: float = 1.0  
+var time_elapsed: float = 0.0  
+var file: FileAccess
+var current_level: String = "livello"
+var sample_frame_count: int = 0  
+var number_level: int = 1
+
 func init(lm: LevelManager):
 	level_manager = lm
 
 func _ready():
 	get_pedestrians()
+	current_level= get_parent().name
+	file = FileAccess.open("res://outputs_" + current_level + "_" + str(number_level) + ".txt", FileAccess.WRITE)
+	init_sample_file()
 
 ## Get all pedestrians
 func get_pedestrians():
@@ -34,6 +51,11 @@ func set_pedestrians_initial_state():
 	for p in pedestrians:
 		initial_pos[p] = p.global_position
 		initial_rot[p] = p.rotation if not random_rot else randomize_rot
+
+#Initialize the sample file	
+func init_sample_file():
+	file.store_line("# framerate: 25 fps")
+	file.store_line("# id frame x/m y/m z/m")
 		
 
 ## perform randomization of pedestrian position
@@ -79,6 +101,7 @@ func check_end_episode():
 		if not i:
 			return
 	
+	
 	var final_target_reached = true
 	for i in pedestrians:
 		if not i.final_target_reached:
@@ -101,3 +124,31 @@ func check_end_episode():
 func set_end_episode(pedestrian):
 	pedestrian_done[pedestrian] = true
 	check_end_episode()
+	
+	
+## Process function to handle timestep counting and data sampling
+func _process(delta):
+	time_elapsed += delta
+	if time_elapsed >= sample_interval:
+		time_elapsed -= sample_interval  
+		sample_data()
+
+## Sample data from all pedestrians
+func sample_data():
+	for p in pedestrians:
+		var id = p.get_instance_id()
+		var position = p.global_position
+		var x = position.x
+		var y = position.y
+		var z = position.z
+		var data_line = str(id) + " " + str(sample_frame_count) + " " + str(x) + " " + str(z) + " " + str(y)
+		# TODO: sto salvando le z sulle y perchè pedpy plotta sulle y, capire come cambiare gli assi di pedpy e sistemare
+		file.store_line(data_line)
+		print("Sampling data for pedestrian:", id, " at frame:", sample_frame_count)
+	sample_frame_count += 1 
+
+
+## Close file when the node is removed from the scene
+func _exit_tree():
+	if file:
+		file.close()

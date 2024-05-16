@@ -32,10 +32,10 @@ collision_mask = 40
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 3.5)
 
 [node name="InternalWall" parent="Passage" instance=ExtResource("4_aosqr")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 8.75, 0, 0)
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 9.75, 0, 0)
 
 [node name="InternalWall2" parent="Passage" instance=ExtResource("4_aosqr")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -8.75, 0, 0)
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -9.75, 0, 0)
 
 [node name="Target" parent="Passage" instance=ExtResource("5_jdfwi")]
 collision_layer = 48
@@ -45,17 +45,17 @@ collision_mask = 60
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -3.5)
 
 [node name="InternalWall" parent="Passage2" instance=ExtResource("4_aosqr")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 8.76432, 0, 0)
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 9.75, 0, 0)
 
 [node name="InternalWall2" parent="Passage2" instance=ExtResource("4_aosqr")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -8.75, 0, 0)
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -9.75, 0, 0)
 
 [node name="Target" parent="Passage2" instance=ExtResource("5_jdfwi")]
 collision_layer = 48
 collision_mask = 60
 
 [node name="Target" parent="." instance=ExtResource("6_flyf2")]
-transform = Transform3D(-4.80825e-08, 0, 1.1, 0, 1.1, 0, -1.1, 0, -4.80825e-08, 0, 0, 0.0175622)
+transform = Transform3D(-4.80825e-08, 0, 1.1, 0, 1.1, 0, -1.1, 0, -4.80825e-08, 0, 0, -0.053)
 collision_layer = 48
 collision_mask = 60
 
