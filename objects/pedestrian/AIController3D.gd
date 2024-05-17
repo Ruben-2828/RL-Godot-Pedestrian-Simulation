@@ -4,9 +4,11 @@ extends AIController3D
 @export var ticks_per_step: int = Constants.TICKS_PER_STEP
 var tick_counter: int = 0
 
+## Add all agents to Agent group
 func _ready():
 	add_to_group(Constants.AGENT_GROUP)
-	
+
+## Compute rewards according to ticks per step 
 func _physics_process(_delta):
 	
 	if not _player.disable:
@@ -28,7 +30,7 @@ func _physics_process(_delta):
 				_player.pedestrian_controller.set_end_episode(_player)
 			
 			
-## reset_after parameter setter
+## Reset after parameter setter
 func set_reset_after(steps: int):
 	reset_after = steps
 

@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=3 uid="uid://c63fe78gq767c"]
+
+[ext_resource type="Script" path="res://environments/scripts/level.gd" id="1_w0tn2"]
+[ext_resource type="PackedScene" uid="uid://nqwb7at8dpui" path="res://objects/walls/small_internal_wall.tscn" id="2_r3qnj"]
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/other/room.tscn" id="2_skmxp"]
+[ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="3_gawi8"]
+[ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/walls/internal_wall.tscn" id="5_x3smx"]
+[ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/targets/target.tscn" id="6_0flsh"]
+[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target.tscn" id="7_8jl41"]
+[ext_resource type="Script" path="res://environments/scripts/pedestrian_controller.gd" id="8_nxoq5"]
+[ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="9_udm8g"]
+
+[node name="T-Junction" type="Node3D"]
+script = ExtResource("1_w0tn2")
+max_steps = 80
+
+[node name="Room" parent="." instance=ExtResource("2_skmxp")]
+
+[node name="Reward" parent="." instance=ExtResource("3_gawi8")]
+
+[node name="T" type="Node3D" parent="."]
+
+[node name="InternalWall" parent="T" instance=ExtResource("5_x3smx")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, -2)
+
+[node name="InternalWall2" parent="T" instance=ExtResource("5_x3smx")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0, -2)
+
+[node name="SmallInternalWall2" parent="T" instance=ExtResource("2_r3qnj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6.5)
+
+[node name="SmallInternalWall" parent="T" instance=ExtResource("2_r3qnj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6.5)
+
+[node name="Target" type="Node3D" parent="."]
+
+[node name="Target2" parent="Target" instance=ExtResource("6_0flsh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, 8.5)
+collision_layer = 16
+collision_mask = 20
+
+[node name="Target3" parent="Target" instance=ExtResource("6_0flsh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0, 8.5)
+collision_layer = 32
+collision_mask = 40
+
+[node name="Target4" parent="Target" instance=ExtResource("6_0flsh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+collision_layer = 48
+collision_mask = 60
+
+[node name="Target5" parent="Target" instance=ExtResource("6_0flsh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+collision_layer = 48
+collision_mask = 60
+
+[node name="Target6" parent="Target" instance=ExtResource("6_0flsh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+collision_layer = 48
+collision_mask = 60
+
+[node name="FinalTarget" parent="Target" instance=ExtResource("7_8jl41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.5)
+collision_layer = 48
+collision_mask = 60
+
+[node name="PedestrianController" type="Node3D" parent="."]
+script = ExtResource("8_nxoq5")
+
+[node name="Pedestrian" parent="PedestrianController" instance=ExtResource("9_udm8g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0, 8.5)
+collision_layer = 6
+collision_mask = 19
+
+[node name="Pedestrian2" parent="PedestrianController" instance=ExtResource("9_udm8g")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, 8.5)
+collision_layer = 10
+collision_mask = 35
+
+[node name="Pedestrian5" parent="PedestrianController" instance=ExtResource("9_udm8g")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9, 0, 8.5)
+collision_layer = 10
+collision_mask = 35
+
+[node name="Pedestrian6" parent="PedestrianController" instance=ExtResource("9_udm8g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9, 0, 8.5)
+collision_layer = 6
+collision_mask = 19
