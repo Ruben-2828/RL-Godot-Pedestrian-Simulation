@@ -2,7 +2,10 @@
 
 <h3 style="text-align: center;">Curriculum–Based Reinforcement Learning for Pedestrian Simulation</h3>
 
-![Logo](docs/images/icon.svg)
+<div style="text-align: center">
+<img src="docs/images/icon.svg" alt="icon" width="200" />
+</div>
+
 
 <h6 style="text-align: center;">Tenderini Ruben - Falbo Andrea </h3>
 
@@ -57,76 +60,21 @@ movement analysis. It provides a high-level interface for extracting fundamental
 
 ## Documentation
 
-<br>
-
-<style>
-    .container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        gap: 40px;
-    }
-    .card {
-        flex: 1 1 calc(50% - 20px);
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease-in-out;
-        text-align: center;
-        text-decoration: none;
-        border: 1px solid #000;
-        border-radius: 48px; /
-    }
-    .card:hover {
-        transform: scale(1.05);
-        border: 2px solid #3366CC;
-    }
-    .card img {
-        width: 20%;
-        transition: transform 0.3s ease-in-out;
-        display: block;
-        margin: 0 auto;
-    }
-    .card:hover img {
-        transform: scale(1.05);
-    }
-    .card h2 {
-        margin-top: 16px; 
-    }
-
-</style>
+### Getting Started
+New here?, check out the **Getting Started** documentation. It provides an introductory example to help you understand the tool.
 
 
-<div class="container">
-    <a href="https://github.com/Ruben-2828/RL-Godot-Pedestrian-Simulation/blob/main/docs/getting_started.md" class="card">
-        <h2>Getting Started</h2>
-        <img src="docs/images/rocket.svg" alt="">
-        <div>
-            <p>New here?, check out the <b>Getting Started</b> documentation. It provides an 
-            introductory example to help you understand the tool.</p>
-        </div>
-    </a>
-    <a href="https://github.com/Ruben-2828/RL-Godot-Pedestrian-Simulation/blob/main/docs/user_guide.md" class="card">
-        <h2>User Guide</h2>
-        <img src="docs/images/book.svg" alt="">
-        <div>
-            <p> For a detailed exploration of all the features and capabilities of the tool, please refer to the 
-            <b>User Guide</b>.</p>
-        </div>
-    </a>
-    <a href="https://github.com/Ruben-2828/RL-Godot-Pedestrian-Simulation/blob/main/docs/godot_engine.md" class="card">
-        <h2>Godot</h2>
-        <img src="docs/images/godot.svg" alt="">
-        <div>
-            <p>To learn about the engine behind the project, consult the <b>Godot</b> documentation.</p>
-        </div>
-    </a>
-    <a href="https://github.com/Ruben-2828/RL-Godot-Pedestrian-Simulation/blob/main/docs/godot_rl_agents.md" class="card">
-        <h2>Godot RL Agents</h2>
-        <img src="docs/images/rl.svg" alt="">
-        <div>
-            <p>To learn about the technologies behind the project consult the <b>Godot RL Agents</b> documentation.</p>
-        </div>
-    </a>
-</div>
+### User Guide
+For a detailed exploration of all the features and capabilities of the tool, please refer to the **User Guide**.
+
+
+### Godot
+To learn about the engine behind the project, consult the **Godot** documentation.
+
+
+### Godot RL Agents
+To learn about the technologies behind the project consult the **Godot RL Agents** documentation.
+
 
 ## Setup
 
