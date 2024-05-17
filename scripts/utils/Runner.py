@@ -94,6 +94,8 @@ class Runner:
         self.model.learn(total_timesteps=Constants.DEFAULT_TIMESTEPS, callback=callback)
         self.model.save(Constants.DEFAULT_TMP_MODEL_FILE)
 
+        self.handle_onnx_export()
+
         # Closing environment
         try:
             print("closing env")
@@ -177,5 +179,12 @@ class Runner:
         Method used to export the model to ONNX format
         """
         os.makedirs(Path(Constants.DEFAULT_ONNX_EXPORT_PATH).parent, exist_ok=True)
-        print("Exporting onnx to: " + os.path.abspath(Constants.DEFAULT_ONNX_EXPORT_PATH))
-        export_ppo_model_as_onnx(self.model, Constants.DEFAULT_ONNX_EXPORT_PATH)
+
+        save_path = Constants.DEFAULT_ONNX_EXPORT_PATH
+        i = 1
+        while os.path.exists(save_path):
+            name, extension = os.path.splitext(save_path)
+            save_path = name + "_" + str(i) + extension
+
+        print("Exporting onnx to: " + os.path.abspath(save_path))
+        export_ppo_model_as_onnx(self.model, save_path)
