@@ -1,7 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cq6t852770172"]
 
-[ext_resource type="Material" uid="uid://ddc5mqmn53adg" path="res://material/target_material.tres" id="1_ktwpt"]
+[ext_resource type="Material" uid="uid://ddc5mqmn53adg" path="res://materials/target_material.tres" id="1_ktwpt"]
 [ext_resource type="Script" path="res://objects/targets/target.gd" id="1_qm0na"]
+
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sf7ru"]
 size = Vector3(2, 10, 0.3)

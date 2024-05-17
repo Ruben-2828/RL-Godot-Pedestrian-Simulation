@@ -6,7 +6,7 @@ extends Node3D
 ## List of levels used in curriculum
 @export var levels_path: Array[PackedScene]
 
-const level_manager_scene: PackedScene = preload("res://environment/level_manager.tscn")
+const level_manager_scene: PackedScene = preload("res://environments/level_manager.tscn")
 var level_managers: Array = []
 const level_position_offset: float = Constants.LEVELS_RETRAINING_OFFSET
 const level_batch_offset: float = Constants.LEVELS_BATCH_OFFSET
