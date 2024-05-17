@@ -72,45 +72,52 @@ func _spawn_nodes():
 	var angle = initial_ray_pos
 	var i = 0
 	while angle < max_vision_degrees:
-		_create_ray(angle, i, 1)
-		_create_ray(angle, i, 2)
+		_create_ray(angle, i, true)
+		_create_ray(angle, i, false)
 		if angle != 0:
-			_create_ray(-angle, -i, 1)
-			_create_ray(-angle, -i, 2)
+			_create_ray(-angle, -i, true)
+			_create_ray(-angle, -i, false)
 		
 		i += 1
 		angle = angle + rays_angle_delta * i
 		
 	# Need to create rays at max_vision_degrees angle too
-	_create_ray(max_vision_degrees, i, 1)
-	_create_ray(-max_vision_degrees, -i, 1)
-	_create_ray(max_vision_degrees, i, 2)
-	_create_ray(-max_vision_degrees, -i, 2)
+	_create_ray(max_vision_degrees, i,  true)
+	_create_ray(-max_vision_degrees, -i,  true)
+	_create_ray(max_vision_degrees, i, false)
+	_create_ray(-max_vision_degrees, -i, false)
 
 ## Create raycast node
-func _create_ray(angle: float, idx: int, collision_mask: int):
+## Mode = true for walls and targets, false for agents and walls
+func _create_ray(angle: float, idx: int, mode: bool):
 	var ray = RayCast3D.new()
 	var cast_to = to_spherical_coords(ray_length, angle, 0)
 	ray.set_target_position(cast_to)
 	
-	if collision_mask == 1:
+	if mode:
 		ray.set_name("wall_target ray " + str(idx))
-		ray.show() 
+		ray.show()
+		var collision_mask = pedestrian.collision_mask
+		# Remove second bit to deactivate pedestrian detection
+		collision_mask -= 2
+		ray.collision_mask = collision_mask
 	else:
 		ray.set_name("agent_wall ray " + str(idx))
 		ray.hide()
+		# first two layers for walls and agents
+		# first two bit equals 1 ==> collision mask = 3
+		ray.collision_mask = 3
 	ray.enabled = true
 	ray.collide_with_bodies = collide_with_bodies
 	ray.collide_with_areas = collide_with_areas
-	ray.collision_mask = collision_mask
 	ray.debug_shape_custom_color = Constants.RAYS_GRAY_COLOR
 	ray.exclude_parent = true
 	ray.hit_from_inside = false
 	
 	add_child(ray)
-	if collision_mask == 1:
+	if mode:
 		rays_walls_targets.append(ray)
-	if collision_mask == 2:
+	else:
 		rays_agents_walls.append(ray)
 	
 
@@ -134,7 +141,7 @@ func calculate_walls_targets() -> Array:
 	
 	# Walls and targets observations
 	for ray in rays_walls_targets:
-		var norm_distance = _get_raycast_distance(ray) / ray_length
+		var norm_distance = _get_raycast_distance(ray)
 		hit_objects.append(norm_distance)
 		
 		# hit object type is a one hot encoding
@@ -158,8 +165,8 @@ func calculate_agents_walls() -> Array:
 	var hit_objects := []
 	
 	# Agents and walls observations
-	for ray in rays_walls_targets:
-		var norm_distance = _get_raycast_distance(ray) / ray_length
+	for ray in rays_agents_walls:
+		var norm_distance = _get_raycast_distance(ray)
 		var type: int = 0
 		var direction: float = 0.0
 		var speed: float = 0.0
@@ -185,4 +192,7 @@ func _get_raycast_distance(ray: RayCast3D) -> float:
 
 	var origin = ray.global_transform.origin
 	var collision_point = ray.get_collision_point()
-	return origin.distance_to(collision_point)
+	var distance = origin.distance_to(collision_point)
+	if distance > Constants.RAY_LENGTH_OBS:
+		return 1
+	return  distance / Constants.RAY_LENGTH_OBS

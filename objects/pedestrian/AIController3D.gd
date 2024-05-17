@@ -4,43 +4,52 @@ extends AIController3D
 @export var ticks_per_step: int = Constants.TICKS_PER_STEP
 var tick_counter: int = 0
 
+## Add all agents to Agent group
 func _ready():
 	add_to_group(Constants.AGENT_GROUP)
-	
+
+## Compute rewards according to ticks per step 
 func _physics_process(_delta):
 	
-	tick_counter += 1
-	tick_counter %= Engine.physics_ticks_per_second
-	
-	if tick_counter % ticks_per_step == 0:
-	
-		n_steps += 1
-		if n_steps >= reset_after:
-			needs_reset = true
-			_player.finished = true
+	if not _player.disable:
 		
-		_player.compute_rewards()
+		tick_counter += 1
+		tick_counter %= Engine.physics_ticks_per_second
 		
-		if needs_reset or _player.final_target_reached:
-			done = true
-			_player.reset()
-			reset()
-
-## reset_after parameter setter
+		if tick_counter % ticks_per_step == 0:
+		
+			n_steps += 1
+			if n_steps >= reset_after:
+				_player.finished = true
+				needs_reset = true
+			
+			_player.compute_rewards()
+			
+			if needs_reset or _player.final_target_reached:
+				_player.disable_pedestrian()
+				_player.pedestrian_controller.set_end_episode(_player)
+			
+			
+## Reset after parameter setter
 func set_reset_after(steps: int):
 	reset_after = steps
 
 ## Returns dictionary containing the observations made
 func get_obs() -> Dictionary:
+	
 	var obs := []
-	var raycast_obs = _player.raycast_sensor.get_observation()
-	var speed_norm = (_player.speed - _player.speed_min) / (_player.speed_max - _player.speed_min) if _player.speed_max != 0 else 0
 	
-	obs.append(speed_norm)
-	obs.append_array(raycast_obs[0])
-	obs.append_array(raycast_obs[1])
+	if _player.disable == true:
+		for i in range(185):
+			obs.append(0)
+	else:	
+		var raycast_obs = _player.raycast_sensor.get_observation()
+		var speed_norm = (_player.speed - _player.speed_min) / (_player.speed_max - _player.speed_min) if _player.speed_max != 0 else 0
+		
+		obs.append(speed_norm)
+		obs.append_array(raycast_obs[0])
+		obs.append_array(raycast_obs[1])
 	
-	#print(obs.size())
 	return {'obs': obs}
 
 ## Returns current reward
@@ -54,7 +63,7 @@ func get_action_space() -> Dictionary:
 	return {
 			"rotate" : {"size": 1, "action_type": "continuous" },
 			"move" : {"size": 1, "action_type": "continuous" },
-			}
+	}
 
 ## Set player's actions
 func set_action(action) -> void:	
