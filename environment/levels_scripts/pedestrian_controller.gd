@@ -123,11 +123,12 @@ func set_end_episode(pedestrian):
 	
 ## Process function to handle timestep counting and data sampling
 func _process(_delta):
-	tick_counter += 1
-	tick_counter %= Engine.physics_ticks_per_second
-	
-	if tick_counter % ticks_between_log == 0:
-		sample_data()
+	if log_file != null:
+		tick_counter += 1
+		tick_counter %= Engine.physics_ticks_per_second
+		
+		if tick_counter % ticks_between_log == 0:
+			sample_data()
 
 ## Sample data from all pedestrians
 func sample_data():

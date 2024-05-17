@@ -37,7 +37,7 @@ func spawn_level_managers() -> void:
 				level_manager_instance.position.z = j * level_position_offset
 				level_managers.append(level_manager_instance)
 				add_child(level_manager_instance)
-				level_manager_instance.set_level(first_row_levels[i])
+				level_manager_instance.set_level(first_row_levels[i], null)
 		
 		# second row
 		for i in range(second_row_levels.size()):
@@ -49,8 +49,7 @@ func spawn_level_managers() -> void:
 				level_manager_instance.position.z = j * level_position_offset + columns_per_row * level_position_offset
 				level_managers.append(level_manager_instance)
 				add_child(level_manager_instance)
-				level_manager_instance.set_level(second_row_levels[i])
-
+				level_manager_instance.set_level(second_row_levels[i], null)
 
 func finish():
 	get_parent().set_current_level()

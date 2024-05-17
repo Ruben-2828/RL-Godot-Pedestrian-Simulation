@@ -1,8 +1,6 @@
-from scripts.utils import Constants
+
 from scripts.utils.Runner import Runner
 
+# Instantiating runner and starting training
 runner = Runner()
 runner.run()
-
-
-
