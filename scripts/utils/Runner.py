@@ -94,8 +94,6 @@ class Runner:
         self.model.learn(total_timesteps=Constants.DEFAULT_TIMESTEPS, callback=callback)
         self.model.save(Constants.DEFAULT_TMP_MODEL_FILE)
 
-        self.handle_onnx_export()
-
         # Closing environment
         try:
             print("closing env")
