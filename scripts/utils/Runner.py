@@ -29,6 +29,17 @@ class Runner:
         """
         self.config_path = config_path
         self.model: Optional[PPO] = None
+        self.set_tensorboard_log_path()
+
+    def set_tensorboard_log_path(self) -> None:
+
+        save_path = Constants.DEFAULT_TENSORBOARD_LOGS_PATH
+        i = 1
+        while os.path.exists(save_path):
+            save_path = Constants.DEFAULT_TENSORBOARD_LOGS_PATH + "_" + str(i)
+            i += 1
+
+        self.tensorboard_path = save_path
 
     def run(self) -> None:
         """
@@ -132,7 +143,7 @@ class Runner:
             learning_rate=0.0003,
             device='cuda',
             ent_coef=0.0001,
-            tensorboard_log=Constants.DEFAULT_TENSORBOARD_LOGS_PATH,
+            tensorboard_log=self.tensorboard_path,
             n_steps=32,
         )
 
@@ -145,7 +156,7 @@ class Runner:
         self.model = PPO.load(
             Constants.DEFAULT_TMP_MODEL_FILE,
             vec_env,
-            tensorboard_log=Constants.DEFAULT_TENSORBOARD_LOGS_PATH,
+            tensorboard_log=self.tensorboard_path,
             device='cuda',
         )
 
@@ -179,10 +190,11 @@ class Runner:
         os.makedirs(Path(Constants.DEFAULT_ONNX_EXPORT_PATH).parent, exist_ok=True)
 
         save_path = Constants.DEFAULT_ONNX_EXPORT_PATH
+        name, extension = os.path.splitext(Constants.DEFAULT_ONNX_EXPORT_PATH)
         i = 1
         while os.path.exists(save_path):
-            name, extension = os.path.splitext(save_path)
             save_path = name + "_" + str(i) + extension
+            i += 1
 
         print("Exporting onnx to: " + os.path.abspath(save_path))
         export_ppo_model_as_onnx(self.model, save_path)

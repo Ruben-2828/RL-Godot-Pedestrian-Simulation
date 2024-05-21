@@ -9,7 +9,7 @@ DEFAULT_TMP_MODEL_FILE: str = BASE_PATH + "model.tmp.zip"
 OUTPUT_PATH: str = "output/"
 DEFAULT_ONNX_EXPORT_PATH: str = OUTPUT_PATH + "models/model.onnx"
 DEFAULT_LOGS_PATH: str = OUTPUT_PATH + "logs/"
-DEFAULT_TENSORBOARD_LOGS_PATH: str = OUTPUT_PATH + "tensorboard/"
+DEFAULT_TENSORBOARD_LOGS_PATH: str = OUTPUT_PATH + "tensorboard/run/"
 
 # Default timesteps to train the model for
 DEFAULT_TIMESTEPS: int = 1_000_000_000

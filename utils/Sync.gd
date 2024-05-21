@@ -7,7 +7,7 @@ enum ControlModes { HUMAN, TRAINING, ONNX_INFERENCE }
 ## Ticks between each communication with python
 @export_range(1, 10, 1, "or_greater") var action_repeat := Constants.TICKS_PER_STEP
 var speed_up := Constants.SPEED_UP
-@export var onnx_model_path := ""
+var onnx_model_path := ""
 
 # Onnx model stored for each requested path
 var onnx_models: Dictionary

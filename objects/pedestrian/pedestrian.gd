@@ -2,9 +2,9 @@ extends CharacterBody3D
 class_name Pedestrian
 
 ## Pedestrian minimum speed
-@export var speed_min: float = Constants.MIN_SPEED
+var speed_min: float = Constants.MIN_SPEED
 ## Pedestrian maximum speed 
-@export var speed_max: float = Constants.MAX_SPEED
+var speed_max: float
 
 @onready var raycast_sensor = $RayCastSensor3D
 @onready var ai_controller_3d = $AIController3D
@@ -37,11 +37,22 @@ func reset():
 	global_position = pedestrian_controller.get_spawn_position(self)
 	velocity = Vector3.ZERO
 	
+	set_speed_max()
+	
 	cumulated_reward = 0
 	finished = false
 	target_reached = false
 	final_target_reached = false
 	reached_targets = []
+	
+## Set value of speed_max extracting it from a gaussian distribution
+func set_speed_max():
+	if can_move:
+		var random = RandomNumberGenerator.new()
+		random.randomize()
+		speed_max = random.randfn(Constants.MAX_SPEED_MEAN, Constants.MAX_SPEED_DEVIATION)
+	else:
+		speed_max = 0.0
 	
 # Called every frame
 func _physics_process(_delta):
@@ -182,6 +193,4 @@ func disable_pedestrian():
 ## Enable pedestrian when end episode
 func enable_pedestrian():
 	disable = false
-	if can_move: 
-		speed_max = Constants.MAX_SPEED
 	rotation_sens = Constants.ROTATION_SENS

@@ -5,11 +5,16 @@ const number_of_episode:= Constants.DEFAULT_NUMBER_OF_EPISODE
 
 var pedpy_log_file: FileAccess
 
+@onready var sync = $Sync
+
 ## Called when the node enters the scene tree for the first time
 func _ready():
 	pedpy_log_file = FileAccess.open("res://output/pedpy/" + name + ".txt", FileAccess.WRITE)
 	init_sample_file()
 	spawn_level_managers()
+	
+	sync.onnx_model_path = get_parent().onnx_model_path
+
 
 ## Spawns the level managers according to batch size
 func spawn_level_managers() -> void:

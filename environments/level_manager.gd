@@ -15,7 +15,7 @@ func set_level(level_scene: PackedScene, log_file: FileAccess) -> void:
 	var pedestrians = level.find_children("Pedestrian*", "Pedestrian")
 	for pedestrian in pedestrians:
 		pedestrian.can_move = level.can_move
-		pedestrian.speed_max = Constants.MAX_SPEED if level.can_move else 0.0
+		pedestrian.set_speed_max()
 	
 	# Setup objective
 	var objectives = level.find_children("Objective*")
