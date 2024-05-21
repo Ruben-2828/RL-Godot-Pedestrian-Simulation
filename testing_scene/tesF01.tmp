@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://buytp40i8mx1h"]
+
+[ext_resource type="Script" path="res://training_scene/training_scene.gd" id="1_o4o6m"]
+[ext_resource type="PackedScene" uid="uid://djfufvg6fcsd3" path="res://training_scene/level_batchs/test/CurveCBatch.tscn" id="3_xuld1"]
+
+[node name="TestingScene" type="Node3D"]
+script = ExtResource("1_o4o6m")
+levels_path = Array[PackedScene]([ExtResource("3_xuld1")])

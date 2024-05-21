@@ -1,7 +1,8 @@
 extends Node
 
 # Pedestrian
-const MAX_SPEED: float = 1.7
+const MAX_SPEED_MEAN: float = 1.5
+const MAX_SPEED_DEVIATION: float = 0.2
 const MIN_SPEED: float = 0.0
 const ROTATION_SENS: int = 25
 const WALL_COLLISION_DISTANCE: float = 0.6
