@@ -23,10 +23,6 @@ Constants="*res://utils/constants.gd"
 
 project/assembly_name="RL-Godot-Pedestrian-Simulation"
 
-[editor_plugins]
-
-enabled=PackedStringArray()
-
 [filesystem]
 
 import/fbx/enabled=false
