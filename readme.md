@@ -120,6 +120,24 @@ from [here](https://www.anaconda.com/download)!
     pip install pedpy
     ```
 
+5. If you try to run the code, it should give a "Failed to build project" error. This is because we don't have C#'s onnx 
+    dependencies. Go to [Microsoft OnnxRuntime](https://www.nuget.org/packages/Microsoft.ML.OnnxRuntime) and copy the 
+    command that is shown, for example:
+
+    ``` 
+    dotnet add package Microsoft.ML.OnnxRuntime --version 1.17.3
+    ``` 
+
+    If this command gives this error: 
+    ``` 
+    The command could not be loaded, possibly because:
+    * You intended to execute a .NET application:
+      The application 'add' does not exist.
+    * You intended to execute a .NET SDK command:
+      No .NET SDKs were found.
+    ``` 
+    Go [here](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) and download .NET SDK
+
 
 ## Codebase
 To have a better understanding of the location of the files within the repository, we recommend reading this section.

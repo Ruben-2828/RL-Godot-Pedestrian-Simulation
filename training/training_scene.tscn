@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://buytp40i8mx1h"]
 
-[ext_resource type="Script" path="res://utils/curriculum_manager.gd" id="1_2y50e"]
+[ext_resource type="Script" path="res://training/training_scene.gd" id="1_2y50e"]
 [ext_resource type="PackedScene" uid="uid://b5i18lyv0wpap" path="res://training/batch/StartEzBatch.tscn" id="2_lmwn7"]
 [ext_resource type="PackedScene" uid="uid://b1r8uag8rqaea" path="res://training/batch/StartBatch.tscn" id="3_rox21"]
 [ext_resource type="PackedScene" uid="uid://c3bmsctq8jt0i" path="res://training/batch/ObserveBatch.tscn" id="4_bfwbb"]

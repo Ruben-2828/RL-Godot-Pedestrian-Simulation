@@ -1,6 +1,6 @@
 Curriculum:
   StartEZ:
-    mean_reward: 5.8
+    mean_reward: 5.7
     episode_mean: 36
     cycles: 10
   Start:
@@ -12,7 +12,7 @@ Curriculum:
     episode_mean: 36
     cycles: 5
   StartCorridor:
-    mean_reward: 3.0
+    mean_reward: 4.5
     episode_mean: 36
     cycles: 15
   Turns:

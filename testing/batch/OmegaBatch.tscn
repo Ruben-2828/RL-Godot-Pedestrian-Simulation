@@ -22,7 +22,6 @@ level = ExtResource("2_iju3o")
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("3_s5l4w")
 control_mode = 2
-onnx_model_path = "res://output/models/model.onnx"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_awwuh")
