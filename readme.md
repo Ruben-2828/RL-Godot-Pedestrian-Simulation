@@ -1,52 +1,80 @@
-# RL-Godot-Pedestrian-Simulation
+<h1 style="text-align: center;">RL-Godot-Pedestrian-Simulation</h1>
 
-## Curriculum–Based Reinforcement Learning for Pedestrian Simulation
+<h3 style="text-align: center;">Curriculum–Based Reinforcement Learning for Pedestrian Simulation</h3>
 
-#### Tenderini Ruben 
-#### Falbo andrea 
+<div style="text-align: center">
+<img src="docs/images/icon.svg" alt="icon" width="200" />
+</div>
+
+
+<h6 style="text-align: center;">Tenderini Ruben - Falbo Andrea </h3>
 
 ## Table of Contents
 
 ### 1. [Objective](#objective)
-### 2. [Contents](#contents)
-### 3. [Tools](#tools)
+### 2. [Tools](#tools)
+### 3. [Documentation](#documentation)
 ### 4. [Setup](#setup)
-### 5. [Usage](#usage)
-### 6. [Codebase](#codebase)
-### 7  [Collaborate](#collaborate)
+### 5. [Codebase](#codebase)
+### 6  [Collaborate](#collaborate)
 
 ## Objective
 
-The goal of this project is to apply reinforcement learning (RL) to the domain of pedestrian simulation, traditionally 
-dominated by agent-based models where pedestrian decisions are scripted manually. 
-This involves developing a robust RL framework that trains an agent to optimize behaviors through a reward system 
-designed to encapsulate goal orientation, basic proxemics, and way-finding strategies. 
+The primary objective of this project was to explore the application of *Reinforcement Learning* (RL) in the field of 
+*pedestrian and crowd simulation*. Specifically, the project aimed to develop intelligent agents capable of realistically 
+simulating pedestrian behaviors in various environments. 
 
-Our approach includes creating a progressively challenging curriculum to aid the agent in acquiring complex pedestrian 
+Unlike traditional models that rely on predefined algorithms or force interactions, this project utilized RL to 
+train agents in an unsupervised manner, focusing on the ability of these agents to generalize their learning to 
+handle new, unseen scenarios effectively.
+
+A key aspect of the project was to ensure that these agents not only achieve their set goals but also mimic human 
+behavior as closely as possible within the constraints of their environment.
+
+Our approach includes creating a progressively challenging *curriculum* to aid the agent in acquiring complex pedestrian 
 behaviors such as orientation, walking, and interacting with other pedestrians in a simulated environment. 
 
-The framework leverages Godot and Godot-RL-Agents for implementing and testing the simulation.
-
-## Contents
-
-_coming soon..._
+The framework employs the *Godot* engine and the *Godot-RL-Agents* plugin for the implementation and testing of the 
+simulation and PedPy for visualizing and analyzing pedestrian trajectories.
 
 ## Tools
 
-The main tools and methodologies used to conduct this study are provided below:
+The main tools and methodologies used to conduct this project are provided below:
 
 ### Godot Engine
-[Godot Engine](https://godotengine.org/) is an open-source game engine used for the development of 2D and 3D games. Godot provides a flexible and powerful environment for game development and simulation tasks, such as the one undertaken in this project.
+[**Godot Engine**](https://godotengine.org/) is a feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface.
 
 ### Godot-RL-Agents
-[Godot-RL-Agents](https://github.com/edbeeching/godot_rl_agents) is a plugin for the Godot Engine designed to integrate reinforcement learning algorithms directly into game environments. This tool allows for real-time interaction and learning in complex simulated environments.
+[**Godot-RL-Agents**](https://github.com/edbeeching/godot_rl_agents) is a fully Open Source package that allows video game creators, AI researchers and hobbyists 
+the opportunity to learn complex behaviors for their Non Player Characters or agents.
 
 ### Stable Baselines 3
 
-[**Stable Baselines 3**](https://github.com/DLR-RM/stable-baselines3) is a reinforcement learning library in Python, 
-developed by OpenAI.
-It provides a set of stable and reliable RL algorithm implementations, designed to be easily
-accessible and usable by developers. 
+[**Stable Baselines 3**](https://github.com/DLR-RM/stable-baselines3) is a set of reliable implementations of 
+reinforcement learning algorithms in PyTorch. It is the next major version of Stable Baselines. 
+
+### PedPy
+
+[**PedPy**](https://pedpy.readthedocs.io/en/stable/#)  is an open source, MIT-licensed Python library for pedestrian 
+movement analysis. It provides a high-level interface for extracting fundamental measurements from trajectory data.
+
+## Documentation
+
+### Getting Started
+New here?, check out the **Getting Started** documentation. It provides an introductory example to help you understand the tool.
+
+
+### User Guide
+For a detailed exploration of all the features and capabilities of the tool, please refer to the **User Guide**.
+
+
+### Godot
+To learn about the engine behind the project, consult the **Godot** documentation.
+
+
+### Godot RL Agents
+To learn about the technologies behind the project consult the **Godot RL Agents** documentation.
+
 
 ## Setup
 
@@ -55,15 +83,17 @@ accessible and usable by developers.
 Here's the setup for Windows:
 
 #### Open the project on Godot
-1. **Install Godot**: You can download and install Godot from [here](https://godotengine.org/download/windows/)!
 
-2. **Clone this repository**: Clone this repository 
+1. **Clone this repository**: Clone this repository 
     ```
     https://github.com/Ruben-2828/RL-Godot-Pedestrian-Simulation.git
     ```
+2. **Install Godot**: You can download and install Godot from [here](https://godotengine.org/download/windows/)! 
+It is recommended to download the mono version (.NET) as it will be necessary in a second phase of using this tool.
+
 3. **Launch Godot**: Extract the files and run the Godot exe. The godot engine will open
 
-4. **Import Project**: In the launcher, press Import and find the repository. Then press Import & Edit. 
+4. **Import Project**: In the launcher, press Import and find this repository. Then press Import & Edit. 
 Now the project should be open!
 
 #### Enable RL to Godot
@@ -71,9 +101,9 @@ Now the project should be open!
 1. **Install Anaconda**: We recommend installing anaconda to have a complete and integrated environment. You can do it 
 from [here](https://www.anaconda.com/download)!
 
-2. **Create an environment**: Open Anaconda Prompt and create an environment with python 3.8:
+2. **Create an environment**: Open Anaconda Prompt and create an environment with python 3.10:
     ```
-    conda create --name myenv python=3.8
+    conda create --name myenv python=3.10
     ```
 3. **Activate the environment**: After creating the environment, you need to activate it using the following command:
     ```
@@ -86,49 +116,101 @@ from [here](https://www.anaconda.com/download)!
     ```
     pip install stable-baselines
     ```
-#### Run the project
-1. **Activate RL-Agents**: Enable rl-agents using this command from Anaconda Prompt:
     ```
-    gdrl
+    pip install pedpy
     ```
-2. **Press Run**: From Godot, press F5 or the Run command to run the project!
 
-Every time you need to run the project, you will have to run these two commands.
+5. If you try to run the code, it should give a "Failed to build project" error. This is because we don't have C#'s onnx 
+    dependencies. Go to [Microsoft OnnxRuntime](https://www.nuget.org/packages/Microsoft.ML.OnnxRuntime) and copy the 
+    command that is shown, for example:
 
-### Linux
+    ``` 
+    dotnet add package Microsoft.ML.OnnxRuntime --version 1.17.3
+    ``` 
 
-_coming soon..._
+    If this command gives this error: 
+    ``` 
+    The command could not be loaded, possibly because:
+    * You intended to execute a .NET application:
+      The application 'add' does not exist.
+    * You intended to execute a .NET SDK command:
+      No .NET SDKs were found.
+    ``` 
+    Go [here](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) and download .NET SDK
 
-## Usage
-
-For a detailed understanding of how this project was developed and to explore all its features and uses, please refer 
-to the `documentation` file in the doc folder.
 
 ## Codebase
 To have a better understanding of the location of the files within the repository, we recommend reading this section.
-All folders and files that are not included here are not relevant to this project.
 
-* docs: This folder includes concise summaries about Godot and Godot-RL-Agents, as well as a comprehensive documentation on Godot-RL-Pedestrian-Simulation. It provides detailed descriptions of all the system features.
-* environments: This folder contains all files related to the environments, such as levels, their corresponding code, and the level manager.
-  * levels: This folder contains all the levels, i.e. all the rooms that can be inserted into the curriculum
-  * levels_scripts: This folder contains all the corresponding code to the level 
-* materials: This folder contains materials relating to the elements that furnish the rooms.
-* models: This folder holds all the training files that are saved for later use during the testing phase. It serves as a dedicated storage area to ensure seamless access and organization of training data required for model evaluation.
-* objects: This folder contains individual objects placed within a scene
-  * basic: This folder contains the basic objects to compose a room, i.e. targets, walls, floor ecc...
-  * composed: This folder contains all composed objects, like room hallway, intersection
-  * pedestrian: This folder contains all information relating to the pedestrian
-* scripts: This folder contains all the python scripts related to the project
-* testing_scene: This folder contains files relating to the testing phase
-* training_scene: This folder contains files relating to the training phase
+```
+RLGPS
+├── addons
+├── docs
+├── environments
+│   ├── levels
+│   │   ├── testing
+│   │   └── training
+│   └── scripts
+│   │   └── randomizer
+├── materials
+├── objects
+│   ├── other
+│   ├── pedestrian
+│   ├── targets
+│   └── walls
+├── output
+│   ├── logs
+│   ├── models
+│   ├── pedpy
+│   └── tensorboard
+├── scripts
+│   ├── configs
+│   ├── models
+│   └── utils
+├── testing
+│   └── batch
+├── training
+│   └── batch
+└── utils
+```
+* **addons**: folder imported from Godot RL agents
+* **docs**: contains project documentation
+* **environments**: contains the scenes and codes relating to the environments
+  * **levels**: contains scenes that can be inserted into CVs
+    * **testing**: contains scenes used during the testing phase
+    * **training**: contains scenes used during the training phase
+  * **scripts**: contains the codes relating to the levels
+    * **randomizer**: contains codes to randomize objects within levels
+* **materials**: contains the materials of the objects used in the levels
+* **objects**: contains the objects used in the levels
+  * **other**: contains miscellaneous objects that do not fit into the standard categories
+  * **pedestrian**: contains all data and assets related to the pedestrian models
+  * **targets**: contains target used to define goals within the simulation
+  * **walls**: contains all the walls used in the levels
+* **output**: contains the outputs generated by the tool
+  * **logs**: contains logs created by sb3's VecMonitor class
+  * **models**: contains the onnx models trained during the training phase
+  * **pedpy**: contains the txt generated by the tool that will be used in the plotter
+  * **tensorboard**: contains the generated files viewable via tensorboard
+* **scripts**: contains all the python scripts related to the project 
+  * **configs**: contains YAML configuration file for scripts and environments
+  * **models**: contains the python models used by the tool
+  * **utils**: contains utility python scripts that support various functionalities
+* **testing**: contains the scenes and codes relating to the testing phase
+  * **batch**: contains the batches of layers used during the testing phase
+* **training**: contains the scenes and codes relating to the training phase
+  * **batch**: contains the batches of layers used during the training phase
+* **utils**: contains utility gd scripts that support various functionalities
 
 ## Collaborate
 
 If you encounter any errors or have suggestions for improvements, we welcome collaboration and feedback from the 
 community. You can contribute by:
 
-* Reporting Issues: If you come across any bugs or issues, please submit them through GitHub's issue tracker for this project repository.
+* **Reporting Issues**: If you come across any [issues](https://github.com/Ruben-2828/RL-Godot-Pedestrian-Simulation/issues) 
+or discrepancies, please don't hesitate to report them. Your prompt reporting is essential for addressing these issues efficiently and maintaining optimal functionality.
 
-* Pull Requests: Feel free to submit pull requests with fixes, enhancements, or new features. We appreciate any contributions that improve the project.
+* **Pull Requests**: Feel free to submit [pull requests](https://github.com/Ruben-2828/RL-Godot-Pedestrian-Simulation/pulls) 
+with fixes, enhancements, or new features. We appreciate any contributions that improve the project.
 
 Collaboration is essential for the continued development and improvement of this project. Let's work together to make it even better!

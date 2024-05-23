@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://co2uhyehl5mb5"
+
+[deps]
+
+files=["res://output/runs/run_1/tensorboard_export/run-PPO_1-tag-rollout_ep_len_mean.Step.translation", "res://output/runs/run_1/tensorboard_export/run-PPO_1-tag-rollout_ep_len_mean.Value.translation"]
+
+source_file="res://output/runs/run_1/tensorboard_export/run-PPO_1-tag-rollout_ep_len_mean.csv"
+dest_files=["res://output/runs/run_1/tensorboard_export/run-PPO_1-tag-rollout_ep_len_mean.Step.translation", "res://output/runs/run_1/tensorboard_export/run-PPO_1-tag-rollout_ep_len_mean.Value.translation"]
+
+[params]
+
+compress=true
+delimiter=0

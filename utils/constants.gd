@@ -24,9 +24,9 @@ const INTERMEDIATE_TARGET_FIRST_TIME_REW: float = 0.5
 const INTERMEDIATE_TARGET_ALREADY_REACHED_REW: float = -1.0
 const NO_TARGET_VISIBLE_REW: float = -0.5
 const WALL_COLLISION_REW: float = -0.5
-const AGENT_COLLISION_SMALL_REW: float = -1.0 # changed from 0.5
-const AGENT_COLLISION_MEDIUM_REW: float = -0.01 # changed from 0.005
-const AGENT_COLLISION_LARGE_REW: float = -0.005 # changed from 0.001
+const AGENT_COLLISION_SMALL_REW: float = -0.5
+const AGENT_COLLISION_MEDIUM_REW: float = -0.005
+const AGENT_COLLISION_LARGE_REW: float = -0.001
 const TIMESTEP_REW: float = -0.0001
 const END_OF_TIMESTEPS_REW: float = -6.0
 
@@ -51,7 +51,7 @@ const PEDESTRIAN_GROUP: String = "PEDESTRIAN"
 # Levels
 const DEFAULT_MAX_TIMESTEPS: int = 500
 
-# Random area (spawn, target, objective)
+# Random area 
 const SPAWN_OFFSET: float = 0.5
 const TARGET_OFFSET: float = 1.5
 const ROTATION_STEPS: int = 8
@@ -60,10 +60,10 @@ const ROTATION_STEPS: int = 8
 const LEVELS_BATCH_OFFSET: float = 100.0
 const LEVELS_RETRAINING_OFFSET: float = 40.0
 const RETRAINING_INSTANCES_PER_LEVEL: int = 3
-const TRAINING_BATCH_SIZE: int = 10 # TODO: rimettere a 10 
+const TRAINING_BATCH_SIZE: int = 10
 
 # Test scene
-const DEFAULT_NUMBER_OF_EPISODE: int = 20 # TODO: rimettere a 100
+const DEFAULT_NUMBER_OF_EPISODE: int = 100
 
 # Engine/Sync
 const PHYSICS_TICKS_PER_SECONDS: int = 60

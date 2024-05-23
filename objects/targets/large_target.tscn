@@ -1,7 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://wnqy4tem8s1m"]
 
 [ext_resource type="Script" path="res://objects/targets/target.gd" id="1_y48rx"]
-[ext_resource type="Material" uid="uid://ddc5mqmn53adg" path="res://material/target_material.tres" id="2_3cpys"]
+[ext_resource type="Material" uid="uid://ddc5mqmn53adg" path="res://materials/target_material.tres" id="2_3cpys"]
+
 
 [sub_resource type="BoxMesh" id="BoxMesh_6ugpf"]
 material = ExtResource("2_3cpys")

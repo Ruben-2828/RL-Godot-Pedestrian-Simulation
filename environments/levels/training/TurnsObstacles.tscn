@@ -1,0 +1,261 @@
+[gd_scene load_steps=11 format=3 uid="uid://drlnrntevxckf"]
+
+[ext_resource type="Script" path="res://environments/scripts/turn_level.gd" id="1_pbp1f"]
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/other/room.tscn" id="2_wl4p2"]
+[ext_resource type="PackedScene" uid="uid://cq6t852770172" path="res://objects/targets/small_target.tscn" id="5_7kg38"]
+[ext_resource type="PackedScene" uid="uid://o6t0iemlmcj5" path="res://objects/targets/oblique_target.tscn" id="5_cjwtp"]
+[ext_resource type="PackedScene" uid="uid://bv7gefew8eumw" path="res://objects/walls/obstacle.tscn" id="5_lacfu"]
+[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target.tscn" id="6_lxwxn"]
+[ext_resource type="Script" path="res://environments/scripts/pedestrian_controller.gd" id="8_ligss"]
+[ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="8_uddr0"]
+[ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/walls/internal_wall.tscn" id="9_2rwol"]
+[ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="9_iuqhb"]
+
+[node name="TurnsObstacles" type="Node3D"]
+script = ExtResource("1_pbp1f")
+max_steps = 350
+
+[node name="Room" parent="." instance=ExtResource("2_wl4p2")]
+
+[node name="AllTargets" type="Node3D" parent="."]
+
+[node name="Targets" type="Node3D" parent="AllTargets"]
+
+[node name="Target" parent="AllTargets/Targets" instance=ExtResource("5_7kg38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.51781, 0, 7.45689)
+collision_layer = 16
+collision_mask = 20
+
+[node name="Target2" parent="AllTargets/Targets" instance=ExtResource("5_7kg38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.51781, 0, 3.27413)
+collision_layer = 16
+collision_mask = 20
+
+[node name="Target3" parent="AllTargets/Targets" instance=ExtResource("5_7kg38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.51781, 0, -4.72587)
+collision_layer = 16
+collision_mask = 20
+
+[node name="Target4" parent="AllTargets/Targets" instance=ExtResource("5_7kg38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.51781, 0, -9.1776)
+collision_layer = 16
+collision_mask = 20
+
+[node name="Target5" parent="AllTargets/Targets" instance=ExtResource("5_7kg38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.51781, 0, -0.725865)
+collision_layer = 16
+collision_mask = 20
+
+[node name="Target6" parent="AllTargets/Targets" instance=ExtResource("5_7kg38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48219, 0, 7.42643)
+collision_layer = 16
+collision_mask = 20
+
+[node name="Target7" parent="AllTargets/Targets" instance=ExtResource("5_7kg38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48219, 0, 3.27413)
+collision_layer = 16
+collision_mask = 20
+
+[node name="Target8" parent="AllTargets/Targets" instance=ExtResource("5_7kg38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48219, 0, -4.72587)
+collision_layer = 16
+collision_mask = 20
+
+[node name="Target9" parent="AllTargets/Targets" instance=ExtResource("5_7kg38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48219, 0, -9.1776)
+collision_layer = 16
+collision_mask = 20
+
+[node name="Target10" parent="AllTargets/Targets" instance=ExtResource("5_7kg38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48219, 0, -0.725865)
+collision_layer = 16
+collision_mask = 20
+
+[node name="Target11" parent="AllTargets/Targets" instance=ExtResource("5_7kg38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51781, 0, 9)
+collision_layer = 16
+collision_mask = 20
+
+[node name="Target12" parent="AllTargets/Targets" instance=ExtResource("5_7kg38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51781, 0, 4.97936)
+collision_layer = 16
+collision_mask = 20
+
+[node name="Target13" parent="AllTargets/Targets" instance=ExtResource("5_7kg38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51781, 0, 0.806417)
+collision_layer = 16
+collision_mask = 20
+
+[node name="Target14" parent="AllTargets/Targets" instance=ExtResource("5_7kg38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51781, 0, -3.27514)
+collision_layer = 16
+collision_mask = 20
+
+[node name="Target15" parent="AllTargets/Targets" instance=ExtResource("5_7kg38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51781, 0, -7.30459)
+collision_layer = 16
+collision_mask = 20
+
+[node name="Target16" parent="AllTargets/Targets" instance=ExtResource("5_7kg38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.48219, 0, 9)
+collision_layer = 16
+collision_mask = 20
+
+[node name="Target17" parent="AllTargets/Targets" instance=ExtResource("5_7kg38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.48219, 0, 4.97936)
+collision_layer = 16
+collision_mask = 20
+
+[node name="Target18" parent="AllTargets/Targets" instance=ExtResource("5_7kg38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.48219, 0, 0.806417)
+collision_layer = 16
+collision_mask = 20
+
+[node name="Target19" parent="AllTargets/Targets" instance=ExtResource("5_7kg38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.48219, 0, -3.27514)
+collision_layer = 16
+collision_mask = 20
+
+[node name="Target20" parent="AllTargets/Targets" instance=ExtResource("5_7kg38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.48219, 0, -7.30459)
+collision_layer = 16
+collision_mask = 20
+
+[node name="Oblique" type="Node3D" parent="AllTargets/Targets"]
+
+[node name="ObliqueTarget2" parent="AllTargets/Targets/Oblique" instance=ExtResource("5_cjwtp")]
+transform = Transform3D(0.707066, 0, 0.842649, 0, 1.1, 0, -0.842649, 0, 0.707066, -8.5, -0.5, 8)
+collision_layer = 16
+collision_mask = 20
+
+[node name="ObliqueTarget3" parent="AllTargets/Targets/Oblique" instance=ExtResource("5_cjwtp")]
+transform = Transform3D(0.707066, 0, -0.842649, 0, 1.1, 0, 0.842649, 0, 0.707066, -8.5, -0.5, 4)
+collision_layer = 16
+collision_mask = 20
+
+[node name="ObliqueTarget4" parent="AllTargets/Targets/Oblique" instance=ExtResource("5_cjwtp")]
+transform = Transform3D(0.707066, 0, 0.842649, 0, 1.1, 0, -0.842649, 0, 0.707066, -8.5, -0.5, 0)
+collision_layer = 16
+collision_mask = 20
+
+[node name="ObliqueTarget5" parent="AllTargets/Targets/Oblique" instance=ExtResource("5_cjwtp")]
+transform = Transform3D(0.707066, 0, -0.842649, 0, 1.1, 0, 0.842649, 0, 0.707066, -8.5, -0.5, -4)
+collision_layer = 16
+collision_mask = 20
+
+[node name="ObliqueTarget6" parent="AllTargets/Targets/Oblique" instance=ExtResource("5_cjwtp")]
+transform = Transform3D(0.707066, 0, -0.842649, 0, 1.1, 0, 0.842649, 0, 0.707066, 8.5, -0.5, 4)
+collision_layer = 16
+collision_mask = 20
+
+[node name="ObliqueTarget7" parent="AllTargets/Targets/Oblique" instance=ExtResource("5_cjwtp")]
+transform = Transform3D(0.707066, 0, 0.842649, 0, 1.1, 0, -0.842649, 0, 0.707066, 8.5, -0.5, 0)
+collision_layer = 16
+collision_mask = 20
+
+[node name="ObliqueTarget8" parent="AllTargets/Targets/Oblique" instance=ExtResource("5_cjwtp")]
+transform = Transform3D(0.707066, 0, -0.842649, 0, 1.1, 0, 0.842649, 0, 0.707066, 8.5, -0.5, -4)
+collision_layer = 16
+collision_mask = 20
+
+[node name="ObliqueTarget9" parent="AllTargets/Targets/Oblique" instance=ExtResource("5_cjwtp")]
+transform = Transform3D(0.707066, 0, 0.842649, 0, 1.1, 0, -0.842649, 0, 0.707066, 8.5, -0.5, -8)
+collision_layer = 16
+collision_mask = 20
+
+[node name="Final" type="Node3D" parent="AllTargets"]
+
+[node name="FinalTarget" parent="AllTargets/Final" instance=ExtResource("6_lxwxn")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -8.5, -1, -8.2)
+collision_layer = 16
+collision_mask = 20
+
+[node name="Reward" parent="." instance=ExtResource("8_uddr0")]
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="Obstacles" type="Node3D" parent="Walls"]
+
+[node name="Obstacle" parent="Walls/Obstacles" instance=ExtResource("5_lacfu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.5, 0, 1)
+
+[node name="Obstacle2" parent="Walls/Obstacles" instance=ExtResource("5_lacfu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.5, 0, -3)
+
+[node name="Obstacle3" parent="Walls/Obstacles" instance=ExtResource("5_lacfu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.46954, 0, -7.21322)
+
+[node name="Obstacle4" parent="Walls/Obstacles" instance=ExtResource("5_lacfu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.5, 0, 5)
+
+[node name="Obstacle5" parent="Walls/Obstacles" instance=ExtResource("5_lacfu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.5, 0, 9.39597)
+
+[node name="Obstacle6" parent="Walls/Obstacles" instance=ExtResource("5_lacfu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -1)
+
+[node name="Obstacle7" parent="Walls/Obstacles" instance=ExtResource("5_lacfu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -5)
+
+[node name="Obstacle8" parent="Walls/Obstacles" instance=ExtResource("5_lacfu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -9)
+
+[node name="Obstacle9" parent="Walls/Obstacles" instance=ExtResource("5_lacfu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 3)
+
+[node name="Obstacle10" parent="Walls/Obstacles" instance=ExtResource("5_lacfu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 7.30459)
+
+[node name="Obstacle11" parent="Walls/Obstacles" instance=ExtResource("5_lacfu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -1)
+
+[node name="Obstacle12" parent="Walls/Obstacles" instance=ExtResource("5_lacfu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -5)
+
+[node name="Obstacle13" parent="Walls/Obstacles" instance=ExtResource("5_lacfu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -9)
+
+[node name="Obstacle14" parent="Walls/Obstacles" instance=ExtResource("5_lacfu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 3)
+
+[node name="Obstacle15" parent="Walls/Obstacles" instance=ExtResource("5_lacfu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 7.42643)
+
+[node name="Obstacle16" parent="Walls/Obstacles" instance=ExtResource("5_lacfu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.5, 0, 1)
+
+[node name="Obstacle17" parent="Walls/Obstacles" instance=ExtResource("5_lacfu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.5, 0, -3)
+
+[node name="Obstacle18" parent="Walls/Obstacles" instance=ExtResource("5_lacfu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.5, 0, -7.21322)
+
+[node name="Obstacle19" parent="Walls/Obstacles" instance=ExtResource("5_lacfu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.5, 0, 5)
+
+[node name="Obstacle20" parent="Walls/Obstacles" instance=ExtResource("5_lacfu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.5, 0, 9.39597)
+
+[node name="Curve" type="Node3D" parent="Walls"]
+
+[node name="InternalWall" parent="Walls/Curve" instance=ExtResource("9_2rwol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
+
+[node name="InternalWall2" parent="Walls/Curve" instance=ExtResource("9_2rwol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="InternalWall3" parent="Walls/Curve" instance=ExtResource("9_2rwol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="InternalWall4" parent="Walls/Curve" instance=ExtResource("9_2rwol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6)
+
+[node name="PedestrianController" type="Node3D" parent="."]
+script = ExtResource("8_ligss")
+
+[node name="Pedestrian" parent="PedestrianController" instance=ExtResource("9_iuqhb")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.5, 0, 8.5)
+collision_layer = 6
+collision_mask = 19
+
+[connection signal="body_entered" from="AllTargets/Final/FinalTarget" to="." method="_on_final_target_body_entered"]
