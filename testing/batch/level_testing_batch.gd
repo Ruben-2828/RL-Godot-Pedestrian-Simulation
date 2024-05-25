@@ -2,6 +2,7 @@ extends LevelBatch
 
 var end_episode_count: int = 0 
 const number_of_episode:= Constants.DEFAULT_NUMBER_OF_EPISODE
+var test_batch_size: int = Constants.TESTING_BATCH_SIZE
 
 var pedpy_log_file: FileAccess
 
@@ -19,7 +20,7 @@ func _ready():
 ## Spawns the level managers according to batch size
 func spawn_level_managers() -> void:
 	# Generating batch of level managers
-	for i in range(batch_size):
+	for i in range(test_batch_size):
 		var level_manager_instance := level_manager_scene.instantiate()
 		level_manager_instance.set_name("LevelManager" + str(i))
 		level_manager_instance.position.x = i * level_position_offset

@@ -12,9 +12,9 @@
 [ext_resource type="Script" path="res://environments/scripts/pedestrian_controller.gd" id="10_xexhx"]
 [ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="11_md13o"]
 
-
 [node name="Omega" type="Node3D"]
 script = ExtResource("1_mflkc")
+max_steps = 150
 
 [node name="Room" parent="." instance=ExtResource("1_4ukmo")]
 
@@ -139,5 +139,8 @@ collision_mask = 19
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -8.2266, 0, -8.24927)
 collision_layer = 16
 collision_mask = 20
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 0)
 
 [connection signal="body_entered" from="FinalTarget" to="." method="_on_final_target_body_entered"]

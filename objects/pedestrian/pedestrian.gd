@@ -56,7 +56,7 @@ func set_speed_max():
 	
 # Called every frame
 func _physics_process(_delta):
-	
+		
 	animation_tree.set("parameters/conditions/idle", velocity == Vector3.ZERO)
 	animation_tree.set("parameters/conditions/walk", velocity != Vector3.ZERO)
 	
