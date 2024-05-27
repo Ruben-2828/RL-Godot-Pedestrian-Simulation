@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://df0q1q0c0cynd"]
+
+[ext_resource type="Script" path="res://testing/batch/level_testing_batch.gd" id="1_2kuww"]
+[ext_resource type="PackedScene" uid="uid://cn7enkmjydbh2" path="res://environments/levels/testing/bottleneck/School.tscn" id="2_c3ruk"]
+[ext_resource type="Script" path="res://utils/Sync.gd" id="2_ryf6l"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_otn8b"]
+ground_bottom_color = Color(0.277634, 0.237635, 0.191207, 1)
+
+[sub_resource type="Sky" id="Sky_h7tqf"]
+sky_material = SubResource("ProceduralSkyMaterial_otn8b")
+
+[sub_resource type="Environment" id="Environment_ooaxv"]
+background_mode = 1
+background_color = Color(0.270171, 0.229928, 0.188594, 1)
+sky = SubResource("Sky_h7tqf")
+
+[node name="SchoolBottleneckBatch" type="Node3D"]
+script = ExtResource("1_2kuww")
+level = ExtResource("2_c3ruk")
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("2_ryf6l")
+control_mode = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ooaxv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
+projection = 1
+size = 22.0

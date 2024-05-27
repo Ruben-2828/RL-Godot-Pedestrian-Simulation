@@ -67,22 +67,42 @@ collision_mask = 60
 [node name="PedestrianController" type="Node3D" parent="."]
 script = ExtResource("8_nxoq5")
 
-[node name="Pedestrian" parent="PedestrianController" instance=ExtResource("9_udm8g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0, 8.5)
+[node name="Pedestrian1" parent="PedestrianController" instance=ExtResource("9_udm8g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.5, 0, 8.5)
 collision_layer = 6
 collision_mask = 19
 
 [node name="Pedestrian2" parent="PedestrianController" instance=ExtResource("9_udm8g")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, 8.5)
-collision_layer = 10
-collision_mask = 35
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.5, 0, 8.5)
+collision_layer = 6
+collision_mask = 19
+
+[node name="Pedestrian3" parent="PedestrianController" instance=ExtResource("9_udm8g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.5, 0, 8.5)
+collision_layer = 6
+collision_mask = 19
+
+[node name="Pedestrian4" parent="PedestrianController" instance=ExtResource("9_udm8g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.5, 0, 8.5)
+collision_layer = 6
+collision_mask = 19
 
 [node name="Pedestrian5" parent="PedestrianController" instance=ExtResource("9_udm8g")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9, 0, 8.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.5, 0, 8.5)
 collision_layer = 10
 collision_mask = 35
 
 [node name="Pedestrian6" parent="PedestrianController" instance=ExtResource("9_udm8g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9, 0, 8.5)
-collision_layer = 6
-collision_mask = 19
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.5, 0, 8.5)
+collision_layer = 10
+collision_mask = 35
+
+[node name="Pedestrian7" parent="PedestrianController" instance=ExtResource("9_udm8g")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.5, 0, 8.5)
+collision_layer = 10
+collision_mask = 35
+
+[node name="Pedestrian8" parent="PedestrianController" instance=ExtResource("9_udm8g")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.5, 0, 8.5)
+collision_layer = 10
+collision_mask = 35

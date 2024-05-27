@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="RL-Godot-Pedestrian-Simulation"
-run/main_scene="res://testing/testing_scene.tscn"
+run/main_scene="res://training/training_scene.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -35,3 +35,7 @@ import/fbx/enabled=false
 3d_physics/layer_4="pedestrian_group_2"
 3d_physics/layer_5="target_group_1"
 3d_physics/layer_6="target_group_2"
+3d_physics/layer_7="pedestrian_group_3"
+3d_physics/layer_8="pedestran_group_4"
+3d_physics/layer_9="target_group_3"
+3d_physics/layer_10="target_group_2"

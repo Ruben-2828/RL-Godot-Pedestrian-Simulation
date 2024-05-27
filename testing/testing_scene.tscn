@@ -1,13 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://buytp40i8mx1h"]
+[gd_scene load_steps=4 format=3 uid="uid://buytp40i8mx1h"]
 
 [ext_resource type="Script" path="res://testing/testing_scene.gd" id="1_phwvg"]
-[ext_resource type="PackedScene" uid="uid://djfufvg6fcsd3" path="res://testing/batch/CurveCBatch.tscn" id="2_fpe01"]
-[ext_resource type="PackedScene" uid="uid://dxg6k34fg01y7" path="res://testing/batch/OmegaBatch.tscn" id="3_n2g6o"]
-[ext_resource type="PackedScene" uid="uid://b3rrg3fpqd1dd" path="res://testing/batch/AnchorBatch.tscn" id="4_qqx3c"]
-[ext_resource type="PackedScene" uid="uid://cb27x6fe2m85d" path="res://testing/batch/DoorChoiceBatch.tscn" id="5_6lmlx"]
-[ext_resource type="PackedScene" uid="uid://c3ixxniwfj0mb" path="res://testing/batch/DoubleDoorOppositeBatch.tscn" id="6_tqmww"]
+[ext_resource type="PackedScene" uid="uid://lhb63qhco0xc" path="res://testing/batch/bottleneck/FunnelBatch.tscn" id="2_cbc72"]
+[ext_resource type="PackedScene" uid="uid://df0q1q0c0cynd" path="res://testing/batch/bottleneck/SchoolBatch.tscn" id="2_l1yjo"]
 
 [node name="TestingScene" type="Node3D"]
 script = ExtResource("1_phwvg")
 onnx_model_path = "res://output/models/model_2.onnx"
-levels_path = Array[PackedScene]([ExtResource("6_tqmww"), ExtResource("3_n2g6o"), ExtResource("4_qqx3c"), ExtResource("5_6lmlx"), ExtResource("2_fpe01")])
+levels_path = Array[PackedScene]([ExtResource("2_l1yjo"), ExtResource("2_cbc72")])

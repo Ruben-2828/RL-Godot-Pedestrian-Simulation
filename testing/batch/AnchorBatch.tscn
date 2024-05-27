@@ -7,13 +7,13 @@
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yj8b3"]
 ground_bottom_color = Color(0.277634, 0.237635, 0.191207, 1)
 
-[sub_resource type="Sky" id="Sky_h7tqf"]
+[sub_resource type="Sky" id="Sky_7qkv3"]
 sky_material = SubResource("ProceduralSkyMaterial_yj8b3")
 
 [sub_resource type="Environment" id="Environment_rvh8i"]
 background_mode = 1
 background_color = Color(0.270171, 0.229928, 0.188594, 1)
-sky = SubResource("Sky_h7tqf")
+sky = SubResource("Sky_7qkv3")
 
 [node name="AnchorBatch" type="Node3D"]
 script = ExtResource("1_agbk4")

@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://quswshhny1ow" path="res://environments/levels/training/Corridor3vs3.tscn" id="8_7kib3"]
 [ext_resource type="PackedScene" uid="uid://c63fe78gq767c" path="res://environments/levels/training/T-Junction.tscn" id="9_nraea"]
 
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2qbjx"]
 ground_bottom_color = Color(0.277634, 0.237635, 0.191207, 1)
 

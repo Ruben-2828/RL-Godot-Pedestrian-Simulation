@@ -32,7 +32,7 @@ class EndTrainingOnMeanRewardReachedCallback(BaseCallback):
         Callback method to decide whether to stop or continue execution.
         :return: True to continue execution, False to stop execution
         """
-        # print("Cycle: ", self.cycle)
+        print("Cycle: ", self.cycle)
         episodes = load_results(self.log_dir)
         if len(episodes) >= (self.episodes_for_mean * self.cycle):
 
