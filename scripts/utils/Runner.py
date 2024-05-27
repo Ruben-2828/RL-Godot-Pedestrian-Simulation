@@ -1,5 +1,6 @@
 
 import os
+import datetime
 from pathlib import Path
 from typing import Collection, Optional
 
@@ -29,6 +30,20 @@ class Runner:
         """
         self.config_path = config_path
         self.model: Optional[PPO] = None
+        self.start_time: Optional[float] = None
+        self.tensorboard_log_path: str = self.create_tensorboard_log_path()
+
+    def create_tensorboard_log_path(self) -> str:
+        i = 1
+        log_path = Constants.DEFAULT_TENSORBOARD_LOGS_PATH + "run_" + str(i) + "/"
+        while os.path.exists(log_path):
+            i += 1
+            log_path = Constants.DEFAULT_TENSORBOARD_LOGS_PATH + "run_" + str(i) + "/"
+
+        os.makedirs(log_path, exist_ok=True)
+        os.makedirs(log_path + "tensorboard_export", exist_ok=True)
+
+        return log_path
 
     def run(self) -> None:
         """
@@ -49,6 +64,8 @@ class Runner:
 
         # Retraining phase
         self.retraining()
+
+        self.log_env_change("End")
 
         # Exporting onnx model
         self.handle_onnx_export()
@@ -77,8 +94,10 @@ class Runner:
         # Setting up model
         if self.model is None:
             self.init_model(vec_env)
+            reset_num_timesteps = True
         else:
             self.load_model(vec_env)
+            reset_num_timesteps = False
 
         # Setting up callbacks to stop training
         mean_reward_callback = EndTrainingOnMeanRewardReachedCallback(monitor_logs_path,
@@ -90,8 +109,14 @@ class Runner:
                                                              level.cycles)
         callback = CallbackList([mean_reward_callback, early_fail_callback])
 
+        self.log_env_change(level.name, level.mean_reward, "train")
+
         # Learn and save the model
-        self.model.learn(total_timesteps=Constants.DEFAULT_TIMESTEPS, callback=callback)
+        self.model.learn(total_timesteps=Constants.DEFAULT_TIMESTEPS,
+                         callback=callback,
+                         tb_log_name=Constants.DEFAULT_TENSORBOARD_LOGS_FILE,
+                         reset_num_timesteps=reset_num_timesteps,
+        )
         self.model.save(Constants.DEFAULT_TMP_MODEL_FILE)
 
         # Closing environment
@@ -100,6 +125,31 @@ class Runner:
             vec_env.close()
         except Exception as e:
             print("Exception while closing env: ", e)
+
+    def log_env_change(self, env_name: str, min_score: float = -100, phase: str = '') -> None:
+        """
+        Method to log information about environment changes. Logs are stored in a csv file in the following format:
+        datetime; timestamp; start time (in seconds); env name; score; phase
+        :param env_name: name of the current environment
+        :param min_score: score to reach during current environment
+        :param phase: phase of the training (train, retrain)
+        """
+
+        if self.start_time is None:
+            self.start_time = datetime.datetime.now().timestamp()
+
+        with open(self.tensorboard_log_path + "EnvironmentChanges.txt", "a") as f:
+            current_time = datetime.datetime.now()
+
+            f.write(
+                str(current_time) + ';' +
+                str(int(current_time.timestamp())) + ';' +
+                str(int(current_time.timestamp() - self.start_time)) + ';' +
+                env_name + ';' +
+                str(min_score) + ';' +
+                phase + '\n'
+            )
+            f.close()
 
     def create_vec_env(self, name: str) -> tuple[VecMonitor, str]:
         """
@@ -132,8 +182,10 @@ class Runner:
             learning_rate=0.0003,
             device='cuda',
             ent_coef=0.0001,
-            tensorboard_log=Constants.DEFAULT_TENSORBOARD_LOGS_PATH,
+            tensorboard_log=self.tensorboard_log_path,
             n_steps=32,
+            stats_window_size=1,
+            batch_size=320,
         )
 
     def load_model(self, vec_env: VecMonitor) -> None:
@@ -145,8 +197,10 @@ class Runner:
         self.model = PPO.load(
             Constants.DEFAULT_TMP_MODEL_FILE,
             vec_env,
-            tensorboard_log=Constants.DEFAULT_TENSORBOARD_LOGS_PATH,
+            tensorboard_log=self.tensorboard_log_path,
             device='cuda',
+            stats_window_size=1,
+            batch_size=320,
         )
 
     def retraining(self) -> None:
@@ -161,9 +215,14 @@ class Runner:
         # Setting up model
         self.load_model(vec_env)
 
+        self.log_env_change("retraining", phase="retrain")
+
         # Learn and save the model
-        self.model.learn(total_timesteps=Constants.DEFAULT_RETRAINING_TIMESTEPS)
-        self.model.save(Constants.BASE_PATH + "model_tmp.zip")
+        self.model.learn(
+            total_timesteps=Constants.DEFAULT_RETRAINING_TIMESTEPS,
+            tb_log_name=Constants.DEFAULT_TENSORBOARD_LOGS_FILE,
+            reset_num_timesteps=False
+        )
 
         # Closing environment
         try:
@@ -179,10 +238,11 @@ class Runner:
         os.makedirs(Path(Constants.DEFAULT_ONNX_EXPORT_PATH).parent, exist_ok=True)
 
         save_path = Constants.DEFAULT_ONNX_EXPORT_PATH
+        name, extension = os.path.splitext(Constants.DEFAULT_ONNX_EXPORT_PATH)
         i = 1
         while os.path.exists(save_path):
-            name, extension = os.path.splitext(save_path)
             save_path = name + "_" + str(i) + extension
+            i += 1
 
         print("Exporting onnx to: " + os.path.abspath(save_path))
         export_ppo_model_as_onnx(self.model, save_path)

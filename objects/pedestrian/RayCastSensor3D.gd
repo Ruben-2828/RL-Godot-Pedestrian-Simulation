@@ -1,4 +1,3 @@
-@tool
 extends ISensor3D
 
 ## Max distance at which a raycast can hit
@@ -50,6 +49,8 @@ var collide_with_bodies := true:
 		_update()
 		
 @onready var pedestrian = $".."
+var lines_walls_targets: Array[MeshInstance3D] = []
+var lines_agents_walls: Array[MeshInstance3D] = []
 
 var rays_walls_targets := []
 var rays_agents_walls := []
@@ -60,6 +61,54 @@ func _update() -> void:
 func _ready() -> void:
 	_spawn_nodes()
 
+func _process(_delta):
+	if not pedestrian.disable and Constants.SHOW_RAYS:
+		_create_debug_lines()
+	
+func _create_debug_lines(): 
+		
+	for i in range(rays_agents_walls.size()):
+		if rays_walls_targets[i].is_colliding():
+			var point = rays_walls_targets[i].get_collision_point() - global_position
+			
+			var material = ORMMaterial3D.new()
+			material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+			if rays_walls_targets[i].get_collider().is_in_group(Constants.TARGETS_GROUP):
+				if rays_walls_targets[i].get_collider().name.begins_with("FinalTarget"):
+					material.albedo_color = "#43A047"
+				else:
+					material.albedo_color = "#26C6DA"
+			else:
+				material.albedo_color = "#232323"
+				
+			var immediate_mesh = ImmediateMesh.new()
+			immediate_mesh.surface_begin(Mesh.PRIMITIVE_LINES, material)
+			immediate_mesh.surface_add_vertex(position)
+			immediate_mesh.surface_add_vertex(point)
+			immediate_mesh.surface_end()
+				
+			lines_walls_targets[i].mesh = immediate_mesh
+			lines_walls_targets[i].global_rotation = Vector3.ZERO
+				
+		if rays_agents_walls[i].is_colliding():
+			if rays_agents_walls[i].get_collider().is_in_group(Constants.PEDESTRIAN_GROUP):
+				var point = rays_agents_walls[i].get_collision_point() - global_position
+				
+				var material = ORMMaterial3D.new()
+				material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+				material.albedo_color = "#FDD835"
+				
+				var immediate_mesh = ImmediateMesh.new()
+				immediate_mesh.surface_begin(Mesh.PRIMITIVE_LINES, material)
+				immediate_mesh.surface_add_vertex(position + Vector3(0, 1, 0))
+				immediate_mesh.surface_add_vertex(point + Vector3(0, 1, 0))
+				immediate_mesh.surface_end()
+				
+				lines_agents_walls[i].mesh = immediate_mesh
+				lines_agents_walls[i].global_rotation = Vector3.ZERO
+			else:
+				lines_agents_walls[i].mesh = null
+				
 ## Spawns all raycast nodes
 func _spawn_nodes():
 	#print("spawning nodes")
@@ -86,6 +135,18 @@ func _spawn_nodes():
 	_create_ray(-max_vision_degrees, -i,  true)
 	_create_ray(max_vision_degrees, i, false)
 	_create_ray(-max_vision_degrees, -i, false)
+	
+	for r in rays_walls_targets:	
+		var line = MeshInstance3D.new()
+		line.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		lines_walls_targets.append(line)
+		add_child(line)
+		
+	for r in rays_agents_walls:	
+		var line = MeshInstance3D.new()
+		line.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		lines_agents_walls.append(line)
+		add_child(line)
 
 ## Create raycast node
 ## Mode = true for walls and targets, false for agents and walls
@@ -175,7 +236,10 @@ func calculate_agents_walls() -> Array:
 		if collider:
 			if collider.is_in_group(Constants.PEDESTRIAN_GROUP):
 				type = 1
-				direction = collider.rotation.y
+				var diffAng = clamp0360(
+					clamp0360(rad_to_deg(collider.rotation.y)) - clamp0360(rad_to_deg(rotation.y))
+					)
+				direction = clamp((diffAng / 180) - 1, -1, 1)
 				speed = collider.get_speed_norm()
 		
 		hit_objects.append(norm_distance)	
@@ -184,6 +248,12 @@ func calculate_agents_walls() -> Array:
 		hit_objects.append(speed)
 	
 	return hit_objects
+	
+func clamp0360(eulerAngles: int) -> float:
+	var result = eulerAngles % 360
+	if result < 0: result += 360
+	return result;
+
 
 ## Return distance between the start of the ray and the hit object
 func _get_raycast_distance(ray: RayCast3D) -> float:
