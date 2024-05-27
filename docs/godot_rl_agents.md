@@ -51,7 +51,7 @@ RL Agents library. You can then dive into the examples for more complex environm
 The environment we will be building today is called Ring Pong, the game of pong but the pitch is a ring and the paddle 
 moves around the ring. The objective is to keep the ball bouncing inside the ring.
 
-![Custom Env](images/image21.gif)
+![Custom Env](images/godot_rl_agents/custom_env.gif)
 
 #### Install the Godot Engine 
 
@@ -83,27 +83,27 @@ AI agent with many parallel environments
 The Godot RL Agents plugin can be installed from the GitHub repo or with the Godot Asset Lib in the editor.
 * First click on the AssetLib and search for “rl”
 
-  ![RL](images/image18.png)
+  ![RL](images/godot_rl_agents/rl.png)
 
 * Then click on Godot RL Agents, click Download and unselect the `LICENSE` and `README`  files. Then click install.
 
-  ![Install](images/image16.png)
+  ![Install](images/godot_rl_agents/install.png)
 
 * The Godot RL Agents plugin is now downloaded to your machine. Now click on Project → Project settings and enable the addon:
 
-  ![Plugin](images/image17.png)
+  ![Plugin](images/godot_rl_agents/plugin.png)
 
 #### Adding the AI controller
 
 We now want to add an AI controller to our game. 
 Open the `player.tscn` scene, on the left you should see a hierarchy of nodes that looks like this:
 
-![Scene](images/image15.png)
+![Scene](images/godot_rl_agents/scene.png)
 
 * Right-click the Player node and click Add Child Node. There are many nodes listed here, 
 search for AIController3D and create it. 
 
-  ![Node](images/image20.png)
+  ![Node](images/godot_rl_agents/node.png)
 
 * The AI Controller Node should have been added to the scene tree, next to it is a scroll. 
 Click on it to open the script that is attached to the AIController. 
@@ -231,7 +231,7 @@ communication between Python and Godot over TCP.
 
 * You can run training live in the editor, by first launching the python training with `gdrl`.
 
-  ![sync](images/image20.png)
+  ![sync](images/godot_rl_agents/node.png)
 
 * In this simple example, a reasonable policy is learned in several minutes. You may wish to speed up training, click on 
 the Sync node in the train scene, and you will see there is a “Speed Up” property exposed in the editor.

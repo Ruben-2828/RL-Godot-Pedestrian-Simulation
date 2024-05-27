@@ -1,6 +1,6 @@
 # Godot Engine Documentation
 
-![Godot Logo](images/Godot_logo.svg)
+![Godot Logo](images/godot_engine/godot_logo.svg)
 
 ## What is Godot?
 
@@ -29,7 +29,7 @@ A scene in Godot is a reusable collection of nodes within our application. It ca
 characters, menus, environments, entire levels, and more. Scenes in Godot are highly flexible and can also be 
 nested within each other, allowing for complex arrangements and compositions of game elements.
 
-![Scene image](images/image6.png)
+![Scene image](images/godot_engine/scene.png)
 
 ### Nodes
 
@@ -41,7 +41,7 @@ When you save a tree of nodes as a scene, it becomes a single node, and its inte
 the editor. This modular approach allows for efficient and organized game development, where complex systems can be 
 broken down into smaller, manageable components.
 
-![Nodes image](images/image5.png)
+![Nodes image](images/godot_engine/node.png)
 
 ### Signals
 
@@ -53,7 +53,7 @@ This signal-based communication system allows nodes to interact dynamically, res
 environment. For example, in game development, when two objects collide, a collision signal can trigger actions such as 
 score updates or animations.
 
-![Signals image](images/image2.png)
+![Signals image](images/godot_engine/signal.png)
 
 ## GUI
 
@@ -64,35 +64,35 @@ or application. It offers a range of tools and features to help you create intui
 
 The main interface of Godot is organized into different modes accessible through tabs located at the top of the screen.
 
-![Main Interface image](images/image10.png)
+![Main Interface image](images/godot_engine/interface.png)
 
 #### 2D Mode
 In this mode, Godot provides an optimized environment for developing 2D games. It offers an orthographic view of your 
 project, allowing you to work directly with 2D elements such as sprites, animations, and tile maps. 
 You can easily create and manipulate scenes, set up collision shapes, and manage animations within this mode.
 
-![2D Mode image](images/image12.png)
+![2D Mode image](images/godot_engine/2D.png)
 
 #### 3D Mode
 Godot's 3D mode is tailored for working with three-dimensional scenes. Here, you can place and manipulate 3D objects, 
 manage lighting and shadows, set up cameras, and utilize other features specific to 3D game development. The interface 
 provides views for both perspective and orthogonal projections, allowing for precise control over your 3D environment.
 
-![3D Mode image](images/image4.png)
+![3D Mode image](images/godot_engine/3D.png)
 
 #### Script
 In the Script mode, you can write and edit code for your project. Godot supports multiple scripting languages, 
 including its own GDScript, VisualScript, and C#. This environment provides features like syntax highlighting, code 
 completion, and a built-in debugger, making it easy to write and debug your game logic and functionality.
 
-![Script image](images/image9.png)
+![Script image](images/godot_engine/script.png)
 
 #### AssetLib
 The AssetLib tab gives users access to a library of assets that can be downloaded and integrated into their projects. 
 Here, you can find scripts, models, textures, audio files, and other resources contributed by the community. This 
 feature simplifies asset management and allows developers to quickly enhance their projects with ready-made content.
 
-![AssetLib image](images/image8.png)
+![AssetLib image](images/godot_engine/assetlib.png)
 
 ### Other Functions and Tools
 
@@ -100,7 +100,7 @@ feature simplifies asset management and allows developers to quickly enhance the
 The Output panel displays print output from the code, logging information during game execution, and other system 
 messages. It's useful for debugging and understanding what's happening behind the scenes in your project.
 
-![Output image](images/image3.png)
+![Output image](images/godot_engine/output.png)
 
 #### Debugger
 The Debugger panel helps you find and fix errors in your game. It includes features such as breakpoints, step execution, 
@@ -129,7 +129,7 @@ The Scene panel is the heart of level and gameplay creation in Godot. Here, you 
 compose your scene. Each node can have different components and child nodes, allowing you to build complex scenes with 
 ease.
 
-![Scene panel image](images/image13.png)
+![Scene panel image](images/godot_engine/scene_panel.png)
 
 #### Import
 After selecting an asset in the FileSystem, this panel allows you to modify the import settings for that specific asset, 
@@ -140,20 +140,20 @@ such as texture quality or other import options for 3D models.
 The FileSystem panel is the project's file explorer where all project files and folders are organized and accessible. 
 You can drag and drop resources directly into your scenes or scripts from here.
 
-![Import image](images/image7.png)
+![Import image](images/godot_engine/file_system.png)
 
 #### Inspector
 In the Inspector panel, you can view and modify the properties of selected nodes in the scene. For each node, 
 this panel displays all the properties that can be modified, such as transformations, materials, scripts, and 
 exposed variables.
 
-![Inspector image](images/image1.png)
+![Inspector image](images/godot_engine/inspector.png)
 
 #### Node
 The Node panel provides a list of signals and groups associated with the selected node. This is useful for managing 
 communication between nodes and membership in specific groups.
 
-![Node image](images/image14.png)
+![Node image](images/godot_engine/node_panel.png)
 
 #### History
 The History panel records recent changes and allows you to navigate through them, similar to the "undo/redo" function 
@@ -163,7 +163,7 @@ in many other programs. It helps you keep track of your editing actions and reve
 
 Situated in the top right corner of the interface, these controls include:
 
-![Execution image](images/image11.png)
+![Execution image](images/godot_engine/exe_controls.png)
 
 #### Run Project
 Starts the execution of the entire project. This is the standard way to test the game as if it were running in a 

@@ -185,7 +185,7 @@ class Runner:
             tensorboard_log=self.tensorboard_log_path,
             n_steps=32,
             stats_window_size=1,
-            batch_size=512,
+            batch_size=320,
         )
 
     def load_model(self, vec_env: VecMonitor) -> None:
@@ -200,7 +200,7 @@ class Runner:
             tensorboard_log=self.tensorboard_log_path,
             device='cuda',
             stats_window_size=1,
-            batch_size=512,
+            batch_size=320,
         )
 
     def retraining(self) -> None:
@@ -215,7 +215,7 @@ class Runner:
         # Setting up model
         self.load_model(vec_env)
 
-        self.log_env_change("retraining", phase="retrain")
+        self.log_env_change("Retraining", phase="retrain")
 
         # Learn and save the model
         self.model.learn(
