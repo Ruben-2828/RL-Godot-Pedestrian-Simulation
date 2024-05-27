@@ -81,18 +81,6 @@ func _initialize():
 	_set_action_repeat()
 	initialized = true
 
-func reload_agents():
-	all_agents = []
-	agents_training = []
-	agents_inference = []
-	agents_heuristic = []
-	
-	print("reloading agents")
-	
-	_get_agents()
-	_set_heuristic("human", all_agents)
-	
-
 func _initialize_training_agents():
 	if agents_training.size() > 0:
 		_obs_space = agents_training[0].get_obs_space()

@@ -40,7 +40,9 @@ const MAX_VISION_DEGREES: float = 90.0
 const RAYS_ANGLE_DELTA: float = 1.5
 const INITIAL_RAY_POS: float = 0.0
 const RAYS_GRAY_COLOR: String = "#787c82"
-
+# For better performance set SHOW_RAYS to remove the computation necessary to 
+# draw the rays lines
+const SHOW_RAYS: bool = false
 
 # Groups
 const TARGETS_GROUP: String = "TARGET"

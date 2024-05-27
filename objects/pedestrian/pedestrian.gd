@@ -11,6 +11,10 @@ var speed_max: float
 @onready var animation_tree = $AnimationTree
 @onready var pedestrian_controller = $".."
 
+@onready var proxemic_arc_small = $ProxemicArcSmall
+@onready var proxemic_arc_medium = $ProxemicArcMedium
+@onready var proxemic_arc_large = $ProxemicArcLarge
+
 var can_move: bool = true
 var final_target_reached: bool = false
 var target_reached: bool = false
@@ -30,6 +34,10 @@ func _ready():
 	ai_controller_3d.init(self)
 	add_to_group(Constants.PEDESTRIAN_GROUP)
 	
+	if not Constants.SHOW_RAYS:
+		proxemic_arc_small.hide()
+		proxemic_arc_medium.hide()
+		proxemic_arc_large.hide()
 
 ## Reset the pedestrian state
 func reset():
