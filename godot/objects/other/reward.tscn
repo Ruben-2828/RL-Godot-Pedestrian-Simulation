@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cdsfgd324gdrk"]
+
+[node name="Reward" type="Label3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10, 5, -10.5)
+modulate = Color(0, 0, 0, 1)
+text = "Score:
+"
+font_size = 128
+outline_size = 2
+horizontal_alignment = 0
