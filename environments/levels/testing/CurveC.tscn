@@ -12,6 +12,7 @@
 
 [node name="CurveC" type="Node3D"]
 script = ExtResource("1_d5ked")
+max_steps = 100
 
 [node name="Room" parent="." instance=ExtResource("1_7dvx3")]
 
