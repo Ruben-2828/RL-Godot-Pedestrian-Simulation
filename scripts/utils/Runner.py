@@ -215,7 +215,7 @@ class Runner:
         # Setting up model
         self.load_model(vec_env)
 
-        self.log_env_change("retraining", phase="retrain")
+        self.log_env_change("Retraining", phase="retrain")
 
         # Learn and save the model
         self.model.learn(
