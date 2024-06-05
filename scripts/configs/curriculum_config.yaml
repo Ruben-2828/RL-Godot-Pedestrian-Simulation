@@ -2,7 +2,7 @@ Curriculum:
   StartEZ:
     mean_reward: 5.7
     episode_mean: 36
-    cycles: 10
+    cycles: 20
   Start:
     mean_reward: 3.0
     episode_mean: 36

@@ -1,0 +1,27 @@
+hyperparameters:
+  learning_rate: 0.003
+  n_steps: 32
+  batch_size: 320
+  n_epochs: 3
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_range: 0.2
+  clip_range_vf: null
+  normalize_advantage: True
+  ent_coef: 0.0001
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  use_sde: False
+  sde_sample_freq: -1
+  target_kl: null
+  stats_window_size: 1
+  device: "auto"
+  verbose: 0
+  policy_kwargs:
+    net_arch:
+      - 64
+      - 64
+max_steps: 100000000000000000
+
+# Fallito per 3 volte di seguito, allora alzato lr da 0.0003 a 0.003, ma non è bastato. Rete troppo piccola
+# Run riuscita e anche con buoni risultati, ma comunque non affidabile. Nella run media il modello va in early fail.

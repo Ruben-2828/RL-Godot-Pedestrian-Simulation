@@ -7,7 +7,8 @@ func _on_final_target_body_entered(body):
 		
 		find_child("AllTargets").rotation.y = deg_to_rad(90 * rotate)
 		find_child("Final").rotation.z = deg_to_rad(180 * rotate)
-		find_child("Pedestrian").rotation.y = deg_to_rad(180) if rotate == 0 else deg_to_rad(-90)
+		var pedestrian = find_child("Pedestrian")
+		find_child("PedestrianController").initial_rot[pedestrian].y = deg_to_rad(180) if rotate == 1 else deg_to_rad(-90)
 			
 		var walls = find_child("Walls")
 		if walls != null:

@@ -10,6 +10,8 @@ var path = Constants.PATH_PEDPY_LOGS
 
 ## Called when the node enters the scene tree for the first time
 func _ready():
+	batch_size = Constants.TESTING_BATCH_SIZE
+	
 	pedpy_log_file = FileAccess.open(path + name + ".txt", FileAccess.WRITE)
 	init_sample_file()
 	spawn_level_managers()

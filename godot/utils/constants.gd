@@ -65,7 +65,8 @@ const RETRAINING_INSTANCES_PER_LEVEL: int = 3
 const TRAINING_BATCH_SIZE: int = 10
 
 # Test scene
-const DEFAULT_NUMBER_OF_EPISODE: int = 100
+const DEFAULT_NUMBER_OF_EPISODE: int = 10
+const TESTING_BATCH_SIZE: int = 1
 const PATH_PEDPY_LOGS = "res://../output/pedpy/"
 
 # Engine/Sync
