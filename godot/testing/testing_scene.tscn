@@ -1,0 +1,11 @@
+[gd_scene load_steps=5 format=3 uid="uid://buytp40i8mx1h"]
+
+[ext_resource type="Script" path="res://testing/testing_scene.gd" id="1_phwvg"]
+[ext_resource type="PackedScene" uid="uid://b362skyv6gek2" path="res://testing/batch/Funnel3,5Batch.tscn" id="3_8pccu"]
+[ext_resource type="PackedScene" uid="uid://6smpy2l3yxtq" path="res://testing/batch/Funnel2Batch.tscn" id="4_2r7ru"]
+[ext_resource type="PackedScene" uid="uid://lhb63qhco0xc" path="res://testing/batch/Funnel5,6Batch.tscn" id="4_x5ij5"]
+
+[node name="TestingScene" type="Node3D"]
+script = ExtResource("1_phwvg")
+onnx_model_path = "res://../output/models/model_9.onnx"
+levels_path = Array[PackedScene]([ExtResource("4_x5ij5"), ExtResource("3_8pccu"), ExtResource("4_2r7ru")])

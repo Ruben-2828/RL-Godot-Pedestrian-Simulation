@@ -1,0 +1,143 @@
+[gd_scene load_steps=17 format=3 uid="uid://bxa6hl02an5lq"]
+
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/other/room20.tscn" id="1_ov2rc"]
+[ext_resource type="Script" path="res://environments/scripts/level.gd" id="1_r36qn"]
+[ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="2_wfb10"]
+[ext_resource type="PackedScene" uid="uid://uh0p4etdr17o" path="res://objects/walls/wall1.tscn" id="4_8gosj"]
+[ext_resource type="Script" path="res://environments/scripts/randomizer/final_target.gd" id="4_624ba"]
+[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target_3x3.tscn" id="5_pcis2"]
+[ext_resource type="Script" path="res://environments/scripts/pedestrian_controller.gd" id="8_3anii"]
+[ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="9_c24s0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jcpvo"]
+size = Vector3(4, 0, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8qmeh"]
+size = Vector3(4, 0, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0faih"]
+size = Vector3(4, 0, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ydbmy"]
+size = Vector3(4, 0, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fmhhm"]
+size = Vector3(4, 0, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0n4j0"]
+size = Vector3(4, 0, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j7kmy"]
+size = Vector3(4, 0, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c4g3a"]
+size = Vector3(4, 0, 4)
+
+[node name="Observe" type="Node3D"]
+script = ExtResource("1_r36qn")
+max_steps = 30
+can_move = false
+
+[node name="Room" parent="." instance=ExtResource("1_ov2rc")]
+
+[node name="Pillars" type="Node3D" parent="."]
+
+[node name="Pillar2" parent="Pillars" instance=ExtResource("4_8gosj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.34786, 0, -8.00864)
+
+[node name="Pillar3" parent="Pillars" instance=ExtResource("4_8gosj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.86772, 0, 4.49329)
+
+[node name="Pillar4" parent="Pillars" instance=ExtResource("4_8gosj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.50206, 0, 6.95139)
+
+[node name="Pillar5" parent="Pillars" instance=ExtResource("4_8gosj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.73994, 0, -2.29951)
+
+[node name="Pillar6" parent="Pillars" instance=ExtResource("4_8gosj")]
+transform = Transform3D(0.999928, 0, 0.0119901, 0, 1, 0, -0.0119901, 0, 0.999928, -1.74446, 0, -4.30828)
+
+[node name="Pillar7" parent="Pillars" instance=ExtResource("4_8gosj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0704, 0, 1.40085)
+
+[node name="Pillar8" parent="Pillars" instance=ExtResource("4_8gosj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.32594, 0, 2.29951)
+
+[node name="Pillar9" parent="Pillars" instance=ExtResource("4_8gosj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.42277)
+
+[node name="Pillar10" parent="Pillars" instance=ExtResource("4_8gosj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6123, 0, -7.05712)
+
+[node name="Pillar11" parent="Pillars" instance=ExtResource("4_8gosj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.76638, 0, 3.88538)
+
+[node name="Pillar12" parent="Pillars" instance=ExtResource("4_8gosj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.42277, 0, -2.48453)
+
+[node name="RandomTarget" type="Node3D" parent="."]
+script = ExtResource("4_624ba")
+
+[node name="FinalTarget" parent="RandomTarget" instance=ExtResource("5_pcis2")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -3, 0, 5)
+collision_layer = 16
+collision_mask = 20
+
+[node name="Area1" type="Area3D" parent="RandomTarget"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -7)
+
+[node name="CollisionShapeTarget1" type="CollisionShape3D" parent="RandomTarget/Area1"]
+shape = SubResource("BoxShape3D_jcpvo")
+
+[node name="Area2" type="Area3D" parent="RandomTarget"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -7)
+
+[node name="CollisionShapeTarget2" type="CollisionShape3D" parent="RandomTarget/Area2"]
+shape = SubResource("BoxShape3D_8qmeh")
+
+[node name="Area3" type="Area3D" parent="RandomTarget"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 1)
+
+[node name="CollisionShapeTarget3" type="CollisionShape3D" parent="RandomTarget/Area3"]
+shape = SubResource("BoxShape3D_0faih")
+
+[node name="Area4" type="Area3D" parent="RandomTarget"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 5)
+
+[node name="CollisionShapeTarget4" type="CollisionShape3D" parent="RandomTarget/Area4"]
+shape = SubResource("BoxShape3D_ydbmy")
+
+[node name="Area5" type="Area3D" parent="RandomTarget"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 7)
+
+[node name="CollisionShapeTarget5" type="CollisionShape3D" parent="RandomTarget/Area5"]
+shape = SubResource("BoxShape3D_fmhhm")
+
+[node name="Area6" type="Area3D" parent="RandomTarget"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 1)
+
+[node name="CollisionShapeTarget6" type="CollisionShape3D" parent="RandomTarget/Area6"]
+shape = SubResource("BoxShape3D_0n4j0")
+
+[node name="Area7" type="Area3D" parent="RandomTarget"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -5)
+
+[node name="CollisionShapeTarget7" type="CollisionShape3D" parent="RandomTarget/Area7"]
+shape = SubResource("BoxShape3D_j7kmy")
+
+[node name="Area8" type="Area3D" parent="RandomTarget"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -4)
+
+[node name="CollisionShapeTarget8" type="CollisionShape3D" parent="RandomTarget/Area8"]
+shape = SubResource("BoxShape3D_c4g3a")
+
+[node name="Reward" parent="." instance=ExtResource("2_wfb10")]
+
+[node name="PedestrianController" type="Node3D" parent="."]
+script = ExtResource("8_3anii")
+
+[node name="Pedestrian" parent="PedestrianController" instance=ExtResource("9_c24s0")]
+collision_layer = 6
+collision_mask = 19
+
+[connection signal="body_entered" from="RandomTarget/FinalTarget" to="RandomTarget" method="_on_final_target_body_entered"]

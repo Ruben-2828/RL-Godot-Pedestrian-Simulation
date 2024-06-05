@@ -8,7 +8,7 @@
 ### 4. [Creating a new level](#Creating-a-new-level)
 ### 5. [Adding a level to a curriculum](#Adding-a-level-to-a-curriculum)
 ### 6. [Modify training configuration](#Modify-training-configuration)
-### 7. [View ray casts and collision shapes](#View-ray-casts-and-collision-shapes)
+### 7. [View ray casts and arcs of proxemics](#View-ray-casts-and-arcs-of-proxemics)
 
 ## Introduction
 
@@ -102,7 +102,7 @@ In this project there are 4 main groups:
 * Obstacles group assigned to each obstacle, default value: 'WALL'
 * AiControllers group assigned to each ai controller, default value: 'AGENT'
 
-   ![GROUPS](images/groups.PNG)
+   ![groups](images/user_guide/groups.png)
 
 ### Collision layers
 The first 6 layers are used and renamed:
@@ -113,7 +113,7 @@ The first 6 layers are used and renamed:
 * Layer 5, renamed to 'target_group_1': assigned only to targets of group 1
 * Layer 6, renamed to 'target_group_2': assigned only to targets of group 2
 
-   ![LAYERS](images/collision_layers.PNG)
+   ![layers](images/user_guide/collision_layers.png)
 
 In certain scenarios there could be two pedestrian flows, each one with different targets, so to distinguish them the
 layers 3, 4, 5 and 6 have been used. Each pedestrian must be in layer 2 and in only one between layer 3 or 4. Each 
@@ -123,7 +123,7 @@ the same final target). Layers above the sixth could be used if there are more t
 ### Target
 A target is an objective that the agent must reach. 
 
-  ![Targets](images/image23.png)
+  ![Targets](images/user_guide/targets.png)
 
 There are two types of targets:
 * Intermediate Targets: Help guide the agent in complex environments where the final target is not directly visible. 
@@ -137,14 +137,14 @@ To create a new target follow these steps:
 4. To the MeshInstance3D node set a new mesh and its dimensions, rotation and the target material
 5. To the CollisionShape3D node set a new collision shape and its dimensions and rotations
 6. Make sure the dimensions and rotations of these two nodes are the same
-7. Add the target group ('TARGET') to the root node
+7. Add the target group (*TARGET*) to the root node
 8. Attach the script `target.gd` to the root node
 9. On the root node under the section Collision deactivate all the layers in Layer and Mask sections
 
 ### Obstacle
 An obstacle is a barrier that the agent cannot pass through.
 
-  ![Walls](images/image22.png)
+  ![Walls](images/user_guide/walls.png)
 
 To create a new target follow these steps:
 1. Create a new scene
@@ -153,7 +153,7 @@ To create a new target follow these steps:
 4. To the MeshInstance3D node set a new mesh and its dimensions, rotation and the obstacle material
 5. To the CollisionShape3D node set a new collision shape and its dimensions and rotations
 6. Make sure the dimensions and rotations of these two nodes are the same
-7. Add the obstacle group ('WALL') to the root node
+7. Add the obstacle group (*WALL*) to the root node
 8. On the root node under the section Collision activate layer 1 in section Layer and layer 1 and 2 in section Mask
 
 ### Pedestrian
@@ -161,7 +161,7 @@ To create a new target follow these steps:
 The pedestrian is the agent in our environment that must reach the final target maximizing the obtained reward. 
 The pedestrian default settings can be found in the file `constants.gd` in `utils` directory
 
-![Pedestrian](images/image25.png)
+![Pedestrian](images/user_guide/pedestrian.png)
 
 
 ### Other
@@ -170,13 +170,13 @@ In this section there are the elements that don't fall in the previous categorie
 
 * Floor: Used to define the floor of the environment. The agent cannot pass through it
     
-    ![Floor](images/image34.png)
+    ![Floor](images/user_guide/floor.png)
 
 * Reward: Label used to print the reward value during the execution
 
 * Room: A scene composed of the floor and four walls. It is used as a base for each scenario
     
-    ![Room](images/image54.png)
+    ![Room](images/user_guide/room.png)
 
 ## Randomization
 
@@ -190,7 +190,7 @@ node to CollisionShapeSpawn.
 * Add the Pedestrian inside the PedestrianController. Now the pedestrians will spawn at random in the given area
 * The result should look like this:
 
-  ![RandomPedestrian](images/image55.png)
+  ![RandomPedestrian](images/user_guide/random_pedestrian.png)
 
 ### Random Final Target
 To randomize the position of the final target within a given area, follow this structure:
@@ -203,7 +203,7 @@ To randomize the position of the final target within a given area, follow this s
 Rename this node to CollisionShapeTarget.
 * The result should look like this:
 
-    ![RandomTarget](images/image57.png)
+    ![RandomTarget](images/user_guide/random_target.png)
 
 ### Random Passage Target
 To randomize the position of a passage within a given area, follow this structure:
@@ -216,7 +216,7 @@ To randomize the position of a passage within a given area, follow this structur
 Rename this node to CollisionShapePassage.
 * The result should look like this:
 
-    ![RandomPassage](images/image56.png)
+    ![RandomPassage](images/user_guide/random_passage.png)
 
 
 ## Creating a new level
@@ -229,20 +229,20 @@ To create a new level follow these steps:
 2. From here click with the right mouse button and select "Create New" and then "Scene"
 3. Name the scene and select 3D Scene as the Root Type
 
-    ![Scene](images/image47.png)
+    ![Scene](images/user_guide/scene.png)
 
 4. Once the scene is created, right-click on the parent node and select "Attach Script". Enter the path of the level.gd script
 
-    ![Script](images/image48.png)
+    ![Script](images/user_guide/script.png)
 5. Now, from the FileSystem we insert rooms, rewards, targets and obstacles, positioning them as we like
 6. Once added the element, let's insert a 3D node and call it PedestrianController. On this, we click "Attach Script" 
 and insert the PedestrianController code. We insert as children all the Pedestrian nodes necessary for the new level. 
 
-    ![Pedestrian](images/image49.png)
+    ![Pedestrian](images/user_guide/add_pedestrian.png)
 7. Then, follow all the other instructions provided for element randomization, collision layer and mask of pedestrian and final target.
 8. The structure of the new level should be something like this:
 
-    ![Example](images/image50.png)
+    ![Example](images/user_guide/example.png)
 
 ### Create the batch level
 
@@ -253,14 +253,14 @@ Once you create a layer, you need to batch the layer.
 3. Click on the parent node and click Attach Script. Select the path of `level_training_batch` or `level_testing_batch`
 4. Click on the parent node and from the Inspector panel insert the created base level.
 
-    ![InsertLevel](images/image51.png)
+    ![InsertLevel](images/user_guide/insert_level.png)
 5. Next, insert the Sync, WorldEnvironment, DirectionalLight3D, and Camera3D nodes as children. 
 You can do this by copying them from another batch layer.
 6. Make sure the sync node has Control Mode = Onnx Inference if the layer is used in the testing 
 phase and Control Mode = Training if the layer is used in the training phase
 7. The structure of the new batch level should be something like this:
 
-    ![Batch](images/image52.png)
+    ![Batch](images/user_guide/batch.png)
 
 
 ## Adding a level to a Curriculum
@@ -277,14 +277,14 @@ Inspector panel, located on the right side.
 3. In the Inspector, locate the Levels attribute. Here you can decide how many and which scenarios to load, 
 simply by clicking on "Add Element" and then "Load" or "Quick Load". Remember to enter the level batch and not the normal level!
 
-    ![CV](images/image27.png)
+    ![CV](images/user_guide/cv.png)
 4. Once the batch has been inserted it is necessary to open the project with an IDE.
 
 5. Once opened, enter the scripts folder and then the configs folder
 
 6. Here is a YAML file with all the environments. Insert the new environment with termination metrics into the curriculum
 
-   ![YAML](images/image46.png)
+   ![YAML](images/user_guide/yaml.png)
 
 ## Modify training configuration
 
@@ -298,9 +298,10 @@ simply by clicking on "Add Element" and then "Load" or "Quick Load". Remember to
 
 5. If you want to modify the parameters relating to the ppo open the file runner
 
-## View ray casts and collision shapes
+## View ray casts and arcs of proxemics
 
-To visualize ray casts during execution, open the Debug menu in Godot Engine by clicking in the top-left corner and 
-enable 'Visible Collision Shapes'. Remember to rerun the scene because the changes do not take effect at runtime.
+To enable the visualization of ray casts as your code executes, navigate to the `constants.gd` file and ensure that the 
+variable `SHOW_RAYS` is set to `true`. This adjustment will display arcs representing proxemics and the trajectory of 
+ray casts both during the training and testing phases.
 
-![Ray-cast](images/image53.png)
+![Ray-cast](images/user_guide/ray_cast.png)

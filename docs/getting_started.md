@@ -6,6 +6,7 @@
 ### 2. [Training Phase](#training-phase)
 ### 3. [Testing Phase](#testing-phase)
 ### 4. [Visualize](#visualize)
+### 5. [Learn More](#learn-more)
 
 ## Introduction
 
@@ -38,7 +39,7 @@ can choose the order of environments, add new ones, and delete them. For this ex
 modify this attribute; instructions on how to modify it will be provided in the user guide documentation. Just check 
 that the items are present, as shown in the image below.
 
-![Level](images/image39.png)
+![Level](images/getting_started/training_scene.png)
 
 ### Setting up RL
 
@@ -48,43 +49,72 @@ create a new Python configuration. As the first parameter, insert the environmen
 dependencies during setup. In the script field, insert `main.py`. In the working directory, insert the project's path. 
 You should get a result similar to the image below.
 
-![PyCharm](images/image41.png)
+![PyCharm](images/getting_started/setting_rl.png)
 
 Remember to click _Apply_ before finishing with the _OK_ button. 
 Now we can run the project with the _Run_ command or the shortcut _SHIFT + F10_. 
 At this point, the Python server will be waiting for the Godot client and can be viewed from the IDE shell.
 
-![Shell](images/image40.png)
+![Shell](images/getting_started/setting_shell.png)
 
 ### Running Training
 
 Once the server is waiting, we can go back to Godot Engine and run the scene by clicking the _Run Project_ button or 
 pressing _F5_. At this point, we should be able to see the training scene running correctly.
 
-![Run](images/image42.png)
+![Run](images/getting_started/run_training.png)
 
 ## Testing Phase
 
 Once a training phase has been successfully executed without encountering an _Early Fail_, a saved model named 
 `model.onnx` will be available in the _scripts/output/onnx_ path. 
 
-![Onnx](images/image44.png)
+![Onnx](images/getting_started/testing.png)
 
 Select `testing_scene.tscn` from the _testing_scene_ directory and set it as the main scene. Now, run the project 
 within Godot. The testing phase should start, allowing you to visualize the agent's behaviors in scenarios not seen 
 during the training phase.
 
-![Test](images/image45.png)
+![Test](images/getting_started/run_test.png)
 
 ## Visualize
+
+### PedPy
 
 Once the testing phase is complete, you can visualize the trajectories, densities, and speeds within your environments. 
 Open the notebook `plotter.ipynb` inside the _scripts_ folder, from your IDE. Run all cells by selecting _Run All_ or 
 pressing _Ctrl+Alt+Shift+Enter_. All the plots will then be displayed.
 
-![Plot](images/image43.png)
+![pedpy](images/getting_started/pedpy_vis.png)
 
+### Tensorboard
+
+To view the duration of episodes or the complete run and the graph of cumulative reward during the training phase, 
+we need to enable visualization with TensorBoard. 
+
+1. Navigate to the project path and enter the following command:
+
+    ```
+    tensorboard --logdir output/runs/run_{run_number}
+    ```
+
+2. TensorBoard will be available at the address shown in the shell. Open it by Ctrl + clicking or by copying the address.
+
+3. Access the Scalars section from the top menu, ensure that `Show data download links` is enabled. 
+
+4. Open the dropdown menus below the graphs labeled `run to download` and select the run to export. 
+
+5. Finally, click on CSV and save them to the path `output/runs/run_{run_number}/tensorboard_export`.
+
+    ![Tensorboard](images/getting_started/tensorboard_export.png)
+
+6. Open the PlotTensorBoard plotter and run the code. The graphs will be displayed.
+
+   ![ts-vis](images/getting_started/ts_vis.png)
+
+## Learn More
 With this guide, you have taken the first steps towards using the Godot-RL-Pedestrian-Simulation (GRLPS) tool for 
 pedestrian simulation with reinforcement learning in Godot. You have learned how to set up and run the training and 
-testing phases and how to visualize the resulting pedestrian behaviors and flows. If you need further information take a 
-look at our `user_guide.md`, where you can get more insight into what GRLPS can do for you!
+testing phases and how to visualize the resulting pedestrian behaviors and flows. 
+
+If you need further information take a look at our `user_guide.md`, where you can get more insight into what GRLPS can do for you!

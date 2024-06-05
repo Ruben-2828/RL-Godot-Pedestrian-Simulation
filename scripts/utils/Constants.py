@@ -2,7 +2,7 @@
 # Base project path constants
 BASE_PATH: str = "scripts/"
 DEFAULT_CONFIG_PATH: str = BASE_PATH + "configs/"
-DEFAULT_CONFIG_FILE: str = DEFAULT_CONFIG_PATH + "config.yaml"
+DEFAULT_CONFIG_FILE: str = DEFAULT_CONFIG_PATH + "bottleneck_config.yaml"
 DEFAULT_TMP_MODEL_FILE: str = BASE_PATH + "model.tmp.zip"
 
 # Output path constants

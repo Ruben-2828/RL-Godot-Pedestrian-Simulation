@@ -3,7 +3,7 @@
 <h3 style="text-align: center;">Curriculum–Based Reinforcement Learning for Pedestrian Simulation</h3>
 
 <div style="text-align: center">
-<img src="docs/images/icon.svg" alt="icon" width="200" />
+<img src="docs/images/readme/rlgps_icon.svg" alt="icon" width="200" />
 </div>
 
 
@@ -60,20 +60,25 @@ movement analysis. It provides a high-level interface for extracting fundamental
 
 ## Documentation
 
-### Getting Started
-New here?, check out the **Getting Started** documentation. It provides an introductory example to help you understand the tool.
+<h3>Getting Started</h3>
+<p>New here? Check out the <a href="docs/getting_started.md">
+<strong>Getting Started</strong></a> documentation.</p>
+<img src="docs/images/readme/rocket.svg" alt="icon" width="200" />
 
+<h3>User Guide</h3>
+<p>For a detailed exploration of all the features and capabilities of the tool, 
+please refer to the <a href="docs/user_guide.md"><strong>User Guide</strong></a></p>
+<img src="docs/images/readme/book.svg" alt="icon" width="200" />
 
-### User Guide
-For a detailed exploration of all the features and capabilities of the tool, please refer to the **User Guide**.
+<h3>What is Godot?</h3>
+<p>To learn about the engine behind the project, consult the 
+<a href="docs/godot_engine.md"><strong>Godot</strong></a></p>
+<img src="docs/images/readme/godot.svg" alt="icon" width="200" />
 
-
-### Godot
-To learn about the engine behind the project, consult the **Godot** documentation.
-
-
-### Godot RL Agents
-To learn about the technologies behind the project consult the **Godot RL Agents** documentation.
+<h3>What is Godot RL Agents?</h3>
+<p>To learn about the technologies behind the project consult the 
+<a href="docs/godot_rl_agents.md"><strong>Godot RL Agents</strong></a> documentation.</p>
+<img src="docs/images/readme/rl.svg" alt="icon" width="200" />
 
 
 ## Setup
@@ -144,63 +149,68 @@ To have a better understanding of the location of the files within the repositor
 
 ```
 RLGPS
-├── addons
 ├── docs
-├── environments
-│   ├── levels
-│   │   ├── testing
-│   │   └── training
-│   └── scripts
-│   │   └── randomizer
-├── materials
-├── objects
-│   ├── other
-│   ├── pedestrian
-│   ├── targets
-│   └── walls
+├── godot
+│   ├── addons
+│   ├── environments
+│   │   ├── levels
+│   │   │   ├── testing
+│   │   │   └── training
+│   │   └── scripts
+│   │   │   └── randomizer
+│   ├── materials
+│   ├── objects
+│   │   ├── other
+│   │   ├── pedestrian
+│   │   ├── targets
+│   │   └── walls
+│   ├── testing
+│   │   └── batch
+│   ├── training
+│   │   └── batch
+│   └── utils
+├── notebooks
 ├── output
 │   ├── logs
 │   ├── models
 │   ├── pedpy
-│   └── tensorboard
+│   └── runs
 ├── scripts
 │   ├── configs
 │   ├── models
-│   └── utils
-├── testing
-│   └── batch
-├── training
-│   └── batch
-└── utils
+└── └── utils
+
 ```
-* **addons**: folder imported from Godot RL agents
 * **docs**: contains project documentation
-* **environments**: contains the scenes and codes relating to the environments
-  * **levels**: contains scenes that can be inserted into CVs
-    * **testing**: contains scenes used during the testing phase
-    * **training**: contains scenes used during the training phase
-  * **scripts**: contains the codes relating to the levels
-    * **randomizer**: contains codes to randomize objects within levels
-* **materials**: contains the materials of the objects used in the levels
-* **objects**: contains the objects used in the levels
-  * **other**: contains miscellaneous objects that do not fit into the standard categories
-  * **pedestrian**: contains all data and assets related to the pedestrian models
-  * **targets**: contains target used to define goals within the simulation
-  * **walls**: contains all the walls used in the levels
+* **godot**: contains all the godot files
+  * **addons**: imported from Godot RL agents
+  * **environments**: contains the scenes and codes relating to the environments
+    * **levels**: contains scenes that can be inserted into CVs
+      * **testing**: contains scenes used during the testing phase
+      * **training**: contains scenes used during the training phase
+    * **scripts**: contains the codes relating to the levels
+      * **randomizer**: contains codes to randomize objects within levels
+  * **materials**: contains the materials of the objects used in the levels
+  * **objects**: contains the objects used in the levels
+    * **other**: contains miscellaneous objects that do not fit into the standard categories
+    * **pedestrian**: contains all data and assets related to the pedestrian models
+    * **targets**: contains target used to define goals within the simulation
+    * **walls**: contains all the walls used in the levels
+  * **testing**: contains the scenes and codes relating to the testing phase
+    * **batch**: contains the batches of layers used during the testing phase
+  * **training**: contains the scenes and codes relating to the training phase
+    * **batch**: contains the batches of layers used during the training phase
+  * **utils**: contains utility gd scripts that support various functionalities
+* **notebooks**: contains python notebooks used for plotting results
 * **output**: contains the outputs generated by the tool
   * **logs**: contains logs created by sb3's VecMonitor class
   * **models**: contains the onnx models trained during the training phase
   * **pedpy**: contains the txt generated by the tool that will be used in the plotter
-  * **tensorboard**: contains the generated files viewable via tensorboard
+  * **runs**: contains the generated files viewable via tensorboard
 * **scripts**: contains all the python scripts related to the project 
   * **configs**: contains YAML configuration file for scripts and environments
   * **models**: contains the python models used by the tool
   * **utils**: contains utility python scripts that support various functionalities
-* **testing**: contains the scenes and codes relating to the testing phase
-  * **batch**: contains the batches of layers used during the testing phase
-* **training**: contains the scenes and codes relating to the training phase
-  * **batch**: contains the batches of layers used during the training phase
-* **utils**: contains utility gd scripts that support various functionalities
 
 ## Collaborate
 

@@ -1,0 +1,75 @@
+extends Node
+
+# Pedestrian
+const MAX_SPEED_MEAN: float = 1.5
+const MAX_SPEED_DEVIATION: float = 0.2
+const MIN_SPEED: float = 0.0
+const ROTATION_SENS: int = 25
+const WALL_COLLISION_DISTANCE: float = 0.6
+const AGENT_COLLISION_SMALL_DISTANCE: float = 0.6
+const AGENT_COLLISION_MEDIUM_DISTANCE: float = 1.0
+const AGENT_COLLISION_LARGE_DISTANCE: float = 1.4
+const WALL_COLLISION_RAYS: int = 17
+const AGENT_COLLISION_SMALL_RAYS: int = 17
+const AGENT_COLLISION_MEDIUM_RAYS: int = 11
+const AGENT_COLLISION_LARGE_RAYS: int = 9
+const POSITION_DISABLED: Vector3 = Vector3(-1000, -1000, -1000)
+
+# Pedestrian controller
+const TICKS_BETWEEN_LOG: int = 2
+
+# Rewards
+const FINAL_TARGET_REW: float = 6.0
+const INTERMEDIATE_TARGET_FIRST_TIME_REW: float = 0.5
+const INTERMEDIATE_TARGET_ALREADY_REACHED_REW: float = -1.0
+const NO_TARGET_VISIBLE_REW: float = -0.5
+const WALL_COLLISION_REW: float = -0.5
+const AGENT_COLLISION_SMALL_REW: float = -0.5
+const AGENT_COLLISION_MEDIUM_REW: float = -0.0
+const AGENT_COLLISION_LARGE_REW: float = -0.0 
+const TIMESTEP_REW: float = -0.0001
+const END_OF_TIMESTEPS_REW: float = -6.0
+
+# AI Controller
+const TICKS_PER_STEP: int = 20
+
+# RayCast Sensor
+const RAY_LENGTH: float = 35.0
+const RAY_LENGTH_OBS: float = 10.0 
+const MAX_VISION_DEGREES: float = 90.0
+const RAYS_ANGLE_DELTA: float = 1.5
+const INITIAL_RAY_POS: float = 0.0
+const RAYS_GRAY_COLOR: String = "#787c82"
+# For better performance set SHOW_RAYS to remove the computation necessary to 
+# draw the rays lines
+const SHOW_RAYS: bool = false
+
+# Groups
+const TARGETS_GROUP: String = "TARGET"
+const WALLS_GROUP: String = "WALL"
+const AGENT_GROUP: String = "AGENT"
+const PEDESTRIAN_GROUP: String = "PEDESTRIAN"
+
+# Levels
+const DEFAULT_MAX_TIMESTEPS: int = 500
+
+# Random area 
+const SPAWN_OFFSET: float = 0.5
+const TARGET_OFFSET: float = 1.5
+const ROTATION_STEPS: int = 8
+
+# Training phase
+const LEVELS_BATCH_OFFSET: float = 100.0
+const LEVELS_RETRAINING_OFFSET: float = 40.0
+const RETRAINING_INSTANCES_PER_LEVEL: int = 3
+const TRAINING_BATCH_SIZE: int = 10
+
+# Test scene
+const DEFAULT_NUMBER_OF_EPISODE: int = 1
+const PATH_PEDPY_LOGS = "res://../output/pedpy/"
+const TEST_BATCH_SIZE: int = 1
+
+# Engine/Sync
+const PHYSICS_TICKS_PER_SECONDS: int = 60
+const TIME_SCALE: float = 1.0
+const SPEED_UP: float = 10.0

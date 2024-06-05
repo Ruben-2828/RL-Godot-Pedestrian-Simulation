@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpy68brsjfakd"]
+
+[ext_resource type="PackedScene" uid="uid://bft1ftd208fq5" path="res://objects/other/floor20.tscn" id="1_64ncr"]
+[ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/walls/wall22.tscn" id="2_i1d5o"]
+
+[node name="Room" type="Node3D"]
+
+[node name="Floor" parent="." instance=ExtResource("1_64ncr")]
+
+[node name="Wall" parent="." instance=ExtResource("2_i1d5o")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.5, 0, 0)
+
+[node name="Wall2" parent="." instance=ExtResource("2_i1d5o")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.5, 0, 0)
+
+[node name="Wall3" parent="." instance=ExtResource("2_i1d5o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.5)
+
+[node name="Wall4" parent="." instance=ExtResource("2_i1d5o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.5)

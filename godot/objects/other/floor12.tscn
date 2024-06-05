@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0x7nfs836uch"]
+
+[ext_resource type="Material" uid="uid://dvgr25hbspor8" path="res://materials/floor_material.tres" id="1_yjj04"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cctpa"]
+material = ExtResource("1_yjj04")
+size = Vector3(12, 0, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_etrgv"]
+size = Vector3(12, 0, 12)
+
+[node name="Floor12" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_cctpa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_etrgv")

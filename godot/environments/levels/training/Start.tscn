@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=3 uid="uid://2h58qvivqje8"]
+
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/other/room20.tscn" id="1_ahbwp"]
+[ext_resource type="Script" path="res://environments/scripts/level.gd" id="1_wtqlq"]
+[ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="4_v1bjl"]
+[ext_resource type="Script" path="res://environments/scripts/randomizer/final_target.gd" id="5_buja6"]
+[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target_3x3.tscn" id="6_1ibgk"]
+[ext_resource type="Script" path="res://environments/scripts/pedestrian_controller.gd" id="7_1mnqm"]
+[ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="7_8bin2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p3wlc"]
+size = Vector3(15, 0, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_acgbu"]
+size = Vector3(15, 1, 6)
+
+[node name="Start" type="Node3D"]
+script = ExtResource("1_wtqlq")
+max_steps = 100
+
+[node name="Room" parent="." instance=ExtResource("1_ahbwp")]
+
+[node name="PedestrianController" type="Node3D" parent="."]
+script = ExtResource("7_1mnqm")
+
+[node name="Pedestrian" parent="PedestrianController" instance=ExtResource("7_8bin2")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 5)
+collision_layer = 6
+collision_mask = 19
+
+[node name="RandomTarget" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+script = ExtResource("5_buja6")
+
+[node name="FinalTarget" parent="RandomTarget" instance=ExtResource("6_1ibgk")]
+collision_layer = 16
+collision_mask = 20
+
+[node name="Area" type="Area3D" parent="RandomTarget"]
+collision_layer = 2
+
+[node name="CollisionShapeTarget" type="CollisionShape3D" parent="RandomTarget/Area"]
+shape = SubResource("BoxShape3D_p3wlc")
+
+[node name="Reward" parent="." instance=ExtResource("4_v1bjl")]
+
+[node name="RandomArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="CollisionShapeSpawn" type="CollisionShape3D" parent="RandomArea"]
+shape = SubResource("BoxShape3D_acgbu")
+
+[connection signal="body_entered" from="RandomTarget/FinalTarget" to="RandomTarget" method="_on_final_target_body_entered"]
