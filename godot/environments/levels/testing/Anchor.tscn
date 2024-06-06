@@ -96,17 +96,17 @@ collision_layer = 10
 collision_mask = 35
 
 [node name="ObliqueTarget" parent="." instance=ExtResource("9_5sjd1")]
-transform = Transform3D(0.848528, 0, -0.848528, 0, 1.2, 0, 0.848528, 0, 0.848528, 4, -1.1437, -0.5)
+transform = Transform3D(0.848528, 0, -0.848528, 0, 1.2, 0, 0.848528, 0, 0.848528, 4.61728, -1.1437, -0.5)
 collision_layer = 32
 collision_mask = 40
 
 [node name="ObliqueTarget2" parent="." instance=ExtResource("9_5sjd1")]
-transform = Transform3D(0.848528, 0, 0.848528, 0, 1.2, 0, -0.848528, 0, 0.848528, -4, -0.960358, -0.5)
+transform = Transform3D(0.848528, 0, 0.848528, 0, 1.2, 0, -0.848528, 0, 0.848528, -4.41755, -0.960358, -0.5)
 collision_layer = 16
 collision_mask = 20
 
 [node name="Target" parent="." instance=ExtResource("10_6sunq")]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, -2.609)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, -3.02052)
 collision_layer = 48
 collision_mask = 60
 

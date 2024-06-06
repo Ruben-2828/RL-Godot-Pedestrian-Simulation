@@ -9,5 +9,5 @@
 
 [node name="TestingScene" type="Node3D"]
 script = ExtResource("1_phwvg")
-onnx_model_path = "res://../output/runs/run_16/model/model.onnx"
-levels_path = Array[PackedScene]([ExtResource("4_qqx3c"), ExtResource("2_fpe01"), ExtResource("3_n2g6o"), ExtResource("5_6lmlx"), ExtResource("6_tqmww")])
+onnx_model_path = "res://../output/runs/no_retraining/model/model.onnx"
+levels_path = Array[PackedScene]([ExtResource("6_tqmww"), ExtResource("4_qqx3c"), ExtResource("2_fpe01"), ExtResource("3_n2g6o"), ExtResource("5_6lmlx")])

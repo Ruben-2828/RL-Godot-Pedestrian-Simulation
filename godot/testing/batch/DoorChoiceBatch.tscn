@@ -21,7 +21,6 @@ level = ExtResource("2_1sf67")
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("2_bh1jm")
-control_mode = 2
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_221f4")

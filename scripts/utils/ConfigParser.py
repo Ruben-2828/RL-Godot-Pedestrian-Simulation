@@ -83,8 +83,11 @@ class ConfigParser:
         return self.levels.copy()
 
     def validate_config(self) -> bool:
-        print(self.model_config)
-
+        """
+        Checks if the model configs contains the 3 main sections:
+        hyperparameters, max_steps and retraining_steps.
+        :return: True if the config is valid, False otherwise
+        """
         if "hyperparameters" not in self.model_config:
             print(f"Error: hyperparameters not find in config file")
             return False
@@ -93,9 +96,18 @@ class ConfigParser:
             print(f"Error: max_steps not find in config file")
             return False
 
+        if "retraining_steps" not in self.model_config:
+            print(f"Error: retraining_steps not find in config file")
+            return False
+
         return True
 
     def get_config(self) -> dict:
+        """
+        Model config getter. To be sure the config is valid, please call validate_config() and check its return value
+        before using this getter.
+        :return: dict containing the model configs
+        """
         return self.model_config.copy()
 
 

@@ -100,6 +100,7 @@ func _initialize_training_agents():
 func _initialize_inference_agents():
 	if agents_inference.size() > 0:
 		if control_mode == ControlModes.ONNX_INFERENCE:
+			#print(onnx_model_path)
 			assert(
 				FileAccess.file_exists(onnx_model_path),
 				"Onnx Model Path set on Sync node does not exist: %s" % onnx_model_path

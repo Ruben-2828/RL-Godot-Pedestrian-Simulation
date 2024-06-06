@@ -28,6 +28,7 @@ class Runner:
             self,
             curriculum_path: str = Constants.DEFAULT_CURRICULUM_CONFIG_FILE,
             config_path: str = Constants.DEFAULT_MODEL_CONFIG_FILE,
+            run_name: str = None,
     ) -> None:
         """
         Runner constructor, used to set the config file path
@@ -36,18 +37,28 @@ class Runner:
         """
         self.curriculum_path = curriculum_path
         self.config_path = config_path
+        self.run_name: str = run_name
+
         self.model: Optional[PPO] = None
         self.start_time: Optional[float] = None
         self.run_log_path: str = self.create_run_log_path()
         self.levels: Collection[Level] = []
         self.configs: Optional[dict[str, Any]] = None
 
+
     def create_run_log_path(self) -> str:
-        i = 1
-        log_path = Constants.DEFAULT_TENSORBOARD_LOGS_PATH + "run_" + str(i) + "/"
-        while os.path.exists(log_path):
-            i += 1
+        """
+        Creates the current run log directory and the needed subdirectories.
+        :return: string containing the created log directory
+        """
+        if self.run_name is None:
+            i = 1
             log_path = Constants.DEFAULT_TENSORBOARD_LOGS_PATH + "run_" + str(i) + "/"
+            while os.path.exists(log_path):
+                i += 1
+                log_path = Constants.DEFAULT_TENSORBOARD_LOGS_PATH + "run_" + str(i) + "/"
+        else:
+            log_path = Constants.DEFAULT_TENSORBOARD_LOGS_PATH + self.run_name + "/"
 
         os.makedirs(log_path, exist_ok=True)
         os.makedirs(log_path + "tensorboard_export", exist_ok=True)
@@ -69,25 +80,26 @@ class Runner:
 
         self.load_configs()
 
+        # Log used settings
+        self.log_settings()
+
         # Training phase
         for level in self.levels:
             self.train_level(level)
 
         # Retraining phase
-        self.retraining()
+        if self.configs['retraining_steps'] != 0:
+            self.retraining()
 
         self.log_env_change("End")
 
         # Exporting onnx model
         self.handle_onnx_export()
 
-        # Show tensorboad command to see results
-        print("To see tensorboard logs run the following command:")
+        # Show tensorboard command to see results
+        print("\nTo see tensorboard logs run the following command:")
         path = os.path.abspath(self.run_log_path)
         print("tensorboard --logdir " + path)
-
-        # Log used settings
-        self.log_settings()
 
         # Removing tmp model file
         os.remove(Constants.DEFAULT_TMP_MODEL_FILE)
@@ -202,9 +214,7 @@ class Runner:
 
         # Setting up environment
         monitor_logs_path = Constants.DEFAULT_LOGS_PATH + f"{name}_logs/"
-        env = StableBaselinesGodotEnv(
-            show_window=Constants.SHOW_WINDOW,
-        )
+        env = StableBaselinesGodotEnv()
         print(f"Running level: {name}")
 
         return VecMonitor(env, filename=monitor_logs_path + name), monitor_logs_path
@@ -250,7 +260,7 @@ class Runner:
 
         # Learn and save the model
         self.model.learn(
-            total_timesteps=Constants.DEFAULT_RETRAINING_TIMESTEPS,
+            total_timesteps=self.configs['retraining_steps'],
             tb_log_name=Constants.DEFAULT_TENSORBOARD_LOGS_FILE,
             reset_num_timesteps=False
         )

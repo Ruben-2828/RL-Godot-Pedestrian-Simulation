@@ -18,6 +18,7 @@ size = Vector3(3, 0, 3)
 [node name="StartCorridor" type="Node3D"]
 script = ExtResource("1_ve5yw")
 max_steps = 100
+agent_rotate = true
 
 [node name="Room" parent="." instance=ExtResource("1_g7vly")]
 

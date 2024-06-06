@@ -12,9 +12,3 @@ DEFAULT_ONNX_EXPORT_PATH: str = "model/model.onnx"
 DEFAULT_LOGS_PATH: str = OUTPUT_PATH + "logs/"
 DEFAULT_TENSORBOARD_LOGS_PATH: str = OUTPUT_PATH + "runs/"
 DEFAULT_TENSORBOARD_LOGS_FILE: str = "PPO"
-
-# Default timesteps to train the model for
-DEFAULT_RETRAINING_TIMESTEPS: int = 200_000
-
-# True to show godot env window, False to hide window
-SHOW_WINDOW: bool = True

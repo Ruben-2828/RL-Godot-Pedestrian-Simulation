@@ -14,7 +14,7 @@
 
 [node name="Omega" type="Node3D"]
 script = ExtResource("1_mflkc")
-max_steps = 150
+max_steps = 200
 
 [node name="Room" parent="." instance=ExtResource("1_4ukmo")]
 

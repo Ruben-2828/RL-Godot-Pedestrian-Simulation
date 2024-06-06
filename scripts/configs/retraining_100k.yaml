@@ -1,5 +1,5 @@
 hyperparameters:
-  learning_rate: 0.003
+  learning_rate: 0.0003
   n_steps: 32
   batch_size: 320
   n_epochs: 3
@@ -19,6 +19,8 @@ hyperparameters:
   verbose: 0
   policy_kwargs:
     net_arch:
-      - 256
-      - 256
+      - 128
+      - 128
+      - 128
 max_steps: 100000000000000000
+retraining_steps: 100_000
