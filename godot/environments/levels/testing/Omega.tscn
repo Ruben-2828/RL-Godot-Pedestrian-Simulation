@@ -1,22 +1,22 @@
 [gd_scene load_steps=12 format=3 uid="uid://6qoewixf66h3"]
 
-[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/other/room.tscn" id="1_4ukmo"]
 [ext_resource type="Script" path="res://environments/scripts/level.gd" id="1_mflkc"]
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/other/room20.tscn" id="2_ex1wi"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="2_hd517"]
-[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target.tscn" id="4_qmnee"]
-[ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/walls/internal_wall.tscn" id="5_3npd3"]
-[ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/targets/target.tscn" id="6_exn3j"]
-[ext_resource type="PackedScene" uid="uid://nqwb7at8dpui" path="res://objects/walls/small_internal_wall.tscn" id="6_nf06r"]
-[ext_resource type="PackedScene" uid="uid://o6t0iemlmcj5" path="res://objects/targets/oblique_target.tscn" id="7_henja"]
-[ext_resource type="PackedScene" uid="uid://boj0pvmutwu86" path="res://objects/walls/tiny_internal_wall.tscn" id="7_yec7d"]
+[ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/walls/wall18.tscn" id="5_3npd3"]
+[ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/targets/target_3.5x0.3.tscn" id="6_exn3j"]
+[ext_resource type="PackedScene" uid="uid://nqwb7at8dpui" path="res://objects/walls/wall9.tscn" id="6_nf06r"]
+[ext_resource type="PackedScene" uid="uid://o6t0iemlmcj5" path="res://objects/targets/target_4.5x0.3.tscn" id="7_henja"]
+[ext_resource type="PackedScene" uid="uid://boj0pvmutwu86" path="res://objects/walls/wall4.tscn" id="7_yec7d"]
 [ext_resource type="Script" path="res://environments/scripts/pedestrian_controller.gd" id="10_xexhx"]
+[ext_resource type="PackedScene" uid="uid://snbn7wxuhdr2" path="res://objects/targets/final_target_4x1.tscn" id="11_8cg18"]
 [ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="11_md13o"]
 
 [node name="Omega" type="Node3D"]
 script = ExtResource("1_mflkc")
-max_steps = 200
+max_steps = 150
 
-[node name="Room" parent="." instance=ExtResource("1_4ukmo")]
+[node name="Room" parent="." instance=ExtResource("2_ex1wi")]
 
 [node name="Reward" parent="." instance=ExtResource("2_hd517")]
 visible = false
@@ -135,9 +135,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.5, 
 collision_layer = 6
 collision_mask = 19
 
-[node name="FinalTarget" parent="." instance=ExtResource("4_qmnee")]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -8.2266, 0, -8.24927)
+[node name="FinalTarget" parent="." instance=ExtResource("11_8cg18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.25, 0, -9.5)
 collision_layer = 16
 collision_mask = 20
-
-[connection signal="body_entered" from="FinalTarget" to="." method="_on_final_target_body_entered"]

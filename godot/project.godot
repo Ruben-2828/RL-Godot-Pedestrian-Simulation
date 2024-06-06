@@ -35,3 +35,7 @@ import/fbx/enabled=false
 3d_physics/layer_4="pedestrian_group_2"
 3d_physics/layer_5="target_group_1"
 3d_physics/layer_6="target_group_2"
+3d_physics/layer_7="pedestrian_group_3"
+3d_physics/layer_8="pedestrian_group_4"
+3d_physics/layer_9="target_group_3"
+3d_physics/layer_10="target_group_4"

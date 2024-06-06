@@ -7,13 +7,13 @@
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q4tvx"]
 ground_bottom_color = Color(0.277634, 0.237635, 0.191207, 1)
 
-[sub_resource type="Sky" id="Sky_u3b50"]
+[sub_resource type="Sky" id="Sky_nv2nf"]
 sky_material = SubResource("ProceduralSkyMaterial_q4tvx")
 
 [sub_resource type="Environment" id="Environment_bjw8y"]
 background_mode = 1
 background_color = Color(0.270171, 0.229928, 0.188594, 1)
-sky = SubResource("Sky_u3b50")
+sky = SubResource("Sky_nv2nf")
 
 [node name="Corridor3vs3Batch" type="Node3D"]
 script = ExtResource("1_53uly")

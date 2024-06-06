@@ -1,20 +1,20 @@
 [gd_scene load_steps=10 format=3 uid="uid://bjb1wqvx5nrla"]
 
 [ext_resource type="Script" path="res://environments/scripts/turn_level.gd" id="1_bxarv"]
-[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/other/room.tscn" id="2_4vy5g"]
-[ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/targets/target.tscn" id="4_yp7j6"]
-[ext_resource type="PackedScene" uid="uid://o6t0iemlmcj5" path="res://objects/targets/oblique_target.tscn" id="5_ch5gh"]
-[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target.tscn" id="5_fbjab"]
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/other/room20.tscn" id="2_2yosq"]
+[ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/targets/target_3.5x0.3.tscn" id="4_yp7j6"]
+[ext_resource type="PackedScene" uid="uid://o6t0iemlmcj5" path="res://objects/targets/target_4.5x0.3.tscn" id="5_ch5gh"]
+[ext_resource type="PackedScene" uid="uid://snbn7wxuhdr2" path="res://objects/targets/final_target_4x1.tscn" id="5_i4f2g"]
 [ext_resource type="Script" path="res://environments/scripts/pedestrian_controller.gd" id="8_3g4j1"]
-[ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/walls/internal_wall.tscn" id="8_l3s06"]
+[ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/walls/wall18.tscn" id="8_l3s06"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="8_xrnbg"]
 [ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="9_i45uw"]
 
 [node name="Turns" type="Node3D"]
 script = ExtResource("1_bxarv")
-max_steps = 350
+max_steps = 300
 
-[node name="Room" parent="." instance=ExtResource("2_4vy5g")]
+[node name="Room" parent="." instance=ExtResource("2_2yosq")]
 
 [node name="AllTargets" type="Node3D" parent="."]
 
@@ -104,8 +104,8 @@ collision_mask = 20
 
 [node name="Final" type="Node3D" parent="AllTargets"]
 
-[node name="FinalTarget" parent="AllTargets/Final" instance=ExtResource("5_fbjab")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.53431, 0, -8.57192)
+[node name="FinalTarget" parent="AllTargets/Final" instance=ExtResource("5_i4f2g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.5, 0, -8.5)
 collision_layer = 16
 collision_mask = 20
 

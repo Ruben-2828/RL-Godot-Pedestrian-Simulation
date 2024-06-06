@@ -25,8 +25,8 @@ const INTERMEDIATE_TARGET_ALREADY_REACHED_REW: float = -1.0
 const NO_TARGET_VISIBLE_REW: float = -0.5
 const WALL_COLLISION_REW: float = -0.5
 const AGENT_COLLISION_SMALL_REW: float = -0.5
-const AGENT_COLLISION_MEDIUM_REW: float = -0.005
-const AGENT_COLLISION_LARGE_REW: float = -0.001
+const AGENT_COLLISION_MEDIUM_REW: float = -0.005    # -0.0 for high density
+const AGENT_COLLISION_LARGE_REW: float = -0.001     # -0.0 for high density
 const TIMESTEP_REW: float = -0.0001
 const END_OF_TIMESTEPS_REW: float = -6.0
 
@@ -65,9 +65,9 @@ const RETRAINING_INSTANCES_PER_LEVEL: int = 3
 const TRAINING_BATCH_SIZE: int = 10
 
 # Test scene
-const DEFAULT_NUMBER_OF_EPISODE: int = 10
-const TESTING_BATCH_SIZE: int = 1
+const DEFAULT_NUMBER_OF_EPISODE: int = 1
 const PATH_PEDPY_LOGS = "res://../output/pedpy/"
+const TEST_BATCH_SIZE: int = 1
 
 # Engine/Sync
 const PHYSICS_TICKS_PER_SECONDS: int = 60

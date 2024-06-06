@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://2h58qvivqje8"]
 
-[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/other/room.tscn" id="1_ahbwp"]
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/other/room20.tscn" id="1_ahbwp"]
 [ext_resource type="Script" path="res://environments/scripts/level.gd" id="1_wtqlq"]
-[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target.tscn" id="3_0tn1y"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="4_v1bjl"]
 [ext_resource type="Script" path="res://environments/scripts/randomizer/final_target.gd" id="5_buja6"]
+[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target_3x3.tscn" id="6_1ibgk"]
 [ext_resource type="Script" path="res://environments/scripts/pedestrian_controller.gd" id="7_1mnqm"]
 [ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="7_8bin2"]
 
@@ -32,7 +32,7 @@ collision_mask = 19
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
 script = ExtResource("5_buja6")
 
-[node name="FinalTarget" parent="RandomTarget" instance=ExtResource("3_0tn1y")]
+[node name="FinalTarget" parent="RandomTarget" instance=ExtResource("6_1ibgk")]
 collision_layer = 16
 collision_mask = 20
 

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://snbn7wxuhdr2"]
+
+[ext_resource type="Material" uid="uid://ddc5mqmn53adg" path="res://materials/target_material.tres" id="1_ceo4q"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3gkrb"]
+material = ExtResource("1_ceo4q")
+size = Vector3(4, 10, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vxenw"]
+margin = 0.0
+size = Vector3(4, 10, 1)
+
+[node name="FinalTarget" type="Area3D" groups=["TARGET"]]
+collision_layer = 0
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_3gkrb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_vxenw")
