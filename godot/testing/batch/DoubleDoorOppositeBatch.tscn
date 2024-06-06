@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c3ixxniwfj0mb"]
 
-[ext_resource type="Script" path="res://testing/batch/level_testing_batch.gd" id="1_jp7ow"]
+[ext_resource type="Script" path="res://testing/level_testing_batch.gd" id="1_jx1mt"]
 [ext_resource type="PackedScene" uid="uid://bnaf50s4kl4yj" path="res://environments/levels/testing/DoubleDoorOpposite.tscn" id="2_6p6ay"]
 [ext_resource type="Script" path="res://utils/Sync.gd" id="2_8pibj"]
 
@@ -16,7 +16,7 @@ background_color = Color(0.270171, 0.229928, 0.188594, 1)
 sky = SubResource("Sky_7jj7m")
 
 [node name="DoubleDoorOppositeBatch" type="Node3D"]
-script = ExtResource("1_jp7ow")
+script = ExtResource("1_jx1mt")
 level = ExtResource("2_6p6ay")
 
 [node name="Sync" type="Node" parent="."]

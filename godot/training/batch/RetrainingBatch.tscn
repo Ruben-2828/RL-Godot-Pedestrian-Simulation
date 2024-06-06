@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cdb484d6vy8fg" path="res://environments/levels/training/NarrowDoorDouble.tscn" id="5_ng5ms"]
 [ext_resource type="PackedScene" uid="uid://cr75p04cbnp4a" path="res://environments/levels/training/NarrowDoor.tscn" id="6_40r0j"]
 [ext_resource type="PackedScene" uid="uid://drlnrntevxckf" path="res://environments/levels/training/TurnsObstacles.tscn" id="7_gsj7m"]
-[ext_resource type="PackedScene" uid="uid://dukr625tbkfpv" path="res://environments/levels/training/Intersection4.tscn" id="7_o0ard"]
+[ext_resource type="PackedScene" uid="uid://dukr625tbkfpv" path="res://environments/levels/training/Intersection4Narrow.tscn" id="7_o0ard"]
 [ext_resource type="PackedScene" uid="uid://quswshhny1ow" path="res://environments/levels/training/Corridor3vs3.tscn" id="8_7kib3"]
 [ext_resource type="PackedScene" uid="uid://c63fe78gq767c" path="res://environments/levels/training/T-Junction.tscn" id="9_nraea"]
 

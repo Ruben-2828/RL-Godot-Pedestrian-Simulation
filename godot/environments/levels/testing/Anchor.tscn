@@ -1,16 +1,16 @@
 [gd_scene load_steps=12 format=3 uid="uid://craqbwsoct6xh"]
 
 [ext_resource type="Script" path="res://environments/scripts/level.gd" id="1_25gkr"]
-[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/other/room.tscn" id="2_53g3x"]
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/other/room20.tscn" id="2_53g3x"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="3_jphyj"]
 [ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/walls/wall.tscn" id="4_c43y3"]
-[ext_resource type="PackedScene" uid="uid://nqwb7at8dpui" path="res://objects/walls/small_internal_wall.tscn" id="5_60v7e"]
-[ext_resource type="PackedScene" uid="uid://boj0pvmutwu86" path="res://objects/walls/tiny_internal_wall.tscn" id="6_ha276"]
+[ext_resource type="PackedScene" uid="uid://nqwb7at8dpui" path="res://objects/walls/wall9.tscn" id="5_60v7e"]
+[ext_resource type="PackedScene" uid="uid://boj0pvmutwu86" path="res://objects/walls/wall4.tscn" id="6_ha276"]
 [ext_resource type="Script" path="res://environments/scripts/pedestrian_controller.gd" id="7_mnonv"]
 [ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="8_vmlo5"]
-[ext_resource type="PackedScene" uid="uid://o6t0iemlmcj5" path="res://objects/targets/oblique_target.tscn" id="9_5sjd1"]
-[ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/targets/target.tscn" id="10_6sunq"]
-[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target.tscn" id="11_wlfyq"]
+[ext_resource type="PackedScene" uid="uid://o6t0iemlmcj5" path="res://objects/targets/target_4.5x0.3.tscn" id="9_5sjd1"]
+[ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/targets/target_3.5x0.3.tscn" id="10_6sunq"]
+[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target_3x3.tscn" id="11_wlfyq"]
 
 [node name="Anchor" type="Node3D"]
 script = ExtResource("1_25gkr")

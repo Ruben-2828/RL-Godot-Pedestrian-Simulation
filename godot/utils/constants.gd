@@ -67,7 +67,7 @@ const TRAINING_BATCH_SIZE: int = 10
 # Test scene
 const DEFAULT_NUMBER_OF_EPISODE: int = 1
 const PATH_PEDPY_LOGS = "res://../output/pedpy/"
-const TEST_BATCH_SIZE: int = 1
+const TESTING_BATCH_SIZE: int = 1
 
 # Engine/Sync
 const PHYSICS_TICKS_PER_SECONDS: int = 60

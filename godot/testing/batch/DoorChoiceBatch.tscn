@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cb27x6fe2m85d"]
 
-[ext_resource type="Script" path="res://testing/batch/level_testing_batch.gd" id="1_ipnp7"]
+[ext_resource type="Script" path="res://testing/level_testing_batch.gd" id="1_fow84"]
 [ext_resource type="PackedScene" uid="uid://dxyb7sq0yuht7" path="res://environments/levels/testing/DoorChoice.tscn" id="2_1sf67"]
 [ext_resource type="Script" path="res://utils/Sync.gd" id="2_bh1jm"]
 
@@ -16,13 +16,12 @@ background_color = Color(0.270171, 0.229928, 0.188594, 1)
 sky = SubResource("Sky_805bq")
 
 [node name="DoorChoiceBatch" type="Node3D"]
-script = ExtResource("1_ipnp7")
+script = ExtResource("1_fow84")
 level = ExtResource("2_1sf67")
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("2_bh1jm")
 control_mode = 2
-action_repeat = null
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_221f4")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://environments/scripts/level.gd" id="1_xe4m5"]
 [ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/other/room20.tscn" id="2_ft60q"]
-[ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/walls/wall22.tscn" id="3_ey06g"]
+[ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/walls/wall.tscn" id="3_ey06g"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="4_ytpkb"]
 [ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target_3x3.tscn" id="5_20y0x"]
 [ext_resource type="Script" path="res://environments/scripts/pedestrian_controller.gd" id="6_b6tpy"]

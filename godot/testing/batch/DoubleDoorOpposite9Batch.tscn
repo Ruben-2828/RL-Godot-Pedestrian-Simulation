@@ -1,8 +1,30 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3ixxniwfj0mb"]
+[gd_scene load_steps=17 format=3 uid="uid://gyqyh5unyicy"]
 
-[ext_resource type="Script" path="res://testing/batch/level_testing_batch.gd" id="1_jp7ow"]
-[ext_resource type="PackedScene" uid="uid://bnaf50s4kl4yj" path="res://environments/levels/testing/DoubleDoorOpposite9.tscn" id="2_6p6ay"]
+[ext_resource type="Script" path="res://testing/level_testing_batch.gd" id="1_jp7ow"]
 [ext_resource type="Script" path="res://utils/Sync.gd" id="2_8pibj"]
+[ext_resource type="Script" path="res://environments/scripts/level.gd" id="2_qhsps"]
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/other/room20.tscn" id="3_aqwm8"]
+[ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="4_x6nhv"]
+[ext_resource type="PackedScene" uid="uid://cxphmcstta3bi" path="res://objects/targets/large_final_target.tscn" id="5_2no38"]
+[ext_resource type="PackedScene" uid="uid://boj0pvmutwu86" path="res://objects/walls/wall4.tscn" id="6_gekrw"]
+[ext_resource type="PackedScene" uid="uid://wnqy4tem8s1m" path="res://objects/targets/target_2x1.tscn" id="7_drro5"]
+[ext_resource type="PackedScene" uid="uid://cnxrsmiy64sai" path="res://objects/walls/wall15.tscn" id="8_8lftu"]
+[ext_resource type="PackedScene" uid="uid://be4gfujovd4db" path="res://objects/targets/target_7x0.3.tscn" id="9_erx4u"]
+[ext_resource type="Script" path="res://environments/scripts/pedestrian_controller.gd" id="10_4xey1"]
+[ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="11_rqu17"]
+
+[sub_resource type="PackedScene" id="PackedScene_ig5l7"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("DoubleDoorOpposite9", "script", "max_steps", "Node3D", "Room", "Reward", "visible", "FinalTarget", "transform", "collision_layer", "collision_mask", "FinalTarget2", "Passage", "TinyInternalWall", "Target", "Wall", "Passage2", "PedestrianController", "Pedestrian2", "Pedestrian3", "Pedestrian4", "Pedestrian7", "Pedestrian9", "Pedestrian10", "Pedestrian14", "Pedestrian15", "Pedestrian16", "Pedestrian17", "Pedestrian18", "Pedestrian19", "Pedestrian5", "Pedestrian6", "Pedestrian8", "Pedestrian11", "Pedestrian12", "Pedestrian13"),
+"node_count": 33,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 2147483647, 4, 2, 0, 0, 0, 0, 2147483647, 5, 3, 1, 6, 4, 0, 0, 0, 2147483647, 7, 5, 3, 8, 6, 9, 7, 10, 8, 0, 0, 0, 2147483647, 11, 5, 3, 8, 9, 9, 10, 10, 11, 0, 0, 0, 3, 12, -1, 0, 0, 5, 0, 2147483647, 13, 12, 1, 8, 13, 0, 5, 0, 2147483647, 14, 14, 3, 8, 15, 9, 16, 10, 17, 0, 5, 0, 2147483647, 15, 18, 1, 8, 19, 0, 0, 0, 3, 16, -1, 1, 8, 20, 0, 9, 0, 2147483647, 13, 12, 1, 8, 21, 0, 9, 0, 2147483647, 14, 14, 3, 8, 22, 9, 16, 10, 17, 0, 9, 0, 2147483647, 15, 18, 1, 8, 23, 0, 0, 0, 2147483647, 14, 24, 3, 8, 25, 9, 16, 10, 17, 0, 0, 0, 3, 17, -1, 2, 8, 26, 1, 27, 0, 14, 0, 2147483647, 18, 28, 3, 8, 29, 9, 30, 10, 31, 0, 14, 0, 2147483647, 19, 28, 3, 8, 32, 9, 30, 10, 31, 0, 14, 0, 2147483647, 20, 28, 3, 8, 33, 9, 30, 10, 31, 0, 14, 0, 2147483647, 21, 28, 3, 8, 34, 9, 30, 10, 31, 0, 14, 0, 2147483647, 22, 28, 3, 8, 35, 9, 30, 10, 31, 0, 14, 0, 2147483647, 23, 28, 3, 8, 36, 9, 30, 10, 31, 0, 14, 0, 2147483647, 24, 28, 3, 8, 37, 9, 30, 10, 31, 0, 14, 0, 2147483647, 25, 28, 3, 8, 38, 9, 30, 10, 31, 0, 14, 0, 2147483647, 26, 28, 3, 8, 39, 9, 30, 10, 31, 0, 14, 0, 2147483647, 27, 28, 3, 8, 40, 9, 41, 10, 42, 0, 14, 0, 2147483647, 28, 28, 3, 8, 43, 9, 41, 10, 42, 0, 14, 0, 2147483647, 29, 28, 3, 8, 44, 9, 41, 10, 42, 0, 14, 0, 2147483647, 30, 28, 3, 8, 45, 9, 41, 10, 42, 0, 14, 0, 2147483647, 31, 28, 3, 8, 46, 9, 41, 10, 42, 0, 14, 0, 2147483647, 32, 28, 3, 8, 47, 9, 41, 10, 42, 0, 14, 0, 2147483647, 33, 28, 3, 8, 48, 9, 41, 10, 42, 0, 14, 0, 2147483647, 34, 28, 3, 8, 49, 9, 41, 10, 42, 0, 14, 0, 2147483647, 35, 28, 3, 8, 50, 9, 41, 10, 42, 0),
+"variants": [ExtResource("2_qhsps"), 150, ExtResource("3_aqwm8"), ExtResource("4_x6nhv"), false, ExtResource("5_2no38"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9), 16, 20, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9), 32, 40, ExtResource("6_gekrw"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 3.5), ExtResource("7_drro5"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 3.5), 48, 60, ExtResource("8_8lftu"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 3.5), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00624704), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -3.5), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -3.5), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, -3.5), ExtResource("9_erx4u"), Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6), ExtResource("10_4xey1"), ExtResource("11_rqu17"), Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 2), 6, 19, Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0, 2), Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 0, 2), Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 3), Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0, 3), Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 0, 3), Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 1), Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0, 1), Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 0, 1), Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, -13), 10, 35, Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -13), Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, -13), Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, -14), Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -14), Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, -14), Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, -15), Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -15), Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, -15)],
+"version": 3
+}
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hefb5"]
 ground_bottom_color = Color(0.277634, 0.237635, 0.191207, 1)
@@ -15,9 +37,9 @@ background_mode = 1
 background_color = Color(0.270171, 0.229928, 0.188594, 1)
 sky = SubResource("Sky_7jj7m")
 
-[node name="DoubleDoorOppositeBatch" type="Node3D"]
+[node name="DoubleDoorOpposite9Batch" type="Node3D"]
 script = ExtResource("1_jp7ow")
-level = ExtResource("2_6p6ay")
+level = SubResource("PackedScene_ig5l7")
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("2_8pibj")

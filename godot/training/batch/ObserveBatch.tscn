@@ -1,8 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://c3bmsctq8jt0i"]
 
-[ext_resource type="Script" path="res://training/batch/level_training_batch.gd" id="1_urq0c"]
+[ext_resource type="Script" path="res://training/level_training_batch.gd" id="1_urq0c"]
 [ext_resource type="PackedScene" uid="uid://bxa6hl02an5lq" path="res://environments/levels/training/Observe.tscn" id="2_uobki"]
 [ext_resource type="Script" path="res://utils/Sync.gd" id="3_351cf"]
+
 
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dbn7p"]

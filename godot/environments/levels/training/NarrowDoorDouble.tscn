@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://cdb484d6vy8fg"]
 
-[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/other/room.tscn" id="1_atlnn"]
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/other/room20.tscn" id="1_atlnn"]
 [ext_resource type="Script" path="res://environments/scripts/level.gd" id="1_byy28"]
 [ext_resource type="Script" path="res://environments/scripts/randomizer/passage.gd" id="3_3xml7"]
-[ext_resource type="PackedScene" uid="uid://wnqy4tem8s1m" path="res://objects/targets/large_target.tscn" id="5_eyvoe"]
-[ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/walls/internal_wall.tscn" id="6_xkj45"]
+[ext_resource type="PackedScene" uid="uid://wnqy4tem8s1m" path="res://objects/targets/target_2x1.tscn" id="5_eyvoe"]
+[ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/walls/wall18.tscn" id="6_xkj45"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="7_grym3"]
 [ext_resource type="PackedScene" uid="uid://cxphmcstta3bi" path="res://objects/targets/large_final_target.tscn" id="8_7yfgd"]
 [ext_resource type="Script" path="res://environments/scripts/pedestrian_controller.gd" id="8_bu7tf"]
@@ -30,10 +30,10 @@ shape = SubResource("BoxShape3D_odv1f")
 [node name="Passage" type="Node3D" parent="RandomPassage"]
 
 [node name="InternalWall" parent="RandomPassage/Passage" instance=ExtResource("6_xkj45")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.9603, 0, 0)
 
 [node name="InternalWall2" parent="RandomPassage/Passage" instance=ExtResource("6_xkj45")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0233, 0, 0)
 
 [node name="Target" parent="RandomPassage/Passage" instance=ExtResource("5_eyvoe")]
 collision_layer = 48

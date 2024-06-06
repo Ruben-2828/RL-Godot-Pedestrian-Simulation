@@ -1,8 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://3sts7kaayjvt"]
 
-[ext_resource type="Script" path="res://training/batch/level_training_batch.gd" id="1_h0mkx"]
-[ext_resource type="PackedScene" uid="uid://c63fe78gq767c" path="res://environments/levels/training/T-Junction3.tscn" id="2_45sd5"]
+[ext_resource type="Script" path="res://training/level_training_batch.gd" id="1_h0mkx"]
+[ext_resource type="PackedScene" uid="uid://c63fe78gq767c" path="res://environments/levels/training/T-Junction.tscn" id="2_45sd5"]
 [ext_resource type="Script" path="res://utils/Sync.gd" id="3_578bb"]
+
 
 
 
