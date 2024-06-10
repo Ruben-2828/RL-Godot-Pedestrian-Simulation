@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bxvb0yb7x2xpp" path="res://objects/targets/final_target_2x1.tscn" id="11_j8ky6"]
 [ext_resource type="PackedScene" uid="uid://b2cuuh77of8hp" path="res://objects/targets/target_3.5x0.3.tscn" id="12_vocn5"]
 
+
 [node name="Funnel" type="Node3D"]
 script = ExtResource("1_amyvu")
 max_steps = 100000

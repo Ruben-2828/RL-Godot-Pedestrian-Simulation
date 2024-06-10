@@ -1,31 +1,37 @@
-[gd_scene load_steps=13 format=3 uid="uid://2o2kfd7vwhub"]
+[gd_scene load_steps=18 format=3 uid="uid://2o2kfd7vwhub"]
 
 [ext_resource type="Script" path="res://environments/scripts/level.gd" id="1_5x7n3"]
 [ext_resource type="PackedScene" uid="uid://bft1ftd208fq5" path="res://objects/other/floor.tscn" id="2_kbvhi"]
 [ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/walls/wall.tscn" id="3_qfrw0"]
 [ext_resource type="PackedScene" uid="uid://nqwb7at8dpui" path="res://objects/walls/wall9.tscn" id="4_tunuw"]
+[ext_resource type="PackedScene" uid="uid://cnxrsmiy64sai" path="res://objects/walls/wall15.tscn" id="5_did3p"]
 [ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/walls/wall18.tscn" id="5_igwgr"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="6_kpygj"]
 [ext_resource type="PackedScene" uid="uid://14be58l440kt" path="res://objects/walls/wall6.tscn" id="6_l2wqr"]
+[ext_resource type="Material" uid="uid://dvgr25hbspor8" path="res://materials/floor_material.tres" id="6_s4i8s"]
 [ext_resource type="Script" path="res://environments/scripts/pedestrian_controller.gd" id="7_ofk8i"]
 [ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="8_u41qp"]
 [ext_resource type="PackedScene" uid="uid://bxvb0yb7x2xpp" path="res://objects/targets/final_target_2x1.tscn" id="9_lyx7n"]
 [ext_resource type="PackedScene" uid="uid://wnqy4tem8s1m" path="res://objects/targets/target_2x1.tscn" id="10_xg737"]
 [ext_resource type="PackedScene" uid="uid://6s102ehus7h2" path="res://objects/targets/target_2x2.tscn" id="11_ubs3f"]
+[ext_resource type="PackedScene" uid="uid://cq6t852770172" path="res://objects/targets/target_2x0.3.tscn" id="15_4ny7r"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_s873a"]
+material = ExtResource("6_s4i8s")
+size = Vector3(4, 0, 15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d20s2"]
+size = Vector3(4, 0, 15)
 
 [node name="CornerConnection" type="Node3D"]
 script = ExtResource("1_5x7n3")
-max_steps = 300
-agent_rotate = true
+max_steps = 1000000
 
 [node name="Room" type="Node3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="Floor" parent="Room" instance=ExtResource("2_kbvhi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
-
-[node name="Wall3" parent="Room" instance=ExtResource("3_qfrw0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20.5)
 
 [node name="SmallInternalWall" parent="Room" instance=ExtResource("4_tunuw")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.5, 0, 15.5)
@@ -34,13 +40,37 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.5,
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.5, 0, 15.5)
 
 [node name="SmallInternalWall3" parent="Room" instance=ExtResource("4_tunuw")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.5, 0, 6.5)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.5, 0, 7.5)
 
 [node name="SmallInternalWall4" parent="Room" instance=ExtResource("4_tunuw")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.5, 0, 6.5)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.5, 0, 7.5)
 
 [node name="InternalWall" parent="Room" instance=ExtResource("5_igwgr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+
+[node name="Wall2" parent="Room" instance=ExtResource("5_did3p")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.5, 0, 27.499)
+
+[node name="Wall4" parent="Room" instance=ExtResource("5_did3p")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5, 0, 27.499)
+
+[node name="Wall3" parent="Room" instance=ExtResource("4_tunuw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 20.5)
+
+[node name="Wall5" parent="Room" instance=ExtResource("4_tunuw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 20.5)
+
+[node name="CorridorFloor" type="StaticBody3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 27.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room/CorridorFloor"]
+mesh = SubResource("BoxMesh_s873a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/CorridorFloor"]
+shape = SubResource("BoxShape3D_d20s2")
+
+[node name="Wall6" parent="Room" instance=ExtResource("6_l2wqr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35.5)
 
 [node name="Room2" type="Node3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -21, 0, -10)
@@ -92,210 +122,210 @@ visible = false
 [node name="PedestrianController" type="Node3D" parent="."]
 script = ExtResource("7_ofk8i")
 
-[node name="Pedestrian" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, -6.47101, 0, -3.73919)
-collision_layer = 5
-collision_mask = 19
-
-[node name="Pedestrian2" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, -8.47101, 0, -3.73919)
-collision_layer = 5
-collision_mask = 19
-
-[node name="Pedestrian3" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, -10.471, 0, -3.73919)
-collision_layer = 5
-collision_mask = 19
-
-[node name="Pedestrian4" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, -12.471, 0, -3.73919)
-collision_layer = 5
-collision_mask = 19
-
-[node name="Pedestrian5" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, -14.471, 0, -3.73919)
-collision_layer = 5
-collision_mask = 19
-
-[node name="Pedestrian6" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, -6.47101, 0, -5.73919)
-collision_layer = 5
-collision_mask = 19
-
-[node name="Pedestrian7" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, -8.47101, 0, -5.73919)
-collision_layer = 5
-collision_mask = 19
-
-[node name="Pedestrian8" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, -10.471, 0, -5.73919)
-collision_layer = 5
-collision_mask = 19
-
-[node name="Pedestrian9" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, -12.471, 0, -5.73919)
-collision_layer = 5
-collision_mask = 19
-
-[node name="Pedestrian10" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, -14.471, 0, -5.73919)
-collision_layer = 5
-collision_mask = 19
-
-[node name="Pedestrian11" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, -6.47101, 0, -7.73919)
-collision_layer = 5
-collision_mask = 19
-
-[node name="Pedestrian12" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, -8.47101, 0, -7.73919)
-collision_layer = 5
-collision_mask = 19
-
-[node name="Pedestrian13" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, -10.471, 0, -7.73919)
-collision_layer = 5
-collision_mask = 19
-
-[node name="Pedestrian14" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, -12.471, 0, -7.73919)
-collision_layer = 5
-collision_mask = 19
-
 [node name="Pedestrian15" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, -14.471, 0, -7.73919)
-collision_layer = 5
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -8)
+collision_layer = 6
 collision_mask = 19
 
 [node name="Pedestrian16" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, -6.47101, 0, -1.73919)
-collision_layer = 5
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -8)
+collision_layer = 6
 collision_mask = 19
 
 [node name="Pedestrian17" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, -8.47101, 0, -1.73919)
-collision_layer = 5
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -8)
+collision_layer = 6
 collision_mask = 19
 
 [node name="Pedestrian18" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, -10.471, 0, -1.73919)
-collision_layer = 5
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8)
+collision_layer = 6
 collision_mask = 19
 
 [node name="Pedestrian19" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, -12.471, 0, -1.73919)
-collision_layer = 5
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -8)
+collision_layer = 6
 collision_mask = 19
 
 [node name="Pedestrian20" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, -14.471, 0, -1.73919)
-collision_layer = 5
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -6)
+collision_layer = 6
 collision_mask = 19
 
 [node name="Pedestrian21" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 14.4009, 0, -3.73919)
-collision_layer = 10
-collision_mask = 35
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -6)
+collision_layer = 6
+collision_mask = 19
 
 [node name="Pedestrian22" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 12.4009, 0, -3.73919)
-collision_layer = 10
-collision_mask = 35
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -6)
+collision_layer = 6
+collision_mask = 19
 
 [node name="Pedestrian23" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 10.4009, 0, -3.73919)
-collision_layer = 10
-collision_mask = 35
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -6)
+collision_layer = 6
+collision_mask = 19
 
 [node name="Pedestrian24" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 8.40095, 0, -3.73919)
-collision_layer = 10
-collision_mask = 35
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -6)
+collision_layer = 6
+collision_mask = 19
 
 [node name="Pedestrian25" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 6.40095, 0, -3.73919)
-collision_layer = 10
-collision_mask = 35
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -4)
+collision_layer = 6
+collision_mask = 19
 
 [node name="Pedestrian26" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 14.4009, 0, -5.73919)
-collision_layer = 10
-collision_mask = 35
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -4)
+collision_layer = 6
+collision_mask = 19
 
 [node name="Pedestrian27" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 12.4009, 0, -5.73919)
-collision_layer = 10
-collision_mask = 35
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -4)
+collision_layer = 6
+collision_mask = 19
 
 [node name="Pedestrian28" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 10.4009, 0, -5.73919)
-collision_layer = 10
-collision_mask = 35
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -4)
+collision_layer = 6
+collision_mask = 19
 
 [node name="Pedestrian29" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 8.40095, 0, -5.73919)
-collision_layer = 10
-collision_mask = 35
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -4)
+collision_layer = 6
+collision_mask = 19
 
 [node name="Pedestrian30" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 6.40095, 0, -5.73919)
-collision_layer = 10
-collision_mask = 35
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -2)
+collision_layer = 6
+collision_mask = 19
 
 [node name="Pedestrian31" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 14.4009, 0, -7.73919)
-collision_layer = 10
-collision_mask = 35
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -2)
+collision_layer = 6
+collision_mask = 19
 
 [node name="Pedestrian32" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 12.4009, 0, -7.73919)
-collision_layer = 10
-collision_mask = 35
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -2)
+collision_layer = 6
+collision_mask = 19
 
 [node name="Pedestrian33" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 10.4009, 0, -7.73919)
-collision_layer = 10
-collision_mask = 35
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -2)
+collision_layer = 6
+collision_mask = 19
 
 [node name="Pedestrian34" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 8.40095, 0, -7.73919)
-collision_layer = 10
-collision_mask = 35
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -2)
+collision_layer = 6
+collision_mask = 19
 
 [node name="Pedestrian35" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 6.40095, 0, -7.73919)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -8)
 collision_layer = 10
 collision_mask = 35
 
 [node name="Pedestrian36" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 14.4009, 0, -1.73919)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -8)
 collision_layer = 10
 collision_mask = 35
 
 [node name="Pedestrian37" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 12.4009, 0, -1.73919)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -8)
 collision_layer = 10
 collision_mask = 35
 
 [node name="Pedestrian38" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 10.4009, 0, -1.73919)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -8)
 collision_layer = 10
 collision_mask = 35
 
 [node name="Pedestrian39" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 8.40095, 0, -1.73919)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -8)
 collision_layer = 10
 collision_mask = 35
 
 [node name="Pedestrian40" parent="PedestrianController" instance=ExtResource("8_u41qp")]
-transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 6.40095, 0, -1.73919)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -6)
+collision_layer = 10
+collision_mask = 35
+
+[node name="Pedestrian41" parent="PedestrianController" instance=ExtResource("8_u41qp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -6)
+collision_layer = 10
+collision_mask = 35
+
+[node name="Pedestrian42" parent="PedestrianController" instance=ExtResource("8_u41qp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -6)
+collision_layer = 10
+collision_mask = 35
+
+[node name="Pedestrian43" parent="PedestrianController" instance=ExtResource("8_u41qp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -6)
+collision_layer = 10
+collision_mask = 35
+
+[node name="Pedestrian44" parent="PedestrianController" instance=ExtResource("8_u41qp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -6)
+collision_layer = 10
+collision_mask = 35
+
+[node name="Pedestrian45" parent="PedestrianController" instance=ExtResource("8_u41qp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -4)
+collision_layer = 10
+collision_mask = 35
+
+[node name="Pedestrian46" parent="PedestrianController" instance=ExtResource("8_u41qp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -4)
+collision_layer = 10
+collision_mask = 35
+
+[node name="Pedestrian47" parent="PedestrianController" instance=ExtResource("8_u41qp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -4)
+collision_layer = 10
+collision_mask = 35
+
+[node name="Pedestrian48" parent="PedestrianController" instance=ExtResource("8_u41qp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -4)
+collision_layer = 10
+collision_mask = 35
+
+[node name="Pedestrian49" parent="PedestrianController" instance=ExtResource("8_u41qp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -4)
+collision_layer = 10
+collision_mask = 35
+
+[node name="Pedestrian50" parent="PedestrianController" instance=ExtResource("8_u41qp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -2)
+collision_layer = 10
+collision_mask = 35
+
+[node name="Pedestrian51" parent="PedestrianController" instance=ExtResource("8_u41qp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -2)
+collision_layer = 10
+collision_mask = 35
+
+[node name="Pedestrian52" parent="PedestrianController" instance=ExtResource("8_u41qp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -2)
+collision_layer = 10
+collision_mask = 35
+
+[node name="Pedestrian53" parent="PedestrianController" instance=ExtResource("8_u41qp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -2)
+collision_layer = 10
+collision_mask = 35
+
+[node name="Pedestrian54" parent="PedestrianController" instance=ExtResource("8_u41qp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -2)
 collision_layer = 10
 collision_mask = 35
 
 [node name="Targets" type="Node3D" parent="."]
 
 [node name="FinalTarget" parent="Targets" instance=ExtResource("9_lyx7n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.51919)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.9855)
 collision_layer = 48
 collision_mask = 60
 
@@ -318,3 +348,8 @@ collision_mask = 20
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0.5)
 collision_layer = 32
 collision_mask = 40
+
+[node name="Target5" parent="Targets" instance=ExtResource("15_4ny7r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.15)
+collision_layer = 48
+collision_mask = 60

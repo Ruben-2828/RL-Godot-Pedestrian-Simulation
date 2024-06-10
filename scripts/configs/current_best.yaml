@@ -23,4 +23,4 @@ hyperparameters:
       - 128
       - 128
 max_steps: 100000000000000000
-retraining_steps: 200_000
+retraining_steps: 0
