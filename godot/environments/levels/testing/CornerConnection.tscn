@@ -1,10 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://2o2kfd7vwhub"]
+[gd_scene load_steps=17 format=3 uid="uid://2o2kfd7vwhub"]
 
 [ext_resource type="Script" path="res://environments/scripts/level.gd" id="1_5x7n3"]
 [ext_resource type="PackedScene" uid="uid://bft1ftd208fq5" path="res://objects/other/floor.tscn" id="2_kbvhi"]
 [ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/walls/wall.tscn" id="3_qfrw0"]
 [ext_resource type="PackedScene" uid="uid://nqwb7at8dpui" path="res://objects/walls/wall9.tscn" id="4_tunuw"]
-[ext_resource type="PackedScene" uid="uid://cnxrsmiy64sai" path="res://objects/walls/wall15.tscn" id="5_did3p"]
 [ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/walls/wall18.tscn" id="5_igwgr"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="6_kpygj"]
 [ext_resource type="PackedScene" uid="uid://14be58l440kt" path="res://objects/walls/wall6.tscn" id="6_l2wqr"]
@@ -18,14 +17,13 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_s873a"]
 material = ExtResource("6_s4i8s")
-size = Vector3(4, 0, 15)
+size = Vector3(3, 0, 23)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d20s2"]
-size = Vector3(4, 0, 15)
+size = Vector3(3, 0, 23)
 
 [node name="CornerConnection" type="Node3D"]
 script = ExtResource("1_5x7n3")
-max_steps = 1000000
 
 [node name="Room" type="Node3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -48,12 +46,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.5, 
 [node name="InternalWall" parent="Room" instance=ExtResource("5_igwgr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 
-[node name="Wall2" parent="Room" instance=ExtResource("5_did3p")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.5, 0, 27.499)
-
-[node name="Wall4" parent="Room" instance=ExtResource("5_did3p")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5, 0, 27.499)
-
 [node name="Wall3" parent="Room" instance=ExtResource("4_tunuw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 20.5)
 
@@ -61,7 +53,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 20.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 20.5)
 
 [node name="CorridorFloor" type="StaticBody3D" parent="Room"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 27.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30.5)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Room/CorridorFloor"]
 mesh = SubResource("BoxMesh_s873a")
@@ -69,8 +61,11 @@ mesh = SubResource("BoxMesh_s873a")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Room/CorridorFloor"]
 shape = SubResource("BoxShape3D_d20s2")
 
-[node name="Wall6" parent="Room" instance=ExtResource("6_l2wqr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35.5)
+[node name="Wall2" parent="Room" instance=ExtResource("3_qfrw0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0, 31)
+
+[node name="Wall4" parent="Room" instance=ExtResource("3_qfrw0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, 31)
 
 [node name="Room2" type="Node3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -21, 0, -10)
@@ -325,7 +320,7 @@ collision_mask = 35
 [node name="Targets" type="Node3D" parent="."]
 
 [node name="FinalTarget" parent="Targets" instance=ExtResource("9_lyx7n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.9855)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20.5)
 collision_layer = 48
 collision_mask = 60
 
@@ -335,7 +330,7 @@ collision_layer = 16
 collision_mask = 20
 
 [node name="Target2" parent="Targets" instance=ExtResource("11_ubs3f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0029, 0, 0.0138302)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0.014)
 collision_layer = 32
 collision_mask = 40
 
@@ -350,6 +345,11 @@ collision_layer = 32
 collision_mask = 40
 
 [node name="Target5" parent="Targets" instance=ExtResource("15_4ny7r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.1793)
+collision_layer = 48
+collision_mask = 60
+
+[node name="Target6" parent="Targets" instance=ExtResource("15_4ny7r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.1793)
 collision_layer = 48
 collision_mask = 60

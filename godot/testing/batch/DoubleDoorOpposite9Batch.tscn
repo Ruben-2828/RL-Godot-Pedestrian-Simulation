@@ -44,7 +44,6 @@ level = SubResource("PackedScene_ig5l7")
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("2_8pibj")
 control_mode = 2
-action_repeat = null
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5pnet")

@@ -1,32 +1,23 @@
 [gd_scene load_steps=7 format=3 uid="uid://d00g0orvfmpv"]
 
-[ext_resource type="Script" path="res://training/level_training_batch.gd" id="1_6nv2r"]
+[ext_resource type="Script" path="res://testing/level_testing_batch.gd" id="1_hmtga"]
 [ext_resource type="PackedScene" uid="uid://ba4j721nhyron" path="res://environments/levels/training/Corridor3.tscn" id="2_1kvsf"]
 [ext_resource type="Script" path="res://utils/Sync.gd" id="2_xn715"]
 
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_htqik"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kxxse"]
 ground_bottom_color = Color(0.277634, 0.237635, 0.191207, 1)
 
-[sub_resource type="Sky" id="Sky_ewb8m"]
-sky_material = SubResource("ProceduralSkyMaterial_htqik")
+[sub_resource type="Sky" id="Sky_oect8"]
+sky_material = SubResource("ProceduralSkyMaterial_kxxse")
 
-[sub_resource type="Environment" id="Environment_36t42"]
+[sub_resource type="Environment" id="Environment_x57qk"]
 background_mode = 1
 background_color = Color(0.270171, 0.229928, 0.188594, 1)
-sky = SubResource("Sky_ewb8m")
+sky = SubResource("Sky_oect8")
 
 [node name="Corridor3Batch" type="Node3D"]
-script = ExtResource("1_6nv2r")
+script = ExtResource("1_hmtga")
 level = ExtResource("2_1kvsf")
-
-[node name="Sync" type="Node" parent="."]
-script = ExtResource("2_xn715")
-control_mode = null
-action_repeat = null
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_36t42")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 0)
@@ -35,3 +26,10 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
 projection = 1
 size = 22.0
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("2_xn715")
+control_mode = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_x57qk")

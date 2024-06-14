@@ -1,30 +1,23 @@
 [gd_scene load_steps=7 format=3 uid="uid://bc4au0b4yf1ae"]
 
-[ext_resource type="Script" path="res://training/level_training_batch.gd" id="1_53uly"]
+[ext_resource type="Script" path="res://testing/level_testing_batch.gd" id="1_hqtgk"]
 [ext_resource type="PackedScene" uid="uid://quswshhny1ow" path="res://environments/levels/training/Corridor3vs3.tscn" id="2_78ull"]
 [ext_resource type="Script" path="res://utils/Sync.gd" id="3_hexqo"]
 
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q4tvx"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kc5xy"]
 ground_bottom_color = Color(0.277634, 0.237635, 0.191207, 1)
 
-[sub_resource type="Sky" id="Sky_nv2nf"]
-sky_material = SubResource("ProceduralSkyMaterial_q4tvx")
+[sub_resource type="Sky" id="Sky_yv1ns"]
+sky_material = SubResource("ProceduralSkyMaterial_kc5xy")
 
-[sub_resource type="Environment" id="Environment_bjw8y"]
+[sub_resource type="Environment" id="Environment_65nhc"]
 background_mode = 1
 background_color = Color(0.270171, 0.229928, 0.188594, 1)
-sky = SubResource("Sky_nv2nf")
+sky = SubResource("Sky_yv1ns")
 
 [node name="Corridor3vs3Batch" type="Node3D"]
-script = ExtResource("1_53uly")
+script = ExtResource("1_hqtgk")
 level = ExtResource("2_78ull")
-
-[node name="Sync" type="Node" parent="."]
-script = ExtResource("3_hexqo")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_bjw8y")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 0)
@@ -33,3 +26,10 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
 projection = 1
 size = 22.0
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("3_hexqo")
+control_mode = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_65nhc")

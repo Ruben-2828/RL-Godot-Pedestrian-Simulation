@@ -1,9 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://b3rrg3fpqd1dd"]
 
 [ext_resource type="Script" path="res://testing/level_testing_batch.gd" id="1_agbk4"]
-[ext_resource type="PackedScene" uid="uid://craqbwsoct6xh" path="res://environments/levels/testing/Anchor.tscn" id="2_fof3e"]
+[ext_resource type="PackedScene" uid="uid://craqbwsoct6xh" path="res://environments/levels/testing/Anchor8.tscn" id="2_ep0r2"]
 [ext_resource type="Script" path="res://utils/Sync.gd" id="3_noou1"]
-
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yj8b3"]
 ground_bottom_color = Color(0.277634, 0.237635, 0.191207, 1)
@@ -16,9 +15,9 @@ background_mode = 1
 background_color = Color(0.270171, 0.229928, 0.188594, 1)
 sky = SubResource("Sky_h7tqf")
 
-[node name="AnchorBatch" type="Node3D"]
+[node name="Anchor8Batch" type="Node3D"]
 script = ExtResource("1_agbk4")
-level = ExtResource("2_fof3e")
+level = ExtResource("2_ep0r2")
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("3_noou1")

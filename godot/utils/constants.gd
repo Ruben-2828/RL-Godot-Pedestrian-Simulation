@@ -72,4 +72,4 @@ const TESTING_BATCH_SIZE: int = 1
 # Engine/Sync
 const PHYSICS_TICKS_PER_SECONDS: int = 60
 const TIME_SCALE: float = 1.0
-const SPEED_UP: float = 10.0
+const SPEED_UP: float = 2.0

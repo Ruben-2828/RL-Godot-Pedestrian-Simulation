@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://buytp40i8mx1h"]
 
 [ext_resource type="Script" path="res://testing/testing_scene.gd" id="1_phwvg"]
-[ext_resource type="PackedScene" uid="uid://dw52dagvl3uvs" path="res://testing/batch/CornerConnectionBatch.tscn" id="3_rdfuf"]
+[ext_resource type="PackedScene" uid="uid://bc4au0b4yf1ae" path="res://training/batch/Corridor3vs3Batch.tscn" id="2_mrp2b"]
 
 [node name="TestingScene" type="Node3D"]
 script = ExtResource("1_phwvg")
-onnx_model_path = "res://../output/runs/bottleneck/model/model.onnx"
-levels_path = Array[PackedScene]([ExtResource("3_rdfuf")])
+onnx_model_path = "res://../output/runs/high_density/hd_standard/model/model.onnx"
+levels_path = Array[PackedScene]([ExtResource("2_mrp2b")])

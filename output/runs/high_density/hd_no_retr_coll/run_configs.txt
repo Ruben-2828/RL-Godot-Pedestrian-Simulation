@@ -1,0 +1,2 @@
+Curriculum settings: scripts/configs/bottleneck_config.yaml
+Model settings: scripts/configs/current_best_256_256_128.yaml

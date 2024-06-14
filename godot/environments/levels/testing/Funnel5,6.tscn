@@ -16,11 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://be4gfujovd4db" path="res://objects/targets/target_7x0.3.tscn" id="14_1hopn"]
 [ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/walls/wall18.tscn" id="15_hur55"]
 
-
 [node name="Funnel" type="Node3D"]
 script = ExtResource("1_68l5e")
-max_steps = 1000000
-agent_rotate = true
+max_steps = 700
 
 [node name="Room" parent="." instance=ExtResource("2_7s1dl")]
 
