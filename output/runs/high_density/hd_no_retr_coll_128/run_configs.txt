@@ -1,2 +1,0 @@
-Curriculum settings: scripts/configs/high_density_config.yaml
-Model settings: scripts/configs/current_best_256_128_64.yaml

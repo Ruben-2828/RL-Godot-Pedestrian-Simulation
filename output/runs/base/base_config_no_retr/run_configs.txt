@@ -1,2 +1,0 @@
-Curriculum settings: scripts/configs/curriculum_config.yaml
-Model settings: scripts/configs/base_config_no_retr.yaml
