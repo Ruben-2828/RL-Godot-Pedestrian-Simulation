@@ -114,7 +114,7 @@ class ConfigParser:
 # Only for debug
 if __name__ == '__main__':
     config_parser = ConfigParser(
-        "../configs/curriculum_config.yaml",
+        "../configs/curriculum/curriculum_config.yaml",
         "../configs/base_config.yaml",
     )
 

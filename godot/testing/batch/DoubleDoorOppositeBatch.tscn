@@ -12,7 +12,7 @@ sky_material = SubResource("ProceduralSkyMaterial_hefb5")
 
 [sub_resource type="Environment" id="Environment_5pnet"]
 background_mode = 1
-background_color = Color(0.270171, 0.229928, 0.188594, 1)
+background_color = Color(1, 1, 1, 1)
 sky = SubResource("Sky_7jj7m")
 
 [node name="DoubleDoorOppositeBatch" type="Node3D"]

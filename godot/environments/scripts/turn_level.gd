@@ -9,6 +9,7 @@ func _on_final_target_body_entered(body):
 		pedestrian_count +=1
 		
 		if pedestrian_count == pedestrian_controller.find_children("Pedestrian*").size():
+			pedestrian_count = 0
 			var rotate = randi_range(0,1) 
 			
 			find_child("AllTargets").rotation.y = deg_to_rad(90 * rotate)
