@@ -1,2 +1,6 @@
 godot/.godot
 logs
+output/logs/*
+output/pedpy/*
+output/runs/*
+/godot/rec/

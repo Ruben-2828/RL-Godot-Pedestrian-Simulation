@@ -30,12 +30,13 @@ shape = SubResource("BoxShape3D_odv1f")
 [node name="Passage" type="Node3D" parent="RandomPassage"]
 
 [node name="InternalWall" parent="RandomPassage/Passage" instance=ExtResource("6_xkj45")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.9603, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2122, 0, 0)
 
 [node name="InternalWall2" parent="RandomPassage/Passage" instance=ExtResource("6_xkj45")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0233, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2139, 0, 0)
 
 [node name="Target" parent="RandomPassage/Passage" instance=ExtResource("5_eyvoe")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 collision_layer = 48
 collision_mask = 60
 

@@ -51,10 +51,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 3)
 
 [node name="SmallInternalWall" parent="Wall" instance=ExtResource("10_d62yp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, -3)
 
 [node name="SmallInternalWall2" parent="Wall" instance=ExtResource("10_d62yp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, -3)
 
 [node name="PedestrianController" type="Node3D" parent="."]
 script = ExtResource("9_tvxse")

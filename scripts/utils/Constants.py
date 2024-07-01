@@ -2,7 +2,7 @@
 # Base project path constants
 BASE_PATH: str = "scripts/"
 DEFAULT_CONFIG_PATH: str = BASE_PATH + "configs/"
-DEFAULT_CURRICULUM_CONFIG_FILE: str = DEFAULT_CONFIG_PATH + "curriculum_config.yaml"
+DEFAULT_CURRICULUM_CONFIG_FILE: str = DEFAULT_CONFIG_PATH + "curriculum/curriculum_config.yaml"
 DEFAULT_MODEL_CONFIG_FILE: str = DEFAULT_CONFIG_PATH + "base_config.yaml"
 DEFAULT_TMP_MODEL_FILE: str = BASE_PATH + "model.tmp.zip"
 

@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://c83kv17oqe2k6"]
+
+[ext_resource type="Script" path="res://testing/level_testing_batch.gd" id="1_dt2bi"]
+[ext_resource type="PackedScene" uid="uid://n3qvkkmamb7l" path="res://environments/levels/testing/BlindCurve.tscn" id="2_06xvb"]
+[ext_resource type="Script" path="res://utils/Sync.gd" id="3_fsxo6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0a1ol"]
+ground_bottom_color = Color(0.277634, 0.237635, 0.191207, 1)
+
+[sub_resource type="Sky" id="Sky_pb1wh"]
+sky_material = SubResource("ProceduralSkyMaterial_0a1ol")
+
+[sub_resource type="Environment" id="Environment_rj54i"]
+background_mode = 1
+background_color = Color(1, 1, 1, 1)
+sky = SubResource("Sky_pb1wh")
+
+[node name="BlindCurveBatch" type="Node3D"]
+script = ExtResource("1_dt2bi")
+level = ExtResource("2_06xvb")
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("3_fsxo6")
+control_mode = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rj54i")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
+projection = 1
+size = 22.0

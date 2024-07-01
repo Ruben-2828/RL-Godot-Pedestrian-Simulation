@@ -19,9 +19,18 @@ config/icon="res://icon.svg"
 
 Constants="*res://utils/constants.gd"
 
+[display]
+
+window/size/viewport_width=648
+
 [dotnet]
 
 project/assembly_name="RL-Godot-Pedestrian-Simulation"
+
+[editor]
+
+movie_writer/movie_file="E:/GitHub/RL-Godot-Pedestrian-Simulation/godot/rec/test.avi"
+movie_writer/fps=30
 
 [filesystem]
 

@@ -14,7 +14,7 @@
 
 [node name="Funnel" type="Node3D"]
 script = ExtResource("1_amyvu")
-max_steps = 100000
+max_steps = 600
 agent_rotate = true
 
 [node name="Room" parent="." instance=ExtResource("2_s0sp4")]
