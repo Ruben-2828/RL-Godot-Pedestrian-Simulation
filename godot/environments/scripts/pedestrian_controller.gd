@@ -110,9 +110,9 @@ func reset_pedestrians():
 	for p in pedestrians:
 		p.ai_controller_3d.reset()
 		p.reset()
-		ped_cycle_counter[p] += 1
 		pedestrian_done[p] = false
 		p.enable_pedestrian()
+		ped_cycle_counter[p] += 1
 	# ai controller done for only the first pedestrian to end the episode only one time
 	pedestrians[0].ai_controller_3d.done = true
 			

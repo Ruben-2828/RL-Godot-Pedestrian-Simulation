@@ -1,0 +1,2 @@
+Curriculum settings: scripts/configs/curriculum_config.yaml
+Model settings: scripts/configs/retraining_150k.yaml

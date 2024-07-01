@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://wnqy4tem8s1m"]
+
+[ext_resource type="Script" path="res://objects/targets/target.gd" id="1_y48rx"]
+[ext_resource type="Material" uid="uid://ddc5mqmn53adg" path="res://materials/target_material.tres" id="2_3cpys"]
+
+
+[sub_resource type="BoxMesh" id="BoxMesh_6ugpf"]
+material = ExtResource("2_3cpys")
+size = Vector3(3.5, 10, 1.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1axh2"]
+size = Vector3(3.5, 10, 1.4)
+
+[node name="Target" type="Area3D" groups=["TARGET"]]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_y48rx")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_6ugpf")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_1axh2")

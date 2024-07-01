@@ -12,29 +12,26 @@ class ConfigParser:
     This class is used to parse and get the configuration for the training from a yaml file.
     """
 
-    def __init__(self, filepath: str):
+    def __init__(self, curriculum_configs_path: str, model_configs_path: str) -> None:
         """
         Config parser constructor. Used mainly to set the yaml config file
-        :param filepath:
+        :param curriculum_configs_path: path to curriculum config file
+        :param model_configs_path: path to model config file
         """
-        self.config = self.load_config(filepath)
+        self.curriculum_config = self.load_file(curriculum_configs_path)
+        self.model_config = self.load_file(model_configs_path)
+
         self.levels = []
 
-    def load_config(self, filepath: str) -> dict:
+    def load_file(self, filepath: str) -> dict:
         """
         Loads the YAML configuration file. Checks if it exists and if it is well formatted
         :param filepath: String containing the path to the YAML configuration file
         :return: Dictionary containing the configuration
         """
-        try:
-            with open(filepath, 'r') as file:
-                return yaml.safe_load(file)
-        except FileNotFoundError:
-            print(f"Error: File not found {filepath}")
-            return {}
-        except yaml.YAMLError as exc:
-            print(f"Error in configuration file: {exc}")
-            return {}
+        with open(filepath, 'r') as file:
+            return yaml.safe_load(file)
+
 
     def validate_curriculum(self) -> bool:
         """
@@ -42,7 +39,7 @@ class ConfigParser:
         Every level will be added to self.levels collection.
         :return: True if the entire curriculum is valid, False otherwise
         """
-        curriculum = self.config.get('Curriculum', {})
+        curriculum = self.curriculum_config.get('Curriculum', {})
         for level, details in curriculum.items():
             if not self.validate_level(level, details):
                 return False
@@ -59,19 +56,19 @@ class ConfigParser:
         # Validate mean_reward
         mean_reward = details.get('mean_reward')
         if not isinstance(mean_reward, float):
-            print(f"Warning: mean_reward for {level_name} is not a float.")
+            print(f"Error: mean_reward for {level_name} is not a float.")
             return False
 
         # Validate episode_mean
         episode_mean = details.get('episode_mean')
         if (not isinstance(episode_mean, int)) or episode_mean <= 0:
-            print(f"Warning: episode_mean for {level_name} is not valid")
+            print(f"Error: episode_mean for {level_name} is not valid")
             return False
 
         # Validate cycles
         cycles = details.get('cycles')
         if (not isinstance(episode_mean, int)) or cycles <= 0:
-            print(f"Warning: cycles for {level_name} is not valid")
+            print(f"Error: cycles for {level_name} is not valid")
             return False
 
         self.levels.append(Level(level_name, mean_reward, episode_mean, cycles))
@@ -83,14 +80,54 @@ class ConfigParser:
         levels' collection.
         :return: Collection of levels of class Level
         """
-        return self.levels
+        return self.levels.copy()
+
+    def validate_config(self) -> bool:
+        """
+        Checks if the model configs contains the 3 main sections:
+        hyperparameters, max_steps and retraining_steps.
+        :return: True if the config is valid, False otherwise
+        """
+        if "hyperparameters" not in self.model_config:
+            print(f"Error: hyperparameters not find in config file")
+            return False
+
+        if "max_steps" not in self.model_config:
+            print(f"Error: max_steps not find in config file")
+            return False
+
+        if "retraining_steps" not in self.model_config:
+            print(f"Error: retraining_steps not find in config file")
+            return False
+
+        return True
+
+    def get_config(self) -> dict:
+        """
+        Model config getter. To be sure the config is valid, please call validate_config() and check its return value
+        before using this getter.
+        :return: dict containing the model configs
+        """
+        return self.model_config.copy()
 
 
 # Only for debug
 if __name__ == '__main__':
-    config_parser = ConfigParser(Constants.DEFAULT_CONFIG_FILE)
+    config_parser = ConfigParser(
+        "../configs/curriculum_config.yaml",
+        "../configs/base_config.yaml",
+    )
+
     if config_parser.validate_curriculum():
         print("Curriculum is valid.")
         print(config_parser.get_levels())
     else:
         print("Curriculum validation failed.")
+
+    if config_parser.validate_config():
+        print("Config is valid.")
+        print(config_parser.get_config())
+    else:
+        print("Config validation failed.")
+
+

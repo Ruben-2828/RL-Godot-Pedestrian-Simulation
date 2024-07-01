@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b3gx81rxfko04"]
 
-[ext_resource type="Script" path="res://training/batch/level_training_batch.gd" id="1_v3oc7"]
+[ext_resource type="Script" path="res://training/level_training_batch.gd" id="1_v3oc7"]
 [ext_resource type="PackedScene" uid="uid://can5xms24wylf" path="res://environments/levels/training/ExitRoom.tscn" id="2_8dfpg"]
 [ext_resource type="Script" path="res://utils/Sync.gd" id="3_u52pa"]
 

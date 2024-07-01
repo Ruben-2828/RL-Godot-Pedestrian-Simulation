@@ -1,8 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://fgoeldxfu0lq"]
 
-[ext_resource type="Script" path="res://training/batch/level_training_batch.gd" id="1_8ryci"]
+[ext_resource type="Script" path="res://training/level_training_batch.gd" id="1_8ryci"]
 [ext_resource type="PackedScene" uid="uid://b44iifmy0mx84" path="res://environments/levels/training/TurnsObstacles3.tscn" id="2_l1a1m"]
 [ext_resource type="Script" path="res://utils/Sync.gd" id="3_cyc12"]
+
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h05o2"]
 ground_bottom_color = Color(0.277634, 0.237635, 0.191207, 1)

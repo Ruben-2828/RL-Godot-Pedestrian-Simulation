@@ -1,8 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://bv382p2xxoi1u"]
 
-[ext_resource type="Script" path="res://training/batch/level_training_batch.gd" id="1_tr44c"]
+[ext_resource type="Script" path="res://training/level_training_batch.gd" id="1_tr44c"]
 [ext_resource type="PackedScene" uid="uid://dukr625tbkfpv" path="res://environments/levels/training/Intersection4Narrow.tscn" id="2_271ui"]
 [ext_resource type="Script" path="res://utils/Sync.gd" id="3_fg4nd"]
+
 
 
 

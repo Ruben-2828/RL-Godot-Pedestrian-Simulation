@@ -19,9 +19,19 @@ config/icon="res://icon.svg"
 
 Constants="*res://utils/constants.gd"
 
+[display]
+
+window/size/viewport_width=648
+
 [dotnet]
 
 project/assembly_name="RL-Godot-Pedestrian-Simulation"
+
+[editor]
+
+movie_writer/mjpeg_quality=0.9
+movie_writer/movie_file="C:/Users/Utente/Desktop/RL-Godot-Pedestrian-Simulation/godot/rec/corridor_3vs3.avi"
+movie_writer/fps=30
 
 [filesystem]
 

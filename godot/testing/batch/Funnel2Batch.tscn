@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://6smpy2l3yxtq"]
 
-[ext_resource type="Script" path="res://testing/batch/level_testing_batch.gd" id="1_0mehc"]
+[ext_resource type="Script" path="res://testing/level_testing_batch.gd" id="1_0mehc"]
 [ext_resource type="PackedScene" uid="uid://cx86dgqqg6kjd" path="res://environments/levels/testing/Funnel2.tscn" id="2_rpjde"]
 [ext_resource type="Script" path="res://utils/Sync.gd" id="3_m0wym"]
 

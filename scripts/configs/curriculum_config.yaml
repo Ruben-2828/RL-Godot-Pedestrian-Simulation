@@ -1,0 +1,46 @@
+Curriculum:
+  StartEZ:
+    mean_reward: 5.7
+    episode_mean: 108
+    cycles: 20
+  Start:
+    mean_reward: 3.0
+    episode_mean: 36
+    cycles: 5
+  Observe:
+    mean_reward: -24.0
+    episode_mean: 36
+    cycles: 5
+  StartCorridor:
+    mean_reward: 4.5
+    episode_mean: 36
+    cycles: 15
+  Turns:
+    mean_reward: 10.0
+    episode_mean: 36
+    cycles: 10
+  TurnObstacles:
+    mean_reward: 10.0
+    episode_mean: 36
+    cycles: 10
+  NarrowDoor:
+    mean_reward: 5.0
+    episode_mean: 36
+    cycles: 15
+  Corridor3vs3:
+    mean_reward: 4.0
+    episode_mean: 36
+    cycles: 15
+  T-Junction:
+    mean_reward: 4.0
+    episode_mean: 36
+    cycles: 5
+  Intersection4:
+    mean_reward: 5.0
+    episode_mean: 36
+    cycles: 15
+  NarrowDoorDouble:
+    mean_reward: 4.0
+    episode_mean: 36
+    cycles: 15
+

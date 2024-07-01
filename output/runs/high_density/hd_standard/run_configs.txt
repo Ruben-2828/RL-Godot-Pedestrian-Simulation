@@ -1,0 +1,2 @@
+Curriculum settings: scripts/configs/bottleneck_config.yaml
+Model settings: scripts/configs/base_config.yaml

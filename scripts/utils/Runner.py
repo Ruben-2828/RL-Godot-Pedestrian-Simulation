@@ -2,7 +2,7 @@
 import os
 import datetime
 from pathlib import Path
-from typing import Collection, Optional
+from typing import Collection, Optional, Any
 
 from godot_rl.wrappers.onnx.stable_baselines_export import export_ppo_model_as_onnx
 from godot_rl.wrappers.stable_baselines_wrapper import StableBaselinesGodotEnv
@@ -12,7 +12,8 @@ from stable_baselines3.common.vec_env import VecMonitor
 
 from scripts.models.Level import Level
 from scripts.utils import Constants
-from scripts.utils.Callbacks import EndTrainingOnMeanRewardReachedCallback, EndTrainingOnEarlyFailCallback
+from scripts.utils.Callbacks import EndTrainingOnMeanRewardReachedCallback, EndTrainingOnEarlyFailCallback, \
+    EndTrainingCombinedCallback
 from scripts.utils.ConfigParser import ConfigParser
 
 
@@ -23,25 +24,46 @@ class Runner:
     in the config file, with the addition of the retraining environment at the end.
     """
 
-    def __init__(self, config_path: str = Constants.DEFAULT_CONFIG_FILE) -> None:
+    def __init__(
+            self,
+            curriculum_path: str = Constants.DEFAULT_CURRICULUM_CONFIG_FILE,
+            config_path: str = Constants.DEFAULT_MODEL_CONFIG_FILE,
+            run_name: str = None,
+    ) -> None:
         """
         Runner constructor, used to set the config file path
-        :param config_path: path to the yaml config file.
+        :param curriculum_path: path to the yaml curriculum config file
+        :param config_path: path to the yaml config file
         """
+        self.curriculum_path = curriculum_path
         self.config_path = config_path
+        self.run_name: str = run_name
+
         self.model: Optional[PPO] = None
         self.start_time: Optional[float] = None
-        self.tensorboard_log_path: str = self.create_tensorboard_log_path()
+        self.run_log_path: str = self.create_run_log_path()
+        self.levels: Collection[Level] = []
+        self.configs: Optional[dict[str, Any]] = None
 
-    def create_tensorboard_log_path(self) -> str:
-        i = 1
-        log_path = Constants.DEFAULT_TENSORBOARD_LOGS_PATH + "run_" + str(i) + "/"
-        while os.path.exists(log_path):
-            i += 1
+
+    def create_run_log_path(self) -> str:
+        """
+        Creates the current run log directory and the needed subdirectories.
+        :return: string containing the created log directory
+        """
+        if self.run_name is None:
+            i = 1
             log_path = Constants.DEFAULT_TENSORBOARD_LOGS_PATH + "run_" + str(i) + "/"
+            while os.path.exists(log_path):
+                i += 1
+                log_path = Constants.DEFAULT_TENSORBOARD_LOGS_PATH + "run_" + str(i) + "/"
+        else:
+            log_path = Constants.DEFAULT_TENSORBOARD_LOGS_PATH + self.run_name + "/"
 
         os.makedirs(log_path, exist_ok=True)
         os.makedirs(log_path + "tensorboard_export", exist_ok=True)
+        os.makedirs(log_path + "model", exist_ok=True)
+        os.makedirs(log_path + "plots", exist_ok=True)
 
         return log_path
 
@@ -56,30 +78,52 @@ class Runner:
         to maintain every newer feature.
         """
 
-        levels = self.load_levels()
+        self.load_configs()
+
+        # Log used settings
+        self.log_settings()
 
         # Training phase
-        for level in levels:
+        for level in self.levels:
             self.train_level(level)
 
         # Retraining phase
-        self.retraining()
+        if self.configs['retraining_steps'] != 0:
+            self.retraining()
 
         self.log_env_change("End")
 
         # Exporting onnx model
         self.handle_onnx_export()
 
+        # Show tensorboard command to see results
+        print("\nTo see tensorboard logs run the following command:")
+        path = os.path.abspath(self.run_log_path)
+        print("tensorboard --logdir " + path)
+
         # Removing tmp model file
         os.remove(Constants.DEFAULT_TMP_MODEL_FILE)
 
-    def load_levels(self) -> Collection[Level]:
+    def load_configs(self) -> None:
         """
         Checks the level config file and if there aren't any errors loads the levels
         """
-        config_parser = ConfigParser(self.config_path)
-        assert config_parser.validate_curriculum(), "Invalid configuration file"
-        return config_parser.get_levels()
+        config_parser = ConfigParser(self.curriculum_path, self.config_path)
+
+        assert config_parser.validate_curriculum(), "Invalid curriculum configuration file"
+        self.levels = config_parser.get_levels()
+
+        assert config_parser.validate_config(), "Invalid model configuration file"
+        self.configs = config_parser.get_config()
+
+    def log_settings(self) -> None:
+        """
+        Save a file inside the current run directory with the path to curriculum and config files
+        """
+        with open(self.run_log_path + "run_configs.txt", "w") as f:
+            f.write(f"Curriculum settings: {self.curriculum_path}\n")
+            f.write(f"Model settings: {self.config_path}")
+        f.close()
 
     def train_level(self, level: Level) -> None:
         """
@@ -100,22 +144,30 @@ class Runner:
             reset_num_timesteps = False
 
         # Setting up callbacks to stop training
-        mean_reward_callback = EndTrainingOnMeanRewardReachedCallback(monitor_logs_path,
-                                                                      level.mean_reward,
-                                                                      level.episodes_for_mean)
-        early_fail_callback = EndTrainingOnEarlyFailCallback(monitor_logs_path,
-                                                             level.mean_reward,
-                                                             level.episodes_for_mean,
-                                                             level.cycles)
-        callback = CallbackList([mean_reward_callback, early_fail_callback])
+        # mean_reward_callback = EndTrainingOnMeanRewardReachedCallback(monitor_logs_path,
+        #                                                               level.mean_reward,
+        #                                                               level.episodes_for_mean)
+        # early_fail_callback = EndTrainingOnEarlyFailCallback(monitor_logs_path,
+        #                                                      level.mean_reward,
+        #                                                      level.episodes_for_mean,
+        #                                                      level.cycles)
+        # callback = CallbackList([mean_reward_callback, early_fail_callback])
+
+        callback = EndTrainingCombinedCallback(
+            monitor_logs_path,
+            level.mean_reward,
+            level.episodes_for_mean,
+            level.cycles
+        )
 
         self.log_env_change(level.name, level.mean_reward, "train")
 
         # Learn and save the model
-        self.model.learn(total_timesteps=Constants.DEFAULT_TIMESTEPS,
-                         callback=callback,
-                         tb_log_name=Constants.DEFAULT_TENSORBOARD_LOGS_FILE,
-                         reset_num_timesteps=reset_num_timesteps,
+        self.model.learn(
+            total_timesteps=self.configs['max_steps'],
+            callback=callback,
+            tb_log_name=Constants.DEFAULT_TENSORBOARD_LOGS_FILE,
+            reset_num_timesteps=reset_num_timesteps,
         )
         self.model.save(Constants.DEFAULT_TMP_MODEL_FILE)
 
@@ -138,7 +190,7 @@ class Runner:
         if self.start_time is None:
             self.start_time = datetime.datetime.now().timestamp()
 
-        with open(self.tensorboard_log_path + "EnvironmentChanges.txt", "a") as f:
+        with open(self.run_log_path + "EnvironmentChanges.txt", "a") as f:
             current_time = datetime.datetime.now()
 
             f.write(
@@ -162,9 +214,7 @@ class Runner:
 
         # Setting up environment
         monitor_logs_path = Constants.DEFAULT_LOGS_PATH + f"{name}_logs/"
-        env = StableBaselinesGodotEnv(
-            show_window=Constants.SHOW_WINDOW,
-        )
+        env = StableBaselinesGodotEnv()
         print(f"Running level: {name}")
 
         return VecMonitor(env, filename=monitor_logs_path + name), monitor_logs_path
@@ -178,14 +228,8 @@ class Runner:
         self.model = PPO(
             "MultiInputPolicy",
             vec_env,
-            verbose=0,
-            learning_rate=0.0003,
-            device='cuda',
-            ent_coef=0.0001,
-            tensorboard_log=self.tensorboard_log_path,
-            n_steps=32,
-            stats_window_size=1,
-            batch_size=320,
+            tensorboard_log=self.run_log_path,
+            **self.configs['hyperparameters'],
         )
 
     def load_model(self, vec_env: VecMonitor) -> None:
@@ -197,10 +241,7 @@ class Runner:
         self.model = PPO.load(
             Constants.DEFAULT_TMP_MODEL_FILE,
             vec_env,
-            tensorboard_log=self.tensorboard_log_path,
-            device='cuda',
-            stats_window_size=1,
-            batch_size=320,
+            tensorboard_log=self.run_log_path,
         )
 
     def retraining(self) -> None:
@@ -219,7 +260,7 @@ class Runner:
 
         # Learn and save the model
         self.model.learn(
-            total_timesteps=Constants.DEFAULT_RETRAINING_TIMESTEPS,
+            total_timesteps=self.configs['retraining_steps'],
             tb_log_name=Constants.DEFAULT_TENSORBOARD_LOGS_FILE,
             reset_num_timesteps=False
         )
@@ -235,14 +276,7 @@ class Runner:
         """
         Method used to export the model to ONNX format
         """
-        os.makedirs(Path(Constants.DEFAULT_ONNX_EXPORT_PATH).parent, exist_ok=True)
+        path = self.run_log_path + Constants.DEFAULT_ONNX_EXPORT_PATH
 
-        save_path = Constants.DEFAULT_ONNX_EXPORT_PATH
-        name, extension = os.path.splitext(Constants.DEFAULT_ONNX_EXPORT_PATH)
-        i = 1
-        while os.path.exists(save_path):
-            save_path = name + "_" + str(i) + extension
-            i += 1
-
-        print("Exporting onnx to: " + os.path.abspath(save_path))
-        export_ppo_model_as_onnx(self.model, save_path)
+        print("Exporting onnx to: " + os.path.abspath(path))
+        export_ppo_model_as_onnx(self.model, path)

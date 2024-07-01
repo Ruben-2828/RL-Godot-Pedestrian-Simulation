@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://environments/scripts/level.gd" id="1_ve5yw"]
 [ext_resource type="Script" path="res://environments/scripts/randomizer/final_target.gd" id="3_hcajg"]
 [ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target_3x3.tscn" id="4_3mtdm"]
-[ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/walls/wall22.tscn" id="8_1k4fn"]
+[ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/walls/wall.tscn" id="8_1k4fn"]
 [ext_resource type="Script" path="res://environments/scripts/pedestrian_controller.gd" id="8_6nd80"]
 [ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="9_76pp3"]
 
@@ -18,6 +18,7 @@ size = Vector3(3, 0, 3)
 [node name="StartCorridor" type="Node3D"]
 script = ExtResource("1_ve5yw")
 max_steps = 100
+agent_rotate = true
 
 [node name="Room" parent="." instance=ExtResource("1_g7vly")]
 

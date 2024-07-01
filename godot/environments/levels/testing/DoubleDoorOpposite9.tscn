@@ -1,24 +1,21 @@
-[gd_scene load_steps=11 format=3 uid="uid://bnaf50s4kl4yj"]
+[gd_scene load_steps=11 format=3 uid="uid://dt1jwxm6wx787"]
 
 [ext_resource type="Script" path="res://environments/scripts/level.gd" id="1_ye1ll"]
 [ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/other/room20.tscn" id="2_vithl"]
 [ext_resource type="PackedScene" uid="uid://boj0pvmutwu86" path="res://objects/walls/wall4.tscn" id="3_rxa7m"]
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="4_xn3x4"]
-[ext_resource type="PackedScene" uid="uid://cxphmcstta3bi" path="res://objects/targets/final_target_20x2.tscn" id="5_1wgdy"]
+[ext_resource type="PackedScene" uid="uid://cxphmcstta3bi" path="res://objects/targets/large_final_target.tscn" id="5_1wgdy"]
 [ext_resource type="PackedScene" uid="uid://wnqy4tem8s1m" path="res://objects/targets/target_2x1.tscn" id="6_jijf5"]
 [ext_resource type="PackedScene" uid="uid://cnxrsmiy64sai" path="res://objects/walls/wall15.tscn" id="7_o2fvy"]
 [ext_resource type="PackedScene" uid="uid://be4gfujovd4db" path="res://objects/targets/target_7x0.3.tscn" id="8_2ch8a"]
 [ext_resource type="Script" path="res://environments/scripts/pedestrian_controller.gd" id="9_146dq"]
 [ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="10_1a2go"]
 
-[node name="DoubleDoorOpposite" type="Node3D"]
+[node name="DoubleDoorOpposite9" type="Node3D"]
 script = ExtResource("1_ye1ll")
 max_steps = 150
 
 [node name="Room" parent="." instance=ExtResource("2_vithl")]
-
-[node name="TinyInternalWall" parent="Room" instance=ExtResource("3_rxa7m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 3.5)
 
 [node name="Reward" parent="." instance=ExtResource("4_xn3x4")]
 visible = false
@@ -34,6 +31,9 @@ collision_layer = 32
 collision_mask = 40
 
 [node name="Passage" type="Node3D" parent="."]
+
+[node name="TinyInternalWall" parent="Passage" instance=ExtResource("3_rxa7m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 3.5)
 
 [node name="Target" parent="Passage" instance=ExtResource("6_jijf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 3.5)
