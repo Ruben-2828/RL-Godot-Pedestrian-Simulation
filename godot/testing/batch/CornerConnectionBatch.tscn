@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dw52dagvl3uvs"]
 
-[ext_resource type="Script" path="res://testing/batch/level_testing_batch.gd" id="1_7ield"]
+[ext_resource type="Script" path="res://testing/level_testing_batch.gd" id="1_7ield"]
 [ext_resource type="Script" path="res://utils/Sync.gd" id="1_cs35w"]
 [ext_resource type="PackedScene" uid="uid://2o2kfd7vwhub" path="res://environments/levels/testing/CornerConnection.tscn" id="2_bbfdq"]
 
@@ -12,7 +12,7 @@ sky_material = SubResource("ProceduralSkyMaterial_mal34")
 
 [sub_resource type="Environment" id="Environment_ing8k"]
 background_mode = 1
-background_color = Color(0.270171, 0.229928, 0.188594, 1)
+background_color = Color(0.270588, 0.231373, 0.188235, 1)
 sky = SubResource("Sky_h7tqf")
 
 [node name="CornerConnectionBatch" type="Node3D"]
@@ -30,6 +30,6 @@ environment = SubResource("Environment_ing8k")
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 5.75)
 projection = 1
-size = 22.0
+size = 31.0

@@ -1,0 +1,2 @@
+Curriculum settings: scripts/configs/no_narrow_door_double.yaml
+Model settings: scripts/configs/best_no_retraining.yaml

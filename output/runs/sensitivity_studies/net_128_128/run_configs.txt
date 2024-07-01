@@ -1,0 +1,2 @@
+Curriculum settings: scripts/configs/curriculum_config.yaml
+Model settings: scripts/configs/test_1_config.yaml

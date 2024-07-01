@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b34tio68xev14"]
 
-[ext_resource type="Script" path="res://testing/batch/level_testing_batch.gd" id="1_ysx67"]
+[ext_resource type="Script" path="res://testing/level_testing_batch.gd" id="1_ysx67"]
 [ext_resource type="PackedScene" uid="uid://cu4nn0lyy63es" path="res://environments/levels/testing/CenterConnection.tscn" id="2_ycf5s"]
 [ext_resource type="Script" path="res://utils/Sync.gd" id="3_4256a"]
 
@@ -12,7 +12,7 @@ sky_material = SubResource("ProceduralSkyMaterial_isrig")
 
 [sub_resource type="Environment" id="Environment_m1hx8"]
 background_mode = 1
-background_color = Color(0.270171, 0.229928, 0.188594, 1)
+background_color = Color(1, 1, 1, 1)
 sky = SubResource("Sky_gh8w1")
 
 [node name="CenterConnectionBatch" type="Node3D"]
@@ -30,6 +30,6 @@ environment = SubResource("Environment_m1hx8")
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 5.25)
 projection = 1
 size = 22.0
