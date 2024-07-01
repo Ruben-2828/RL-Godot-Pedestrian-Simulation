@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="3_2oilk"]
 [ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target_3x3.tscn" id="5_xs4bl"]
 [ext_resource type="Script" path="res://environments/scripts/pedestrian_controller.gd" id="6_1nnw0"]
-[ext_resource type="PackedScene" uid="uid://dra43lql26dcf" path="res://objects/pedestrian/Pedestrian2.tscn" id="7_1i7nj"]
+[ext_resource type="PackedScene" uid="uid://dra43lql26dcf" path="res://objects/pedestrian/Pedestrian.tscn" id="7_1i7nj"]
 [ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="7_078n7"]
 
 [node name="Corridor3vs3" type="Node3D"]
