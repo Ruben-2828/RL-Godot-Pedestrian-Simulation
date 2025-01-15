@@ -21,7 +21,7 @@
 
 ## Synopsis 
 
-The system was developed by Tenderini Ruben and Falbo Andrea as part of ours final Bachelor's Degree project, under the supervision of Prof. Vizzari Giuseppe and Prof. Briola Daniela
+The system was developed by Tenderini Ruben and Falbo Andrea as part of our final Bachelor's Degree project, under the supervision of Prof. Vizzari Giuseppe and Prof. Briola Daniela
 
 ## Objective
 
