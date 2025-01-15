@@ -11,12 +11,17 @@
 
 ## Table of Contents
 
-### 1. [Objective](#objective)
-### 2. [Tools](#tools)
-### 3. [Documentation](#documentation)
-### 4. [Setup](#setup)
-### 5. [Codebase](#codebase)
-### 6  [Collaborate](#collaborate)
+### 1. [Synopsis](#synopsis)
+### 2. [Objective](#objective)
+### 3. [Tools](#tools)
+### 4. [Documentation](#documentation)
+### 5. [Setup](#setup)
+### 6. [Codebase](#codebase)
+### 7  [Collaborate](#collaborate)
+
+## Synopsis 
+
+The system was developed by Tenderini Ruben and Falbo Andrea as part of ours final Bachelor's Degree project, under the supervision of Prof. Vizzari Giuseppe and Prof. Briola Daniela
 
 ## Objective
 
@@ -177,7 +182,8 @@ RLGPS
 ├── scripts
 │   ├── configs
 │   ├── models
-└── └── utils
+|   └── utils
+└── thesis
 
 ```
 * **docs**: contains project documentation
@@ -209,6 +215,7 @@ RLGPS
   * **configs**: contains YAML configuration file for scripts and environments
   * **models**: contains the python models used by the tool
   * **utils**: contains utility python scripts that support various functionalities
+* **thesis**: contains the thesis document related to the project.
 
 ## Collaborate
 
