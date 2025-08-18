@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://pqrxh1cywd5l"]
+
+[ext_resource type="Script" path="res://environments/scripts/level.gd" id="1_i8lca"]
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/other/room20.tscn" id="2_qerpy"]
+[ext_resource type="Script" path="res://environments/scripts/pedestrian_controller.gd" id="3_y2bsd"]
+[ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="4_5g3fr"]
+[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target_3x3.tscn" id="5_5davn"]
+[ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="6_7hgiu"]
+
+[node name="StartEZGroup" type="Node3D"]
+script = ExtResource("1_i8lca")
+max_steps = 20
+
+[node name="Room" parent="." instance=ExtResource("2_qerpy")]
+
+[node name="PedestrianController" type="Node3D" parent="."]
+script = ExtResource("3_y2bsd")
+
+[node name="Pedestrian" parent="PedestrianController" instance=ExtResource("4_5g3fr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.5, 0, 0.5)
+collision_layer = 6
+collision_mask = 19
+
+[node name="Pedestrian2" parent="PedestrianController" instance=ExtResource("4_5g3fr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.5, 0, 0.5)
+collision_layer = 6
+collision_mask = 19
+
+[node name="Pedestrian3" parent="PedestrianController" instance=ExtResource("4_5g3fr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.5, 0, -0.5)
+collision_layer = 6
+collision_mask = 19
+
+[node name="Pedestrian4" parent="PedestrianController" instance=ExtResource("4_5g3fr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.5, 0, -0.5)
+collision_layer = 6
+collision_mask = 19
+
+[node name="FinalTarget" parent="." instance=ExtResource("5_5davn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+collision_layer = 48
+collision_mask = 60
+
+[node name="Reward" parent="." instance=ExtResource("6_7hgiu")]

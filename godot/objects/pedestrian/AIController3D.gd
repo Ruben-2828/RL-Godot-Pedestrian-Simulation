@@ -40,13 +40,17 @@ func get_obs() -> Dictionary:
 	var obs := []
 	
 	if _player.disable == true:
-		for i in range(185):
+		# Fill with zeros for disabled pedestrians
+		for i in range(251):
 			obs.append(0)
 	else:	
 		var raycast_obs = _player.raycast_sensor.get_observation()
-		var speed_norm = (_player.speed - _player.speed_min) / (_player.speed_max - _player.speed_min) if _player.speed_max != 0 else 0
+		var group_obs = _player.get_group_observations()
 		
-		obs.append(speed_norm)
+		# Add group observations (8 observations: speed, group_close, 6 coordinates)
+		obs.append_array(group_obs)
+		
+		# Add raycast observations (243 observations: 135 walls/targets + 108 agents)
 		obs.append_array(raycast_obs[0])
 		obs.append_array(raycast_obs[1])
 	

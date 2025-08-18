@@ -34,9 +34,17 @@ func spawn_level_managers() -> void:
 
 ## Initialize the sample file	
 func init_sample_file():
-	pedpy_log_file.store_line("# framerate: %s fps" % 
-		(Constants.PHYSICS_TICKS_PER_SECONDS / Constants.TICKS_BETWEEN_LOG))
-	pedpy_log_file.store_line("# id frame x/m y/m z/m")
+	if not pedpy_log_file:
+		pedpy_log_file = FileAccess.open(path + name + ".txt", FileAccess.WRITE)
+	pedpy_log_file.store_line("# framerate: %s fps" % (Constants.PHYSICS_TICKS_PER_SECONDS / Constants.TICKS_BETWEEN_LOG))
+	pedpy_log_file.store_line("# id frame x/m y/m z/m group_id")
+	
+## Save the group id of the pedestrian
+func log_pedestrian_data(pedestrian, frame, x, y, z):
+	var group_id = 0
+	if pedestrian.has_method("get_my_group_id"):
+		group_id = pedestrian.get_my_group_id()
+	pedpy_log_file.store_line("%s %s %s %s %s %s" % [pedestrian.name, frame, x, y, z, group_id])
 
 ## Episode counter
 func _on_notify_end_episode():

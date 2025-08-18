@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://ddpedmqhtw7or"]
+
+[ext_resource type="Script" path="res://environments/scripts/level.gd" id="1_j1rqb"]
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/other/room20.tscn" id="2_r8dw1"]
+[ext_resource type="Script" path="res://environments/scripts/pedestrian_controller.gd" id="3_5e6k4"]
+[ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="4_pfseb"]
+[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target_3x3.tscn" id="5_3okac"]
+[ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="6_cfkwe"]
+[ext_resource type="PackedScene" uid="uid://be4gfujovd4db" path="res://objects/targets/target_7x0.3.tscn" id="7_lw2b3"]
+
+[node name="StartEZGroup1" type="Node3D"]
+script = ExtResource("1_j1rqb")
+max_steps = 25
+
+[node name="Room" parent="." instance=ExtResource("2_r8dw1")]
+
+[node name="PedestrianController" type="Node3D" parent="."]
+script = ExtResource("3_5e6k4")
+
+[node name="Pedestrian" parent="PedestrianController" instance=ExtResource("4_pfseb")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.5, 0, 0.5)
+collision_layer = 6
+collision_mask = 19
+
+[node name="Pedestrian2" parent="PedestrianController" instance=ExtResource("4_pfseb")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.5, 0, 0.5)
+collision_layer = 6
+collision_mask = 19
+
+[node name="Pedestrian3" parent="PedestrianController" instance=ExtResource("4_pfseb")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.5, 0, -0.5)
+collision_layer = 6
+collision_mask = 19
+
+[node name="Pedestrian4" parent="PedestrianController" instance=ExtResource("4_pfseb")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.5, 0, -0.5)
+collision_layer = 6
+collision_mask = 19
+
+[node name="FinalTarget" parent="." instance=ExtResource("5_3okac")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+collision_layer = 48
+collision_mask = 60
+
+[node name="Reward" parent="." instance=ExtResource("6_cfkwe")]
+
+[node name="Target" parent="." instance=ExtResource("7_lw2b3")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+collision_layer = 16
+collision_mask = 20

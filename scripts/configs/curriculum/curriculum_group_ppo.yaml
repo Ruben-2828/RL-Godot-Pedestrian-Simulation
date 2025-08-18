@@ -1,0 +1,58 @@
+Curriculum:
+  StartEZGroup:
+    mean_reward: -10.0
+    episode_mean: 108
+    cycles: 10
+  StartEZGroup1:
+    mean_reward: -10.0
+    episode_mean: 36
+    cycles: 10
+  StartEZGroup2:
+    mean_reward: -10.0
+    episode_mean: 36
+    cycles: 10
+  StartGroup:
+    mean_reward: -10.0
+    episode_mean: 36
+    cycles: 10
+  EasyDoorGroup:
+    mean_reward: -40.0
+    episode_mean: 36
+    cycles: 10
+  FixedUnidirectionalDoorGroup:
+    mean_reward: -25.0
+    episode_mean: 36
+    cycles: 10
+  UnidirectionalDoorGroup:
+    mean_reward: -25.0
+    episode_mean: 36
+    cycles: 10
+  EasyCorridorGroup:
+    mean_reward: -30.0
+    episode_mean: 36
+    cycles: 10
+  T-JunctionGroup:
+    mean_reward: -40.0
+    episode_mean: 36
+    cycles: 10
+  CorridorGroup:
+    mean_reward: -110.0
+    episode_mean: 36
+    cycles: 10
+  IntersectionGroup:
+    mean_reward: -20.0
+    episode_mean: 36
+    cycles: 10
+  FixedBidirectionalDoorGroup:
+    mean_reward: -20.0
+    episode_mean: 36
+    cycles: 10
+  CrowdedBidirectionalDoorGroup:
+    mean_reward: -20.0
+    episode_mean: 36
+    cycles: 10
+  FixedCrowdedBidirectionalDoorGroup:
+    mean_reward: -20.0
+    episode_mean: 36
+    cycles: 10
+

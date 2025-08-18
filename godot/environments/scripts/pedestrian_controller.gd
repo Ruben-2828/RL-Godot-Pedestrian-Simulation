@@ -85,11 +85,13 @@ func check_end_episode():
 		return
 	
 	var final_target_reached = all_pedestrians_reached_target()
-	pedestrians[0].ai_controller_3d.reward += Constants.FINAL_TARGET_REW if final_target_reached else Constants.END_OF_TIMESTEPS_REW
+	if not final_target_reached:
+		pedestrians[0].ai_controller_3d.reward += Constants.END_OF_TIMESTEPS_GROUP_REW
 	
 	reset_pedestrians()
 	tot_reward = 0
 	level_manager._notify_end_episode()
+
 	
 ## Check if all pedestrians are done
 func all_pedestrians_done() -> bool:

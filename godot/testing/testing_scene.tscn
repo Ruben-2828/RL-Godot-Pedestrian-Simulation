@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://buytp40i8mx1h"]
+[gd_scene load_steps=6 format=3 uid="uid://buytp40i8mx1h"]
 
 [ext_resource type="Script" path="res://testing/testing_scene.gd" id="1_phwvg"]
-[ext_resource type="PackedScene" uid="uid://c83kv17oqe2k6" path="res://testing/batch/BlindCurveBatch.tscn" id="2_f8sq1"]
+[ext_resource type="PackedScene" uid="uid://c2qjcfw17ti8j" path="res://testing/batch/group/OmegaGroupBatch.tscn" id="2_q12qg"]
+[ext_resource type="PackedScene" uid="uid://cb27x6fe2m85d" path="res://testing/batch/base/DoorChoiceBatch.tscn" id="3_ykp2u"]
+[ext_resource type="PackedScene" uid="uid://0tvn18oj6l1p" path="res://testing/batch/group/AnchorGroupBatch.tscn" id="4_8x7w0"]
+[ext_resource type="PackedScene" uid="uid://c41gog0ms3cbp" path="res://testing/batch/group/HardIntersectionGroupBatch.tscn" id="5_kitum"]
 
 [node name="TestingScene" type="Node3D"]
 script = ExtResource("1_phwvg")
-onnx_model_path = "res://../output/runs/no_retraining/model/model.onnx"
-levels_path = Array[PackedScene]([ExtResource("2_f8sq1")])
+onnx_model_path = "res://../example_output_run/run_1/model/model.onnx"
+levels_path = Array[PackedScene]([ExtResource("4_8x7w0"), ExtResource("3_ykp2u"), ExtResource("5_kitum"), ExtResource("2_q12qg")])

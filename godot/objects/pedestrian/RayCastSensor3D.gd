@@ -128,6 +128,7 @@ func _spawn_nodes():
 			_create_ray(-angle, -i, false)
 		
 		i += 1
+		# Modified angle distribution for group simulation (δ = 1 instead of 1.5)
 		angle = angle + rays_angle_delta * i
 		
 	# Need to create rays at max_vision_degrees angle too
@@ -205,15 +206,17 @@ func calculate_walls_targets() -> Array:
 		var norm_distance = _get_raycast_distance(ray)
 		hit_objects.append(norm_distance)
 		
-		# hit object type is a one hot encoding
-		# 1,0,0: wall; 0,1,0: new target; 0,0,1: already visited target
-		var hit_object_type := [0, 0, 0]
+		# hit object type is a one hot encoding (extended to 4 values for group simulation)
+		# 1,0,0,0: wall; 0,1,0,0: final target; 0,0,1,0: new target; 0,0,0,1: already visited target
+		var hit_object_type := [0, 0, 0, 0]
 		if ray.get_collider():
 			if ray.get_collider().is_in_group(Constants.TARGETS_GROUP):
-				if ray.get_collider() in pedestrian.reached_targets:
-					hit_object_type[2] = 1
-				else:
+				if ray.get_collider().name.begins_with("FinalTarget"):
 					hit_object_type[1] = 1
+				elif ray.get_collider() in pedestrian.reached_targets:
+					hit_object_type[3] = 1
+				else:
+					hit_object_type[2] = 1
 				
 			elif ray.get_collider().is_in_group(Constants.WALLS_GROUP):
 				hit_object_type[0] = 1
@@ -234,12 +237,15 @@ func calculate_agents_walls() -> Array:
 		
 		var collider = ray.get_collider()
 		if collider:
+			# Only detect agents that are not in the same group
 			if collider.is_in_group(Constants.PEDESTRIAN_GROUP):
 				type = 1
 				var diffAng = clamp0360(
 					clamp0360(rad_to_deg(collider.rotation.y)) - clamp0360(rad_to_deg(rotation.y))
 					)
-				direction = clamp((diffAng / 180) - 1, -1, 1)
+				# Improved direction calculation for group simulation
+				# direction = clamp((diffAng / 180) - 1, -1, 1)
+				direction = (diffAng / 180.0) - 1.0
 				speed = collider.get_speed_norm()
 		
 		hit_objects.append(norm_distance)	
@@ -258,11 +264,12 @@ func clamp0360(eulerAngles: int) -> float:
 ## Return distance between the start of the ray and the hit object
 func _get_raycast_distance(ray: RayCast3D) -> float:
 	if !ray.is_colliding():
-		return 0.0
+		return 1.0  # Return max distance if no collision
 
 	var origin = ray.global_transform.origin
 	var collision_point = ray.get_collision_point()
 	var distance = origin.distance_to(collision_point)
-	if distance > Constants.RAY_LENGTH_OBS:
-		return 1
-	return  distance / Constants.RAY_LENGTH_OBS
+	# Increased max distance for group simulation (30m instead of 10m)
+	if distance > Constants.RAY_LENGTH_OBS_GROUP:
+		return 1.0
+	return distance / Constants.RAY_LENGTH_OBS_GROUP

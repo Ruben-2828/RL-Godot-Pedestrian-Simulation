@@ -39,6 +39,7 @@ class EndTrainingOnMeanRewardReachedCallback(BaseCallback):
             mean_reward = trimmed_mean(
                 episodes['r'].iloc[self.episodes_for_mean * (self.cycle - 1) : self.episodes_for_mean * self.cycle]
             )
+            print(f"Final mean reward for cycle {self.cycle}: {mean_reward}")
             self.cycle += 1
 
             if mean_reward > self.mean_reward:
@@ -80,6 +81,7 @@ class EndTrainingOnEarlyFailCallback(BaseCallback):
             mean_reward = trimmed_mean(
                 episodes['r'].iloc[self.episodes_for_mean * (self.cycle - 1):self.episodes_for_mean * self.cycle]
             )
+            print(f"Final mean reward for cycle {self.cycle}: {mean_reward}")
             self.cycle += 1
 
             if mean_reward < self.min_mean_reward:
@@ -129,6 +131,7 @@ class EndTrainingCombinedCallback(BaseCallback):
             mean_reward = trimmed_mean(
                 episodes['r'].iloc[self.episodes_for_mean * (self.cycle - 1):self.episodes_for_mean * self.cycle]
             )
+            print(f"Final mean reward for cycle {self.cycle}: {mean_reward}")
             self.cycle += 1
 
             if mean_reward > self.min_mean_reward:

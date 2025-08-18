@@ -1,18 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://buytp40i8mx1h"]
+[gd_scene load_steps=15 format=3 uid="uid://buytp40i8mx1h"]
 
 [ext_resource type="Script" path="res://training/training_scene.gd" id="1_2y50e"]
-[ext_resource type="PackedScene" uid="uid://b5i18lyv0wpap" path="res://training/batch/StartEzBatch.tscn" id="2_lmwn7"]
-[ext_resource type="PackedScene" uid="uid://b1r8uag8rqaea" path="res://training/batch/StartBatch.tscn" id="3_rox21"]
-[ext_resource type="PackedScene" uid="uid://c3bmsctq8jt0i" path="res://training/batch/ObserveBatch.tscn" id="4_bfwbb"]
-[ext_resource type="PackedScene" uid="uid://bqix8f1yfntnn" path="res://training/batch/StartCorridorBatch.tscn" id="5_gecgv"]
-[ext_resource type="PackedScene" uid="uid://degmj8pdveieh" path="res://training/batch/TurnsBatch.tscn" id="6_16lx6"]
-[ext_resource type="PackedScene" uid="uid://c63gqblvqprnx" path="res://training/batch/TurnsObstaclesBatch.tscn" id="7_xsm37"]
-[ext_resource type="PackedScene" uid="uid://da3pu3dw0hppl" path="res://training/batch/NarrowDoorBatch.tscn" id="8_sc2it"]
-[ext_resource type="PackedScene" uid="uid://bc4au0b4yf1ae" path="res://training/batch/Corridor3vs3Batch.tscn" id="9_os6rk"]
-[ext_resource type="PackedScene" uid="uid://3sts7kaayjvt" path="res://training/batch/T-JunctionBatch.tscn" id="10_1hbsg"]
-[ext_resource type="PackedScene" uid="uid://bv382p2xxoi1u" path="res://training/batch/Intersection4NarrowBatch.tscn" id="10_u1al5"]
-[ext_resource type="PackedScene" uid="uid://w4rdhfsfb7x1" path="res://training/batch/NarrowDoorDoubleBatch.tscn" id="12_yai6y"]
+[ext_resource type="PackedScene" uid="uid://dmfv8udkiiqlm" path="res://training/batch/group/StartEzGroupBatch.tscn" id="2_scvpy"]
+[ext_resource type="PackedScene" uid="uid://bvr7lnrt4k5m3" path="res://training/batch/group/StartEzGroup1Batch.tscn" id="3_31yyi"]
+[ext_resource type="PackedScene" uid="uid://bitqn16cnarpq" path="res://training/batch/group/StartEzGroup2Batch.tscn" id="4_yuj7e"]
+[ext_resource type="PackedScene" uid="uid://5fqhj1x6ab1k" path="res://training/batch/group/StartGroupBatch.tscn" id="5_36i7m"]
+[ext_resource type="PackedScene" uid="uid://ddlvdx613kspf" path="res://training/batch/group/EasyDoorGroupBatch.tscn" id="6_kb1iw"]
+[ext_resource type="PackedScene" uid="uid://b0c3jnk2tctyx" path="res://training/batch/group/FixedUnidirectionalDoorGroupBatch.tscn" id="7_tvj83"]
+[ext_resource type="PackedScene" uid="uid://cig7ktg41kemv" path="res://training/batch/group/UnidirectionalDoorGroupBatch.tscn" id="8_8hrn6"]
+[ext_resource type="PackedScene" uid="uid://bsjps4mffnmb3" path="res://training/batch/group/EasyCorridorGroupBatch.tscn" id="9_uljwi"]
+[ext_resource type="PackedScene" uid="uid://c4yqjacdf63v4" path="res://training/batch/group/T-JunctionGroupBatch.tscn" id="10_6n3hx"]
+[ext_resource type="PackedScene" uid="uid://cgjbv4civxgqy" path="res://training/batch/group/CorridorGroupBatch.tscn" id="11_csy1q"]
+[ext_resource type="PackedScene" uid="uid://6k4qib433v40" path="res://training/batch/group/IntersectionGroupBatch.tscn" id="12_1k6fu"]
+[ext_resource type="PackedScene" uid="uid://b3e6uv4ld4rue" path="res://training/batch/group/FixedBidirectionalDoorGroupBatch.tscn" id="13_de0x3"]
+[ext_resource type="PackedScene" uid="uid://bsu141skaa8r3" path="res://training/batch/group/CrowdedBidirectionalDoorGroupBatch.tscn" id="14_xqqpc"]
 
 [node name="TrainingScene" type="Node3D"]
 script = ExtResource("1_2y50e")
-levels_path = Array[PackedScene]([ExtResource("2_lmwn7"), ExtResource("3_rox21"), ExtResource("4_bfwbb"), ExtResource("5_gecgv"), ExtResource("6_16lx6"), ExtResource("7_xsm37"), ExtResource("8_sc2it"), ExtResource("9_os6rk"), ExtResource("10_1hbsg"), ExtResource("10_u1al5"), ExtResource("12_yai6y")])
+levels_path = Array[PackedScene]([ExtResource("2_scvpy"), ExtResource("3_31yyi"), ExtResource("4_yuj7e"), ExtResource("5_36i7m"), ExtResource("6_kb1iw"), ExtResource("7_tvj83"), ExtResource("8_8hrn6"), ExtResource("9_uljwi"), ExtResource("10_6n3hx"), ExtResource("11_csy1q"), ExtResource("12_1k6fu"), ExtResource("13_de0x3"), ExtResource("14_xqqpc")])

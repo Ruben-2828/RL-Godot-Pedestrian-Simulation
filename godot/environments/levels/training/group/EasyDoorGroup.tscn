@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://fol4oh0l7fmh"]
+
+[ext_resource type="Script" path="res://environments/scripts/level.gd" id="1_52gj8"]
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/other/room20.tscn" id="2_1trds"]
+[ext_resource type="Script" path="res://environments/scripts/randomizer/passage_randomizer.gd" id="3_xdyy4"]
+[ext_resource type="PackedScene" uid="uid://cgvrkx5yls8k1" path="res://objects/walls/wall18.tscn" id="4_o2vy2"]
+[ext_resource type="PackedScene" uid="uid://wnqy4tem8s1m" path="res://objects/targets/target_2x1.tscn" id="5_nt3rj"]
+[ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="6_hxfpd"]
+[ext_resource type="Script" path="res://environments/scripts/pedestrian_controller.gd" id="8_rlibk"]
+[ext_resource type="Script" path="res://environments/scripts/randomizer/final_target_randomizer.gd" id="9_3oqqu"]
+[ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="9_blyma"]
+[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target_3x3.tscn" id="10_a5ct7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ugjbo"]
+size = Vector3(16, 1, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_12f7b"]
+size = Vector3(20, 0, 3)
+
+[node name="EasyDoorGroup" type="Node3D"]
+script = ExtResource("1_52gj8")
+max_steps = 70
+
+[node name="Room" parent="." instance=ExtResource("2_1trds")]
+
+[node name="RandomPassage" type="Node3D" parent="."]
+script = ExtResource("3_xdyy4")
+
+[node name="Area" type="Area3D" parent="RandomPassage"]
+
+[node name="CollisionShapePassage" type="CollisionShape3D" parent="RandomPassage/Area"]
+shape = SubResource("BoxShape3D_ugjbo")
+
+[node name="Passage" type="Node3D" parent="RandomPassage"]
+
+[node name="InternalWall" parent="RandomPassage/Passage" instance=ExtResource("4_o2vy2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2057, 0, 0)
+
+[node name="InternalWall2" parent="RandomPassage/Passage" instance=ExtResource("4_o2vy2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2056, 0, 0)
+
+[node name="Target" parent="RandomPassage/Passage" instance=ExtResource("5_nt3rj")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+collision_layer = 16
+collision_mask = 20
+
+[node name="Reward" parent="." instance=ExtResource("6_hxfpd")]
+
+[node name="PedestrianController" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+script = ExtResource("8_rlibk")
+
+[node name="Pedestrian" parent="PedestrianController" instance=ExtResource("9_blyma")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.5, 0, 2.5)
+collision_layer = 6
+collision_mask = 19
+
+[node name="Pedestrian2" parent="PedestrianController" instance=ExtResource("9_blyma")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.5, 0, 1.5)
+collision_layer = 6
+collision_mask = 19
+
+[node name="Pedestrian3" parent="PedestrianController" instance=ExtResource("9_blyma")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.5, 0, 1.5)
+collision_layer = 6
+collision_mask = 19
+
+[node name="Pedestrian4" parent="PedestrianController" instance=ExtResource("9_blyma")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.5, 0, 2.5)
+collision_layer = 6
+collision_mask = 19
+
+[node name="RandomTarget" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.5)
+script = ExtResource("9_3oqqu")
+
+[node name="FinalTarget" parent="RandomTarget" instance=ExtResource("10_a5ct7")]
+collision_layer = 16
+collision_mask = 20
+
+[node name="Area" type="Area3D" parent="RandomTarget"]
+collision_layer = 2
+
+[node name="CollisionShapeTarget" type="CollisionShape3D" parent="RandomTarget/Area"]
+shape = SubResource("BoxShape3D_12f7b")
+
+[connection signal="body_entered" from="RandomTarget/FinalTarget" to="RandomTarget" method="_on_final_target_body_entered"]
