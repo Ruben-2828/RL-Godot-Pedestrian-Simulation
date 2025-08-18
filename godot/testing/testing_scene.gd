@@ -1,3 +1,28 @@
-extends TrainingScene
+extends Node3D
 
+## Path to the onnx model to be tested
 @export var onnx_model_path := ""
+
+## List of levels used to test the model
+@export var levels_path: Array[PackedScene]
+
+var current_level
+var current_level_idx: int = 0
+
+
+func _ready():
+	set_current_level()
+
+## Set current level for every level manager
+func set_current_level() -> void:
+	
+	if current_level != null:
+		current_level.find_child("Sync").set_physics_process(false)
+		current_level.queue_free()
+	
+	if current_level_idx < levels_path.size():
+		current_level = levels_path[current_level_idx].instantiate()
+		add_child(current_level)
+		current_level_idx += 1
+	else:
+		get_tree().quit()

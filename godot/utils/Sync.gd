@@ -432,7 +432,7 @@ func handle_message() -> bool:
 	if message["type"] == "close":
 		print("received close message, closing game")
 		#get_tree().quit()
-		parent.finish()
+		#parent.finish()
 		get_tree().set_pause(false)
 		return true
 
@@ -451,10 +451,16 @@ func handle_message() -> bool:
 #        }
 #        _send_dict_as_json_message(reply)
 		return true
-
+	
+	# Custom variation to the original code
+	# it is needed to switch current level from python
 	if message["type"] == "call":
 		var method = message["method"]
-		var returns = _call_method_on_agents(method)
+		var returns
+		if method == "next_level":
+			returns = _next_level()
+		else:
+			returns = _call_method_on_agents(method)
 		var reply = {"type": "call", "returns": returns}
 		print("calling method from Python")
 		_send_dict_as_json_message(reply)
@@ -469,7 +475,10 @@ func handle_message() -> bool:
 
 	print("message was not handled")
 	return false
-
+	
+func _next_level():
+	parent.set_current_level()
+	
 
 func _call_method_on_agents(method):
 	var returns = []

@@ -2,8 +2,8 @@ from scripts.utils.Runner import Runner
 
 # Instantiating runner and starting training
 runner = Runner(
-    config_path="scripts/configs/sensitivity_studies/net_256_128_64.yaml",
+    config_path="scripts/configs/base_config.yaml",
     curriculum_path="scripts/configs/curriculum/curriculum_config.yaml",
-    run_name="sensitivity_studies/net_256_128_64",
+    run_name="test_archi/test_2",
 )
 runner.run()

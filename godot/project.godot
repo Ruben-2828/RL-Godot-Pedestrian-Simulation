@@ -21,7 +21,8 @@ Constants="*res://utils/constants.gd"
 
 [display]
 
-window/size/viewport_width=648
+window/size/viewport_width=800
+window/size/viewport_height=800
 
 [dotnet]
 
@@ -33,9 +34,21 @@ movie_writer/mjpeg_quality=0.9
 movie_writer/movie_file="C:/Users/Utente/Desktop/RL-Godot-Pedestrian-Simulation/godot/rec/corridor_3vs3.avi"
 movie_writer/fps=30
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_rl_agents/plugin.cfg")
+
 [filesystem]
 
 import/fbx/enabled=false
+
+[input]
+
+next={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"echo":false,"script":null)
+]
+}
 
 [layer_names]
 
