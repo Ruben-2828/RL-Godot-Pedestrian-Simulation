@@ -209,6 +209,8 @@ class HandleTrainingCombinedCallback(BaseCallback):
             )
             self.cycle += 1
 
+            print("Current trimmed mean reward: ", mean_reward)
+
             self.no_improvement += 1
             if self.no_improvement == self.levels[self.curr_level_idx].cycles:
                 print("Training stopped by early fail")

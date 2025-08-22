@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dxg6k34fg01y7" path="res://testing/batch/OmegaBatch.tscn" id="3_bdn77"]
 [ext_resource type="PackedScene" uid="uid://cb27x6fe2m85d" path="res://testing/batch/DoorChoiceBatch.tscn" id="4_n75aw"]
 [ext_resource type="PackedScene" uid="uid://c3ixxniwfj0mb" path="res://testing/batch/DoubleDoorOppositeBatch.tscn" id="5_31fsy"]
-[ext_resource type="PackedScene" uid="uid://b3rrg3fpqd1dd" path="res://testing/batch/Anchor8Batch.tscn" id="6_vxpbw"]
+[ext_resource type="PackedScene" uid="uid://b3rrg3fpqd1dd" path="res://testing/batch/DoubleDoorOpposite7Batch.tscn" id="6_vxpbw"]
 [ext_resource type="PackedScene" uid="uid://b1sjrxanmunx7" path="res://testing/batch/VCrossBatch.tscn" id="7_w7cym"]
 [ext_resource type="PackedScene" uid="uid://c83kv17oqe2k6" path="res://testing/batch/BlindCurveBatch.tscn" id="8_ptyxq"]
 

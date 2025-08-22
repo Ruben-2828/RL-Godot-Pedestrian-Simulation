@@ -6,7 +6,7 @@ enum ControlModes { HUMAN, TRAINING, ONNX_INFERENCE }
 @export var control_mode: ControlModes = ControlModes.TRAINING
 ## Ticks between each communication with python
 @export_range(1, 10, 1, "or_greater") var action_repeat := Constants.TICKS_PER_STEP
-var speed_up := Constants.SPEED_UP
+var speed_up
 var onnx_model_path := ""
 
 # Onnx model stored for each requested path
@@ -62,6 +62,10 @@ func _ready():
 func _initialize():
 	_get_agents()
 	args = _get_args()
+	
+	speed_up = args.get("speedup", Constants.SPEED_UP).to_int()
+	print(speed_up)
+	
 	Engine.physics_ticks_per_second = speed_up * Constants.PHYSICS_TICKS_PER_SECONDS
 	Engine.time_scale = speed_up * Constants.TIME_SCALE
 	prints(
@@ -497,6 +501,9 @@ func _reset_agents_if_done(agents = all_agents):
 func _reset_agents(agents = all_agents):
 	for agent in agents:
 		agent.reset()
+		# Aggiunta per multi agent
+		if agent._player.disable:
+			agent.done = true
 
 
 func _get_obs_from_agents(agents: Array = all_agents):

@@ -51,5 +51,13 @@ func spawn_level_managers() -> void:
 		add_child(level_manager_instance)
 		level_manager_instance.set_level(level, null)
 		level_manager_instance.disable_pedestrians()
+		
+		level_manager_instance.notify_end_episode.connect(all_agents_done)
+		
 		i += 1
 
+func all_agents_done() -> void:	
+	#var all_agents = get_tree().get_nodes_in_group(Constants.AGENT_GROUP)
+	#for agent in all_agents:
+	#	agent.done = true
+	pass
