@@ -64,7 +64,10 @@ class HandleTrainingCombinedCallback(DefaultCallbacks):
     def on_episode_end(self, *, episode, base_env, **kwargs):
         self.rewards.append(episode.total_reward)
 
-        num_ep = max(ceil(self.levels[self.curr_level_idx].episodes_for_mean / self.num_workers), 6)
+        num_ep = ceil(self.levels[self.curr_level_idx].episodes_for_mean / self.num_workers)
+
+        # for env in base_env.get_sub_environments():
+        #     env.get_unwrapped().godot_env.call("next_level")
 
         if len(self.rewards) >= num_ep:
             mean_reward = trimmed_mean(self.rewards[:num_ep])
