@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://gk72hl582jkm"]
+
+[ext_resource type="Script" path="res://environments/scripts/level.gd" id="1_ek5q5"]
+[ext_resource type="PackedScene" uid="uid://dpy68brsjfakd" path="res://objects/other/room20.tscn" id="2_5s6t3"]
+[ext_resource type="PackedScene" uid="uid://cdsfgd324gdrk" path="res://objects/other/reward.tscn" id="3_8hmb6"]
+[ext_resource type="PackedScene" uid="uid://f0qwfq835sfr" path="res://objects/targets/final_target_3x3.tscn" id="4_i0ejs"]
+[ext_resource type="Script" path="res://environments/scripts/pedestrian_controller.gd" id="5_4p62w"]
+[ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="6_2y10x"]
+[ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/walls/wall22.tscn" id="7_ffkwh"]
+[ext_resource type="Script" path="res://environments/scripts/randomizer/passage.gd" id="8_85ihh"]
+[ext_resource type="PackedScene" uid="uid://cq6t852770172" path="res://objects/targets/small_target.tscn" id="9_8x6sg"]
+[ext_resource type="PackedScene" uid="uid://uh0p4etdr17o" path="res://objects/walls/wall1.tscn" id="10_kt2y3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i6cg1"]
+size = Vector3(3, 1, 1)
+
+[node name="CorridorPillar" type="Node3D"]
+script = ExtResource("1_ek5q5")
+max_steps = 100
+
+[node name="Room" parent="." instance=ExtResource("2_5s6t3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0264312)
+
+[node name="Reward" parent="." instance=ExtResource("3_8hmb6")]
+
+[node name="FinalTarget" parent="." instance=ExtResource("4_i0ejs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.5)
+collision_layer = 16
+collision_mask = 20
+
+[node name="PedestrianController" type="Node3D" parent="."]
+script = ExtResource("5_4p62w")
+
+[node name="Pedestrian" parent="PedestrianController" instance=ExtResource("6_2y10x")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0, 8)
+collision_layer = 6
+collision_mask = 19
+
+[node name="Pedestrian2" parent="PedestrianController" instance=ExtResource("6_2y10x")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, 8)
+collision_layer = 6
+collision_mask = 19
+
+[node name="Pedestrian3" parent="PedestrianController" instance=ExtResource("6_2y10x")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0, 9)
+collision_layer = 6
+collision_mask = 19
+
+[node name="Pedestrian4" parent="PedestrianController" instance=ExtResource("6_2y10x")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, 9)
+collision_layer = 6
+collision_mask = 19
+
+[node name="Corridor" type="Node3D" parent="."]
+
+[node name="Wall" parent="Corridor" instance=ExtResource("7_ffkwh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0, 0)
+
+[node name="Wall2" parent="Corridor" instance=ExtResource("7_ffkwh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, 0)
+
+[node name="RandomPassage" type="Node3D" parent="."]
+script = ExtResource("8_85ihh")
+
+[node name="Area" type="Area3D" parent="RandomPassage"]
+
+[node name="CollisionShapePassage" type="CollisionShape3D" parent="RandomPassage/Area"]
+shape = SubResource("BoxShape3D_i6cg1")
+
+[node name="Passage" type="Node3D" parent="RandomPassage"]
+
+[node name="Target" parent="RandomPassage/Passage" instance=ExtResource("9_8x6sg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, 0)
+collision_layer = 16
+collision_mask = 20
+
+[node name="Target2" parent="RandomPassage/Passage" instance=ExtResource("9_8x6sg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 5, 0)
+collision_layer = 16
+collision_mask = 20
+
+[node name="Wall" parent="RandomPassage/Passage" instance=ExtResource("10_kt2y3")]
