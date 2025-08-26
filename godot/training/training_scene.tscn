@@ -1,16 +1,15 @@
-[gd_scene load_steps=17 format=3 uid="uid://buytp40i8mx1h"]
+[gd_scene load_steps=16 format=3 uid="uid://buytp40i8mx1h"]
 
 [ext_resource type="Script" path="res://training/training_scene.gd" id="1_2y50e"]
-[ext_resource type="PackedScene" uid="uid://cqswiih3najh4" path="res://environments/levels/training/StartEZ.tscn" id="2_weu4w"]
-[ext_resource type="PackedScene" uid="uid://2h58qvivqje8" path="res://environments/levels/training/Start.tscn" id="3_5p07p"]
-[ext_resource type="PackedScene" uid="uid://b8geyovhk1ni8" path="res://environments/levels/training/StartCorridor.tscn" id="4_i4d0f"]
+[ext_resource type="PackedScene" uid="uid://2h58qvivqje8" path="res://environments/levels/training/StartMulti.tscn" id="3_5p07p"]
 [ext_resource type="PackedScene" uid="uid://bxa6hl02an5lq" path="res://environments/levels/training/Observe.tscn" id="4_jllvf"]
-[ext_resource type="PackedScene" uid="uid://bjb1wqvx5nrla" path="res://environments/levels/training/Turns.tscn" id="6_d0mrd"]
-[ext_resource type="PackedScene" uid="uid://drlnrntevxckf" path="res://environments/levels/training/TurnsObstacles.tscn" id="7_2lvkl"]
-[ext_resource type="PackedScene" uid="uid://cr75p04cbnp4a" path="res://environments/levels/training/NarrowDoor.tscn" id="8_q7shn"]
-[ext_resource type="PackedScene" uid="uid://quswshhny1ow" path="res://environments/levels/training/Corridor3vs3.tscn" id="9_hjlh7"]
-[ext_resource type="PackedScene" uid="uid://c63fe78gq767c" path="res://environments/levels/training/T-Junction.tscn" id="10_khdpd"]
-[ext_resource type="PackedScene" uid="uid://dukr625tbkfpv" path="res://environments/levels/training/Intersection4Narrow.tscn" id="11_5cyl6"]
+[ext_resource type="PackedScene" uid="uid://ba4j721nhyron" path="res://environments/levels/training/Corridor6.tscn" id="5_iv4gn"]
+[ext_resource type="PackedScene" uid="uid://c3a3o7woee1ys" path="res://environments/levels/training/Stuck.tscn" id="6_o4qu7"]
+[ext_resource type="PackedScene" uid="uid://bgedrk5frnuf8" path="res://environments/levels/training/CorridorPillar.tscn" id="7_ccwul"]
+[ext_resource type="PackedScene" uid="uid://bfif2pwr062rw" path="res://environments/levels/training/2FCorridor.tscn" id="8_naao2"]
+[ext_resource type="PackedScene" uid="uid://cr75p04cbnp4a" path="res://environments/levels/training/NarrowDoorMulti.tscn" id="8_q7shn"]
+[ext_resource type="PackedScene" uid="uid://dbbc7mnjrqmlw" path="res://environments/levels/training/TurnsMulti.tscn" id="9_gtlc0"]
+[ext_resource type="PackedScene" uid="uid://b5adj0od8m2ds" path="res://environments/levels/training/S.tscn" id="10_palhu"]
 [ext_resource type="PackedScene" uid="uid://cdb484d6vy8fg" path="res://environments/levels/training/NarrowDoorDouble.tscn" id="12_0hxw2"]
 [ext_resource type="Script" path="res://utils/Sync.gd" id="13_7ev8d"]
 
@@ -27,7 +26,7 @@ sky = SubResource("Sky_oect8")
 
 [node name="TrainingScene" type="Node3D"]
 script = ExtResource("1_2y50e")
-levels_path = Array[PackedScene]([ExtResource("2_weu4w"), ExtResource("3_5p07p"), ExtResource("4_jllvf"), ExtResource("4_i4d0f"), ExtResource("6_d0mrd"), ExtResource("7_2lvkl"), ExtResource("8_q7shn"), ExtResource("9_hjlh7"), ExtResource("10_khdpd"), ExtResource("11_5cyl6"), ExtResource("12_0hxw2")])
+levels_path = Array[PackedScene]([ExtResource("3_5p07p"), ExtResource("4_jllvf"), ExtResource("8_q7shn"), ExtResource("5_iv4gn"), ExtResource("6_o4qu7"), ExtResource("7_ccwul"), ExtResource("8_naao2"), ExtResource("9_gtlc0"), ExtResource("10_palhu"), ExtResource("12_0hxw2")])
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 0)

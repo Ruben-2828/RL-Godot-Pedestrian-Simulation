@@ -20,14 +20,14 @@ const TICKS_BETWEEN_LOG: int = 2
 
 # Rewards
 const FINAL_TARGET_REW: float = 6.0
-const INTERMEDIATE_TARGET_FIRST_TIME_REW: float = 0.5
-const INTERMEDIATE_TARGET_ALREADY_REACHED_REW: float = -1.0
-const NO_TARGET_VISIBLE_REW: float = -0.5
-const WALL_COLLISION_REW: float = -0.5
-const AGENT_COLLISION_SMALL_REW: float = -0.5
+const INTERMEDIATE_TARGET_FIRST_TIME_REW: float = 2.0 # multi_agent
+const INTERMEDIATE_TARGET_ALREADY_REACHED_REW: float = -0.75 # multi_agent (mean between entry and exit the intermediate target)
+const NO_TARGET_VISIBLE_REW: float = -0.3 # multi_agent
+const WALL_COLLISION_REW: float = -0.8 # multi_agent
+const AGENT_COLLISION_SMALL_REW: float = -0.9 # multi_agent
 const AGENT_COLLISION_MEDIUM_REW: float = -0.005    # -0.0 for high density
 const AGENT_COLLISION_LARGE_REW: float = -0.001     # -0.0 for high density
-const TIMESTEP_REW: float = -0.0001
+const TIMESTEP_REW: float = -0.01 # multi_agent
 const END_OF_TIMESTEPS_REW: float = -6.0
 
 # AI Controller
