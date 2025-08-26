@@ -434,8 +434,8 @@ func handle_message() -> bool:
 	var message = _get_dict_json_message()
 	if message["type"] == "close":
 		print("received close message, closing game")
-		#get_tree().quit()
-		#parent.finish()
+		get_tree().quit()
+		parent.finish()
 		get_tree().set_pause(false)
 		return true
 
@@ -501,8 +501,8 @@ func _reset_agents(agents = all_agents):
 	for agent in agents:
 		agent.reset()
 		# Aggiunta per multi agent
-		# if agent._player.disable:
-		# 	agent.done = true
+		if agent._player.disable:
+			agent.done = true
 
 
 func _get_obs_from_agents(agents: Array = all_agents):
