@@ -74,7 +74,7 @@ class ConfigParser:
         self.levels.append(Level(level_name, mean_reward, episode_mean, cycles))
         return True
 
-    def get_levels(self) -> Collection[Level]:
+    def get_levels(self) -> list[Level]:
         """
         Levels getter. To return the levels the method validate_curriculum() must be called to fill the
         levels' collection.

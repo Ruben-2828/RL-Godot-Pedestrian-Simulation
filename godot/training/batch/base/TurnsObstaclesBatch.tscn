@@ -1,11 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://c63gqblvqprnx"]
 
 [ext_resource type="Script" path="res://training/level_training_batch.gd" id="1_lesip"]
-[ext_resource type="PackedScene" uid="uid://drlnrntevxckf" path="res://environments/levels/training/base/TurnsObstacles.tscn" id="2_bl80a"]
+[ext_resource type="PackedScene" uid="uid://drlnrntevxckf" path="res://environments/levels/training/TurnsObstacles.tscn" id="2_bl80a"]
 [ext_resource type="Script" path="res://utils/Sync.gd" id="3_j2qjq"]
-
-
-
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sma7u"]
 ground_bottom_color = Color(0.277634, 0.237635, 0.191207, 1)
@@ -24,7 +21,6 @@ level = ExtResource("2_bl80a")
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("3_j2qjq")
-speed_up = 10.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yyxrl")

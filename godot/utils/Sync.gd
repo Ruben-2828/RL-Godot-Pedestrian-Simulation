@@ -62,6 +62,9 @@ func _ready():
 func _initialize():
 	_get_agents()
 	args = _get_args()
+	
+	print("OK")
+	
 	Engine.physics_ticks_per_second = speed_up * Constants.PHYSICS_TICKS_PER_SECONDS
 	Engine.time_scale = speed_up * Constants.TIME_SCALE
 	prints(
@@ -432,7 +435,7 @@ func handle_message() -> bool:
 	if message["type"] == "close":
 		print("received close message, closing game")
 		#get_tree().quit()
-		parent.finish()
+		#parent.finish()
 		get_tree().set_pause(false)
 		return true
 
@@ -451,10 +454,16 @@ func handle_message() -> bool:
 #        }
 #        _send_dict_as_json_message(reply)
 		return true
-
+	
+	# Custom variation to the original code
+	# it is needed to switch current level from python
 	if message["type"] == "call":
 		var method = message["method"]
-		var returns = _call_method_on_agents(method)
+		var returns
+		if method == "next_level":
+			returns = _next_level()
+		else:
+			returns = _call_method_on_agents(method)
 		var reply = {"type": "call", "returns": returns}
 		print("calling method from Python")
 		_send_dict_as_json_message(reply)
@@ -469,7 +478,10 @@ func handle_message() -> bool:
 
 	print("message was not handled")
 	return false
-
+	
+func _next_level():
+	parent.set_current_level()
+	
 
 func _call_method_on_agents(method):
 	var returns = []
@@ -488,6 +500,9 @@ func _reset_agents_if_done(agents = all_agents):
 func _reset_agents(agents = all_agents):
 	for agent in agents:
 		agent.reset()
+		# Aggiunta per multi agent
+		# if agent._player.disable:
+		# 	agent.done = true
 
 
 func _get_obs_from_agents(agents: Array = all_agents):

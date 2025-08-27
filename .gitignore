@@ -1,4 +1,5 @@
 godot/.godot
 output
 /godot/rec/
-/tmp
+.conda
+godot_export/

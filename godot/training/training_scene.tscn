@@ -1,20 +1,44 @@
-[gd_scene load_steps=15 format=3 uid="uid://buytp40i8mx1h"]
+[gd_scene load_steps=17 format=3 uid="uid://buytp40i8mx1h"]
 
 [ext_resource type="Script" path="res://training/training_scene.gd" id="1_2y50e"]
-[ext_resource type="PackedScene" uid="uid://dmfv8udkiiqlm" path="res://training/batch/group/StartEzGroupBatch.tscn" id="2_scvpy"]
-[ext_resource type="PackedScene" uid="uid://bvr7lnrt4k5m3" path="res://training/batch/group/StartEzGroup1Batch.tscn" id="3_31yyi"]
-[ext_resource type="PackedScene" uid="uid://bitqn16cnarpq" path="res://training/batch/group/StartEzGroup2Batch.tscn" id="4_yuj7e"]
-[ext_resource type="PackedScene" uid="uid://5fqhj1x6ab1k" path="res://training/batch/group/StartGroupBatch.tscn" id="5_36i7m"]
-[ext_resource type="PackedScene" uid="uid://ddlvdx613kspf" path="res://training/batch/group/EasyDoorGroupBatch.tscn" id="6_kb1iw"]
-[ext_resource type="PackedScene" uid="uid://b0c3jnk2tctyx" path="res://training/batch/group/FixedUnidirectionalDoorGroupBatch.tscn" id="7_tvj83"]
-[ext_resource type="PackedScene" uid="uid://cig7ktg41kemv" path="res://training/batch/group/UnidirectionalDoorGroupBatch.tscn" id="8_8hrn6"]
-[ext_resource type="PackedScene" uid="uid://bsjps4mffnmb3" path="res://training/batch/group/EasyCorridorGroupBatch.tscn" id="9_uljwi"]
-[ext_resource type="PackedScene" uid="uid://c4yqjacdf63v4" path="res://training/batch/group/T-JunctionGroupBatch.tscn" id="10_6n3hx"]
-[ext_resource type="PackedScene" uid="uid://cgjbv4civxgqy" path="res://training/batch/group/CorridorGroupBatch.tscn" id="11_csy1q"]
-[ext_resource type="PackedScene" uid="uid://6k4qib433v40" path="res://training/batch/group/IntersectionGroupBatch.tscn" id="12_1k6fu"]
-[ext_resource type="PackedScene" uid="uid://b3e6uv4ld4rue" path="res://training/batch/group/FixedBidirectionalDoorGroupBatch.tscn" id="13_de0x3"]
-[ext_resource type="PackedScene" uid="uid://bsu141skaa8r3" path="res://training/batch/group/CrowdedBidirectionalDoorGroupBatch.tscn" id="14_xqqpc"]
+[ext_resource type="PackedScene" uid="uid://cqswiih3najh4" path="res://environments/levels/training/StartEZ.tscn" id="2_weu4w"]
+[ext_resource type="PackedScene" uid="uid://2h58qvivqje8" path="res://environments/levels/training/Start.tscn" id="3_5p07p"]
+[ext_resource type="PackedScene" uid="uid://b8geyovhk1ni8" path="res://environments/levels/training/StartCorridor.tscn" id="4_i4d0f"]
+[ext_resource type="PackedScene" uid="uid://bxa6hl02an5lq" path="res://environments/levels/training/Observe.tscn" id="4_jllvf"]
+[ext_resource type="PackedScene" uid="uid://bjb1wqvx5nrla" path="res://environments/levels/training/Turns.tscn" id="6_d0mrd"]
+[ext_resource type="PackedScene" uid="uid://drlnrntevxckf" path="res://environments/levels/training/TurnsObstacles.tscn" id="7_2lvkl"]
+[ext_resource type="PackedScene" uid="uid://cr75p04cbnp4a" path="res://environments/levels/training/NarrowDoor.tscn" id="8_q7shn"]
+[ext_resource type="PackedScene" uid="uid://quswshhny1ow" path="res://environments/levels/training/Corridor3vs3.tscn" id="9_hjlh7"]
+[ext_resource type="PackedScene" uid="uid://c63fe78gq767c" path="res://environments/levels/training/T-Junction.tscn" id="10_khdpd"]
+[ext_resource type="PackedScene" uid="uid://dukr625tbkfpv" path="res://environments/levels/training/Intersection4Narrow.tscn" id="11_5cyl6"]
+[ext_resource type="PackedScene" uid="uid://cdb484d6vy8fg" path="res://environments/levels/training/NarrowDoorDouble.tscn" id="12_0hxw2"]
+[ext_resource type="Script" path="res://utils/Sync.gd" id="13_7ev8d"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k2mhs"]
+ground_bottom_color = Color(0.277634, 0.237635, 0.191207, 1)
+
+[sub_resource type="Sky" id="Sky_oect8"]
+sky_material = SubResource("ProceduralSkyMaterial_k2mhs")
+
+[sub_resource type="Environment" id="Environment_wp2s0"]
+background_mode = 1
+background_color = Color(0.270171, 0.229928, 0.188594, 1)
+sky = SubResource("Sky_oect8")
 
 [node name="TrainingScene" type="Node3D"]
 script = ExtResource("1_2y50e")
-levels_path = Array[PackedScene]([ExtResource("2_scvpy"), ExtResource("3_31yyi"), ExtResource("4_yuj7e"), ExtResource("5_36i7m"), ExtResource("6_kb1iw"), ExtResource("7_tvj83"), ExtResource("8_8hrn6"), ExtResource("9_uljwi"), ExtResource("10_6n3hx"), ExtResource("11_csy1q"), ExtResource("12_1k6fu"), ExtResource("13_de0x3"), ExtResource("14_xqqpc")])
+levels_path = Array[PackedScene]([ExtResource("2_weu4w"), ExtResource("3_5p07p"), ExtResource("4_jllvf"), ExtResource("4_i4d0f"), ExtResource("6_d0mrd"), ExtResource("7_2lvkl"), ExtResource("8_q7shn"), ExtResource("9_hjlh7"), ExtResource("10_khdpd"), ExtResource("11_5cyl6"), ExtResource("12_0hxw2")])
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 200, 0)
+projection = 1
+size = 30.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wp2s0")
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("13_7ev8d")

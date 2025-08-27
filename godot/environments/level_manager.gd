@@ -4,11 +4,13 @@ class_name LevelManager
 ## Signal emmitted on episode end
 signal notify_end_episode()
 
+## The level scene
+var level: Node
 
 ## Set all the level elements (pedestrians, targets, ai controllers...)
 func set_level(level_scene: PackedScene, log_file: FileAccess) -> void:
 	# Instantiating level scene
-	var level = level_scene.instantiate()
+	level = level_scene.instantiate()
 	add_child(level)
 	
 	# Setup pedestrian
@@ -69,6 +71,24 @@ func set_level(level_scene: PackedScene, log_file: FileAccess) -> void:
 	pedestrian_controller.random_rot = level.agent_rotate
 	pedestrian_controller.init(self)
 	pedestrian_controller.set_pedestrians_initial_state()
+	
+## Function called to enable pedestrians
+func enable_pedestrians() -> void:
+	var pedestrians = level.find_children("Pedestrian*", "Pedestrian")
+	for pedestrian in pedestrians:
+		pedestrian.enable_pedestrian()
+		
+## Function called to disable pedestrians
+func disable_pedestrians() -> void:
+	var pedestrians = level.find_children("Pedestrian*", "Pedestrian")
+	for pedestrian in pedestrians:
+		pedestrian.disable_pedestrian()
+		
+## Function called to reset pedestrians
+func reset_pedestrians() -> void:
+	var pedestrians = level.find_children("Pedestrian*", "Pedestrian")
+	for pedestrian in pedestrians:
+		pedestrian.reset()
 
 ## Function called to emit signal for episode ending
 func _notify_end_episode() -> void:

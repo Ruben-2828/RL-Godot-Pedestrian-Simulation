@@ -1,4 +1,11 @@
-extends LevelBatch
+extends Node
+
+@export var level: PackedScene
+var batch_size: int = Constants.TESTING_BATCH_SIZE
+
+var level_manager_scene: PackedScene = preload("res://environments/level_manager.tscn")
+var level_managers: Array = []
+const level_position_offset: float = Constants.LEVELS_BATCH_OFFSET
 
 var end_episode_count: int = 0 
 const number_of_episode:= Constants.DEFAULT_NUMBER_OF_EPISODE
@@ -10,7 +17,6 @@ var path = Constants.PATH_PEDPY_LOGS
 
 ## Called when the node enters the scene tree for the first time
 func _ready():
-	batch_size = Constants.TESTING_BATCH_SIZE
 	
 	pedpy_log_file = FileAccess.open(path + name + ".txt", FileAccess.WRITE)
 	init_sample_file()
@@ -34,17 +40,9 @@ func spawn_level_managers() -> void:
 
 ## Initialize the sample file	
 func init_sample_file():
-	if not pedpy_log_file:
-		pedpy_log_file = FileAccess.open(path + name + ".txt", FileAccess.WRITE)
-	pedpy_log_file.store_line("# framerate: %s fps" % (Constants.PHYSICS_TICKS_PER_SECONDS / Constants.TICKS_BETWEEN_LOG))
-	pedpy_log_file.store_line("# id frame x/m y/m z/m group_id")
-	
-## Save the group id of the pedestrian
-func log_pedestrian_data(pedestrian, frame, x, y, z):
-	var group_id = 0
-	if pedestrian.has_method("get_my_group_id"):
-		group_id = pedestrian.get_my_group_id()
-	pedpy_log_file.store_line("%s %s %s %s %s %s" % [pedestrian.name, frame, x, y, z, group_id])
+	pedpy_log_file.store_line("# framerate: %s fps" % 
+		(float(Constants.PHYSICS_TICKS_PER_SECONDS) / float(Constants.TICKS_BETWEEN_LOG)))
+	pedpy_log_file.store_line("# id frame x/m y/m z/m")
 
 ## Episode counter
 func _on_notify_end_episode():
@@ -55,6 +53,13 @@ func _on_notify_end_episode():
 func check_end_level():
 	if end_episode_count >= number_of_episode:
 		finish()
+
+## Function called to finish the testing batch
+func finish():
+	var all_agents = get_tree().get_nodes_in_group(Constants.AGENT_GROUP)
+	for agent in all_agents:
+		agent.remove_from_group(Constants.AGENT_GROUP)
+	get_parent().set_current_level()
 		
 ## Close file when the node is removed from the scene
 func _exit_tree():
