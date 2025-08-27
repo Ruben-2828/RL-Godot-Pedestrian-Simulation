@@ -72,7 +72,7 @@ class HandleTrainingCombinedCallback(DefaultCallbacks):
         if len(self.rewards) >= num_ep:
             mean_reward = trimmed_mean(self.rewards[:num_ep])
 
-            print("Current trimmed mean reward:", mean_reward)
+            print("Current trimmed mean reward: ", mean_reward, " at Level: ", self.levels[self.curr_level_idx].name, " on cycle: ", self.no_improvement)
 
             self.no_improvement += 1
             if self.no_improvement >= self.levels[self.curr_level_idx].cycles:
@@ -308,7 +308,7 @@ if __name__ == "__main__":
     else:
         exp["config"]["num_envs_per_env_runner"] = num_envs
 
-    config_parser = ConfigParser("../scripts/configs/curriculum/curriculum_config.yaml",
+    config_parser = ConfigParser("../scripts/configs/curriculum/curriculum_group_ppo.yaml",
                                  "../scripts/configs/base_config.yaml")
 
     assert config_parser.validate_curriculum(), "Invalid curriculum configuration file"

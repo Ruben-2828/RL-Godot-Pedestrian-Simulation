@@ -3,3 +3,4 @@ output
 /godot/rec/
 .conda
 godot_export/
+rllib_tests/logs

@@ -1,18 +1,19 @@
-[gd_scene load_steps=17 format=3 uid="uid://buytp40i8mx1h"]
+[gd_scene load_steps=18 format=3 uid="uid://buytp40i8mx1h"]
 
 [ext_resource type="Script" path="res://training/training_scene.gd" id="1_2y50e"]
-[ext_resource type="PackedScene" uid="uid://cqswiih3najh4" path="res://environments/levels/training/StartEZ.tscn" id="2_weu4w"]
-[ext_resource type="PackedScene" uid="uid://2h58qvivqje8" path="res://environments/levels/training/Start.tscn" id="3_5p07p"]
-[ext_resource type="PackedScene" uid="uid://b8geyovhk1ni8" path="res://environments/levels/training/StartCorridor.tscn" id="4_i4d0f"]
-[ext_resource type="PackedScene" uid="uid://bxa6hl02an5lq" path="res://environments/levels/training/Observe.tscn" id="4_jllvf"]
-[ext_resource type="PackedScene" uid="uid://bjb1wqvx5nrla" path="res://environments/levels/training/Turns.tscn" id="6_d0mrd"]
-[ext_resource type="PackedScene" uid="uid://drlnrntevxckf" path="res://environments/levels/training/TurnsObstacles.tscn" id="7_2lvkl"]
-[ext_resource type="PackedScene" uid="uid://cr75p04cbnp4a" path="res://environments/levels/training/NarrowDoor.tscn" id="8_q7shn"]
-[ext_resource type="PackedScene" uid="uid://quswshhny1ow" path="res://environments/levels/training/Corridor3vs3.tscn" id="9_hjlh7"]
-[ext_resource type="PackedScene" uid="uid://c63fe78gq767c" path="res://environments/levels/training/T-Junction.tscn" id="10_khdpd"]
-[ext_resource type="PackedScene" uid="uid://dukr625tbkfpv" path="res://environments/levels/training/Intersection4Narrow.tscn" id="11_5cyl6"]
-[ext_resource type="PackedScene" uid="uid://cdb484d6vy8fg" path="res://environments/levels/training/NarrowDoorDouble.tscn" id="12_0hxw2"]
+[ext_resource type="PackedScene" uid="uid://pqrxh1cywd5l" path="res://environments/levels/training/group/StartEZGroup.tscn" id="2_0w7kn"]
+[ext_resource type="PackedScene" uid="uid://ddpedmqhtw7or" path="res://environments/levels/training/group/StartEZGroup1.tscn" id="3_yd4f6"]
+[ext_resource type="PackedScene" uid="uid://bo2r33qe6658i" path="res://environments/levels/training/group/StartEzGroup2.tscn" id="4_iojv7"]
+[ext_resource type="PackedScene" uid="uid://fol4oh0l7fmh" path="res://environments/levels/training/group/EasyDoorGroup.tscn" id="5_mebqo"]
+[ext_resource type="PackedScene" uid="uid://q5fkdsci3h5l" path="res://environments/levels/training/group/FixedUnidirectionalDoorGroup.tscn" id="6_sexoa"]
+[ext_resource type="PackedScene" uid="uid://esuvnrt88n38" path="res://environments/levels/training/group/UnidirectionalDoorGroup.tscn" id="7_befaw"]
+[ext_resource type="PackedScene" uid="uid://q7ws8jmmejh" path="res://environments/levels/training/group/EasyCorridorGroup.tscn" id="8_hrnpt"]
+[ext_resource type="PackedScene" uid="uid://1pxyygt2k2fb" path="res://environments/levels/training/group/T-JunctionGroup.tscn" id="9_4r2p1"]
+[ext_resource type="PackedScene" uid="uid://cvl7k4n06p68b" path="res://environments/levels/training/group/CorridorGroup.tscn" id="10_a2um6"]
+[ext_resource type="PackedScene" uid="uid://dukr625tbkfpv" path="res://environments/levels/training/group/IntersectionGroup.tscn" id="11_5cyl6"]
+[ext_resource type="PackedScene" uid="uid://kf4tfk3gif77" path="res://environments/levels/training/group/FixedBidirectionalDoorGroup.tscn" id="12_jvbht"]
 [ext_resource type="Script" path="res://utils/Sync.gd" id="13_7ev8d"]
+[ext_resource type="PackedScene" uid="uid://kblwm7cwalcq" path="res://environments/levels/training/group/FixedCrowdedBidirectionalDoorGroup.tscn" id="13_g0xud"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k2mhs"]
 ground_bottom_color = Color(0.277634, 0.237635, 0.191207, 1)
@@ -27,7 +28,7 @@ sky = SubResource("Sky_oect8")
 
 [node name="TrainingScene" type="Node3D"]
 script = ExtResource("1_2y50e")
-levels_path = Array[PackedScene]([ExtResource("2_weu4w"), ExtResource("3_5p07p"), ExtResource("4_jllvf"), ExtResource("4_i4d0f"), ExtResource("6_d0mrd"), ExtResource("7_2lvkl"), ExtResource("8_q7shn"), ExtResource("9_hjlh7"), ExtResource("10_khdpd"), ExtResource("11_5cyl6"), ExtResource("12_0hxw2")])
+levels_path = Array[PackedScene]([ExtResource("2_0w7kn"), ExtResource("3_yd4f6"), ExtResource("4_iojv7"), ExtResource("5_mebqo"), ExtResource("6_sexoa"), ExtResource("7_befaw"), ExtResource("8_hrnpt"), ExtResource("9_4r2p1"), ExtResource("10_a2um6"), ExtResource("11_5cyl6"), ExtResource("12_jvbht"), ExtResource("13_g0xud")])
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 0)

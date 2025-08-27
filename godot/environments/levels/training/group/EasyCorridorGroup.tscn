@@ -33,42 +33,42 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 0,
 script = ExtResource("6_ynbb1")
 
 [node name="Pedestrian4" parent="PedestrianController" instance=ExtResource("7_tylpx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, -9)
 collision_layer = 6
 collision_mask = 19
 
 [node name="Pedestrian5" parent="PedestrianController" instance=ExtResource("7_tylpx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, -9)
 collision_layer = 6
 collision_mask = 19
 
 [node name="Pedestrian7" parent="PedestrianController" instance=ExtResource("7_tylpx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, -6)
 collision_layer = 66
 collision_mask = 19
 
 [node name="Pedestrian8" parent="PedestrianController" instance=ExtResource("7_tylpx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, -6)
 collision_layer = 66
 collision_mask = 19
 
 [node name="Pedestrian10" parent="PedestrianController" instance=ExtResource("7_tylpx")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.5, 0, 9)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.75, 0, 9)
 collision_layer = 10
 collision_mask = 35
 
 [node name="Pedestrian11" parent="PedestrianController" instance=ExtResource("7_tylpx")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.5, 0, 9)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.75, 0, 9)
 collision_layer = 10
 collision_mask = 35
 
 [node name="Pedestrian13" parent="PedestrianController" instance=ExtResource("7_tylpx")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.5, 0, 6)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.75, 0, 6)
 collision_layer = 130
 collision_mask = 35
 
 [node name="Pedestrian14" parent="PedestrianController" instance=ExtResource("7_tylpx")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.5, 0, 6)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.75, 0, 6)
 collision_layer = 130
 collision_mask = 35
 

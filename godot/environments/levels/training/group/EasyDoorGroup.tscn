@@ -51,22 +51,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 script = ExtResource("8_rlibk")
 
 [node name="Pedestrian" parent="PedestrianController" instance=ExtResource("9_blyma")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.5, 0, 2.5)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.75, 0, 2.75)
 collision_layer = 6
 collision_mask = 19
 
 [node name="Pedestrian2" parent="PedestrianController" instance=ExtResource("9_blyma")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.5, 0, 1.5)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.75, 0, 1.25)
 collision_layer = 6
 collision_mask = 19
 
 [node name="Pedestrian3" parent="PedestrianController" instance=ExtResource("9_blyma")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.5, 0, 1.5)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.75, 0, 1.25)
 collision_layer = 6
 collision_mask = 19
 
 [node name="Pedestrian4" parent="PedestrianController" instance=ExtResource("9_blyma")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.5, 0, 2.5)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.75, 0, 2.75)
 collision_layer = 6
 collision_mask = 19
 

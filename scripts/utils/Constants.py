@@ -14,5 +14,5 @@ DEFAULT_TENSORBOARD_LOGS_PATH: str = OUTPUT_PATH + "runs/"
 DEFAULT_TENSORBOARD_LOGS_FILE: str = "PPO"
 
 # Godot env constants
-GODOT_ENV_PATH: str = "godot_export/multiagent_env.exe"
+GODOT_ENV_PATH: str = "godot_export/group_simulation_sb3.exe"
 GODOT_ENV_INSTANCES_COUNT: int = 10

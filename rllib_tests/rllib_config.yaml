@@ -22,7 +22,7 @@ stop:
 config:
     env: godot
     env_config:
-        env_path: '../godot_export/multiagent_env.exe' # Set your env path here (exported executable from Godot) - e.g. env_path: 'env_path.exe' on Windows
+        env_path: '../godot_export/group_simulation.exe' # Set your env path here (exported executable from Godot) - e.g. env_path: 'env_path.exe' on Windows
         action_repeat: null # Doesn't need to be set here, you can set this in sync node in Godot editor as well
         show_window: false # Displays game window while training. Might be faster when false in some cases, turning off also reduces GPU usage if you don't need rendering.
         speedup: 30 # Speeds up Godot physics
