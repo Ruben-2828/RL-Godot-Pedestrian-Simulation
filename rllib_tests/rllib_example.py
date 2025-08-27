@@ -72,11 +72,11 @@ class HandleTrainingCombinedCallback(DefaultCallbacks):
         if len(self.rewards) >= num_ep:
             mean_reward = trimmed_mean(self.rewards[:num_ep])
 
-            print("Current trimmed mean reward:", mean_reward)
+            print("Current trimmed mean reward: " + str(mean_reward) + " on Level: " + self.levels[self.curr_level_idx].name + " on cycle: " + str(self.no_improvement))
 
             self.no_improvement += 1
             if self.no_improvement >= self.levels[self.curr_level_idx].cycles:
-                print("Stopping training with early fail")
+                print("Stopping training with early fail on Level: " + self.levels[self.curr_level_idx].name)
                 self.stop = True
                 return
 

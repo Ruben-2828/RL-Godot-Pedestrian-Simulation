@@ -26,7 +26,7 @@ func _on_final_target_body_entered(body):
 				find_child("Curve").rotation.x = deg_to_rad(180 * rotate)
 				find_child("Curve").rotation.y = deg_to_rad(180 * rotate)
 			
-			if self.name == "Turns":
+			if self.name == "Turns" or self.name == "TurnsMulti":
 				find_child("Oblique").rotation.z = deg_to_rad(180 * rotate)
 				find_child("Curve").rotation.z = deg_to_rad(180 * rotate)
 				find_child("Curve").rotation.y = deg_to_rad(90 * rotate)

@@ -115,10 +115,10 @@ func reset_pedestrians():
 		ped_cycle_counter[p] += 1
 		
 		# Messo apposta per multi agent
-		# p.ai_controller_3d.done = true
+		p.ai_controller_3d.done = true
 		
 	# ai controller done for only the first pedestrian to end the episode only one time
-	pedestrians[0].ai_controller_3d.done = true
+	# pedestrians[0].ai_controller_3d.done = true
 			
 ## Set a single pedestrian as finished
 func set_end_episode(pedestrian):

@@ -11,7 +11,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_p3wlc"]
 size = Vector3(15, 0, 6)
 
-[node name="Start" type="Node3D"]
+[node name="StartMulti" type="Node3D"]
 script = ExtResource("1_wtqlq")
 max_steps = 100
 

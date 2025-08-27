@@ -8,11 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://eer5gcm7ehuc" path="res://objects/pedestrian/Pedestrian.tscn" id="6_2y10x"]
 [ext_resource type="PackedScene" uid="uid://rb1ar2n6hi0u" path="res://objects/walls/wall22.tscn" id="7_ffkwh"]
 [ext_resource type="Script" path="res://environments/scripts/randomizer/passage.gd" id="8_85ihh"]
-[ext_resource type="PackedScene" uid="uid://cq6t852770172" path="res://objects/targets/small_target.tscn" id="9_8x6sg"]
+[ext_resource type="PackedScene" uid="uid://cq6t852770172" path="res://objects/targets/target_2x0.3.tscn" id="9_8x6sg"]
 [ext_resource type="PackedScene" uid="uid://uh0p4etdr17o" path="res://objects/walls/wall1.tscn" id="10_kt2y3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i6cg1"]
-size = Vector3(3, 1, 1)
+size = Vector3(3, 1, 0)
 
 [node name="CorridorPillar" type="Node3D"]
 script = ExtResource("1_ek5q5")
@@ -70,12 +70,12 @@ shape = SubResource("BoxShape3D_i6cg1")
 [node name="Passage" type="Node3D" parent="RandomPassage"]
 
 [node name="Target" parent="RandomPassage/Passage" instance=ExtResource("9_8x6sg")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 collision_layer = 16
 collision_mask = 20
 
 [node name="Target2" parent="RandomPassage/Passage" instance=ExtResource("9_8x6sg")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5, 0)
 collision_layer = 16
 collision_mask = 20
 

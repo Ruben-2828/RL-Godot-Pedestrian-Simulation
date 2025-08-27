@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://nqwb7at8dpui" path="res://objects/walls/wall9.tscn" id="10_jqa1f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i6cg1"]
-size = Vector3(3, 1, 1)
+size = Vector3(2, 1, 0)
 
 [node name="Stuck" type="Node3D"]
 script = ExtResource("1_8vkvt")
@@ -25,29 +25,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0264312)
 
 [node name="FinalTarget" parent="." instance=ExtResource("4_t01hu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.5)
-collision_layer = 16
-collision_mask = 20
+collision_layer = 48
+collision_mask = 60
 
 [node name="PedestrianController" type="Node3D" parent="."]
 script = ExtResource("5_vjg48")
 
 [node name="Pedestrian" parent="PedestrianController" instance=ExtResource("6_bmm4r")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0, 1)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.75, 0, 1.6)
 collision_layer = 6
 collision_mask = 19
 
 [node name="Pedestrian2" parent="PedestrianController" instance=ExtResource("6_bmm4r")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, 1)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.75, 0, 1.6)
 collision_layer = 6
 collision_mask = 19
 
 [node name="Pedestrian3" parent="PedestrianController" instance=ExtResource("6_bmm4r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, -1.6)
 collision_layer = 10
 collision_mask = 35
 
 [node name="Pedestrian4" parent="PedestrianController" instance=ExtResource("6_bmm4r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, -1.6)
 collision_layer = 10
 collision_mask = 35
 
@@ -70,16 +70,11 @@ shape = SubResource("BoxShape3D_i6cg1")
 [node name="Passage" type="Node3D" parent="RandomPassage"]
 
 [node name="Target" parent="RandomPassage/Passage" instance=ExtResource("9_if4xy")]
-collision_layer = 48
-collision_mask = 60
+collision_layer = 16
+collision_mask = 20
 
 [node name="Wall" parent="RandomPassage/Passage" instance=ExtResource("10_jqa1f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 
 [node name="Wall2" parent="RandomPassage/Passage" instance=ExtResource("10_jqa1f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
-
-[node name="FinalTarget2" parent="." instance=ExtResource("4_t01hu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.5)
-collision_layer = 32
-collision_mask = 40
