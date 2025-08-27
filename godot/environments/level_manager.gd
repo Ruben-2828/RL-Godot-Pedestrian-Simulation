@@ -74,12 +74,16 @@ func set_level(level_scene: PackedScene, log_file: FileAccess) -> void:
 	
 ## Function called to enable pedestrians
 func enable_pedestrians() -> void:
+	var pedestrian_controller = level.find_child("PedestrianController")
+	pedestrian_controller.active = true
 	var pedestrians = level.find_children("Pedestrian*", "Pedestrian")
 	for pedestrian in pedestrians:
 		pedestrian.enable_pedestrian()
 		
 ## Function called to disable pedestrians
 func disable_pedestrians() -> void:
+	var pedestrian_controller = level.find_child("PedestrianController")
+	pedestrian_controller.active = false
 	var pedestrians = level.find_children("Pedestrian*", "Pedestrian")
 	for pedestrian in pedestrians:
 		pedestrian.disable_pedestrian()

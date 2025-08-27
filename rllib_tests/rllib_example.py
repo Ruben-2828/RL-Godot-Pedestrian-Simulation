@@ -309,7 +309,7 @@ if __name__ == "__main__":
         exp["config"]["num_envs_per_env_runner"] = num_envs
 
     config_parser = ConfigParser("../scripts/configs/curriculum/multiagent_config.yaml",
-                                 "../scripts/configs/base_config.yaml")
+                                 "../scripts/configs/sensitivity_studies/current_best.yaml")
 
     assert config_parser.validate_curriculum(), "Invalid curriculum configuration file"
     levels = config_parser.get_levels()

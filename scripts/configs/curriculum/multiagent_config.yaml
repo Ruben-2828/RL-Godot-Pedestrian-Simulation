@@ -1,6 +1,6 @@
 Curriculum:
   StartMulti:
-    mean_reward: 2.5
+    mean_reward: 4.0
     episode_mean: 36
     cycles: 5
   Observe:
@@ -16,7 +16,7 @@ Curriculum:
     episode_mean: 36
     cycles: 10
   Stuck:
-    mean_reward: 0.0
+    mean_reward: -1.0
     episode_mean: 36
     cycles: 10
   CorridorPillar:
@@ -28,7 +28,7 @@ Curriculum:
     episode_mean: 36
     cycles: 15
   TurnsMulti:
-    mean_reward: 75.0
+    mean_reward: 30.0
     episode_mean: 36
     cycles: 10
   S:
@@ -39,3 +39,4 @@ Curriculum:
     mean_reward: 4.0
     episode_mean: 36
     cycles: 10
+

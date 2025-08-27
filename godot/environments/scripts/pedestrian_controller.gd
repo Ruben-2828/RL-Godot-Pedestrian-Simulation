@@ -21,6 +21,8 @@ var sample_frame_count: int = 0
 var ticks_between_log: int = Constants.TICKS_BETWEEN_LOG
 var tick_counter: int = 0
 
+var active: bool
+
 ## Initialize the pedestrian controller with a level manager
 func init(lm: LevelManager):
 	level_manager = lm

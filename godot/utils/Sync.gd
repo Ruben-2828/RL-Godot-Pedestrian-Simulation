@@ -501,8 +501,8 @@ func _reset_agents(agents = all_agents):
 	for agent in agents:
 		agent.reset()
 		# Aggiunta per multi agent
-		if agent._player.disable:
-			agent.done = true
+		#if agent._player.disable:
+		#	agent.done = true
 
 
 func _get_obs_from_agents(agents: Array = all_agents):
@@ -514,9 +514,24 @@ func _get_obs_from_agents(agents: Array = all_agents):
 
 func _get_reward_from_agents(agents: Array = agents_training):
 	var rewards = []
+	var group_reward = 0
+	var group_rewards_agents = []
+	var i = 0
 	for agent in agents:
-		rewards.append(agent.get_reward())
+		var r = agent.get_reward()
+		rewards.append(r)
 		agent.zero_reward()
+		
+		# ESTRAZIONE REWARD DI GRUPPO
+		if not agent._player.disable:
+			group_reward += r
+		if agent._player.pedestrian_controller.active:
+			group_rewards_agents.append(i)
+	print(len(group_rewards_agents))
+	# CALCOLO E AGGIUNTA REWARD DI GRUPPO
+	for a in group_rewards_agents:
+		rewards[a] += group_reward / len(group_rewards_agents)
+		
 	return rewards
 
 

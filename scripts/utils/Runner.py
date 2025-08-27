@@ -3,7 +3,7 @@ import os
 import datetime
 from typing import Optional, Any
 
-from godot_rl.wrappers.onnx.stable_baselines_export import export_ppo_model_as_onnx
+from godot_rl.wrappers.onnx.stable_baselines_export import export_model_as_onnx
 from godot_rl.wrappers.stable_baselines_wrapper import StableBaselinesGodotEnv
 from stable_baselines3 import PPO
 from stable_baselines3.common.vec_env import VecMonitor
@@ -165,6 +165,7 @@ class Runner:
         env = StableBaselinesGodotEnv(
             env_path=Constants.GODOT_ENV_PATH,
             n_parallel=Constants.GODOT_ENV_INSTANCES_COUNT,
+            show_window=True,
         )
         return VecMonitor(env, filename=monitor_logs_path + name), monitor_logs_path
 
@@ -188,4 +189,4 @@ class Runner:
         path = self.run_log_path + Constants.DEFAULT_ONNX_EXPORT_PATH
 
         print("Exporting onnx to: " + os.path.abspath(path))
-        export_ppo_model_as_onnx(self.model, path)
+        export_model_as_onnx(self.model, path)

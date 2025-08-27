@@ -32,7 +32,7 @@ collision_mask = 60
 script = ExtResource("5_vjg48")
 
 [node name="Pedestrian" parent="PedestrianController" instance=ExtResource("6_bmm4r")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.75, 0, 1.6)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.750126, 0, 1.6)
 collision_layer = 6
 collision_mask = 19
 
