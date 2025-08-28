@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://buytp40i8mx1h"]
+[gd_scene load_steps=10 format=3 uid="uid://buytp40i8mx1h"]
 
 [ext_resource type="Script" path="res://testing/testing_scene.gd" id="1_phwvg"]
 [ext_resource type="PackedScene" uid="uid://djfufvg6fcsd3" path="res://testing/batch/CurveCBatch.tscn" id="2_ibviq"]
@@ -8,13 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://b3rrg3fpqd1dd" path="res://testing/batch/DoubleDoorOpposite7Batch.tscn" id="6_vxpbw"]
 [ext_resource type="PackedScene" uid="uid://b1sjrxanmunx7" path="res://testing/batch/VCrossBatch.tscn" id="7_w7cym"]
 [ext_resource type="PackedScene" uid="uid://c83kv17oqe2k6" path="res://testing/batch/BlindCurveBatch.tscn" id="8_ptyxq"]
-[ext_resource type="PackedScene" uid="uid://b34tio68xev14" path="res://testing/batch/CenterConnectionBatch.tscn" id="9_b2qv7"]
-[ext_resource type="PackedScene" uid="uid://dw52dagvl3uvs" path="res://testing/batch/CornerConnectionBatch.tscn" id="10_28ygq"]
-[ext_resource type="PackedScene" uid="uid://6smpy2l3yxtq" path="res://testing/batch/Funnel2Batch.tscn" id="11_l36yi"]
-[ext_resource type="PackedScene" uid="uid://b362skyv6gek2" path="res://testing/batch/Funnel3,5Batch.tscn" id="12_0up08"]
-[ext_resource type="PackedScene" uid="uid://lhb63qhco0xc" path="res://testing/batch/Funnel5,6Batch.tscn" id="13_62e33"]
+[ext_resource type="PackedScene" uid="uid://gyqyh5unyicy" path="res://testing/batch/DoubleDoorOpposite9Batch.tscn" id="14_mnke6"]
 
 [node name="TestingScene" type="Node3D"]
 script = ExtResource("1_phwvg")
-onnx_model_path = "res://../output\\runs\\test_test\\test_2\\model\\model.onnx"
-levels_path = Array[PackedScene]([ExtResource("3_bdn77"), ExtResource("2_ibviq"), ExtResource("4_n75aw"), ExtResource("5_31fsy"), ExtResource("6_vxpbw"), ExtResource("7_w7cym"), ExtResource("8_ptyxq"), ExtResource("9_b2qv7"), ExtResource("10_28ygq"), ExtResource("11_l36yi"), ExtResource("12_0up08"), ExtResource("13_62e33")])
+onnx_model_path = "res://../output\\runs\\test_test\\test_narrowdoor_in_fondo\\model\\model.onnx"
+levels_path = Array[PackedScene]([ExtResource("3_bdn77"), ExtResource("2_ibviq"), ExtResource("4_n75aw"), ExtResource("5_31fsy"), ExtResource("6_vxpbw"), ExtResource("14_mnke6"), ExtResource("7_w7cym"), ExtResource("8_ptyxq")])

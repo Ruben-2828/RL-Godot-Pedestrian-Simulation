@@ -165,7 +165,7 @@ class Runner:
         env = StableBaselinesGodotEnv(
             env_path=Constants.GODOT_ENV_PATH,
             n_parallel=Constants.GODOT_ENV_INSTANCES_COUNT,
-            show_window=True,
+            #show_window=True,
         )
         return VecMonitor(env, filename=monitor_logs_path + name), monitor_logs_path
 
