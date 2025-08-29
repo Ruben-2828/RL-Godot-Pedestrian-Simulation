@@ -355,7 +355,7 @@ if __name__ == "__main__":
                 storage_path=os.path.abspath(args.experiment_dir),
                 stop=exp["stop"],
                 checkpoint_config=train.CheckpointConfig(checkpoint_frequency=exp["checkpoint_frequency"]),
-                verbose=1,
+                verbose=0,
             ),
         )
     else:
@@ -365,6 +365,7 @@ if __name__ == "__main__":
             resume_unfinished=True,
         )
     result = tuner.fit()
+
 
     # Onnx export after training if a checkpoint was saved
     checkpoint = result.get_best_result().checkpoint

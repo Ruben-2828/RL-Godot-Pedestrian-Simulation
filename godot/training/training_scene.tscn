@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://training/training_scene.gd" id="1_2y50e"]
 [ext_resource type="PackedScene" uid="uid://2h58qvivqje8" path="res://environments/levels/training/training/StartMulti.tscn" id="3_5p07p"]
+[ext_resource type="PackedScene" uid="uid://bvio6jbbohyea" path="res://environments/levels/training/training/NarrowDoorMulti.tscn" id="4_8n5nq"]
 [ext_resource type="PackedScene" uid="uid://bxa6hl02an5lq" path="res://environments/levels/training/training/Observe.tscn" id="4_jllvf"]
 [ext_resource type="PackedScene" uid="uid://c54sxynhac8er" path="res://environments/levels/training/training/Corridor6.tscn" id="5_ej3p3"]
 [ext_resource type="PackedScene" uid="uid://d21j16ws0jea" path="res://environments/levels/training/training/Stuck.tscn" id="6_o4qu7"]
 [ext_resource type="PackedScene" uid="uid://gk72hl582jkm" path="res://environments/levels/training/training/CorridorPillar.tscn" id="7_ccwul"]
 [ext_resource type="PackedScene" uid="uid://gn55d73k56y2" path="res://environments/levels/training/training/2FCorridor.tscn" id="8_naao2"]
-[ext_resource type="PackedScene" uid="uid://cr75p04cbnp4a" path="res://environments/levels/training/training/NarrowDoor.tscn" id="8_q7shn"]
 [ext_resource type="PackedScene" uid="uid://dnol13cpyubi3" path="res://environments/levels/training/training/TurnsMulti.tscn" id="9_gtlc0"]
 [ext_resource type="PackedScene" uid="uid://bxdx78s6btd5e" path="res://environments/levels/training/training/S.tscn" id="10_palhu"]
 [ext_resource type="PackedScene" uid="uid://cdb484d6vy8fg" path="res://environments/levels/training/training/NarrowDoorDouble.tscn" id="12_0hxw2"]
@@ -26,7 +26,7 @@ sky = SubResource("Sky_oect8")
 
 [node name="TrainingScene" type="Node3D"]
 script = ExtResource("1_2y50e")
-levels_path = Array[PackedScene]([ExtResource("3_5p07p"), ExtResource("4_jllvf"), ExtResource("5_ej3p3"), ExtResource("6_o4qu7"), ExtResource("7_ccwul"), ExtResource("8_naao2"), ExtResource("9_gtlc0"), ExtResource("8_q7shn"), ExtResource("10_palhu"), ExtResource("12_0hxw2")])
+levels_path = Array[PackedScene]([ExtResource("3_5p07p"), ExtResource("4_jllvf"), ExtResource("4_8n5nq"), ExtResource("5_ej3p3"), ExtResource("6_o4qu7"), ExtResource("7_ccwul"), ExtResource("8_naao2"), ExtResource("9_gtlc0"), ExtResource("10_palhu"), ExtResource("12_0hxw2")])
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 0)
