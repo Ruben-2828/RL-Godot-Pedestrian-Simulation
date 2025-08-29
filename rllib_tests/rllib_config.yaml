@@ -10,20 +10,20 @@ algorithm: PPO
 # Set to false if you have a single policy name for all agents set in AIControllers
 env_is_multiagent: true
 
-checkpoint_frequency: 2000
+checkpoint_frequency: 20
 
 # You can set one or more stopping criteria
 stop:
     #episode_reward_mean: 0
     #training_iteration: 1000
     #timesteps_total: 10000
-    time_total_s: 6300
+    time_total_s: 100 #6300
 
 config:
     horizon: 500
     env: godot
     env_config:
-        env_path: '../godot_export/multiagent_simulation.exe' # Set your env path here (exported executable from Godot) - e.g. env_path: 'env_path.exe' on Windows
+        env_path: '../godot_export/env.exe' # Set your env path here (exported executable from Godot) - e.g. env_path: 'env_path.exe' on Windows
         action_repeat: null # Doesn't need to be set here, you can set this in sync node in Godot editor as well
         show_window: false # Displays game window while training. Might be faster when false in some cases, turning off also reduces GPU usage if you don't need rendering.
         speedup: 30 # Speeds up Godot physics

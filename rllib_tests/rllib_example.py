@@ -4,6 +4,7 @@
 import argparse
 import os
 import pathlib
+from datetime import datetime
 from typing import Optional
 
 import time
@@ -45,7 +46,7 @@ class HandleTrainingCombinedCallback(DefaultCallbacks):
     def __init__(self, levels: list, num_workers: int, log_env_change=None):
         super().__init__()
         self.levels = levels
-        self.log_env_change = log_env_change
+        self.log_env_change = self.log_env_change_fun #log_env_change
         self.rewards = []
         self.curr_level_idx = 0
         self.num_workers = num_workers
@@ -53,13 +54,12 @@ class HandleTrainingCombinedCallback(DefaultCallbacks):
 
         # Tempo di inizio training
         self.start_time = None
-        self.time_limit_s = None
 
-    def on_training_start(self, *, algorithm, **kwargs):
-        self.start_time = algorithm.config.get("time_total_s", None)
-        self.time_limit_s = algorithm.config.get("time_total_s", None)
+    def on_algorithm_init(self, *, algorithm, **kwargs):
+        print("akjsdnaskjdnnsakdjnaskdjnaskjdnaskjdnaksjdn")
         # Log the start of the first level
         if self.log_env_change:
+            print("asoidjasodjmasoldkmasoldkasmdolklasmdolasmd")
             self.log_env_change(
                 self.levels[self.curr_level_idx].name,
                 self.levels[self.curr_level_idx].mean_reward,
@@ -108,17 +108,31 @@ class HandleTrainingCombinedCallback(DefaultCallbacks):
                     print(f"Max cycles reached on level {self.levels[self.curr_level_idx].name} "
                           f"without achieving target mean reward.\n")
             del self.rewards[:num_ep]
-    def on_train_result(self, *, algorithm, result: dict, **kwargs):
+
+    def log_env_change_fun(self, env_name: str, min_score: float = -100, phase: str = '') -> None:
+        """
+        Method to log information about environment changes. Logs are stored in a csv file in the following format:
+        datetime; timestamp; start time (in seconds); env name; score; phase
+        :param env_name: name of the current environment
+        :param min_score: score to reach during current environment
+        :param phase: phase of the training (train, retrain)
+        """
 
         if self.start_time is None:
-            self.start_time = time.perf_counter()
+            self.start_time = datetime.now().timestamp()
 
-        # Check time limit
-        elapsed = time.perf_counter() - self.start_time
-        if elapsed >= algorithm.config.get("time_total_s", float("inf")):
-            print(f"Time limit reached ({elapsed:.2f}s), stopping training")
-            result["done"] = True
+        with open("EnvironmentChanges.txt", "a") as f:
+            current_time = datetime.now()
 
+            f.write(
+                str(current_time) + ';' +
+                str(int(current_time.timestamp())) + ';' +
+                str(int(current_time.timestamp() - self.start_time)) + ';' +
+                env_name + ';' +
+                str(min_score) + ';' +
+                phase + '\n'
+            )
+            f.close()
 
 
 # --- Observation normalization wrappers to ensure numpy arrays are returned ---
@@ -341,7 +355,7 @@ if __name__ == "__main__":
                 storage_path=os.path.abspath(args.experiment_dir),
                 stop=exp["stop"],
                 checkpoint_config=train.CheckpointConfig(checkpoint_frequency=exp["checkpoint_frequency"]),
-                verbose=0,
+                verbose=1,
             ),
         )
     else:

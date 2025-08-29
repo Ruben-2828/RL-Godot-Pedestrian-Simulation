@@ -1,11 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://buytp40i8mx1h"]
+[gd_scene load_steps=14 format=3 uid="uid://buytp40i8mx1h"]
 
 [ext_resource type="Script" path="res://testing/testing_scene.gd" id="1_phwvg"]
 [ext_resource type="PackedScene" uid="uid://djfufvg6fcsd3" path="res://testing/batch/CurveCBatch.tscn" id="2_ibviq"]
 [ext_resource type="PackedScene" uid="uid://dxg6k34fg01y7" path="res://testing/batch/OmegaBatch.tscn" id="3_bdn77"]
 [ext_resource type="PackedScene" uid="uid://cb27x6fe2m85d" path="res://testing/batch/DoorChoiceBatch.tscn" id="4_n75aw"]
 [ext_resource type="PackedScene" uid="uid://c3ixxniwfj0mb" path="res://testing/batch/DoubleDoorOppositeBatch.tscn" id="5_31fsy"]
-[ext_resource type="PackedScene" uid="uid://b3rrg3fpqd1dd" path="res://testing/batch/Anchor8Batch.tscn" id="6_vxpbw"]
 [ext_resource type="PackedScene" uid="uid://b1sjrxanmunx7" path="res://testing/batch/VCrossBatch.tscn" id="7_w7cym"]
 [ext_resource type="PackedScene" uid="uid://c83kv17oqe2k6" path="res://testing/batch/BlindCurveBatch.tscn" id="8_ptyxq"]
 [ext_resource type="PackedScene" uid="uid://b34tio68xev14" path="res://testing/batch/CenterConnectionBatch.tscn" id="9_b2qv7"]
@@ -18,4 +17,4 @@
 [node name="TestingScene" type="Node3D"]
 script = ExtResource("1_phwvg")
 onnx_model_path = "res://..\\rllib_tests\\logs\\rllib\\PPO_2025-08-29_05-57-01\\PPO_godot_37d5f_00000_0_2025-08-29_05-57-01\\onnx_export\\shared_policy_onnx\\model.onnx"
-levels_path = Array[PackedScene]([ExtResource("2_ibviq"), ExtResource("3_bdn77"), ExtResource("4_n75aw"), ExtResource("5_31fsy"), ExtResource("7_w7cym"), ExtResource("8_ptyxq"), ExtResource("13_62e33"), ExtResource("6_vxpbw"), ExtResource("12_0up08"), ExtResource("11_s3gdn"), ExtResource("11_l36yi"), ExtResource("10_28ygq"), ExtResource("9_b2qv7")])
+levels_path = Array[PackedScene]([ExtResource("2_ibviq"), ExtResource("3_bdn77"), ExtResource("4_n75aw"), ExtResource("5_31fsy"), ExtResource("7_w7cym"), ExtResource("8_ptyxq"), ExtResource("13_62e33"), ExtResource("11_s3gdn"), ExtResource("12_0up08"), ExtResource("11_s3gdn"), ExtResource("11_l36yi"), ExtResource("10_28ygq"), ExtResource("9_b2qv7")])
