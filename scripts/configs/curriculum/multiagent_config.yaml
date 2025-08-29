@@ -1,42 +1,42 @@
 Curriculum:
   StartMulti:
-    mean_reward: 4.0
-    episode_mean: 36
-    cycles: 5
+    mean_reward: 3.0
+    episode_mean: 108
+    cycles: 10
   Observe:
     mean_reward: -24.0
     episode_mean: 36
-    cycles: 5
+    cycles: 10
   NarrowDoorMulti:
-    mean_reward: 4.5
+    mean_reward: -5.0
     episode_mean: 36
     cycles: 10
   Corridor6:
-    mean_reward: 5.0
+    mean_reward: -20.0
     episode_mean: 36
     cycles: 10
   Stuck:
-    mean_reward: -1.0
+    mean_reward: -30.0
     episode_mean: 36
     cycles: 10
   CorridorPillar:
-    mean_reward: 4.0
+    mean_reward: -10.0
     episode_mean: 36
     cycles: 10
   2FCorridor:
-    mean_reward: 4.0
-    episode_mean: 36
-    cycles: 15
-  TurnsMulti:
-    mean_reward: 30.0
+    mean_reward: -7.0
     episode_mean: 36
     cycles: 10
-  S:
+  TurnsMulti:
     mean_reward: 5.0
     episode_mean: 36
-    cycles: 10
-  NarrowDoorDouble:
-    mean_reward: 4.0
+    cycles: 20
+  S:
+    mean_reward: -10.0
     episode_mean: 36
-    cycles: 10
+    cycles: 20
+  NarrowDoorDouble:
+    mean_reward: 500.0
+    episode_mean: 36
+    cycles: 20
 

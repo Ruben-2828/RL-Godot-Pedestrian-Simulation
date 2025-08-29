@@ -14,7 +14,7 @@
 
 [node name="Funnel" type="Node3D"]
 script = ExtResource("1_amyvu")
-max_steps = 700
+max_steps = 250
 
 [node name="Room" parent="." instance=ExtResource("2_s0sp4")]
 

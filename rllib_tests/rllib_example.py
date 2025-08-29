@@ -6,6 +6,7 @@ import os
 import pathlib
 from typing import Optional
 
+import time
 import ray
 import yaml
 from ray import train, tune
@@ -45,13 +46,18 @@ class HandleTrainingCombinedCallback(DefaultCallbacks):
         super().__init__()
         self.levels = levels
         self.log_env_change = log_env_change
-        self.no_improvement = 0
         self.rewards = []
         self.curr_level_idx = 0
         self.num_workers = num_workers
-        self.stop = False
+        self.cycle_count = 0
+
+        # Tempo di inizio training
+        self.start_time = None
+        self.time_limit_s = None
 
     def on_training_start(self, *, algorithm, **kwargs):
+        self.start_time = algorithm.config.get("time_total_s", None)
+        self.time_limit_s = algorithm.config.get("time_total_s", None)
         # Log the start of the first level
         if self.log_env_change:
             self.log_env_change(
@@ -66,46 +72,53 @@ class HandleTrainingCombinedCallback(DefaultCallbacks):
 
         num_ep = ceil(self.levels[self.curr_level_idx].episodes_for_mean / self.num_workers)
 
-        # for env in base_env.get_sub_environments():
-        #     env.get_unwrapped().godot_env.call("next_level")
-
         if len(self.rewards) >= num_ep:
             mean_reward = trimmed_mean(self.rewards[:num_ep])
 
-            print("Current trimmed mean reward: " + str(mean_reward) + " on Level: " + self.levels[self.curr_level_idx].name + " on cycle: " + str(self.no_improvement))
+            self.cycle_count += 1
 
-            self.no_improvement += 1
-            if self.no_improvement >= self.levels[self.curr_level_idx].cycles:
-                print("Stopping training with early fail on Level: " + self.levels[self.curr_level_idx].name)
-                self.stop = True
-                return
+            print(f"[Level {self.levels[self.curr_level_idx].name}] | "
+                  f"Cycle {self.cycle_count}/{self.levels[self.curr_level_idx].cycles} | "
+                  f"Trimmed mean reward: {mean_reward:.1f}")
 
             if mean_reward > self.levels[self.curr_level_idx].mean_reward:
                 self.curr_level_idx += 1
-                if self.curr_level_idx >= len(self.levels):
-                    self.stop = True
-                    return
+                if self.curr_level_idx < len(self.levels):
+                    print(f"Advancing to next level: {self.levels[self.curr_level_idx].name}")
+                    self.rewards = []
+                    self.cycle_count = 0
 
-                print(f"Running level: {self.levels[self.curr_level_idx].name}")
+                    for env in base_env.get_sub_environments():
+                        env.get_sub_environments.godot_env.call("next_level")
 
-                self.no_improvement = 0
-
-                for env in base_env.get_sub_environments():
-                    env.get_sub_environments.godot_env.call("next_level")
-
-                if self.log_env_change:
-                    self.log_env_change(
-                        self.levels[self.curr_level_idx].name,
-                        self.levels[self.curr_level_idx].mean_reward,
-                        "train",
-                    )
-
+                    if self.log_env_change:
+                        self.log_env_change(
+                            self.levels[self.curr_level_idx].name,
+                            self.levels[self.curr_level_idx].mean_reward,
+                            "train",
+                        )
+                else:
+                    print("Curriculum completed: all levels successfully reached!\n")
+                    self.rewards = []
+            else:
+                if self.cycle_count < self.levels[self.curr_level_idx].cycles:
+                    print(f"Mean reward not reached on level {self.levels[self.curr_level_idx].name}, "
+                          f"continuing training...")
+                else:
+                    print(f"Max cycles reached on level {self.levels[self.curr_level_idx].name} "
+                          f"without achieving target mean reward.\n")
             del self.rewards[:num_ep]
-
     def on_train_result(self, *, algorithm, result: dict, **kwargs):
-        if self.stop:
+
+        if self.start_time is None:
+            self.start_time = time.perf_counter()
+
+        # Check time limit
+        elapsed = time.perf_counter() - self.start_time
+        if elapsed >= algorithm.config.get("time_total_s", float("inf")):
+            print(f"Time limit reached ({elapsed:.2f}s), stopping training")
             result["done"] = True
-            print("Training stopped")
+
 
 
 # --- Observation normalization wrappers to ensure numpy arrays are returned ---
@@ -266,7 +279,7 @@ if __name__ == "__main__":
                 config=env_config,
                 port=port,
                 seed=seed,
-                show_window=(True if env_config.worker_index == 1 else False)
+                show_window=False #(True if env_config.worker_index == 1 else False)
             )
             return ParallelPettingZooEnv(NumpyObsPZWrapper(base))
         else:

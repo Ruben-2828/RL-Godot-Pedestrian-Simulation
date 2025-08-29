@@ -17,13 +17,13 @@ stop:
     #episode_reward_mean: 0
     #training_iteration: 1000
     #timesteps_total: 10000
-    time_total_s: 100000000000000
+    time_total_s: 6300
 
 config:
     horizon: 500
     env: godot
     env_config:
-        env_path: '../godot_export/env.exe' # Set your env path here (exported executable from Godot) - e.g. env_path: 'env_path.exe' on Windows
+        env_path: '../godot_export/multiagent_simulation.exe' # Set your env path here (exported executable from Godot) - e.g. env_path: 'env_path.exe' on Windows
         action_repeat: null # Doesn't need to be set here, you can set this in sync node in Godot editor as well
         show_window: false # Displays game window while training. Might be faster when false in some cases, turning off also reduces GPU usage if you don't need rendering.
         speedup: 30 # Speeds up Godot physics
@@ -46,11 +46,11 @@ config:
 
     rollout_fragment_length: 32
     sgd_minibatch_size: 128
-    num_workers: 10
+    num_workers: 5
     num_envs_per_env_runner: 1 # This will be set automatically if not multi-agent. If multi-agent, changing this changes how many envs to launch per worker.
     # The value below needs changing per env
     # Basic calculation for this value can be rollout_fragment_length * num_workers * num_envs_per_env_runner (how many AIControllers you have if not multi_agent, otherwise the value you set)
-    train_batch_size: 320
+    train_batch_size: 160
 
     num_sgd_iter: 1
     batch_mode: truncate_episodes
