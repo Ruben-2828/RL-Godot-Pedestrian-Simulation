@@ -11,7 +11,7 @@ var path = Constants.PATH_PEDPY_LOGS
 ## Called when the node enters the scene tree for the first time
 func _ready():
 	batch_size = Constants.TESTING_BATCH_SIZE
-	
+		
 	pedpy_log_file = FileAccess.open(path + name + ".txt", FileAccess.WRITE)
 	init_sample_file()
 	spawn_level_managers()
@@ -33,7 +33,7 @@ func spawn_level_managers() -> void:
 		level_manager_instance.set_level(level, pedpy_log_file)
 
 ## Initialize the sample file	
-func init_sample_file():
+func init_sample_file():	
 	pedpy_log_file.store_line("# framerate: %s fps" % 
 		(Constants.PHYSICS_TICKS_PER_SECONDS / Constants.TICKS_BETWEEN_LOG))
 	pedpy_log_file.store_line("# id frame x/m y/m z/m")

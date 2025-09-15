@@ -29,6 +29,16 @@ For more information, please refer to the documentation for
 
 ## Training Phase
 
+
+### Enable GodotRLAgents Plugin
+
+Before starting the training phase, we need to enable the GodotRLAgents plugin. To do this, open the Godot Engine and 
+navigate to AssetLib, then open Plugins and navigate again to Plugins. Here you should find the GodotRLAgents plugin.
+Enable it by clicking on the checkbox.
+
+![Plugin](images/getting_started/plugin.png)
+
+
 ### Setting up Godot Engine
 
 Once the tool is open, navigate through the _FileSystem_ to the `training_scene.tscn`, which can be found in the 
@@ -70,6 +80,9 @@ Once a training phase has been successfully executed without encountering an _Ea
 `model.onnx` will be available in the _scripts/output/onnx_ path. 
 
 ![Onnx](images/getting_started/testing.png)
+
+Inside the project’s root folder, you should have a folder called output, containing logs and runs. Inside it, create a 
+folder called **pedpy**.
 
 Select `testing_scene.tscn` from the _testing_scene_ directory and set it as the main scene. Now, run the project 
 within Godot. The testing phase should start, allowing you to visualize the agent's behaviors in scenarios not seen 

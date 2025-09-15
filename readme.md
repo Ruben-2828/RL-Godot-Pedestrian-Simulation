@@ -99,7 +99,7 @@ Here's the setup for Windows:
     https://github.com/Ruben-2828/RL-Godot-Pedestrian-Simulation.git
     ```
 2. **Install Godot**: You can download and install Godot from [here](https://godotengine.org/download/windows/)! 
-It is recommended to download the mono version (.NET) as it will be necessary in a second phase of using this tool.
+It is recommended to download the mono version (.NET) as it will be necessary in a second phase of using this tool. Make sure you have installed **version 4.2.2** of the Godot Engine.
 
 3. **Launch Godot**: Extract the files and run the Godot exe. The godot engine will open
 
@@ -119,7 +119,11 @@ from [here](https://www.anaconda.com/download)!
     ```
     conda activate myenv
     ```
-4. **Install the dependencies**: You can install the dependencies of this project using this following commands:
+4. **Install the dependencies**: You can install the dependencies of this project using the requirements.txt file:
+    ```
+    pip install -r requirements.txt
+    ```
+5. **Alternative**: If you want to install the dependencies one by one, you can do it using the following commands:
     ```
     pip install godot-rl
     ```
@@ -130,7 +134,7 @@ from [here](https://www.anaconda.com/download)!
     pip install pedpy
     ```
 
-5. If you try to run the code, it should give a "Failed to build project" error. This is because we don't have C#'s onnx 
+6. If you try to run the code, it should give a "Failed to build project" error. This is because we don't have C#'s onnx 
     dependencies. Go to [Microsoft OnnxRuntime](https://www.nuget.org/packages/Microsoft.ML.OnnxRuntime) and copy the 
     command that is shown, for example:
 

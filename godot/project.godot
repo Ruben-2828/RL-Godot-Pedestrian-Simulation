@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="RL-Godot-Pedestrian-Simulation"
-run/main_scene="res://testing/testing_scene.tscn"
+run/main_scene="res://training/training_scene.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -32,6 +32,10 @@ project/assembly_name="RL-Godot-Pedestrian-Simulation"
 movie_writer/mjpeg_quality=0.9
 movie_writer/movie_file="C:/Users/Utente/Desktop/RL-Godot-Pedestrian-Simulation/godot/rec/corridor_3vs3.avi"
 movie_writer/fps=30
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_rl_agents/plugin.cfg")
 
 [filesystem]
 
